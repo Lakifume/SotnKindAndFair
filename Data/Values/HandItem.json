@@ -1,0 +1,5699 @@
+[
+  {
+    "Key": "Monster Vial 1",
+    "Value": {
+      "Attack": 40,
+      "Defense": 0,
+      "Element": {
+        "HIT": true,
+        "CUT": false,
+        "POI": false,
+        "CUR": false,
+        "STO": false,
+        "WAT": false,
+        "DAR": false,
+        "HOL": false,
+        "ICE": false,
+        "LIG": false,
+        "FLA": false
+      },
+      "Sprite": "0x28",
+      "Special": "0x00",
+      "Spell": "0x0000",
+      "ManaCost": 0,
+      "StunFrames": 4,
+      "Range": 2,
+      "Extra": "0x01"
+    }
+  },
+  {
+    "Key": "Monster Vial 2",
+    "Value": {
+      "Attack": 25,
+      "Defense": 0,
+      "Element": {
+        "HIT": true,
+        "CUT": false,
+        "POI": false,
+        "CUR": false,
+        "STO": false,
+        "WAT": false,
+        "DAR": false,
+        "HOL": false,
+        "ICE": false,
+        "LIG": false,
+        "FLA": false
+      },
+      "Sprite": "0x29",
+      "Special": "0x00",
+      "Spell": "0x0000",
+      "ManaCost": 0,
+      "StunFrames": 4,
+      "Range": 2,
+      "Extra": "0x01"
+    }
+  },
+  {
+    "Key": "Monster Vial 3",
+    "Value": {
+      "Attack": 30,
+      "Defense": 0,
+      "Element": {
+        "HIT": true,
+        "CUT": false,
+        "POI": false,
+        "CUR": false,
+        "STO": false,
+        "WAT": false,
+        "DAR": false,
+        "HOL": false,
+        "ICE": false,
+        "LIG": false,
+        "FLA": false
+      },
+      "Sprite": "0x2a",
+      "Special": "0x00",
+      "Spell": "0x0000",
+      "ManaCost": 0,
+      "StunFrames": 4,
+      "Range": 2,
+      "Extra": "0x01"
+    }
+  },
+  {
+    "Key": "Shield Rod",
+    "Value": {
+      "Attack": 11,
+      "Defense": 2,
+      "Element": {
+        "HIT": true,
+        "CUT": false,
+        "POI": false,
+        "CUR": false,
+        "STO": false,
+        "WAT": false,
+        "DAR": false,
+        "HOL": false,
+        "ICE": false,
+        "LIG": false,
+        "FLA": false
+      },
+      "Sprite": "0x07",
+      "Special": "0x00",
+      "Spell": "0x0000",
+      "ManaCost": 0,
+      "StunFrames": 4,
+      "Range": 2,
+      "Extra": "0x01"
+    }
+  },
+  {
+    "Key": "Leather Shield",
+    "Value": {
+      "Attack": 1,
+      "Defense": 1,
+      "Element": {
+        "HIT": false,
+        "CUT": false,
+        "POI": false,
+        "CUR": false,
+        "STO": false,
+        "WAT": false,
+        "DAR": false,
+        "HOL": false,
+        "ICE": false,
+        "LIG": false,
+        "FLA": false
+      },
+      "Sprite": "0x08",
+      "Special": "0x00",
+      "Spell": "0x0002",
+      "ManaCost": 0,
+      "StunFrames": 0,
+      "Range": 4,
+      "Extra": "0x01"
+    }
+  },
+  {
+    "Key": "Knight Shield",
+    "Value": {
+      "Attack": 1,
+      "Defense": 2,
+      "Element": {
+        "HIT": false,
+        "CUT": false,
+        "POI": false,
+        "CUR": false,
+        "STO": false,
+        "WAT": false,
+        "DAR": false,
+        "HOL": false,
+        "ICE": false,
+        "LIG": false,
+        "FLA": false
+      },
+      "Sprite": "0x09",
+      "Special": "0x00",
+      "Spell": "0x0004",
+      "ManaCost": 0,
+      "StunFrames": 0,
+      "Range": 4,
+      "Extra": "0x01"
+    }
+  },
+  {
+    "Key": "Iron Shield",
+    "Value": {
+      "Attack": 1,
+      "Defense": 2,
+      "Element": {
+        "HIT": false,
+        "CUT": false,
+        "POI": false,
+        "CUR": false,
+        "STO": false,
+        "WAT": false,
+        "DAR": false,
+        "HOL": false,
+        "ICE": false,
+        "LIG": false,
+        "FLA": false
+      },
+      "Sprite": "0x0a",
+      "Special": "0x00",
+      "Spell": "0x0008",
+      "ManaCost": 0,
+      "StunFrames": 0,
+      "Range": 4,
+      "Extra": "0x01"
+    }
+  },
+  {
+    "Key": "Axelord Shield",
+    "Value": {
+      "Attack": 1,
+      "Defense": 3,
+      "Element": {
+        "HIT": false,
+        "CUT": false,
+        "POI": false,
+        "CUR": false,
+        "STO": false,
+        "WAT": false,
+        "DAR": false,
+        "HOL": false,
+        "ICE": false,
+        "LIG": false,
+        "FLA": false
+      },
+      "Sprite": "0x0b",
+      "Special": "0x00",
+      "Spell": "0x0010",
+      "ManaCost": 0,
+      "StunFrames": 0,
+      "Range": 4,
+      "Extra": "0x01"
+    }
+  },
+  {
+    "Key": "Herald Shield",
+    "Value": {
+      "Attack": 1,
+      "Defense": 4,
+      "Element": {
+        "HIT": false,
+        "CUT": false,
+        "POI": false,
+        "CUR": false,
+        "STO": false,
+        "WAT": false,
+        "DAR": false,
+        "HOL": false,
+        "ICE": false,
+        "LIG": false,
+        "FLA": false
+      },
+      "Sprite": "0x17",
+      "Special": "0x00",
+      "Spell": "0x0020",
+      "ManaCost": 0,
+      "StunFrames": 0,
+      "Range": 4,
+      "Extra": "0x01"
+    }
+  },
+  {
+    "Key": "Dark Shield",
+    "Value": {
+      "Attack": 10,
+      "Defense": 3,
+      "Element": {
+        "HIT": false,
+        "CUT": false,
+        "POI": false,
+        "CUR": false,
+        "STO": false,
+        "WAT": false,
+        "DAR": true,
+        "HOL": false,
+        "ICE": false,
+        "LIG": false,
+        "FLA": false
+      },
+      "Sprite": "0x18",
+      "Special": "0x00",
+      "Spell": "0x0040",
+      "ManaCost": 0,
+      "StunFrames": 4,
+      "Range": 6,
+      "Extra": "0x01"
+    }
+  },
+  {
+    "Key": "Goddess Shield",
+    "Value": {
+      "Attack": 1,
+      "Defense": 4,
+      "Element": {
+        "HIT": false,
+        "CUT": false,
+        "POI": false,
+        "CUR": false,
+        "STO": false,
+        "WAT": false,
+        "DAR": false,
+        "HOL": false,
+        "ICE": false,
+        "LIG": false,
+        "FLA": false
+      },
+      "Sprite": "0x19",
+      "Special": "0x00",
+      "Spell": "0x0080",
+      "ManaCost": 0,
+      "StunFrames": 0,
+      "Range": 4,
+      "Extra": "0x01"
+    }
+  },
+  {
+    "Key": "Shaman Shield",
+    "Value": {
+      "Attack": 1,
+      "Defense": 4,
+      "Element": {
+        "HIT": false,
+        "CUT": false,
+        "POI": false,
+        "CUR": false,
+        "STO": false,
+        "WAT": false,
+        "DAR": false,
+        "HOL": false,
+        "ICE": false,
+        "LIG": false,
+        "FLA": false
+      },
+      "Sprite": "0x1a",
+      "Special": "0x00",
+      "Spell": "0x0100",
+      "ManaCost": 0,
+      "StunFrames": 0,
+      "Range": 4,
+      "Extra": "0x01"
+    }
+  },
+  {
+    "Key": "Medusa Shield",
+    "Value": {
+      "Attack": 13,
+      "Defense": 1,
+      "Element": {
+        "HIT": false,
+        "CUT": false,
+        "POI": false,
+        "CUR": false,
+        "STO": true,
+        "WAT": false,
+        "DAR": false,
+        "HOL": false,
+        "ICE": false,
+        "LIG": false,
+        "FLA": false
+      },
+      "Sprite": "0x1b",
+      "Special": "0x00",
+      "Spell": "0x0200",
+      "ManaCost": 0,
+      "StunFrames": 20,
+      "Range": 6,
+      "Extra": "0x01"
+    }
+  },
+  {
+    "Key": "Skull Shield",
+    "Value": {
+      "Attack": 1,
+      "Defense": 4,
+      "Element": {
+        "HIT": false,
+        "CUT": false,
+        "POI": false,
+        "CUR": false,
+        "STO": false,
+        "WAT": false,
+        "DAR": false,
+        "HOL": false,
+        "ICE": false,
+        "LIG": false,
+        "FLA": false
+      },
+      "Sprite": "0x1c",
+      "Special": "0x00",
+      "Spell": "0x0400",
+      "ManaCost": 0,
+      "StunFrames": 0,
+      "Range": 4,
+      "Extra": "0x01"
+    }
+  },
+  {
+    "Key": "Fire Shield",
+    "Value": {
+      "Attack": 1,
+      "Defense": 4,
+      "Element": {
+        "HIT": false,
+        "CUT": false,
+        "POI": false,
+        "CUR": false,
+        "STO": false,
+        "WAT": false,
+        "DAR": false,
+        "HOL": false,
+        "ICE": false,
+        "LIG": false,
+        "FLA": true
+      },
+      "Sprite": "0x1d",
+      "Special": "0x00",
+      "Spell": "0x0800",
+      "ManaCost": 0,
+      "StunFrames": 0,
+      "Range": 4,
+      "Extra": "0x01"
+    }
+  },
+  {
+    "Key": "Alucard Shield",
+    "Value": {
+      "Attack": 20,
+      "Defense": 5,
+      "Element": {
+        "HIT": false,
+        "CUT": false,
+        "POI": false,
+        "CUR": false,
+        "STO": false,
+        "WAT": false,
+        "DAR": false,
+        "HOL": false,
+        "ICE": false,
+        "LIG": false,
+        "FLA": false
+      },
+      "Sprite": "0x34",
+      "Special": "0x00",
+      "Spell": "0x1000",
+      "ManaCost": 0,
+      "StunFrames": 0,
+      "Range": 4,
+      "Extra": "0x01"
+    }
+  },
+  {
+    "Key": "Sword of Dawn",
+    "Value": {
+      "Attack": 27,
+      "Defense": 0,
+      "Element": {
+        "HIT": false,
+        "CUT": true,
+        "POI": false,
+        "CUR": false,
+        "STO": false,
+        "WAT": false,
+        "DAR": false,
+        "HOL": false,
+        "ICE": false,
+        "LIG": false,
+        "FLA": false
+      },
+      "Sprite": "0x1e",
+      "Special": "0xb1",
+      "Spell": "0x0000",
+      "ManaCost": 0,
+      "StunFrames": 4,
+      "Range": 2,
+      "Extra": "0x81"
+    }
+  },
+  {
+    "Key": "Basilard",
+    "Value": {
+      "Attack": 1,
+      "Defense": 0,
+      "Element": {
+        "HIT": false,
+        "CUT": true,
+        "POI": false,
+        "CUR": false,
+        "STO": false,
+        "WAT": false,
+        "DAR": false,
+        "HOL": false,
+        "ICE": false,
+        "LIG": false,
+        "FLA": false
+      },
+      "Sprite": "0x1f",
+      "Special": "0x00",
+      "Spell": "0x0000",
+      "ManaCost": 0,
+      "StunFrames": 4,
+      "Range": 2,
+      "Extra": "0x81"
+    }
+  },
+  {
+    "Key": "Short Sword",
+    "Value": {
+      "Attack": 2,
+      "Defense": 0,
+      "Element": {
+        "HIT": false,
+        "CUT": true,
+        "POI": false,
+        "CUR": false,
+        "STO": false,
+        "WAT": false,
+        "DAR": false,
+        "HOL": false,
+        "ICE": false,
+        "LIG": false,
+        "FLA": false
+      },
+      "Sprite": "0x25",
+      "Special": "0x00",
+      "Spell": "0x0000",
+      "ManaCost": 0,
+      "StunFrames": 4,
+      "Range": 2,
+      "Extra": "0x81"
+    }
+  },
+  {
+    "Key": "Combat Knife",
+    "Value": {
+      "Attack": 24,
+      "Defense": 0,
+      "Element": {
+        "HIT": false,
+        "CUT": true,
+        "POI": false,
+        "CUR": false,
+        "STO": false,
+        "WAT": false,
+        "DAR": false,
+        "HOL": false,
+        "ICE": false,
+        "LIG": false,
+        "FLA": false
+      },
+      "Sprite": "0x20",
+      "Special": "0xaf",
+      "Spell": "0x0000",
+      "ManaCost": 0,
+      "StunFrames": 4,
+      "Range": 2,
+      "Extra": "0x81"
+    }
+  },
+  {
+    "Key": "Nunchaku",
+    "Value": {
+      "Attack": 10,
+      "Defense": 0,
+      "Element": {
+        "HIT": true,
+        "CUT": false,
+        "POI": false,
+        "CUR": false,
+        "STO": false,
+        "WAT": false,
+        "DAR": false,
+        "HOL": false,
+        "ICE": false,
+        "LIG": false,
+        "FLA": false
+      },
+      "Sprite": "0x21",
+      "Special": "0x00",
+      "Spell": "0x0000",
+      "ManaCost": 0,
+      "StunFrames": 4,
+      "Range": 2,
+      "Extra": "0x01"
+    }
+  },
+  {
+    "Key": "Were Bane",
+    "Value": {
+      "Attack": 18,
+      "Defense": 0,
+      "Element": {
+        "HIT": false,
+        "CUT": true,
+        "POI": false,
+        "CUR": false,
+        "STO": false,
+        "WAT": false,
+        "DAR": false,
+        "HOL": false,
+        "ICE": false,
+        "LIG": false,
+        "FLA": false
+      },
+      "Sprite": "0x27",
+      "Special": "0xbe",
+      "Spell": "0x0000",
+      "ManaCost": 0,
+      "StunFrames": 4,
+      "Range": 2,
+      "Extra": "0x81"
+    }
+  },
+  {
+    "Key": "Rapier",
+    "Value": {
+      "Attack": 7,
+      "Defense": 0,
+      "Element": {
+        "HIT": false,
+        "CUT": true,
+        "POI": false,
+        "CUR": false,
+        "STO": false,
+        "WAT": false,
+        "DAR": false,
+        "HOL": false,
+        "ICE": false,
+        "LIG": false,
+        "FLA": false
+      },
+      "Sprite": "0x26",
+      "Special": "0xbf",
+      "Spell": "0x0000",
+      "ManaCost": 0,
+      "StunFrames": 4,
+      "Range": 2,
+      "Extra": "0x81"
+    }
+  },
+  {
+    "Key": "Karma Coin",
+    "Value": {
+      "Attack": 50,
+      "Defense": 0,
+      "Element": {
+        "HIT": true,
+        "CUT": false,
+        "POI": false,
+        "CUR": false,
+        "STO": false,
+        "WAT": false,
+        "DAR": false,
+        "HOL": false,
+        "ICE": false,
+        "LIG": false,
+        "FLA": false
+      },
+      "Sprite": "0x14",
+      "Special": "0x00",
+      "Spell": "0x0000",
+      "ManaCost": 0,
+      "StunFrames": 22459,
+      "Range": 14394,
+      "Extra": "0x6e"
+    }
+  },
+  {
+    "Key": "Magic Missile",
+    "Value": {
+      "Attack": 30,
+      "Defense": 0,
+      "Element": {
+        "HIT": false,
+        "CUT": true,
+        "POI": false,
+        "CUR": false,
+        "STO": false,
+        "WAT": false,
+        "DAR": false,
+        "HOL": false,
+        "ICE": false,
+        "LIG": false,
+        "FLA": false
+      },
+      "Sprite": "0x16",
+      "Special": "0x00",
+      "Spell": "0x0000",
+      "ManaCost": 0,
+      "StunFrames": 4,
+      "Range": 2,
+      "Extra": "0x01"
+    }
+  },
+  {
+    "Key": "Red Rust",
+    "Value": {
+      "Attack": -2,
+      "Defense": 0,
+      "Element": {
+        "HIT": false,
+        "CUT": true,
+        "POI": false,
+        "CUR": true,
+        "STO": false,
+        "WAT": false,
+        "DAR": false,
+        "HOL": false,
+        "ICE": false,
+        "LIG": false,
+        "FLA": false
+      },
+      "Sprite": "0x23",
+      "Special": "0x00",
+      "Spell": "0x0000",
+      "ManaCost": 0,
+      "StunFrames": 4,
+      "Range": 2,
+      "Extra": "0x81"
+    }
+  },
+  {
+    "Key": "Takemitsu",
+    "Value": {
+      "Attack": 1,
+      "Defense": 0,
+      "Element": {
+        "HIT": true,
+        "CUT": false,
+        "POI": false,
+        "CUR": false,
+        "STO": false,
+        "WAT": false,
+        "DAR": false,
+        "HOL": false,
+        "ICE": false,
+        "LIG": false,
+        "FLA": false
+      },
+      "Sprite": "0x24",
+      "Special": "0x00",
+      "Spell": "0x0000",
+      "ManaCost": 0,
+      "StunFrames": 4,
+      "Range": 2,
+      "Extra": "0x01"
+    }
+  },
+  {
+    "Key": "Shotel",
+    "Value": {
+      "Attack": 20,
+      "Defense": 0,
+      "Element": {
+        "HIT": false,
+        "CUT": true,
+        "POI": false,
+        "CUR": false,
+        "STO": false,
+        "WAT": false,
+        "DAR": false,
+        "HOL": false,
+        "ICE": false,
+        "LIG": false,
+        "FLA": false
+      },
+      "Sprite": "0x22",
+      "Special": "0xb0",
+      "Spell": "0x0000",
+      "ManaCost": 0,
+      "StunFrames": 4,
+      "Range": 2,
+      "Extra": "0x81"
+    }
+  },
+  {
+    "Key": "Orange",
+    "Value": {
+      "Attack": 6,
+      "Defense": 0,
+      "Element": {
+        "HIT": false,
+        "CUT": false,
+        "POI": false,
+        "CUR": false,
+        "STO": false,
+        "WAT": false,
+        "DAR": false,
+        "HOL": false,
+        "ICE": false,
+        "LIG": false,
+        "FLA": false
+      },
+      "Sprite": "0x15",
+      "Special": "0x00",
+      "Spell": "0x0000",
+      "ManaCost": 0,
+      "StunFrames": 0,
+      "Range": 0,
+      "Extra": "0x01"
+    }
+  },
+  {
+    "Key": "Apple",
+    "Value": {
+      "Attack": 9,
+      "Defense": 0,
+      "Element": {
+        "HIT": false,
+        "CUT": false,
+        "POI": false,
+        "CUR": false,
+        "STO": false,
+        "WAT": false,
+        "DAR": false,
+        "HOL": false,
+        "ICE": false,
+        "LIG": false,
+        "FLA": false
+      },
+      "Sprite": "0x15",
+      "Special": "0x00",
+      "Spell": "0x0000",
+      "ManaCost": 0,
+      "StunFrames": 0,
+      "Range": 0,
+      "Extra": "0x01"
+    }
+  },
+  {
+    "Key": "Banana",
+    "Value": {
+      "Attack": 7,
+      "Defense": 0,
+      "Element": {
+        "HIT": false,
+        "CUT": false,
+        "POI": false,
+        "CUR": false,
+        "STO": false,
+        "WAT": false,
+        "DAR": false,
+        "HOL": false,
+        "ICE": false,
+        "LIG": false,
+        "FLA": false
+      },
+      "Sprite": "0x15",
+      "Special": "0x00",
+      "Spell": "0x0000",
+      "ManaCost": 0,
+      "StunFrames": 0,
+      "Range": 0,
+      "Extra": "0x01"
+    }
+  },
+  {
+    "Key": "Grapes",
+    "Value": {
+      "Attack": 5,
+      "Defense": 0,
+      "Element": {
+        "HIT": false,
+        "CUT": false,
+        "POI": false,
+        "CUR": false,
+        "STO": false,
+        "WAT": false,
+        "DAR": false,
+        "HOL": false,
+        "ICE": false,
+        "LIG": false,
+        "FLA": false
+      },
+      "Sprite": "0x15",
+      "Special": "0x00",
+      "Spell": "0x0000",
+      "ManaCost": 0,
+      "StunFrames": 0,
+      "Range": 0,
+      "Extra": "0x01"
+    }
+  },
+  {
+    "Key": "Strawberry",
+    "Value": {
+      "Attack": 10,
+      "Defense": 0,
+      "Element": {
+        "HIT": false,
+        "CUT": false,
+        "POI": false,
+        "CUR": false,
+        "STO": false,
+        "WAT": false,
+        "DAR": false,
+        "HOL": false,
+        "ICE": false,
+        "LIG": false,
+        "FLA": false
+      },
+      "Sprite": "0x15",
+      "Special": "0x00",
+      "Spell": "0x0000",
+      "ManaCost": 0,
+      "StunFrames": 0,
+      "Range": 0,
+      "Extra": "0x01"
+    }
+  },
+  {
+    "Key": "Pineapple",
+    "Value": {
+      "Attack": 8,
+      "Defense": 0,
+      "Element": {
+        "HIT": false,
+        "CUT": false,
+        "POI": false,
+        "CUR": false,
+        "STO": false,
+        "WAT": false,
+        "DAR": false,
+        "HOL": false,
+        "ICE": false,
+        "LIG": false,
+        "FLA": false
+      },
+      "Sprite": "0x15",
+      "Special": "0x00",
+      "Spell": "0x0000",
+      "ManaCost": 0,
+      "StunFrames": 0,
+      "Range": 0,
+      "Extra": "0x01"
+    }
+  },
+  {
+    "Key": "Peanuts",
+    "Value": {
+      "Attack": 50,
+      "Defense": 0,
+      "Element": {
+        "HIT": false,
+        "CUT": false,
+        "POI": false,
+        "CUR": false,
+        "STO": false,
+        "WAT": false,
+        "DAR": false,
+        "HOL": false,
+        "ICE": false,
+        "LIG": false,
+        "FLA": false
+      },
+      "Sprite": "0x15",
+      "Special": "0x00",
+      "Spell": "0x0000",
+      "ManaCost": 0,
+      "StunFrames": 0,
+      "Range": 0,
+      "Extra": "0x01"
+    }
+  },
+  {
+    "Key": "Toadstool",
+    "Value": {
+      "Attack": 0,
+      "Defense": 0,
+      "Element": {
+        "HIT": false,
+        "CUT": false,
+        "POI": false,
+        "CUR": false,
+        "STO": false,
+        "WAT": false,
+        "DAR": false,
+        "HOL": false,
+        "ICE": false,
+        "LIG": false,
+        "FLA": false
+      },
+      "Sprite": "0x15",
+      "Special": "0x00",
+      "Spell": "0x0000",
+      "ManaCost": 0,
+      "StunFrames": 0,
+      "Range": 0,
+      "Extra": "0x01"
+    }
+  },
+  {
+    "Key": "Shiitake",
+    "Value": {
+      "Attack": 30,
+      "Defense": 0,
+      "Element": {
+        "HIT": false,
+        "CUT": false,
+        "POI": false,
+        "CUR": false,
+        "STO": false,
+        "WAT": false,
+        "DAR": false,
+        "HOL": false,
+        "ICE": false,
+        "LIG": false,
+        "FLA": false
+      },
+      "Sprite": "0x15",
+      "Special": "0x00",
+      "Spell": "0x0000",
+      "ManaCost": 0,
+      "StunFrames": 0,
+      "Range": 0,
+      "Extra": "0x01"
+    }
+  },
+  {
+    "Key": "Cheesecake",
+    "Value": {
+      "Attack": 14,
+      "Defense": 0,
+      "Element": {
+        "HIT": false,
+        "CUT": false,
+        "POI": false,
+        "CUR": false,
+        "STO": false,
+        "WAT": false,
+        "DAR": false,
+        "HOL": false,
+        "ICE": false,
+        "LIG": false,
+        "FLA": false
+      },
+      "Sprite": "0x15",
+      "Special": "0x00",
+      "Spell": "0x0000",
+      "ManaCost": 0,
+      "StunFrames": 0,
+      "Range": 0,
+      "Extra": "0x01"
+    }
+  },
+  {
+    "Key": "Shortcake",
+    "Value": {
+      "Attack": 11,
+      "Defense": 0,
+      "Element": {
+        "HIT": false,
+        "CUT": false,
+        "POI": false,
+        "CUR": false,
+        "STO": false,
+        "WAT": false,
+        "DAR": false,
+        "HOL": false,
+        "ICE": false,
+        "LIG": false,
+        "FLA": false
+      },
+      "Sprite": "0x15",
+      "Special": "0x00",
+      "Spell": "0x0000",
+      "ManaCost": 0,
+      "StunFrames": 0,
+      "Range": 0,
+      "Extra": "0x01"
+    }
+  },
+  {
+    "Key": "Tart",
+    "Value": {
+      "Attack": 12,
+      "Defense": 0,
+      "Element": {
+        "HIT": false,
+        "CUT": false,
+        "POI": false,
+        "CUR": false,
+        "STO": false,
+        "WAT": false,
+        "DAR": false,
+        "HOL": false,
+        "ICE": false,
+        "LIG": false,
+        "FLA": false
+      },
+      "Sprite": "0x15",
+      "Special": "0x00",
+      "Spell": "0x0000",
+      "ManaCost": 0,
+      "StunFrames": 0,
+      "Range": 0,
+      "Extra": "0x01"
+    }
+  },
+  {
+    "Key": "Parfait",
+    "Value": {
+      "Attack": 16,
+      "Defense": 0,
+      "Element": {
+        "HIT": false,
+        "CUT": false,
+        "POI": false,
+        "CUR": false,
+        "STO": false,
+        "WAT": false,
+        "DAR": false,
+        "HOL": false,
+        "ICE": false,
+        "LIG": false,
+        "FLA": false
+      },
+      "Sprite": "0x15",
+      "Special": "0x00",
+      "Spell": "0x0000",
+      "ManaCost": 0,
+      "StunFrames": 0,
+      "Range": 0,
+      "Extra": "0x01"
+    }
+  },
+  {
+    "Key": "Pudding",
+    "Value": {
+      "Attack": 17,
+      "Defense": 0,
+      "Element": {
+        "HIT": false,
+        "CUT": false,
+        "POI": false,
+        "CUR": false,
+        "STO": false,
+        "WAT": false,
+        "DAR": false,
+        "HOL": false,
+        "ICE": false,
+        "LIG": false,
+        "FLA": false
+      },
+      "Sprite": "0x15",
+      "Special": "0x00",
+      "Spell": "0x0000",
+      "ManaCost": 0,
+      "StunFrames": 0,
+      "Range": 0,
+      "Extra": "0x01"
+    }
+  },
+  {
+    "Key": "Ice Cream",
+    "Value": {
+      "Attack": 15,
+      "Defense": 0,
+      "Element": {
+        "HIT": false,
+        "CUT": false,
+        "POI": false,
+        "CUR": false,
+        "STO": false,
+        "WAT": false,
+        "DAR": false,
+        "HOL": false,
+        "ICE": false,
+        "LIG": false,
+        "FLA": false
+      },
+      "Sprite": "0x15",
+      "Special": "0x00",
+      "Spell": "0x0000",
+      "ManaCost": 0,
+      "StunFrames": 0,
+      "Range": 0,
+      "Extra": "0x01"
+    }
+  },
+  {
+    "Key": "Frankfurter",
+    "Value": {
+      "Attack": 19,
+      "Defense": 0,
+      "Element": {
+        "HIT": false,
+        "CUT": false,
+        "POI": false,
+        "CUR": false,
+        "STO": false,
+        "WAT": false,
+        "DAR": false,
+        "HOL": false,
+        "ICE": false,
+        "LIG": false,
+        "FLA": false
+      },
+      "Sprite": "0x15",
+      "Special": "0x00",
+      "Spell": "0x0000",
+      "ManaCost": 0,
+      "StunFrames": 0,
+      "Range": 0,
+      "Extra": "0x01"
+    }
+  },
+  {
+    "Key": "Hamburger",
+    "Value": {
+      "Attack": 20,
+      "Defense": 0,
+      "Element": {
+        "HIT": false,
+        "CUT": false,
+        "POI": false,
+        "CUR": false,
+        "STO": false,
+        "WAT": false,
+        "DAR": false,
+        "HOL": false,
+        "ICE": false,
+        "LIG": false,
+        "FLA": false
+      },
+      "Sprite": "0x15",
+      "Special": "0x00",
+      "Spell": "0x0000",
+      "ManaCost": 0,
+      "StunFrames": 0,
+      "Range": 0,
+      "Extra": "0x01"
+    }
+  },
+  {
+    "Key": "Pizza",
+    "Value": {
+      "Attack": 21,
+      "Defense": 0,
+      "Element": {
+        "HIT": false,
+        "CUT": false,
+        "POI": false,
+        "CUR": false,
+        "STO": false,
+        "WAT": false,
+        "DAR": false,
+        "HOL": false,
+        "ICE": false,
+        "LIG": false,
+        "FLA": false
+      },
+      "Sprite": "0x15",
+      "Special": "0x00",
+      "Spell": "0x0000",
+      "ManaCost": 0,
+      "StunFrames": 0,
+      "Range": 0,
+      "Extra": "0x01"
+    }
+  },
+  {
+    "Key": "Cheese",
+    "Value": {
+      "Attack": 18,
+      "Defense": 0,
+      "Element": {
+        "HIT": false,
+        "CUT": false,
+        "POI": false,
+        "CUR": false,
+        "STO": false,
+        "WAT": false,
+        "DAR": false,
+        "HOL": false,
+        "ICE": false,
+        "LIG": false,
+        "FLA": false
+      },
+      "Sprite": "0x15",
+      "Special": "0x00",
+      "Spell": "0x0000",
+      "ManaCost": 0,
+      "StunFrames": 0,
+      "Range": 0,
+      "Extra": "0x01"
+    }
+  },
+  {
+    "Key": "Ham And Eggs",
+    "Value": {
+      "Attack": 22,
+      "Defense": 0,
+      "Element": {
+        "HIT": false,
+        "CUT": false,
+        "POI": false,
+        "CUR": false,
+        "STO": false,
+        "WAT": false,
+        "DAR": false,
+        "HOL": false,
+        "ICE": false,
+        "LIG": false,
+        "FLA": false
+      },
+      "Sprite": "0x15",
+      "Special": "0x00",
+      "Spell": "0x0000",
+      "ManaCost": 0,
+      "StunFrames": 0,
+      "Range": 0,
+      "Extra": "0x01"
+    }
+  },
+  {
+    "Key": "Omelette",
+    "Value": {
+      "Attack": 23,
+      "Defense": 0,
+      "Element": {
+        "HIT": false,
+        "CUT": false,
+        "POI": false,
+        "CUR": false,
+        "STO": false,
+        "WAT": false,
+        "DAR": false,
+        "HOL": false,
+        "ICE": false,
+        "LIG": false,
+        "FLA": false
+      },
+      "Sprite": "0x15",
+      "Special": "0x00",
+      "Spell": "0x0000",
+      "ManaCost": 0,
+      "StunFrames": 0,
+      "Range": 0,
+      "Extra": "0x01"
+    }
+  },
+  {
+    "Key": "Morning Set",
+    "Value": {
+      "Attack": 24,
+      "Defense": 0,
+      "Element": {
+        "HIT": false,
+        "CUT": false,
+        "POI": false,
+        "CUR": false,
+        "STO": false,
+        "WAT": false,
+        "DAR": false,
+        "HOL": false,
+        "ICE": false,
+        "LIG": false,
+        "FLA": false
+      },
+      "Sprite": "0x15",
+      "Special": "0x00",
+      "Spell": "0x0000",
+      "ManaCost": 0,
+      "StunFrames": 0,
+      "Range": 0,
+      "Extra": "0x01"
+    }
+  },
+  {
+    "Key": "Lunch A",
+    "Value": {
+      "Attack": 25,
+      "Defense": 0,
+      "Element": {
+        "HIT": false,
+        "CUT": false,
+        "POI": false,
+        "CUR": false,
+        "STO": false,
+        "WAT": false,
+        "DAR": false,
+        "HOL": false,
+        "ICE": false,
+        "LIG": false,
+        "FLA": false
+      },
+      "Sprite": "0x15",
+      "Special": "0x00",
+      "Spell": "0x0000",
+      "ManaCost": 0,
+      "StunFrames": 0,
+      "Range": 0,
+      "Extra": "0x01"
+    }
+  },
+  {
+    "Key": "Lunch B",
+    "Value": {
+      "Attack": 26,
+      "Defense": 0,
+      "Element": {
+        "HIT": false,
+        "CUT": false,
+        "POI": false,
+        "CUR": false,
+        "STO": false,
+        "WAT": false,
+        "DAR": false,
+        "HOL": false,
+        "ICE": false,
+        "LIG": false,
+        "FLA": false
+      },
+      "Sprite": "0x15",
+      "Special": "0x00",
+      "Spell": "0x0000",
+      "ManaCost": 0,
+      "StunFrames": 0,
+      "Range": 0,
+      "Extra": "0x01"
+    }
+  },
+  {
+    "Key": "Curry Rice",
+    "Value": {
+      "Attack": 28,
+      "Defense": 0,
+      "Element": {
+        "HIT": false,
+        "CUT": false,
+        "POI": false,
+        "CUR": false,
+        "STO": false,
+        "WAT": false,
+        "DAR": false,
+        "HOL": false,
+        "ICE": false,
+        "LIG": false,
+        "FLA": false
+      },
+      "Sprite": "0x15",
+      "Special": "0x00",
+      "Spell": "0x0000",
+      "ManaCost": 0,
+      "StunFrames": 0,
+      "Range": 0,
+      "Extra": "0x01"
+    }
+  },
+  {
+    "Key": "Gyros Plate",
+    "Value": {
+      "Attack": 29,
+      "Defense": 0,
+      "Element": {
+        "HIT": false,
+        "CUT": false,
+        "POI": false,
+        "CUR": false,
+        "STO": false,
+        "WAT": false,
+        "DAR": false,
+        "HOL": false,
+        "ICE": false,
+        "LIG": false,
+        "FLA": false
+      },
+      "Sprite": "0x15",
+      "Special": "0x00",
+      "Spell": "0x0000",
+      "ManaCost": 0,
+      "StunFrames": 0,
+      "Range": 0,
+      "Extra": "0x01"
+    }
+  },
+  {
+    "Key": "Spaghetti",
+    "Value": {
+      "Attack": 27,
+      "Defense": 0,
+      "Element": {
+        "HIT": false,
+        "CUT": false,
+        "POI": false,
+        "CUR": false,
+        "STO": false,
+        "WAT": false,
+        "DAR": false,
+        "HOL": false,
+        "ICE": false,
+        "LIG": false,
+        "FLA": false
+      },
+      "Sprite": "0x15",
+      "Special": "0x00",
+      "Spell": "0x0000",
+      "ManaCost": 0,
+      "StunFrames": 0,
+      "Range": 0,
+      "Extra": "0x01"
+    }
+  },
+  {
+    "Key": "Grape Juice",
+    "Value": {
+      "Attack": 20,
+      "Defense": 0,
+      "Element": {
+        "HIT": false,
+        "CUT": false,
+        "POI": false,
+        "CUR": false,
+        "STO": false,
+        "WAT": false,
+        "DAR": false,
+        "HOL": false,
+        "ICE": false,
+        "LIG": false,
+        "FLA": false
+      },
+      "Sprite": "0x15",
+      "Special": "0x00",
+      "Spell": "0x0000",
+      "ManaCost": 0,
+      "StunFrames": 0,
+      "Range": 0,
+      "Extra": "0x01"
+    }
+  },
+  {
+    "Key": "Barley Tea",
+    "Value": {
+      "Attack": 15,
+      "Defense": 0,
+      "Element": {
+        "HIT": false,
+        "CUT": false,
+        "POI": false,
+        "CUR": false,
+        "STO": false,
+        "WAT": false,
+        "DAR": false,
+        "HOL": false,
+        "ICE": false,
+        "LIG": false,
+        "FLA": false
+      },
+      "Sprite": "0x15",
+      "Special": "0x00",
+      "Spell": "0x0000",
+      "ManaCost": 0,
+      "StunFrames": 0,
+      "Range": 0,
+      "Extra": "0x01"
+    }
+  },
+  {
+    "Key": "Green Tea",
+    "Value": {
+      "Attack": 10,
+      "Defense": 0,
+      "Element": {
+        "HIT": false,
+        "CUT": false,
+        "POI": false,
+        "CUR": false,
+        "STO": false,
+        "WAT": false,
+        "DAR": false,
+        "HOL": false,
+        "ICE": false,
+        "LIG": false,
+        "FLA": false
+      },
+      "Sprite": "0x15",
+      "Special": "0x00",
+      "Spell": "0x0000",
+      "ManaCost": 0,
+      "StunFrames": 0,
+      "Range": 0,
+      "Extra": "0x01"
+    }
+  },
+  {
+    "Key": "Natou",
+    "Value": {
+      "Attack": 32,
+      "Defense": 0,
+      "Element": {
+        "HIT": false,
+        "CUT": false,
+        "POI": false,
+        "CUR": false,
+        "STO": false,
+        "WAT": false,
+        "DAR": false,
+        "HOL": false,
+        "ICE": false,
+        "LIG": false,
+        "FLA": false
+      },
+      "Sprite": "0x15",
+      "Special": "0x00",
+      "Spell": "0x0000",
+      "ManaCost": 0,
+      "StunFrames": 0,
+      "Range": 0,
+      "Extra": "0x01"
+    }
+  },
+  {
+    "Key": "Ramen",
+    "Value": {
+      "Attack": 30,
+      "Defense": 0,
+      "Element": {
+        "HIT": false,
+        "CUT": false,
+        "POI": false,
+        "CUR": false,
+        "STO": false,
+        "WAT": false,
+        "DAR": false,
+        "HOL": false,
+        "ICE": false,
+        "LIG": false,
+        "FLA": false
+      },
+      "Sprite": "0x15",
+      "Special": "0x00",
+      "Spell": "0x0000",
+      "ManaCost": 0,
+      "StunFrames": 0,
+      "Range": 0,
+      "Extra": "0x01"
+    }
+  },
+  {
+    "Key": "Miso Soup",
+    "Value": {
+      "Attack": 20,
+      "Defense": 0,
+      "Element": {
+        "HIT": false,
+        "CUT": false,
+        "POI": false,
+        "CUR": false,
+        "STO": false,
+        "WAT": false,
+        "DAR": false,
+        "HOL": false,
+        "ICE": false,
+        "LIG": false,
+        "FLA": false
+      },
+      "Sprite": "0x15",
+      "Special": "0x00",
+      "Spell": "0x0000",
+      "ManaCost": 0,
+      "StunFrames": 0,
+      "Range": 0,
+      "Extra": "0x01"
+    }
+  },
+  {
+    "Key": "Sushi",
+    "Value": {
+      "Attack": 100,
+      "Defense": 0,
+      "Element": {
+        "HIT": false,
+        "CUT": false,
+        "POI": false,
+        "CUR": false,
+        "STO": false,
+        "WAT": false,
+        "DAR": false,
+        "HOL": false,
+        "ICE": false,
+        "LIG": false,
+        "FLA": false
+      },
+      "Sprite": "0x15",
+      "Special": "0x00",
+      "Spell": "0x0000",
+      "ManaCost": 0,
+      "StunFrames": 0,
+      "Range": 0,
+      "Extra": "0x01"
+    }
+  },
+  {
+    "Key": "Pork Bun",
+    "Value": {
+      "Attack": 17,
+      "Defense": 0,
+      "Element": {
+        "HIT": false,
+        "CUT": false,
+        "POI": false,
+        "CUR": false,
+        "STO": false,
+        "WAT": false,
+        "DAR": false,
+        "HOL": false,
+        "ICE": false,
+        "LIG": false,
+        "FLA": false
+      },
+      "Sprite": "0x15",
+      "Special": "0x00",
+      "Spell": "0x0000",
+      "ManaCost": 0,
+      "StunFrames": 0,
+      "Range": 0,
+      "Extra": "0x01"
+    }
+  },
+  {
+    "Key": "Red Bean Bun",
+    "Value": {
+      "Attack": 12,
+      "Defense": 0,
+      "Element": {
+        "HIT": false,
+        "CUT": false,
+        "POI": false,
+        "CUR": false,
+        "STO": false,
+        "WAT": false,
+        "DAR": false,
+        "HOL": false,
+        "ICE": false,
+        "LIG": false,
+        "FLA": false
+      },
+      "Sprite": "0x15",
+      "Special": "0x00",
+      "Spell": "0x0000",
+      "ManaCost": 0,
+      "StunFrames": 0,
+      "Range": 0,
+      "Extra": "0x01"
+    }
+  },
+  {
+    "Key": "Chinese Bun",
+    "Value": {
+      "Attack": 10,
+      "Defense": 0,
+      "Element": {
+        "HIT": false,
+        "CUT": false,
+        "POI": false,
+        "CUR": false,
+        "STO": false,
+        "WAT": false,
+        "DAR": false,
+        "HOL": false,
+        "ICE": false,
+        "LIG": false,
+        "FLA": false
+      },
+      "Sprite": "0x15",
+      "Special": "0x00",
+      "Spell": "0x0000",
+      "ManaCost": 0,
+      "StunFrames": 0,
+      "Range": 0,
+      "Extra": "0x01"
+    }
+  },
+  {
+    "Key": "Dim Sum Set",
+    "Value": {
+      "Attack": 30,
+      "Defense": 0,
+      "Element": {
+        "HIT": false,
+        "CUT": false,
+        "POI": false,
+        "CUR": false,
+        "STO": false,
+        "WAT": false,
+        "DAR": false,
+        "HOL": false,
+        "ICE": false,
+        "LIG": false,
+        "FLA": false
+      },
+      "Sprite": "0x15",
+      "Special": "0x00",
+      "Spell": "0x0000",
+      "ManaCost": 0,
+      "StunFrames": 0,
+      "Range": 0,
+      "Extra": "0x01"
+    }
+  },
+  {
+    "Key": "Pot Roast",
+    "Value": {
+      "Attack": 50,
+      "Defense": 0,
+      "Element": {
+        "HIT": false,
+        "CUT": false,
+        "POI": false,
+        "CUR": false,
+        "STO": false,
+        "WAT": false,
+        "DAR": false,
+        "HOL": false,
+        "ICE": false,
+        "LIG": false,
+        "FLA": false
+      },
+      "Sprite": "0x15",
+      "Special": "0x00",
+      "Spell": "0x0000",
+      "ManaCost": 0,
+      "StunFrames": 0,
+      "Range": 0,
+      "Extra": "0x01"
+    }
+  },
+  {
+    "Key": "Sirloin",
+    "Value": {
+      "Attack": 100,
+      "Defense": 0,
+      "Element": {
+        "HIT": false,
+        "CUT": false,
+        "POI": false,
+        "CUR": false,
+        "STO": false,
+        "WAT": false,
+        "DAR": false,
+        "HOL": false,
+        "ICE": false,
+        "LIG": false,
+        "FLA": false
+      },
+      "Sprite": "0x15",
+      "Special": "0x00",
+      "Spell": "0x0000",
+      "ManaCost": 0,
+      "StunFrames": 0,
+      "Range": 0,
+      "Extra": "0x01"
+    }
+  },
+  {
+    "Key": "Turkey",
+    "Value": {
+      "Attack": 80,
+      "Defense": 0,
+      "Element": {
+        "HIT": false,
+        "CUT": false,
+        "POI": false,
+        "CUR": false,
+        "STO": false,
+        "WAT": false,
+        "DAR": false,
+        "HOL": false,
+        "ICE": false,
+        "LIG": false,
+        "FLA": false
+      },
+      "Sprite": "0x15",
+      "Special": "0x00",
+      "Spell": "0x0000",
+      "ManaCost": 0,
+      "StunFrames": 0,
+      "Range": 0,
+      "Extra": "0x01"
+    }
+  },
+  {
+    "Key": "Meal Ticket",
+    "Value": {
+      "Attack": 40,
+      "Defense": 0,
+      "Element": {
+        "HIT": false,
+        "CUT": false,
+        "POI": false,
+        "CUR": false,
+        "STO": false,
+        "WAT": false,
+        "DAR": false,
+        "HOL": false,
+        "ICE": false,
+        "LIG": false,
+        "FLA": false
+      },
+      "Sprite": "0x15",
+      "Special": "0x00",
+      "Spell": "0x0000",
+      "ManaCost": 0,
+      "StunFrames": 0,
+      "Range": 0,
+      "Extra": "0x01"
+    }
+  },
+  {
+    "Key": "Neutron Bomb",
+    "Value": {
+      "Attack": 30,
+      "Defense": 0,
+      "Element": {
+        "HIT": true,
+        "CUT": false,
+        "POI": false,
+        "CUR": false,
+        "STO": false,
+        "WAT": false,
+        "DAR": false,
+        "HOL": false,
+        "ICE": false,
+        "LIG": false,
+        "FLA": false
+      },
+      "Sprite": "0x13",
+      "Special": "0x00",
+      "Spell": "0x0000",
+      "ManaCost": 0,
+      "StunFrames": 4,
+      "Range": 130,
+      "Extra": "0x01"
+    }
+  },
+  {
+    "Key": "Power of Sire",
+    "Value": {
+      "Attack": 40,
+      "Defense": 0,
+      "Element": {
+        "HIT": true,
+        "CUT": false,
+        "POI": false,
+        "CUR": false,
+        "STO": false,
+        "WAT": false,
+        "DAR": false,
+        "HOL": false,
+        "ICE": false,
+        "LIG": false,
+        "FLA": false
+      },
+      "Sprite": "0x12",
+      "Special": "0x00",
+      "Spell": "0x0000",
+      "ManaCost": 0,
+      "StunFrames": 4,
+      "Range": 130,
+      "Extra": "0x01"
+    }
+  },
+  {
+    "Key": "Pentagram",
+    "Value": {
+      "Attack": 50,
+      "Defense": 0,
+      "Element": {
+        "HIT": true,
+        "CUT": false,
+        "POI": false,
+        "CUR": false,
+        "STO": false,
+        "WAT": false,
+        "DAR": false,
+        "HOL": false,
+        "ICE": false,
+        "LIG": false,
+        "FLA": false
+      },
+      "Sprite": "0x11",
+      "Special": "0x00",
+      "Spell": "0x0000",
+      "ManaCost": 0,
+      "StunFrames": 4,
+      "Range": 130,
+      "Extra": "0x01"
+    }
+  },
+  {
+    "Key": "Bat Pentagram",
+    "Value": {
+      "Attack": 99,
+      "Defense": 0,
+      "Element": {
+        "HIT": true,
+        "CUT": false,
+        "POI": false,
+        "CUR": false,
+        "STO": false,
+        "WAT": false,
+        "DAR": false,
+        "HOL": false,
+        "ICE": false,
+        "LIG": false,
+        "FLA": false
+      },
+      "Sprite": "0x11",
+      "Special": "0x00",
+      "Spell": "0x0000",
+      "ManaCost": 0,
+      "StunFrames": 4,
+      "Range": 130,
+      "Extra": "0x01"
+    }
+  },
+  {
+    "Key": "Shuriken",
+    "Value": {
+      "Attack": 50,
+      "Defense": 0,
+      "Element": {
+        "HIT": false,
+        "CUT": true,
+        "POI": false,
+        "CUR": false,
+        "STO": false,
+        "WAT": false,
+        "DAR": false,
+        "HOL": false,
+        "ICE": false,
+        "LIG": false,
+        "FLA": false
+      },
+      "Sprite": "0x0f",
+      "Special": "0x00",
+      "Spell": "0x0000",
+      "ManaCost": 0,
+      "StunFrames": 4,
+      "Range": 2,
+      "Extra": "0x81"
+    }
+  },
+  {
+    "Key": "Cross Shuriken",
+    "Value": {
+      "Attack": 70,
+      "Defense": 0,
+      "Element": {
+        "HIT": false,
+        "CUT": true,
+        "POI": false,
+        "CUR": false,
+        "STO": false,
+        "WAT": false,
+        "DAR": false,
+        "HOL": false,
+        "ICE": false,
+        "LIG": false,
+        "FLA": false
+      },
+      "Sprite": "0x0f",
+      "Special": "0x00",
+      "Spell": "0x0000",
+      "ManaCost": 0,
+      "StunFrames": 4,
+      "Range": 2,
+      "Extra": "0x81"
+    }
+  },
+  {
+    "Key": "Buffalo Star",
+    "Value": {
+      "Attack": 90,
+      "Defense": 0,
+      "Element": {
+        "HIT": false,
+        "CUT": true,
+        "POI": false,
+        "CUR": false,
+        "STO": false,
+        "WAT": false,
+        "DAR": false,
+        "HOL": false,
+        "ICE": false,
+        "LIG": false,
+        "FLA": false
+      },
+      "Sprite": "0x0f",
+      "Special": "0x00",
+      "Spell": "0x0000",
+      "ManaCost": 0,
+      "StunFrames": 4,
+      "Range": 2,
+      "Extra": "0x81"
+    }
+  },
+  {
+    "Key": "Flame Star",
+    "Value": {
+      "Attack": 100,
+      "Defense": 0,
+      "Element": {
+        "HIT": false,
+        "CUT": true,
+        "POI": false,
+        "CUR": false,
+        "STO": false,
+        "WAT": false,
+        "DAR": false,
+        "HOL": false,
+        "ICE": false,
+        "LIG": false,
+        "FLA": true
+      },
+      "Sprite": "0x0f",
+      "Special": "0x00",
+      "Spell": "0x0000",
+      "ManaCost": 0,
+      "StunFrames": 4,
+      "Range": 2,
+      "Extra": "0x81"
+    }
+  },
+  {
+    "Key": "Tnt",
+    "Value": {
+      "Attack": 60,
+      "Defense": 0,
+      "Element": {
+        "HIT": false,
+        "CUT": false,
+        "POI": false,
+        "CUR": false,
+        "STO": false,
+        "WAT": false,
+        "DAR": false,
+        "HOL": false,
+        "ICE": false,
+        "LIG": false,
+        "FLA": true
+      },
+      "Sprite": "0x0f",
+      "Special": "0x00",
+      "Spell": "0x0000",
+      "ManaCost": 0,
+      "StunFrames": 4,
+      "Range": 2,
+      "Extra": "0x01"
+    }
+  },
+  {
+    "Key": "Bwaka Knife",
+    "Value": {
+      "Attack": 30,
+      "Defense": 0,
+      "Element": {
+        "HIT": false,
+        "CUT": true,
+        "POI": false,
+        "CUR": false,
+        "STO": false,
+        "WAT": false,
+        "DAR": false,
+        "HOL": false,
+        "ICE": false,
+        "LIG": false,
+        "FLA": false
+      },
+      "Sprite": "0x10",
+      "Special": "0x00",
+      "Spell": "0x0000",
+      "ManaCost": 0,
+      "StunFrames": 4,
+      "Range": 2,
+      "Extra": "0x81"
+    }
+  },
+  {
+    "Key": "Boomerang",
+    "Value": {
+      "Attack": 30,
+      "Defense": 0,
+      "Element": {
+        "HIT": true,
+        "CUT": false,
+        "POI": false,
+        "CUR": false,
+        "STO": false,
+        "WAT": false,
+        "DAR": false,
+        "HOL": false,
+        "ICE": false,
+        "LIG": false,
+        "FLA": false
+      },
+      "Sprite": "0x10",
+      "Special": "0x00",
+      "Spell": "0x0000",
+      "ManaCost": 0,
+      "StunFrames": 4,
+      "Range": 2,
+      "Extra": "0x81"
+    }
+  },
+  {
+    "Key": "Javelin",
+    "Value": {
+      "Attack": 50,
+      "Defense": 0,
+      "Element": {
+        "HIT": false,
+        "CUT": true,
+        "POI": false,
+        "CUR": false,
+        "STO": false,
+        "WAT": false,
+        "DAR": false,
+        "HOL": false,
+        "ICE": false,
+        "LIG": false,
+        "FLA": false
+      },
+      "Sprite": "0x10",
+      "Special": "0x00",
+      "Spell": "0x0000",
+      "ManaCost": 0,
+      "StunFrames": 4,
+      "Range": 2,
+      "Extra": "0x81"
+    }
+  },
+  {
+    "Key": "Tyrfing",
+    "Value": {
+      "Attack": -30,
+      "Defense": 0,
+      "Element": {
+        "HIT": false,
+        "CUT": true,
+        "POI": false,
+        "CUR": true,
+        "STO": false,
+        "WAT": false,
+        "DAR": true,
+        "HOL": false,
+        "ICE": false,
+        "LIG": false,
+        "FLA": false
+      },
+      "Sprite": "0x00",
+      "Special": "0x00",
+      "Spell": "0x0000",
+      "ManaCost": 0,
+      "StunFrames": 4,
+      "Range": 2,
+      "Extra": "0x81"
+    }
+  },
+  {
+    "Key": "Namakura",
+    "Value": {
+      "Attack": -5,
+      "Defense": 0,
+      "Element": {
+        "HIT": false,
+        "CUT": true,
+        "POI": false,
+        "CUR": true,
+        "STO": false,
+        "WAT": false,
+        "DAR": false,
+        "HOL": false,
+        "ICE": false,
+        "LIG": false,
+        "FLA": false
+      },
+      "Sprite": "0x00",
+      "Special": "0x00",
+      "Spell": "0x0000",
+      "ManaCost": 0,
+      "StunFrames": 4,
+      "Range": 2,
+      "Extra": "0x81"
+    }
+  },
+  {
+    "Key": "Knuckle Duster",
+    "Value": {
+      "Attack": 1,
+      "Defense": 0,
+      "Element": {
+        "HIT": true,
+        "CUT": false,
+        "POI": false,
+        "CUR": false,
+        "STO": false,
+        "WAT": false,
+        "DAR": false,
+        "HOL": false,
+        "ICE": false,
+        "LIG": false,
+        "FLA": false
+      },
+      "Sprite": "0x01",
+      "Special": "0x00",
+      "Spell": "0x0000",
+      "ManaCost": 0,
+      "StunFrames": 4,
+      "Range": 2,
+      "Extra": "0x01"
+    }
+  },
+  {
+    "Key": "Gladius",
+    "Value": {
+      "Attack": 3,
+      "Defense": 0,
+      "Element": {
+        "HIT": false,
+        "CUT": true,
+        "POI": false,
+        "CUR": false,
+        "STO": false,
+        "WAT": false,
+        "DAR": false,
+        "HOL": false,
+        "ICE": false,
+        "LIG": false,
+        "FLA": false
+      },
+      "Sprite": "0x00",
+      "Special": "0x00",
+      "Spell": "0x0000",
+      "ManaCost": 0,
+      "StunFrames": 4,
+      "Range": 2,
+      "Extra": "0x81"
+    }
+  },
+  {
+    "Key": "Scimitar",
+    "Value": {
+      "Attack": 5,
+      "Defense": 0,
+      "Element": {
+        "HIT": false,
+        "CUT": true,
+        "POI": false,
+        "CUR": false,
+        "STO": false,
+        "WAT": false,
+        "DAR": false,
+        "HOL": false,
+        "ICE": false,
+        "LIG": false,
+        "FLA": false
+      },
+      "Sprite": "0x00",
+      "Special": "0x00",
+      "Spell": "0x0000",
+      "ManaCost": 0,
+      "StunFrames": 4,
+      "Range": 2,
+      "Extra": "0x81"
+    }
+  },
+  {
+    "Key": "Cutlass",
+    "Value": {
+      "Attack": 7,
+      "Defense": 0,
+      "Element": {
+        "HIT": false,
+        "CUT": true,
+        "POI": false,
+        "CUR": false,
+        "STO": false,
+        "WAT": false,
+        "DAR": false,
+        "HOL": false,
+        "ICE": false,
+        "LIG": false,
+        "FLA": false
+      },
+      "Sprite": "0x00",
+      "Special": "0x00",
+      "Spell": "0x0000",
+      "ManaCost": 0,
+      "StunFrames": 4,
+      "Range": 2,
+      "Extra": "0x81"
+    }
+  },
+  {
+    "Key": "Saber",
+    "Value": {
+      "Attack": 9,
+      "Defense": 0,
+      "Element": {
+        "HIT": false,
+        "CUT": true,
+        "POI": false,
+        "CUR": false,
+        "STO": false,
+        "WAT": false,
+        "DAR": false,
+        "HOL": false,
+        "ICE": false,
+        "LIG": false,
+        "FLA": false
+      },
+      "Sprite": "0x00",
+      "Special": "0x00",
+      "Spell": "0x0000",
+      "ManaCost": 0,
+      "StunFrames": 4,
+      "Range": 2,
+      "Extra": "0x81"
+    }
+  },
+  {
+    "Key": "Falchion",
+    "Value": {
+      "Attack": 10,
+      "Defense": 0,
+      "Element": {
+        "HIT": false,
+        "CUT": true,
+        "POI": false,
+        "CUR": false,
+        "STO": false,
+        "WAT": false,
+        "DAR": false,
+        "HOL": false,
+        "ICE": false,
+        "LIG": false,
+        "FLA": false
+      },
+      "Sprite": "0x00",
+      "Special": "0x00",
+      "Spell": "0x0000",
+      "ManaCost": 0,
+      "StunFrames": 4,
+      "Range": 2,
+      "Extra": "0x81"
+    }
+  },
+  {
+    "Key": "Broadsword",
+    "Value": {
+      "Attack": 12,
+      "Defense": 0,
+      "Element": {
+        "HIT": false,
+        "CUT": true,
+        "POI": false,
+        "CUR": false,
+        "STO": false,
+        "WAT": false,
+        "DAR": false,
+        "HOL": false,
+        "ICE": false,
+        "LIG": false,
+        "FLA": false
+      },
+      "Sprite": "0x00",
+      "Special": "0x00",
+      "Spell": "0x0000",
+      "ManaCost": 0,
+      "StunFrames": 4,
+      "Range": 2,
+      "Extra": "0x81"
+    }
+  },
+  {
+    "Key": "Bekatowa",
+    "Value": {
+      "Attack": 14,
+      "Defense": 0,
+      "Element": {
+        "HIT": false,
+        "CUT": true,
+        "POI": false,
+        "CUR": false,
+        "STO": false,
+        "WAT": false,
+        "DAR": false,
+        "HOL": false,
+        "ICE": false,
+        "LIG": false,
+        "FLA": false
+      },
+      "Sprite": "0x00",
+      "Special": "0x00",
+      "Spell": "0x0000",
+      "ManaCost": 0,
+      "StunFrames": 4,
+      "Range": 2,
+      "Extra": "0x81"
+    }
+  },
+  {
+    "Key": "Damascus Sword",
+    "Value": {
+      "Attack": 17,
+      "Defense": 0,
+      "Element": {
+        "HIT": false,
+        "CUT": true,
+        "POI": false,
+        "CUR": false,
+        "STO": false,
+        "WAT": false,
+        "DAR": false,
+        "HOL": false,
+        "ICE": false,
+        "LIG": false,
+        "FLA": false
+      },
+      "Sprite": "0x00",
+      "Special": "0x00",
+      "Spell": "0x0000",
+      "ManaCost": 0,
+      "StunFrames": 4,
+      "Range": 2,
+      "Extra": "0x81"
+    }
+  },
+  {
+    "Key": "Hunter Sword",
+    "Value": {
+      "Attack": 20,
+      "Defense": -1,
+      "Element": {
+        "HIT": false,
+        "CUT": true,
+        "POI": false,
+        "CUR": false,
+        "STO": false,
+        "WAT": false,
+        "DAR": false,
+        "HOL": false,
+        "ICE": false,
+        "LIG": false,
+        "FLA": false
+      },
+      "Sprite": "0x00",
+      "Special": "0x00",
+      "Spell": "0x0000",
+      "ManaCost": 0,
+      "StunFrames": 4,
+      "Range": 2,
+      "Extra": "0x81"
+    }
+  },
+  {
+    "Key": "Estoc",
+    "Value": {
+      "Attack": 39,
+      "Defense": 0,
+      "Element": {
+        "HIT": false,
+        "CUT": true,
+        "POI": false,
+        "CUR": false,
+        "STO": false,
+        "WAT": false,
+        "DAR": false,
+        "HOL": false,
+        "ICE": false,
+        "LIG": false,
+        "FLA": false
+      },
+      "Sprite": "0x33",
+      "Special": "0x00",
+      "Spell": "0x0000",
+      "ManaCost": 0,
+      "StunFrames": 4,
+      "Range": 2,
+      "Extra": "0x81"
+    }
+  },
+  {
+    "Key": "Bastard Sword",
+    "Value": {
+      "Attack": 20,
+      "Defense": 0,
+      "Element": {
+        "HIT": false,
+        "CUT": true,
+        "POI": false,
+        "CUR": false,
+        "STO": false,
+        "WAT": false,
+        "DAR": false,
+        "HOL": false,
+        "ICE": false,
+        "LIG": false,
+        "FLA": false
+      },
+      "Sprite": "0x00",
+      "Special": "0x00",
+      "Spell": "0x0000",
+      "ManaCost": 0,
+      "StunFrames": 4,
+      "Range": 2,
+      "Extra": "0x81"
+    }
+  },
+  {
+    "Key": "Jewel Knuckles",
+    "Value": {
+      "Attack": 21,
+      "Defense": 0,
+      "Element": {
+        "HIT": true,
+        "CUT": false,
+        "POI": false,
+        "CUR": false,
+        "STO": false,
+        "WAT": false,
+        "DAR": false,
+        "HOL": false,
+        "ICE": false,
+        "LIG": false,
+        "FLA": false
+      },
+      "Sprite": "0x01",
+      "Special": "0x00",
+      "Spell": "0x0000",
+      "ManaCost": 0,
+      "StunFrames": 4,
+      "Range": 2,
+      "Extra": "0x01"
+    }
+  },
+  {
+    "Key": "Claymore",
+    "Value": {
+      "Attack": 26,
+      "Defense": 0,
+      "Element": {
+        "HIT": false,
+        "CUT": true,
+        "POI": false,
+        "CUR": false,
+        "STO": false,
+        "WAT": false,
+        "DAR": false,
+        "HOL": false,
+        "ICE": false,
+        "LIG": false,
+        "FLA": false
+      },
+      "Sprite": "0x33",
+      "Special": "0x00",
+      "Spell": "0x0000",
+      "ManaCost": 0,
+      "StunFrames": 4,
+      "Range": 2,
+      "Extra": "0x81"
+    }
+  },
+  {
+    "Key": "Talwar",
+    "Value": {
+      "Attack": 22,
+      "Defense": 0,
+      "Element": {
+        "HIT": false,
+        "CUT": true,
+        "POI": false,
+        "CUR": false,
+        "STO": false,
+        "WAT": false,
+        "DAR": false,
+        "HOL": false,
+        "ICE": false,
+        "LIG": false,
+        "FLA": false
+      },
+      "Sprite": "0x00",
+      "Special": "0x00",
+      "Spell": "0x0000",
+      "ManaCost": 0,
+      "StunFrames": 4,
+      "Range": 2,
+      "Extra": "0x81"
+    }
+  },
+  {
+    "Key": "Katana",
+    "Value": {
+      "Attack": 32,
+      "Defense": 0,
+      "Element": {
+        "HIT": false,
+        "CUT": true,
+        "POI": false,
+        "CUR": false,
+        "STO": false,
+        "WAT": false,
+        "DAR": false,
+        "HOL": false,
+        "ICE": false,
+        "LIG": false,
+        "FLA": false
+      },
+      "Sprite": "0x35",
+      "Special": "0xbd",
+      "Spell": "0x0000",
+      "ManaCost": 0,
+      "StunFrames": 4,
+      "Range": 2,
+      "Extra": "0x81"
+    }
+  },
+  {
+    "Key": "Flamberge",
+    "Value": {
+      "Attack": 31,
+      "Defense": 0,
+      "Element": {
+        "HIT": false,
+        "CUT": true,
+        "POI": false,
+        "CUR": false,
+        "STO": false,
+        "WAT": false,
+        "DAR": false,
+        "HOL": false,
+        "ICE": false,
+        "LIG": false,
+        "FLA": false
+      },
+      "Sprite": "0x33",
+      "Special": "0x00",
+      "Spell": "0x0000",
+      "ManaCost": 0,
+      "StunFrames": 4,
+      "Range": 2,
+      "Extra": "0x81"
+    }
+  },
+  {
+    "Key": "Iron Fist",
+    "Value": {
+      "Attack": 26,
+      "Defense": 0,
+      "Element": {
+        "HIT": true,
+        "CUT": false,
+        "POI": false,
+        "CUR": false,
+        "STO": false,
+        "WAT": false,
+        "DAR": false,
+        "HOL": false,
+        "ICE": false,
+        "LIG": false,
+        "FLA": false
+      },
+      "Sprite": "0x01",
+      "Special": "0xba",
+      "Spell": "0x0000",
+      "ManaCost": 0,
+      "StunFrames": 4,
+      "Range": 2,
+      "Extra": "0x01"
+    }
+  },
+  {
+    "Key": "Zwei Hander",
+    "Value": {
+      "Attack": 38,
+      "Defense": 0,
+      "Element": {
+        "HIT": false,
+        "CUT": true,
+        "POI": false,
+        "CUR": false,
+        "STO": false,
+        "WAT": true,
+        "DAR": false,
+        "HOL": false,
+        "ICE": false,
+        "LIG": false,
+        "FLA": false
+      },
+      "Sprite": "0x33",
+      "Special": "0x00",
+      "Spell": "0x0000",
+      "ManaCost": 0,
+      "StunFrames": 42356,
+      "Range": 9606,
+      "Extra": "0xbf"
+    }
+  },
+  {
+    "Key": "Sword of Hador",
+    "Value": {
+      "Attack": 24,
+      "Defense": 0,
+      "Element": {
+        "HIT": false,
+        "CUT": true,
+        "POI": false,
+        "CUR": false,
+        "STO": false,
+        "WAT": false,
+        "DAR": false,
+        "HOL": false,
+        "ICE": false,
+        "LIG": false,
+        "FLA": false
+      },
+      "Sprite": "0x00",
+      "Special": "0x00",
+      "Spell": "0x0000",
+      "ManaCost": 0,
+      "StunFrames": 4,
+      "Range": 2,
+      "Extra": "0x81"
+    }
+  },
+  {
+    "Key": "Luminus",
+    "Value": {
+      "Attack": 26,
+      "Defense": 0,
+      "Element": {
+        "HIT": false,
+        "CUT": true,
+        "POI": false,
+        "CUR": false,
+        "STO": false,
+        "WAT": false,
+        "DAR": false,
+        "HOL": false,
+        "ICE": false,
+        "LIG": false,
+        "FLA": false
+      },
+      "Sprite": "0x00",
+      "Special": "0x00",
+      "Spell": "0x0000",
+      "ManaCost": 0,
+      "StunFrames": 4,
+      "Range": 2,
+      "Extra": "0x81"
+    }
+  },
+  {
+    "Key": "Harper",
+    "Value": {
+      "Attack": 28,
+      "Defense": 0,
+      "Element": {
+        "HIT": false,
+        "CUT": true,
+        "POI": false,
+        "CUR": false,
+        "STO": false,
+        "WAT": false,
+        "DAR": false,
+        "HOL": false,
+        "ICE": false,
+        "LIG": false,
+        "FLA": false
+      },
+      "Sprite": "0x00",
+      "Special": "0x00",
+      "Spell": "0x0000",
+      "ManaCost": 0,
+      "StunFrames": 4,
+      "Range": 2,
+      "Extra": "0x81"
+    }
+  },
+  {
+    "Key": "Obsidian Sword",
+    "Value": {
+      "Attack": 42,
+      "Defense": 0,
+      "Element": {
+        "HIT": false,
+        "CUT": true,
+        "POI": false,
+        "CUR": false,
+        "STO": false,
+        "WAT": false,
+        "DAR": true,
+        "HOL": false,
+        "ICE": false,
+        "LIG": false,
+        "FLA": false
+      },
+      "Sprite": "0x33",
+      "Special": "0x00",
+      "Spell": "0x0000",
+      "ManaCost": 0,
+      "StunFrames": 4,
+      "Range": 2,
+      "Extra": "0x81"
+    }
+  },
+  {
+    "Key": "Gram",
+    "Value": {
+      "Attack": 30,
+      "Defense": 0,
+      "Element": {
+        "HIT": false,
+        "CUT": true,
+        "POI": false,
+        "CUR": false,
+        "STO": false,
+        "WAT": false,
+        "DAR": false,
+        "HOL": false,
+        "ICE": false,
+        "LIG": false,
+        "FLA": false
+      },
+      "Sprite": "0x00",
+      "Special": "0x00",
+      "Spell": "0x0000",
+      "ManaCost": 0,
+      "StunFrames": 4,
+      "Range": 2,
+      "Extra": "0x81"
+    }
+  },
+  {
+    "Key": "Jewel Sword",
+    "Value": {
+      "Attack": 15,
+      "Defense": 0,
+      "Element": {
+        "HIT": false,
+        "CUT": true,
+        "POI": false,
+        "CUR": false,
+        "STO": false,
+        "WAT": false,
+        "DAR": false,
+        "HOL": false,
+        "ICE": false,
+        "LIG": false,
+        "FLA": false
+      },
+      "Sprite": "0x25",
+      "Special": "0xc6",
+      "Spell": "0x0000",
+      "ManaCost": 0,
+      "StunFrames": 4,
+      "Range": 2,
+      "Extra": "0x85"
+    }
+  },
+  {
+    "Key": "Mormegil",
+    "Value": {
+      "Attack": 25,
+      "Defense": 0,
+      "Element": {
+        "HIT": false,
+        "CUT": true,
+        "POI": false,
+        "CUR": false,
+        "STO": false,
+        "WAT": true,
+        "DAR": false,
+        "HOL": false,
+        "ICE": false,
+        "LIG": false,
+        "FLA": false
+      },
+      "Sprite": "0x00",
+      "Special": "0x00",
+      "Spell": "0x0000",
+      "ManaCost": 0,
+      "StunFrames": 4,
+      "Range": 2,
+      "Extra": "0x81"
+    }
+  },
+  {
+    "Key": "Firebrand",
+    "Value": {
+      "Attack": 25,
+      "Defense": 0,
+      "Element": {
+        "HIT": false,
+        "CUT": true,
+        "POI": false,
+        "CUR": false,
+        "STO": false,
+        "WAT": false,
+        "DAR": false,
+        "HOL": false,
+        "ICE": false,
+        "LIG": false,
+        "FLA": true
+      },
+      "Sprite": "0x31",
+      "Special": "0xb3",
+      "Spell": "0x0000",
+      "ManaCost": 0,
+      "StunFrames": 4,
+      "Range": 2,
+      "Extra": "0x81"
+    }
+  },
+  {
+    "Key": "Thunderbrand",
+    "Value": {
+      "Attack": 25,
+      "Defense": 0,
+      "Element": {
+        "HIT": false,
+        "CUT": true,
+        "POI": false,
+        "CUR": false,
+        "STO": false,
+        "WAT": false,
+        "DAR": false,
+        "HOL": false,
+        "ICE": false,
+        "LIG": true,
+        "FLA": false
+      },
+      "Sprite": "0x30",
+      "Special": "0xb2",
+      "Spell": "0x0000",
+      "ManaCost": 0,
+      "StunFrames": 4,
+      "Range": 2,
+      "Extra": "0x81"
+    }
+  },
+  {
+    "Key": "Icebrand",
+    "Value": {
+      "Attack": 25,
+      "Defense": 0,
+      "Element": {
+        "HIT": false,
+        "CUT": true,
+        "POI": false,
+        "CUR": false,
+        "STO": false,
+        "WAT": false,
+        "DAR": false,
+        "HOL": false,
+        "ICE": true,
+        "LIG": false,
+        "FLA": false
+      },
+      "Sprite": "0x32",
+      "Special": "0xb5",
+      "Spell": "0x0000",
+      "ManaCost": 0,
+      "StunFrames": 8,
+      "Range": 2,
+      "Extra": "0x81"
+    }
+  },
+  {
+    "Key": "Stone Sword",
+    "Value": {
+      "Attack": 1,
+      "Defense": 0,
+      "Element": {
+        "HIT": false,
+        "CUT": true,
+        "POI": false,
+        "CUR": false,
+        "STO": true,
+        "WAT": false,
+        "DAR": false,
+        "HOL": false,
+        "ICE": false,
+        "LIG": false,
+        "FLA": false
+      },
+      "Sprite": "0x25",
+      "Special": "0x00",
+      "Spell": "0x0000",
+      "ManaCost": 0,
+      "StunFrames": 64,
+      "Range": 2,
+      "Extra": "0x81"
+    }
+  },
+  {
+    "Key": "Holy Sword",
+    "Value": {
+      "Attack": 26,
+      "Defense": 0,
+      "Element": {
+        "HIT": false,
+        "CUT": true,
+        "POI": false,
+        "CUR": false,
+        "STO": false,
+        "WAT": false,
+        "DAR": false,
+        "HOL": true,
+        "ICE": false,
+        "LIG": false,
+        "FLA": false
+      },
+      "Sprite": "0x37",
+      "Special": "0xc4",
+      "Spell": "0x0000",
+      "ManaCost": 0,
+      "StunFrames": 4,
+      "Range": 2,
+      "Extra": "0x81"
+    }
+  },
+  {
+    "Key": "Terminus Est",
+    "Value": {
+      "Attack": 32,
+      "Defense": 2,
+      "Element": {
+        "HIT": false,
+        "CUT": true,
+        "POI": true,
+        "CUR": false,
+        "STO": false,
+        "WAT": false,
+        "DAR": false,
+        "HOL": false,
+        "ICE": false,
+        "LIG": false,
+        "FLA": false
+      },
+      "Sprite": "0x00",
+      "Special": "0x00",
+      "Spell": "0x0000",
+      "ManaCost": 0,
+      "StunFrames": 4,
+      "Range": 2,
+      "Extra": "0x81"
+    }
+  },
+  {
+    "Key": "Marsil",
+    "Value": {
+      "Attack": 33,
+      "Defense": 1,
+      "Element": {
+        "HIT": false,
+        "CUT": true,
+        "POI": false,
+        "CUR": false,
+        "STO": false,
+        "WAT": false,
+        "DAR": false,
+        "HOL": false,
+        "ICE": false,
+        "LIG": false,
+        "FLA": true
+      },
+      "Sprite": "0x31",
+      "Special": "0xb4",
+      "Spell": "0x0000",
+      "ManaCost": 0,
+      "StunFrames": 4,
+      "Range": 2,
+      "Extra": "0x81"
+    }
+  },
+  {
+    "Key": "Dark Blade",
+    "Value": {
+      "Attack": 35,
+      "Defense": 2,
+      "Element": {
+        "HIT": false,
+        "CUT": true,
+        "POI": false,
+        "CUR": false,
+        "STO": false,
+        "WAT": false,
+        "DAR": true,
+        "HOL": false,
+        "ICE": false,
+        "LIG": false,
+        "FLA": false
+      },
+      "Sprite": "0x00",
+      "Special": "0x00",
+      "Spell": "0x0000",
+      "ManaCost": 0,
+      "StunFrames": 4,
+      "Range": 2,
+      "Extra": "0x81"
+    }
+  },
+  {
+    "Key": "Heaven Sword",
+    "Value": {
+      "Attack": 21,
+      "Defense": -2,
+      "Element": {
+        "HIT": false,
+        "CUT": true,
+        "POI": false,
+        "CUR": false,
+        "STO": false,
+        "WAT": false,
+        "DAR": false,
+        "HOL": false,
+        "ICE": false,
+        "LIG": false,
+        "FLA": false
+      },
+      "Sprite": "0x0d",
+      "Special": "0x00",
+      "Spell": "0x0001",
+      "ManaCost": 0,
+      "StunFrames": 4,
+      "Range": 2,
+      "Extra": "0x81"
+    }
+  },
+  {
+    "Key": "Fist of Tulkas",
+    "Value": {
+      "Attack": 38,
+      "Defense": 5,
+      "Element": {
+        "HIT": true,
+        "CUT": false,
+        "POI": false,
+        "CUR": false,
+        "STO": false,
+        "WAT": false,
+        "DAR": false,
+        "HOL": false,
+        "ICE": false,
+        "LIG": false,
+        "FLA": false
+      },
+      "Sprite": "0x01",
+      "Special": "0xbc",
+      "Spell": "0x0000",
+      "ManaCost": 0,
+      "StunFrames": 4,
+      "Range": 2,
+      "Extra": "0x01"
+    }
+  },
+  {
+    "Key": "Gurthang",
+    "Value": {
+      "Attack": 25,
+      "Defense": 1,
+      "Element": {
+        "HIT": false,
+        "CUT": true,
+        "POI": false,
+        "CUR": false,
+        "STO": false,
+        "WAT": false,
+        "DAR": false,
+        "HOL": false,
+        "ICE": false,
+        "LIG": false,
+        "FLA": false
+      },
+      "Sprite": "0x36",
+      "Special": "0xc3",
+      "Spell": "0x0000",
+      "ManaCost": 0,
+      "StunFrames": 4,
+      "Range": 2,
+      "Extra": "0x81"
+    }
+  },
+  {
+    "Key": "Mourneblade",
+    "Value": {
+      "Attack": 0,
+      "Defense": 1,
+      "Element": {
+        "HIT": false,
+        "CUT": true,
+        "POI": false,
+        "CUR": false,
+        "STO": false,
+        "WAT": false,
+        "DAR": false,
+        "HOL": false,
+        "ICE": false,
+        "LIG": false,
+        "FLA": false
+      },
+      "Sprite": "0x00",
+      "Special": "0x00",
+      "Spell": "0x0000",
+      "ManaCost": 8,
+      "StunFrames": 4,
+      "Range": 2,
+      "Extra": "0x82"
+    }
+  },
+  {
+    "Key": "Alucard Sword",
+    "Value": {
+      "Attack": 42,
+      "Defense": 0,
+      "Element": {
+        "HIT": false,
+        "CUT": true,
+        "POI": false,
+        "CUR": false,
+        "STO": false,
+        "WAT": false,
+        "DAR": false,
+        "HOL": false,
+        "ICE": false,
+        "LIG": false,
+        "FLA": false
+      },
+      "Sprite": "0x2b",
+      "Special": "0xc5",
+      "Spell": "0x0000",
+      "ManaCost": 0,
+      "StunFrames": 4,
+      "Range": 2,
+      "Extra": "0x81"
+    }
+  },
+  {
+    "Key": "Mablung Sword",
+    "Value": {
+      "Attack": 39,
+      "Defense": 2,
+      "Element": {
+        "HIT": false,
+        "CUT": true,
+        "POI": false,
+        "CUR": false,
+        "STO": false,
+        "WAT": false,
+        "DAR": false,
+        "HOL": false,
+        "ICE": false,
+        "LIG": false,
+        "FLA": false
+      },
+      "Sprite": "0x39",
+      "Special": "0x00",
+      "Spell": "0x0000",
+      "ManaCost": 0,
+      "StunFrames": 4,
+      "Range": 2,
+      "Extra": "0x81"
+    }
+  },
+  {
+    "Key": "Badelaire",
+    "Value": {
+      "Attack": 0,
+      "Defense": 0,
+      "Element": {
+        "HIT": false,
+        "CUT": true,
+        "POI": false,
+        "CUR": false,
+        "STO": false,
+        "WAT": false,
+        "DAR": false,
+        "HOL": false,
+        "ICE": false,
+        "LIG": false,
+        "FLA": false
+      },
+      "Sprite": "0x00",
+      "Special": "0x00",
+      "Spell": "0x0000",
+      "ManaCost": 0,
+      "StunFrames": 4,
+      "Range": 2,
+      "Extra": "0x81"
+    }
+  },
+  {
+    "Key": "Sword Familiar",
+    "Value": {
+      "Attack": 0,
+      "Defense": 0,
+      "Element": {
+        "HIT": false,
+        "CUT": true,
+        "POI": false,
+        "CUR": false,
+        "STO": false,
+        "WAT": false,
+        "DAR": false,
+        "HOL": false,
+        "ICE": false,
+        "LIG": false,
+        "FLA": false
+      },
+      "Sprite": "0x2b",
+      "Special": "0x00",
+      "Spell": "0x0000",
+      "ManaCost": 0,
+      "StunFrames": 4,
+      "Range": 2,
+      "Extra": "0x81"
+    }
+  },
+  {
+    "Key": "Great Sword",
+    "Value": {
+      "Attack": 65,
+      "Defense": 0,
+      "Element": {
+        "HIT": false,
+        "CUT": true,
+        "POI": false,
+        "CUR": false,
+        "STO": false,
+        "WAT": false,
+        "DAR": false,
+        "HOL": false,
+        "ICE": false,
+        "LIG": false,
+        "FLA": false
+      },
+      "Sprite": "0x33",
+      "Special": "0x00",
+      "Spell": "0x0000",
+      "ManaCost": 0,
+      "StunFrames": 4,
+      "Range": 2,
+      "Extra": "0x81"
+    }
+  },
+  {
+    "Key": "Mace",
+    "Value": {
+      "Attack": 9,
+      "Defense": 0,
+      "Element": {
+        "HIT": true,
+        "CUT": false,
+        "POI": false,
+        "CUR": false,
+        "STO": false,
+        "WAT": false,
+        "DAR": false,
+        "HOL": false,
+        "ICE": false,
+        "LIG": false,
+        "FLA": false
+      },
+      "Sprite": "0x02",
+      "Special": "0x00",
+      "Spell": "0x0000",
+      "ManaCost": 0,
+      "StunFrames": 4,
+      "Range": 2,
+      "Extra": "0x01"
+    }
+  },
+  {
+    "Key": "Morningstar",
+    "Value": {
+      "Attack": 11,
+      "Defense": 0,
+      "Element": {
+        "HIT": true,
+        "CUT": false,
+        "POI": false,
+        "CUR": false,
+        "STO": false,
+        "WAT": false,
+        "DAR": false,
+        "HOL": false,
+        "ICE": false,
+        "LIG": false,
+        "FLA": false
+      },
+      "Sprite": "0x03",
+      "Special": "0x00",
+      "Spell": "0x0000",
+      "ManaCost": 0,
+      "StunFrames": 4,
+      "Range": 2,
+      "Extra": "0x01"
+    }
+  },
+  {
+    "Key": "Holy Rod",
+    "Value": {
+      "Attack": 12,
+      "Defense": 0,
+      "Element": {
+        "HIT": true,
+        "CUT": false,
+        "POI": false,
+        "CUR": false,
+        "STO": false,
+        "WAT": false,
+        "DAR": false,
+        "HOL": true,
+        "ICE": false,
+        "LIG": false,
+        "FLA": false
+      },
+      "Sprite": "0x04",
+      "Special": "0x00",
+      "Spell": "0x0000",
+      "ManaCost": 0,
+      "StunFrames": 4,
+      "Range": 2,
+      "Extra": "0x01"
+    }
+  },
+  {
+    "Key": "Star Flail",
+    "Value": {
+      "Attack": 15,
+      "Defense": 0,
+      "Element": {
+        "HIT": true,
+        "CUT": false,
+        "POI": false,
+        "CUR": false,
+        "STO": false,
+        "WAT": false,
+        "DAR": false,
+        "HOL": false,
+        "ICE": false,
+        "LIG": true,
+        "FLA": false
+      },
+      "Sprite": "0x05",
+      "Special": "0x00",
+      "Spell": "0x0000",
+      "ManaCost": 0,
+      "StunFrames": 4,
+      "Range": 2,
+      "Extra": "0x01"
+    }
+  },
+  {
+    "Key": "Moon Rod",
+    "Value": {
+      "Attack": 17,
+      "Defense": 0,
+      "Element": {
+        "HIT": true,
+        "CUT": false,
+        "POI": false,
+        "CUR": false,
+        "STO": false,
+        "WAT": false,
+        "DAR": false,
+        "HOL": false,
+        "ICE": false,
+        "LIG": false,
+        "FLA": false
+      },
+      "Sprite": "0x06",
+      "Special": "0xac",
+      "Spell": "0x0000",
+      "ManaCost": 0,
+      "StunFrames": 4,
+      "Range": 2,
+      "Extra": "0x01"
+    }
+  },
+  {
+    "Key": "Chakram",
+    "Value": {
+      "Attack": 15,
+      "Defense": 0,
+      "Element": {
+        "HIT": false,
+        "CUT": true,
+        "POI": false,
+        "CUR": false,
+        "STO": false,
+        "WAT": false,
+        "DAR": false,
+        "HOL": false,
+        "ICE": false,
+        "LIG": false,
+        "FLA": false
+      },
+      "Sprite": "0x0c",
+      "Special": "0x00",
+      "Spell": "0x0000",
+      "ManaCost": 0,
+      "StunFrames": 4,
+      "Range": 2,
+      "Extra": "0x81"
+    }
+  },
+  {
+    "Key": "Fire Boomerang",
+    "Value": {
+      "Attack": 50,
+      "Defense": 0,
+      "Element": {
+        "HIT": true,
+        "CUT": false,
+        "POI": false,
+        "CUR": false,
+        "STO": false,
+        "WAT": false,
+        "DAR": false,
+        "HOL": false,
+        "ICE": false,
+        "LIG": false,
+        "FLA": true
+      },
+      "Sprite": "0x10",
+      "Special": "0x00",
+      "Spell": "0x0000",
+      "ManaCost": 0,
+      "StunFrames": 4,
+      "Range": 2,
+      "Extra": "0x01"
+    }
+  },
+  {
+    "Key": "Iron Ball",
+    "Value": {
+      "Attack": 60,
+      "Defense": 0,
+      "Element": {
+        "HIT": true,
+        "CUT": false,
+        "POI": false,
+        "CUR": false,
+        "STO": false,
+        "WAT": false,
+        "DAR": false,
+        "HOL": false,
+        "ICE": false,
+        "LIG": false,
+        "FLA": false
+      },
+      "Sprite": "0x10",
+      "Special": "0x00",
+      "Spell": "0x0000",
+      "ManaCost": 0,
+      "StunFrames": 4,
+      "Range": 2,
+      "Extra": "0x01"
+    }
+  },
+  {
+    "Key": "Holbein Dagger",
+    "Value": {
+      "Attack": 6,
+      "Defense": 0,
+      "Element": {
+        "HIT": false,
+        "CUT": true,
+        "POI": false,
+        "CUR": false,
+        "STO": false,
+        "WAT": false,
+        "DAR": false,
+        "HOL": false,
+        "ICE": false,
+        "LIG": false,
+        "FLA": false
+      },
+      "Sprite": "0x2e",
+      "Special": "0x00",
+      "Spell": "0x0000",
+      "ManaCost": 0,
+      "StunFrames": 4,
+      "Range": 2,
+      "Extra": "0x81"
+    }
+  },
+  {
+    "Key": "Blue Knuckles",
+    "Value": {
+      "Attack": 8,
+      "Defense": 0,
+      "Element": {
+        "HIT": true,
+        "CUT": false,
+        "POI": false,
+        "CUR": false,
+        "STO": false,
+        "WAT": false,
+        "DAR": false,
+        "HOL": false,
+        "ICE": false,
+        "LIG": false,
+        "FLA": false
+      },
+      "Sprite": "0x2e",
+      "Special": "0x00",
+      "Spell": "0x0000",
+      "ManaCost": 0,
+      "StunFrames": 4,
+      "Range": 2,
+      "Extra": "0x01"
+    }
+  },
+  {
+    "Key": "Dynamite",
+    "Value": {
+      "Attack": 100,
+      "Defense": 0,
+      "Element": {
+        "HIT": false,
+        "CUT": false,
+        "POI": false,
+        "CUR": false,
+        "STO": false,
+        "WAT": false,
+        "DAR": false,
+        "HOL": false,
+        "ICE": false,
+        "LIG": false,
+        "FLA": true
+      },
+      "Sprite": "0x2f",
+      "Special": "0x00",
+      "Spell": "0x0000",
+      "ManaCost": 0,
+      "StunFrames": 4,
+      "Range": 2,
+      "Extra": "0x01"
+    }
+  },
+  {
+    "Key": "Osafune Katana",
+    "Value": {
+      "Attack": 50,
+      "Defense": -5,
+      "Element": {
+        "HIT": false,
+        "CUT": true,
+        "POI": false,
+        "CUR": false,
+        "STO": false,
+        "WAT": false,
+        "DAR": false,
+        "HOL": false,
+        "ICE": false,
+        "LIG": false,
+        "FLA": false
+      },
+      "Sprite": "0x35",
+      "Special": "0xc1",
+      "Spell": "0x0000",
+      "ManaCost": 0,
+      "StunFrames": 4,
+      "Range": 2,
+      "Extra": "0x81"
+    }
+  },
+  {
+    "Key": "Masamune",
+    "Value": {
+      "Attack": 90,
+      "Defense": -15,
+      "Element": {
+        "HIT": false,
+        "CUT": true,
+        "POI": false,
+        "CUR": false,
+        "STO": false,
+        "WAT": false,
+        "DAR": false,
+        "HOL": false,
+        "ICE": false,
+        "LIG": false,
+        "FLA": false
+      },
+      "Sprite": "0x35",
+      "Special": "0xc2",
+      "Spell": "0x0000",
+      "ManaCost": 0,
+      "StunFrames": 4,
+      "Range": 2,
+      "Extra": "0x81"
+    }
+  },
+  {
+    "Key": "Muramasa",
+    "Value": {
+      "Attack": -5,
+      "Defense": -2,
+      "Element": {
+        "HIT": false,
+        "CUT": true,
+        "POI": false,
+        "CUR": true,
+        "STO": false,
+        "WAT": false,
+        "DAR": false,
+        "HOL": false,
+        "ICE": false,
+        "LIG": false,
+        "FLA": false
+      },
+      "Sprite": "0x38",
+      "Special": "0x00",
+      "Spell": "0x0000",
+      "ManaCost": 0,
+      "StunFrames": 4,
+      "Range": 2,
+      "Extra": "0x81"
+    }
+  },
+  {
+    "Key": "Heart Refresh",
+    "Value": {
+      "Attack": 0,
+      "Defense": 0,
+      "Element": {
+        "HIT": false,
+        "CUT": false,
+        "POI": false,
+        "CUR": false,
+        "STO": false,
+        "WAT": false,
+        "DAR": false,
+        "HOL": false,
+        "ICE": false,
+        "LIG": false,
+        "FLA": false
+      },
+      "Sprite": "0x2c",
+      "Special": "0x00",
+      "Spell": "0x0000",
+      "ManaCost": 0,
+      "StunFrames": 26029,
+      "Range": 31674,
+      "Extra": "0xbd"
+    }
+  },
+  {
+    "Key": "Runesword",
+    "Value": {
+      "Attack": 40,
+      "Defense": -4,
+      "Element": {
+        "HIT": false,
+        "CUT": true,
+        "POI": false,
+        "CUR": false,
+        "STO": false,
+        "WAT": false,
+        "DAR": false,
+        "HOL": false,
+        "ICE": false,
+        "LIG": false,
+        "FLA": false
+      },
+      "Sprite": "0x0e",
+      "Special": "0x00",
+      "Spell": "0x0000",
+      "ManaCost": 0,
+      "StunFrames": 4,
+      "Range": 2,
+      "Extra": "0x81"
+    }
+  },
+  {
+    "Key": "Antivenom",
+    "Value": {
+      "Attack": 0,
+      "Defense": 0,
+      "Element": {
+        "HIT": false,
+        "CUT": false,
+        "POI": false,
+        "CUR": false,
+        "STO": false,
+        "WAT": false,
+        "DAR": false,
+        "HOL": false,
+        "ICE": false,
+        "LIG": false,
+        "FLA": false
+      },
+      "Sprite": "0xff",
+      "Special": "0x00",
+      "Spell": "0x0000",
+      "ManaCost": 0,
+      "StunFrames": 0,
+      "Range": 0,
+      "Extra": "0x01"
+    }
+  },
+  {
+    "Key": "Uncurse",
+    "Value": {
+      "Attack": 0,
+      "Defense": 0,
+      "Element": {
+        "HIT": false,
+        "CUT": false,
+        "POI": false,
+        "CUR": false,
+        "STO": false,
+        "WAT": false,
+        "DAR": false,
+        "HOL": false,
+        "ICE": false,
+        "LIG": false,
+        "FLA": false
+      },
+      "Sprite": "0xff",
+      "Special": "0x00",
+      "Spell": "0x0000",
+      "ManaCost": 0,
+      "StunFrames": 0,
+      "Range": 0,
+      "Extra": "0x01"
+    }
+  },
+  {
+    "Key": "Life Apple",
+    "Value": {
+      "Attack": 0,
+      "Defense": 0,
+      "Element": {
+        "HIT": false,
+        "CUT": false,
+        "POI": false,
+        "CUR": false,
+        "STO": false,
+        "WAT": false,
+        "DAR": false,
+        "HOL": false,
+        "ICE": false,
+        "LIG": false,
+        "FLA": false
+      },
+      "Sprite": "0xff",
+      "Special": "0x00",
+      "Spell": "0x0000",
+      "ManaCost": 0,
+      "StunFrames": 0,
+      "Range": 0,
+      "Extra": "0x01"
+    }
+  },
+  {
+    "Key": "Hammer",
+    "Value": {
+      "Attack": 0,
+      "Defense": 0,
+      "Element": {
+        "HIT": false,
+        "CUT": false,
+        "POI": false,
+        "CUR": false,
+        "STO": false,
+        "WAT": false,
+        "DAR": false,
+        "HOL": false,
+        "ICE": false,
+        "LIG": false,
+        "FLA": false
+      },
+      "Sprite": "0xff",
+      "Special": "0x00",
+      "Spell": "0x0000",
+      "ManaCost": 0,
+      "StunFrames": 0,
+      "Range": 0,
+      "Extra": "0x01"
+    }
+  },
+  {
+    "Key": "Str. Potion",
+    "Value": {
+      "Attack": 0,
+      "Defense": 0,
+      "Element": {
+        "HIT": false,
+        "CUT": false,
+        "POI": false,
+        "CUR": false,
+        "STO": false,
+        "WAT": false,
+        "DAR": false,
+        "HOL": false,
+        "ICE": false,
+        "LIG": false,
+        "FLA": false
+      },
+      "Sprite": "0xff",
+      "Special": "0x00",
+      "Spell": "0x0000",
+      "ManaCost": 0,
+      "StunFrames": 0,
+      "Range": 0,
+      "Extra": "0x01"
+    }
+  },
+  {
+    "Key": "Luck Potion",
+    "Value": {
+      "Attack": 0,
+      "Defense": 0,
+      "Element": {
+        "HIT": false,
+        "CUT": false,
+        "POI": false,
+        "CUR": false,
+        "STO": false,
+        "WAT": false,
+        "DAR": false,
+        "HOL": false,
+        "ICE": false,
+        "LIG": false,
+        "FLA": false
+      },
+      "Sprite": "0xff",
+      "Special": "0x00",
+      "Spell": "0x0000",
+      "ManaCost": 0,
+      "StunFrames": 0,
+      "Range": 0,
+      "Extra": "0x01"
+    }
+  },
+  {
+    "Key": "Smart Potion",
+    "Value": {
+      "Attack": 0,
+      "Defense": 0,
+      "Element": {
+        "HIT": false,
+        "CUT": false,
+        "POI": false,
+        "CUR": false,
+        "STO": false,
+        "WAT": false,
+        "DAR": false,
+        "HOL": false,
+        "ICE": false,
+        "LIG": false,
+        "FLA": false
+      },
+      "Sprite": "0xff",
+      "Special": "0x00",
+      "Spell": "0x0000",
+      "ManaCost": 0,
+      "StunFrames": 0,
+      "Range": 0,
+      "Extra": "0x01"
+    }
+  },
+  {
+    "Key": "Attack Potion",
+    "Value": {
+      "Attack": 0,
+      "Defense": 0,
+      "Element": {
+        "HIT": false,
+        "CUT": false,
+        "POI": false,
+        "CUR": false,
+        "STO": false,
+        "WAT": false,
+        "DAR": false,
+        "HOL": false,
+        "ICE": false,
+        "LIG": false,
+        "FLA": false
+      },
+      "Sprite": "0xff",
+      "Special": "0x00",
+      "Spell": "0x0000",
+      "ManaCost": 0,
+      "StunFrames": 0,
+      "Range": 0,
+      "Extra": "0x01"
+    }
+  },
+  {
+    "Key": "Shield Potion",
+    "Value": {
+      "Attack": 0,
+      "Defense": 0,
+      "Element": {
+        "HIT": false,
+        "CUT": false,
+        "POI": false,
+        "CUR": false,
+        "STO": false,
+        "WAT": false,
+        "DAR": false,
+        "HOL": false,
+        "ICE": false,
+        "LIG": false,
+        "FLA": false
+      },
+      "Sprite": "0xff",
+      "Special": "0x00",
+      "Spell": "0x0000",
+      "ManaCost": 0,
+      "StunFrames": 0,
+      "Range": 0,
+      "Extra": "0x01"
+    }
+  },
+  {
+    "Key": "Resist Fire",
+    "Value": {
+      "Attack": 0,
+      "Defense": 0,
+      "Element": {
+        "HIT": false,
+        "CUT": false,
+        "POI": false,
+        "CUR": false,
+        "STO": false,
+        "WAT": false,
+        "DAR": false,
+        "HOL": false,
+        "ICE": false,
+        "LIG": false,
+        "FLA": false
+      },
+      "Sprite": "0xff",
+      "Special": "0x00",
+      "Spell": "0x0000",
+      "ManaCost": 0,
+      "StunFrames": 0,
+      "Range": 0,
+      "Extra": "0x01"
+    }
+  },
+  {
+    "Key": "Resist Thunder",
+    "Value": {
+      "Attack": 0,
+      "Defense": 0,
+      "Element": {
+        "HIT": false,
+        "CUT": false,
+        "POI": false,
+        "CUR": false,
+        "STO": false,
+        "WAT": false,
+        "DAR": false,
+        "HOL": false,
+        "ICE": false,
+        "LIG": false,
+        "FLA": false
+      },
+      "Sprite": "0xff",
+      "Special": "0x00",
+      "Spell": "0x0000",
+      "ManaCost": 0,
+      "StunFrames": 0,
+      "Range": 0,
+      "Extra": "0x01"
+    }
+  },
+  {
+    "Key": "Resist Ice",
+    "Value": {
+      "Attack": 0,
+      "Defense": 0,
+      "Element": {
+        "HIT": false,
+        "CUT": false,
+        "POI": false,
+        "CUR": false,
+        "STO": false,
+        "WAT": false,
+        "DAR": false,
+        "HOL": false,
+        "ICE": false,
+        "LIG": false,
+        "FLA": false
+      },
+      "Sprite": "0xff",
+      "Special": "0x00",
+      "Spell": "0x0000",
+      "ManaCost": 0,
+      "StunFrames": 0,
+      "Range": 0,
+      "Extra": "0x01"
+    }
+  },
+  {
+    "Key": "Resist Stone",
+    "Value": {
+      "Attack": 0,
+      "Defense": 0,
+      "Element": {
+        "HIT": false,
+        "CUT": false,
+        "POI": false,
+        "CUR": false,
+        "STO": false,
+        "WAT": false,
+        "DAR": false,
+        "HOL": false,
+        "ICE": false,
+        "LIG": false,
+        "FLA": false
+      },
+      "Sprite": "0xff",
+      "Special": "0x00",
+      "Spell": "0x0000",
+      "ManaCost": 0,
+      "StunFrames": 0,
+      "Range": 0,
+      "Extra": "0x01"
+    }
+  },
+  {
+    "Key": "Resist Holy",
+    "Value": {
+      "Attack": 0,
+      "Defense": 0,
+      "Element": {
+        "HIT": false,
+        "CUT": false,
+        "POI": false,
+        "CUR": false,
+        "STO": false,
+        "WAT": false,
+        "DAR": false,
+        "HOL": false,
+        "ICE": false,
+        "LIG": false,
+        "FLA": false
+      },
+      "Sprite": "0xff",
+      "Special": "0x00",
+      "Spell": "0x0000",
+      "ManaCost": 0,
+      "StunFrames": 0,
+      "Range": 0,
+      "Extra": "0x01"
+    }
+  },
+  {
+    "Key": "Resist Dark",
+    "Value": {
+      "Attack": 0,
+      "Defense": 0,
+      "Element": {
+        "HIT": false,
+        "CUT": false,
+        "POI": false,
+        "CUR": false,
+        "STO": false,
+        "WAT": false,
+        "DAR": false,
+        "HOL": false,
+        "ICE": false,
+        "LIG": false,
+        "FLA": false
+      },
+      "Sprite": "0xff",
+      "Special": "0x00",
+      "Spell": "0x0000",
+      "ManaCost": 0,
+      "StunFrames": 0,
+      "Range": 0,
+      "Extra": "0x01"
+    }
+  },
+  {
+    "Key": "Potion",
+    "Value": {
+      "Attack": 0,
+      "Defense": 0,
+      "Element": {
+        "HIT": false,
+        "CUT": false,
+        "POI": false,
+        "CUR": false,
+        "STO": false,
+        "WAT": false,
+        "DAR": false,
+        "HOL": false,
+        "ICE": false,
+        "LIG": false,
+        "FLA": false
+      },
+      "Sprite": "0xff",
+      "Special": "0x00",
+      "Spell": "0x0000",
+      "ManaCost": 0,
+      "StunFrames": 0,
+      "Range": 0,
+      "Extra": "0x01"
+    }
+  },
+  {
+    "Key": "High Potion",
+    "Value": {
+      "Attack": 0,
+      "Defense": 0,
+      "Element": {
+        "HIT": false,
+        "CUT": false,
+        "POI": false,
+        "CUR": false,
+        "STO": false,
+        "WAT": false,
+        "DAR": false,
+        "HOL": false,
+        "ICE": false,
+        "LIG": false,
+        "FLA": false
+      },
+      "Sprite": "0xff",
+      "Special": "0x00",
+      "Spell": "0x0000",
+      "ManaCost": 0,
+      "StunFrames": 0,
+      "Range": 0,
+      "Extra": "0x01"
+    }
+  },
+  {
+    "Key": "Elixir",
+    "Value": {
+      "Attack": 0,
+      "Defense": 0,
+      "Element": {
+        "HIT": false,
+        "CUT": false,
+        "POI": false,
+        "CUR": false,
+        "STO": false,
+        "WAT": false,
+        "DAR": false,
+        "HOL": false,
+        "ICE": false,
+        "LIG": false,
+        "FLA": false
+      },
+      "Sprite": "0xff",
+      "Special": "0x00",
+      "Spell": "0x0000",
+      "ManaCost": 0,
+      "StunFrames": 0,
+      "Range": 0,
+      "Extra": "0x01"
+    }
+  },
+  {
+    "Key": "Manna Prism",
+    "Value": {
+      "Attack": 0,
+      "Defense": 0,
+      "Element": {
+        "HIT": false,
+        "CUT": false,
+        "POI": false,
+        "CUR": false,
+        "STO": false,
+        "WAT": false,
+        "DAR": false,
+        "HOL": false,
+        "ICE": false,
+        "LIG": false,
+        "FLA": false
+      },
+      "Sprite": "0xff",
+      "Special": "0x00",
+      "Spell": "0x0000",
+      "ManaCost": 0,
+      "StunFrames": 0,
+      "Range": 0,
+      "Extra": "0x01"
+    }
+  },
+  {
+    "Key": "Vorpal Blade",
+    "Value": {
+      "Attack": -25,
+      "Defense": 0,
+      "Element": {
+        "HIT": false,
+        "CUT": true,
+        "POI": false,
+        "CUR": false,
+        "STO": false,
+        "WAT": false,
+        "DAR": false,
+        "HOL": false,
+        "ICE": false,
+        "LIG": false,
+        "FLA": false
+      },
+      "Sprite": "0x0c",
+      "Special": "0x00",
+      "Spell": "0x0000",
+      "ManaCost": 0,
+      "StunFrames": 4,
+      "Range": 2,
+      "Extra": "0x81"
+    }
+  },
+  {
+    "Key": "Crissaegrim",
+    "Value": {
+      "Attack": -36,
+      "Defense": 1,
+      "Element": {
+        "HIT": false,
+        "CUT": true,
+        "POI": false,
+        "CUR": false,
+        "STO": false,
+        "WAT": false,
+        "DAR": false,
+        "HOL": false,
+        "ICE": false,
+        "LIG": false,
+        "FLA": false
+      },
+      "Sprite": "0x0c",
+      "Special": "0x00",
+      "Spell": "0x0000",
+      "ManaCost": 0,
+      "StunFrames": 4,
+      "Range": 2,
+      "Extra": "0x81"
+    }
+  },
+  {
+    "Key": "Yasutsuna",
+    "Value": {
+      "Attack": 60,
+      "Defense": -10,
+      "Element": {
+        "HIT": false,
+        "CUT": true,
+        "POI": false,
+        "CUR": false,
+        "STO": false,
+        "WAT": false,
+        "DAR": false,
+        "HOL": false,
+        "ICE": false,
+        "LIG": false,
+        "FLA": false
+      },
+      "Sprite": "0x35",
+      "Special": "0x00",
+      "Spell": "0x0000",
+      "ManaCost": 0,
+      "StunFrames": 4,
+      "Range": 2,
+      "Extra": "0x81"
+    }
+  },
+  {
+    "Key": "Library Card",
+    "Value": {
+      "Attack": 0,
+      "Defense": 0,
+      "Element": {
+        "HIT": false,
+        "CUT": false,
+        "POI": false,
+        "CUR": false,
+        "STO": false,
+        "WAT": false,
+        "DAR": false,
+        "HOL": false,
+        "ICE": false,
+        "LIG": false,
+        "FLA": false
+      },
+      "Sprite": "0xff",
+      "Special": "0x00",
+      "Spell": "0x0000",
+      "ManaCost": 0,
+      "StunFrames": 0,
+      "Range": 0,
+      "Extra": "0x01"
+    }
+  },
+  {
+    "Key": "Alucart Shield",
+    "Value": {
+      "Attack": 1,
+      "Defense": 0,
+      "Element": {
+        "HIT": false,
+        "CUT": false,
+        "POI": false,
+        "CUR": false,
+        "STO": false,
+        "WAT": false,
+        "DAR": false,
+        "HOL": false,
+        "ICE": false,
+        "LIG": false,
+        "FLA": false
+      },
+      "Sprite": "0x3a",
+      "Special": "0x00",
+      "Spell": "0x2000",
+      "ManaCost": 0,
+      "StunFrames": 0,
+      "Range": 4,
+      "Extra": "0x01"
+    }
+  },
+  {
+    "Key": "Alucart Sword",
+    "Value": {
+      "Attack": 2,
+      "Defense": 0,
+      "Element": {
+        "HIT": false,
+        "CUT": true,
+        "POI": false,
+        "CUR": false,
+        "STO": false,
+        "WAT": false,
+        "DAR": false,
+        "HOL": false,
+        "ICE": false,
+        "LIG": false,
+        "FLA": false
+      },
+      "Sprite": "0x2b",
+      "Special": "0x00",
+      "Spell": "0x0000",
+      "ManaCost": 0,
+      "StunFrames": 4,
+      "Range": 2,
+      "Extra": "0x81"
+    }
+  },
+  {
+    "Key": "Holy Rod Special",
+    "Value": {
+      "Attack": 27,
+      "Defense": 0,
+      "Element": {
+        "HIT": true,
+        "CUT": false,
+        "POI": false,
+        "CUR": false,
+        "STO": false,
+        "WAT": false,
+        "DAR": false,
+        "HOL": true,
+        "ICE": false,
+        "LIG": false,
+        "FLA": false
+      },
+      "Sprite": "0x04",
+      "Special": "0x00",
+      "Spell": "0x0000",
+      "ManaCost": 0,
+      "StunFrames": 4,
+      "Range": 2,
+      "Extra": "0x01"
+    }
+  },
+  {
+    "Key": "Star Flail Special",
+    "Value": {
+      "Attack": 35,
+      "Defense": 0,
+      "Element": {
+        "HIT": true,
+        "CUT": false,
+        "POI": false,
+        "CUR": false,
+        "STO": false,
+        "WAT": false,
+        "DAR": false,
+        "HOL": false,
+        "ICE": false,
+        "LIG": true,
+        "FLA": false
+      },
+      "Sprite": "0x05",
+      "Special": "0x00",
+      "Spell": "0x0000",
+      "ManaCost": 0,
+      "StunFrames": 4,
+      "Range": 2,
+      "Extra": "0x01"
+    }
+  },
+  {
+    "Key": "Moon Rod Special",
+    "Value": {
+      "Attack": 22,
+      "Defense": 0,
+      "Element": {
+        "HIT": false,
+        "CUT": true,
+        "POI": false,
+        "CUR": false,
+        "STO": false,
+        "WAT": false,
+        "DAR": false,
+        "HOL": false,
+        "ICE": false,
+        "LIG": false,
+        "FLA": false
+      },
+      "Sprite": "0x06",
+      "Special": "0x00",
+      "Spell": "0x0000",
+      "ManaCost": 5,
+      "StunFrames": 4,
+      "Range": 2,
+      "Extra": "0x01"
+    }
+  },
+  {
+    "Key": "Shield Rod Special",
+    "Value": {
+      "Attack": 11,
+      "Defense": 0,
+      "Element": {
+        "HIT": true,
+        "CUT": false,
+        "POI": false,
+        "CUR": false,
+        "STO": false,
+        "WAT": false,
+        "DAR": false,
+        "HOL": false,
+        "ICE": false,
+        "LIG": false,
+        "FLA": false
+      },
+      "Sprite": "0x07",
+      "Special": "0x00",
+      "Spell": "0x0000",
+      "ManaCost": 0,
+      "StunFrames": 4,
+      "Range": 2,
+      "Extra": "0x01"
+    }
+  },
+  {
+    "Key": "Basilard Special",
+    "Value": {
+      "Attack": 5,
+      "Defense": 0,
+      "Element": {
+        "HIT": false,
+        "CUT": true,
+        "POI": false,
+        "CUR": false,
+        "STO": false,
+        "WAT": false,
+        "DAR": false,
+        "HOL": false,
+        "ICE": false,
+        "LIG": false,
+        "FLA": false
+      },
+      "Sprite": "0x1f",
+      "Special": "0x00",
+      "Spell": "0x0000",
+      "ManaCost": 0,
+      "StunFrames": 4,
+      "Range": 2,
+      "Extra": "0x81"
+    }
+  },
+  {
+    "Key": "Combat Knife Special",
+    "Value": {
+      "Attack": 15,
+      "Defense": 0,
+      "Element": {
+        "HIT": false,
+        "CUT": true,
+        "POI": false,
+        "CUR": false,
+        "STO": false,
+        "WAT": false,
+        "DAR": false,
+        "HOL": false,
+        "ICE": false,
+        "LIG": false,
+        "FLA": false
+      },
+      "Sprite": "0x20",
+      "Special": "0x00",
+      "Spell": "0x0000",
+      "ManaCost": 0,
+      "StunFrames": 4,
+      "Range": 2,
+      "Extra": "0x81"
+    }
+  },
+  {
+    "Key": "Shotel Special",
+    "Value": {
+      "Attack": 20,
+      "Defense": 0,
+      "Element": {
+        "HIT": false,
+        "CUT": true,
+        "POI": false,
+        "CUR": false,
+        "STO": false,
+        "WAT": false,
+        "DAR": false,
+        "HOL": false,
+        "ICE": false,
+        "LIG": false,
+        "FLA": false
+      },
+      "Sprite": "0x22",
+      "Special": "0x00",
+      "Spell": "0x0000",
+      "ManaCost": 0,
+      "StunFrames": 4,
+      "Range": 2,
+      "Extra": "0x81"
+    }
+  },
+  {
+    "Key": "Sword of Dawn Special",
+    "Value": {
+      "Attack": 40,
+      "Defense": 0,
+      "Element": {
+        "HIT": true,
+        "CUT": false,
+        "POI": false,
+        "CUR": false,
+        "STO": false,
+        "WAT": false,
+        "DAR": false,
+        "HOL": false,
+        "ICE": false,
+        "LIG": false,
+        "FLA": false
+      },
+      "Sprite": "0x1e",
+      "Special": "0x00",
+      "Spell": "0x0000",
+      "ManaCost": 5,
+      "StunFrames": 4,
+      "Range": 2,
+      "Extra": "0x01"
+    }
+  },
+  {
+    "Key": "Thunderbrand Special",
+    "Value": {
+      "Attack": 52,
+      "Defense": 0,
+      "Element": {
+        "HIT": false,
+        "CUT": true,
+        "POI": false,
+        "CUR": false,
+        "STO": false,
+        "WAT": false,
+        "DAR": false,
+        "HOL": false,
+        "ICE": false,
+        "LIG": true,
+        "FLA": false
+      },
+      "Sprite": "0x30",
+      "Special": "0x00",
+      "Spell": "0x0000",
+      "ManaCost": 5,
+      "StunFrames": 4,
+      "Range": 2,
+      "Extra": "0x81"
+    }
+  },
+  {
+    "Key": "Firebrand Special",
+    "Value": {
+      "Attack": 52,
+      "Defense": 0,
+      "Element": {
+        "HIT": false,
+        "CUT": true,
+        "POI": false,
+        "CUR": false,
+        "STO": false,
+        "WAT": false,
+        "DAR": false,
+        "HOL": false,
+        "ICE": false,
+        "LIG": false,
+        "FLA": true
+      },
+      "Sprite": "0x31",
+      "Special": "0x00",
+      "Spell": "0x0000",
+      "ManaCost": 5,
+      "StunFrames": 4,
+      "Range": 2,
+      "Extra": "0x81"
+    }
+  },
+  {
+    "Key": "Marsil Special",
+    "Value": {
+      "Attack": 60,
+      "Defense": 0,
+      "Element": {
+        "HIT": false,
+        "CUT": true,
+        "POI": false,
+        "CUR": false,
+        "STO": false,
+        "WAT": false,
+        "DAR": false,
+        "HOL": false,
+        "ICE": false,
+        "LIG": false,
+        "FLA": true
+      },
+      "Sprite": "0x31",
+      "Special": "0x00",
+      "Spell": "0x0000",
+      "ManaCost": 5,
+      "StunFrames": 4,
+      "Range": 2,
+      "Extra": "0x81"
+    }
+  },
+  {
+    "Key": "Icebrand Special",
+    "Value": {
+      "Attack": 52,
+      "Defense": 0,
+      "Element": {
+        "HIT": false,
+        "CUT": true,
+        "POI": false,
+        "CUR": false,
+        "STO": false,
+        "WAT": false,
+        "DAR": false,
+        "HOL": false,
+        "ICE": true,
+        "LIG": false,
+        "FLA": false
+      },
+      "Sprite": "0x32",
+      "Special": "0x00",
+      "Spell": "0x0000",
+      "ManaCost": 5,
+      "StunFrames": 8,
+      "Range": 2,
+      "Extra": "0x81"
+    }
+  },
+  {
+    "Key": "Claymore Thrust",
+    "Value": {
+      "Attack": 44,
+      "Defense": 0,
+      "Element": {
+        "HIT": false,
+        "CUT": true,
+        "POI": false,
+        "CUR": false,
+        "STO": false,
+        "WAT": false,
+        "DAR": false,
+        "HOL": false,
+        "ICE": false,
+        "LIG": false,
+        "FLA": false
+      },
+      "Sprite": "0x33",
+      "Special": "0x00",
+      "Spell": "0x0000",
+      "ManaCost": 5,
+      "StunFrames": 4,
+      "Range": 2,
+      "Extra": "0x81"
+    }
+  },
+  {
+    "Key": "Flamberge Thrust",
+    "Value": {
+      "Attack": 56,
+      "Defense": 0,
+      "Element": {
+        "HIT": false,
+        "CUT": true,
+        "POI": false,
+        "CUR": false,
+        "STO": false,
+        "WAT": false,
+        "DAR": false,
+        "HOL": false,
+        "ICE": false,
+        "LIG": false,
+        "FLA": false
+      },
+      "Sprite": "0x33",
+      "Special": "0x00",
+      "Spell": "0x0000",
+      "ManaCost": 5,
+      "StunFrames": 4,
+      "Range": 2,
+      "Extra": "0x81"
+    }
+  },
+  {
+    "Key": "Zwei Hander Thrust",
+    "Value": {
+      "Attack": 60,
+      "Defense": 0,
+      "Element": {
+        "HIT": false,
+        "CUT": true,
+        "POI": false,
+        "CUR": false,
+        "STO": false,
+        "WAT": true,
+        "DAR": false,
+        "HOL": false,
+        "ICE": false,
+        "LIG": false,
+        "FLA": false
+      },
+      "Sprite": "0x33",
+      "Special": "0x00",
+      "Spell": "0x0000",
+      "ManaCost": 5,
+      "StunFrames": 4,
+      "Range": 2,
+      "Extra": "0x81"
+    }
+  },
+  {
+    "Key": "Obsidian Sword Thrust",
+    "Value": {
+      "Attack": 68,
+      "Defense": 0,
+      "Element": {
+        "HIT": false,
+        "CUT": true,
+        "POI": false,
+        "CUR": false,
+        "STO": false,
+        "WAT": false,
+        "DAR": true,
+        "HOL": false,
+        "ICE": false,
+        "LIG": false,
+        "FLA": false
+      },
+      "Sprite": "0x33",
+      "Special": "0x00",
+      "Spell": "0x0000",
+      "ManaCost": 5,
+      "StunFrames": 4,
+      "Range": 2,
+      "Extra": "0x81"
+    }
+  },
+  {
+    "Key": "Iron Fist Special",
+    "Value": {
+      "Attack": 40,
+      "Defense": 0,
+      "Element": {
+        "HIT": true,
+        "CUT": false,
+        "POI": false,
+        "CUR": false,
+        "STO": false,
+        "WAT": false,
+        "DAR": false,
+        "HOL": false,
+        "ICE": false,
+        "LIG": false,
+        "FLA": false
+      },
+      "Sprite": "0x01",
+      "Special": "0x00",
+      "Spell": "0x0000",
+      "ManaCost": 0,
+      "StunFrames": 4,
+      "Range": 2,
+      "Extra": "0x01"
+    }
+  },
+  {
+    "Key": "Fist of Tulkas Special",
+    "Value": {
+      "Attack": 52,
+      "Defense": 0,
+      "Element": {
+        "HIT": true,
+        "CUT": false,
+        "POI": false,
+        "CUR": false,
+        "STO": false,
+        "WAT": false,
+        "DAR": false,
+        "HOL": false,
+        "ICE": false,
+        "LIG": false,
+        "FLA": false
+      },
+      "Sprite": "0x01",
+      "Special": "0x00",
+      "Spell": "0x0000",
+      "ManaCost": 0,
+      "StunFrames": 4,
+      "Range": 2,
+      "Extra": "0x01"
+    }
+  },
+  {
+    "Key": "Fist of Tulkas Fireball",
+    "Value": {
+      "Attack": 40,
+      "Defense": 0,
+      "Element": {
+        "HIT": false,
+        "CUT": false,
+        "POI": false,
+        "CUR": false,
+        "STO": false,
+        "WAT": false,
+        "DAR": false,
+        "HOL": false,
+        "ICE": false,
+        "LIG": false,
+        "FLA": true
+      },
+      "Sprite": "0x01",
+      "Special": "0x00",
+      "Spell": "0x0000",
+      "ManaCost": 5,
+      "StunFrames": 4,
+      "Range": 2,
+      "Extra": "0x01"
+    }
+  },
+  {
+    "Key": "Katana Special",
+    "Value": {
+      "Attack": 50,
+      "Defense": 0,
+      "Element": {
+        "HIT": false,
+        "CUT": true,
+        "POI": false,
+        "CUR": false,
+        "STO": false,
+        "WAT": false,
+        "DAR": false,
+        "HOL": false,
+        "ICE": false,
+        "LIG": false,
+        "FLA": false
+      },
+      "Sprite": "0x35",
+      "Special": "0x00",
+      "Spell": "0x0000",
+      "ManaCost": 0,
+      "StunFrames": 4,
+      "Range": 2,
+      "Extra": "0x81"
+    }
+  },
+  {
+    "Key": "Were Bane Special",
+    "Value": {
+      "Attack": 30,
+      "Defense": 0,
+      "Element": {
+        "HIT": false,
+        "CUT": true,
+        "POI": false,
+        "CUR": false,
+        "STO": false,
+        "WAT": false,
+        "DAR": false,
+        "HOL": false,
+        "ICE": false,
+        "LIG": false,
+        "FLA": false
+      },
+      "Sprite": "0x27",
+      "Special": "0x00",
+      "Spell": "0x0000",
+      "ManaCost": 0,
+      "StunFrames": 4,
+      "Range": 2,
+      "Extra": "0x81"
+    }
+  },
+  {
+    "Key": "Rapier Special",
+    "Value": {
+      "Attack": 17,
+      "Defense": 0,
+      "Element": {
+        "HIT": false,
+        "CUT": true,
+        "POI": false,
+        "CUR": false,
+        "STO": false,
+        "WAT": false,
+        "DAR": false,
+        "HOL": false,
+        "ICE": false,
+        "LIG": false,
+        "FLA": false
+      },
+      "Sprite": "0x26",
+      "Special": "0x00",
+      "Spell": "0x0000",
+      "ManaCost": 0,
+      "StunFrames": 4,
+      "Range": 2,
+      "Extra": "0x81"
+    }
+  },
+  {
+    "Key": "Osafune Katana Special",
+    "Value": {
+      "Attack": 100,
+      "Defense": 0,
+      "Element": {
+        "HIT": false,
+        "CUT": true,
+        "POI": false,
+        "CUR": false,
+        "STO": false,
+        "WAT": false,
+        "DAR": false,
+        "HOL": false,
+        "ICE": false,
+        "LIG": false,
+        "FLA": false
+      },
+      "Sprite": "0x35",
+      "Special": "0x00",
+      "Spell": "0x0000",
+      "ManaCost": 0,
+      "StunFrames": 4,
+      "Range": 2,
+      "Extra": "0x81"
+    }
+  },
+  {
+    "Key": "Osafune Katana Warp",
+    "Value": {
+      "Attack": 100,
+      "Defense": 0,
+      "Element": {
+        "HIT": false,
+        "CUT": true,
+        "POI": false,
+        "CUR": false,
+        "STO": false,
+        "WAT": false,
+        "DAR": false,
+        "HOL": false,
+        "ICE": false,
+        "LIG": false,
+        "FLA": false
+      },
+      "Sprite": "0x35",
+      "Special": "0x00",
+      "Spell": "0x0000",
+      "ManaCost": 10,
+      "StunFrames": 4,
+      "Range": 2,
+      "Extra": "0x81"
+    }
+  },
+  {
+    "Key": "Masamune Warp",
+    "Value": {
+      "Attack": 200,
+      "Defense": 0,
+      "Element": {
+        "HIT": false,
+        "CUT": true,
+        "POI": false,
+        "CUR": false,
+        "STO": false,
+        "WAT": false,
+        "DAR": false,
+        "HOL": false,
+        "ICE": false,
+        "LIG": false,
+        "FLA": false
+      },
+      "Sprite": "0x35",
+      "Special": "0x00",
+      "Spell": "0x0000",
+      "ManaCost": 20,
+      "StunFrames": 4,
+      "Range": 2,
+      "Extra": "0x81"
+    }
+  },
+  {
+    "Key": "Gurthang Special",
+    "Value": {
+      "Attack": 40,
+      "Defense": 0,
+      "Element": {
+        "HIT": false,
+        "CUT": true,
+        "POI": false,
+        "CUR": false,
+        "STO": false,
+        "WAT": false,
+        "DAR": false,
+        "HOL": false,
+        "ICE": false,
+        "LIG": false,
+        "FLA": false
+      },
+      "Sprite": "0x36",
+      "Special": "0x00",
+      "Spell": "0x0000",
+      "ManaCost": 5,
+      "StunFrames": 4,
+      "Range": 2,
+      "Extra": "0x81"
+    }
+  },
+  {
+    "Key": "Holy Sword Special",
+    "Value": {
+      "Attack": 40,
+      "Defense": 0,
+      "Element": {
+        "HIT": false,
+        "CUT": true,
+        "POI": false,
+        "CUR": false,
+        "STO": false,
+        "WAT": false,
+        "DAR": false,
+        "HOL": true,
+        "ICE": false,
+        "LIG": false,
+        "FLA": false
+      },
+      "Sprite": "0x37",
+      "Special": "0x00",
+      "Spell": "0x0000",
+      "ManaCost": 5,
+      "StunFrames": 4,
+      "Range": 2,
+      "Extra": "0x81"
+    }
+  },
+  {
+    "Key": "Alucard Sword Warp",
+    "Value": {
+      "Attack": 50,
+      "Defense": 0,
+      "Element": {
+        "HIT": false,
+        "CUT": true,
+        "POI": false,
+        "CUR": false,
+        "STO": false,
+        "WAT": false,
+        "DAR": false,
+        "HOL": false,
+        "ICE": false,
+        "LIG": false,
+        "FLA": false
+      },
+      "Sprite": "0x2b",
+      "Special": "0x00",
+      "Spell": "0x0000",
+      "ManaCost": 5,
+      "StunFrames": 4,
+      "Range": 2,
+      "Extra": "0x81"
+    }
+  },
+  {
+    "Key": "Jewel Sword Special",
+    "Value": {
+      "Attack": 15,
+      "Defense": 0,
+      "Element": {
+        "HIT": false,
+        "CUT": true,
+        "POI": false,
+        "CUR": false,
+        "STO": false,
+        "WAT": false,
+        "DAR": false,
+        "HOL": false,
+        "ICE": false,
+        "LIG": false,
+        "FLA": false
+      },
+      "Sprite": "0x25",
+      "Special": "0x00",
+      "Spell": "0x0000",
+      "ManaCost": 5,
+      "StunFrames": 4,
+      "Range": 2,
+      "Extra": "0x85"
+    }
+  },
+  {
+    "Key": "Heaven Sword Special",
+    "Value": {
+      "Attack": 21,
+      "Defense": 0,
+      "Element": {
+        "HIT": false,
+        "CUT": true,
+        "POI": false,
+        "CUR": false,
+        "STO": false,
+        "WAT": false,
+        "DAR": false,
+        "HOL": false,
+        "ICE": false,
+        "LIG": false,
+        "FLA": false
+      },
+      "Sprite": "0x0d",
+      "Special": "0x00",
+      "Spell": "0x0001",
+      "ManaCost": 5,
+      "StunFrames": 4,
+      "Range": 2,
+      "Extra": "0x81"
+    }
+  },
+  {
+    "Key": "Leather Shield Spell",
+    "Value": {
+      "Attack": 0,
+      "Defense": 0,
+      "Element": {
+        "HIT": false,
+        "CUT": false,
+        "POI": false,
+        "CUR": false,
+        "STO": false,
+        "WAT": false,
+        "DAR": false,
+        "HOL": false,
+        "ICE": false,
+        "LIG": false,
+        "FLA": false
+      },
+      "Sprite": "0x08",
+      "Special": "0x00",
+      "Spell": "0x0002",
+      "ManaCost": 20,
+      "StunFrames": 4,
+      "Range": 0,
+      "Extra": "0x01"
+    }
+  },
+  {
+    "Key": "Knight Shield Spell",
+    "Value": {
+      "Attack": 0,
+      "Defense": 0,
+      "Element": {
+        "HIT": false,
+        "CUT": false,
+        "POI": false,
+        "CUR": false,
+        "STO": false,
+        "WAT": false,
+        "DAR": false,
+        "HOL": false,
+        "ICE": false,
+        "LIG": false,
+        "FLA": false
+      },
+      "Sprite": "0x09",
+      "Special": "0x00",
+      "Spell": "0x0004",
+      "ManaCost": 20,
+      "StunFrames": 4,
+      "Range": 0,
+      "Extra": "0x01"
+    }
+  },
+  {
+    "Key": "Iron Shield Spell",
+    "Value": {
+      "Attack": 20,
+      "Defense": 0,
+      "Element": {
+        "HIT": false,
+        "CUT": true,
+        "POI": false,
+        "CUR": false,
+        "STO": false,
+        "WAT": false,
+        "DAR": false,
+        "HOL": false,
+        "ICE": false,
+        "LIG": false,
+        "FLA": false
+      },
+      "Sprite": "0x0a",
+      "Special": "0x00",
+      "Spell": "0x0008",
+      "ManaCost": 20,
+      "StunFrames": 4,
+      "Range": 2,
+      "Extra": "0x01"
+    }
+  },
+  {
+    "Key": "Axelord Shield Spell",
+    "Value": {
+      "Attack": 100,
+      "Defense": 0,
+      "Element": {
+        "HIT": false,
+        "CUT": true,
+        "POI": false,
+        "CUR": false,
+        "STO": false,
+        "WAT": false,
+        "DAR": false,
+        "HOL": false,
+        "ICE": false,
+        "LIG": false,
+        "FLA": false
+      },
+      "Sprite": "0x0b",
+      "Special": "0x00",
+      "Spell": "0x0010",
+      "ManaCost": 20,
+      "StunFrames": 4,
+      "Range": 2,
+      "Extra": "0x01"
+    }
+  },
+  {
+    "Key": "Herald Shield Spell",
+    "Value": {
+      "Attack": 0,
+      "Defense": 0,
+      "Element": {
+        "HIT": false,
+        "CUT": false,
+        "POI": false,
+        "CUR": false,
+        "STO": false,
+        "WAT": false,
+        "DAR": false,
+        "HOL": false,
+        "ICE": false,
+        "LIG": false,
+        "FLA": false
+      },
+      "Sprite": "0x17",
+      "Special": "0x00",
+      "Spell": "0x0020",
+      "ManaCost": 20,
+      "StunFrames": 4,
+      "Range": 0,
+      "Extra": "0x01"
+    }
+  },
+  {
+    "Key": "Dark Shield Spell",
+    "Value": {
+      "Attack": 30,
+      "Defense": 0,
+      "Element": {
+        "HIT": false,
+        "CUT": false,
+        "POI": false,
+        "CUR": false,
+        "STO": false,
+        "WAT": false,
+        "DAR": true,
+        "HOL": false,
+        "ICE": false,
+        "LIG": false,
+        "FLA": false
+      },
+      "Sprite": "0x18",
+      "Special": "0x00",
+      "Spell": "0x0040",
+      "ManaCost": 30,
+      "StunFrames": 4,
+      "Range": 2,
+      "Extra": "0x01"
+    }
+  },
+  {
+    "Key": "Goddess Shield Spell",
+    "Value": {
+      "Attack": 0,
+      "Defense": 0,
+      "Element": {
+        "HIT": false,
+        "CUT": false,
+        "POI": false,
+        "CUR": false,
+        "STO": false,
+        "WAT": false,
+        "DAR": false,
+        "HOL": false,
+        "ICE": false,
+        "LIG": false,
+        "FLA": false
+      },
+      "Sprite": "0x19",
+      "Special": "0x00",
+      "Spell": "0x0080",
+      "ManaCost": 20,
+      "StunFrames": 4,
+      "Range": 0,
+      "Extra": "0x01"
+    }
+  },
+  {
+    "Key": "Shaman Shield Spell",
+    "Value": {
+      "Attack": 0,
+      "Defense": 0,
+      "Element": {
+        "HIT": false,
+        "CUT": false,
+        "POI": false,
+        "CUR": false,
+        "STO": false,
+        "WAT": false,
+        "DAR": false,
+        "HOL": false,
+        "ICE": false,
+        "LIG": false,
+        "FLA": false
+      },
+      "Sprite": "0x1a",
+      "Special": "0x00",
+      "Spell": "0x0100",
+      "ManaCost": 20,
+      "StunFrames": 4,
+      "Range": 0,
+      "Extra": "0x01"
+    }
+  },
+  {
+    "Key": "Medusa Shield Spell",
+    "Value": {
+      "Attack": 0,
+      "Defense": 0,
+      "Element": {
+        "HIT": false,
+        "CUT": false,
+        "POI": false,
+        "CUR": false,
+        "STO": true,
+        "WAT": false,
+        "DAR": false,
+        "HOL": false,
+        "ICE": false,
+        "LIG": false,
+        "FLA": false
+      },
+      "Sprite": "0x1b",
+      "Special": "0x00",
+      "Spell": "0x0200",
+      "ManaCost": 200,
+      "StunFrames": 4,
+      "Range": 2,
+      "Extra": "0x01"
+    }
+  },
+  {
+    "Key": "Skull Shield Spell",
+    "Value": {
+      "Attack": 40,
+      "Defense": 0,
+      "Element": {
+        "HIT": false,
+        "CUT": false,
+        "POI": false,
+        "CUR": false,
+        "STO": false,
+        "WAT": false,
+        "DAR": false,
+        "HOL": true,
+        "ICE": false,
+        "LIG": false,
+        "FLA": false
+      },
+      "Sprite": "0x1c",
+      "Special": "0x00",
+      "Spell": "0x0400",
+      "ManaCost": 40,
+      "StunFrames": 4,
+      "Range": 2,
+      "Extra": "0x01"
+    }
+  },
+  {
+    "Key": "Fire Shield Spell",
+    "Value": {
+      "Attack": 0,
+      "Defense": 0,
+      "Element": {
+        "HIT": false,
+        "CUT": false,
+        "POI": false,
+        "CUR": false,
+        "STO": false,
+        "WAT": false,
+        "DAR": false,
+        "HOL": false,
+        "ICE": false,
+        "LIG": false,
+        "FLA": true
+      },
+      "Sprite": "0x1d",
+      "Special": "0x00",
+      "Spell": "0x0800",
+      "ManaCost": 50,
+      "StunFrames": 4,
+      "Range": 2,
+      "Extra": "0x01"
+    }
+  },
+  {
+    "Key": "Alucard Shield Spell",
+    "Value": {
+      "Attack": 255,
+      "Defense": 0,
+      "Element": {
+        "HIT": true,
+        "CUT": false,
+        "POI": false,
+        "CUR": false,
+        "STO": false,
+        "WAT": false,
+        "DAR": false,
+        "HOL": false,
+        "ICE": false,
+        "LIG": false,
+        "FLA": false
+      },
+      "Sprite": "0x34",
+      "Special": "0x00",
+      "Spell": "0x1000",
+      "ManaCost": 255,
+      "StunFrames": 4,
+      "Range": 2,
+      "Extra": "0x01"
+    }
+  },
+  {
+    "Key": "Alucart Shield Spell",
+    "Value": {
+      "Attack": 0,
+      "Defense": 0,
+      "Element": {
+        "HIT": false,
+        "CUT": false,
+        "POI": false,
+        "CUR": false,
+        "STO": false,
+        "WAT": false,
+        "DAR": false,
+        "HOL": false,
+        "ICE": false,
+        "LIG": false,
+        "FLA": false
+      },
+      "Sprite": "0x3a",
+      "Special": "0x00",
+      "Spell": "0x2000",
+      "ManaCost": 10,
+      "StunFrames": 4,
+      "Range": 2,
+      "Extra": "0x01"
+    }
+  }
+]
