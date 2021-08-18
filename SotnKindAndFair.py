@@ -6,7 +6,9 @@ import shutil
 import glob
 import time
 import requests
+import zipfile
 import subprocess
+from pathlib import Path
 from enum import Enum
 
 below_25 = [
@@ -195,41 +197,41 @@ with open("Data\\Random\\Resistances.json", "r") as file_reader:
 
 #Filling Lists
 
-for i in range(24):
+for i in range(25):
     below_25_range.append(i+1)
 
-for i in range(49):
+for i in range(50):
     below_50_range.append(i+1)
 
-for i in range(98):
+for i in range(99):
     if i <= 49:
         for e in range(level_random["Value"]["EarlyFirstCastle"] - 1):
             chance_8_range.append(i+1)
     else:
         chance_8_range.append(i+1)
 
-for i in range(98):
+for i in range(99):
     if i <= 49:
         for e in range(level_random["Value"]["LateFirstCastle"] - 1):
             chance_7_range.append(i+1)
     else:
         chance_7_range.append(i+1)
 
-for i in range(98):
+for i in range(99):
     if i <= 49:
         for e in range(level_random["Value"]["EarlySecondCastle"] - 1):
             chance_4_range.append(i+1)
     else:
         chance_4_range.append(i+1)
 
-for i in range(98):
+for i in range(99):
     if i <= 49:
         for e in range(level_random["Value"]["LateSecondCastle"] - 1):
             chance_3_range.append(i+1)
     else:
         chance_3_range.append(i+1)
 
-for i in range(98):
+for i in range(99):
     chance_2_range.append(i+1)
 
 for i in range(resist_random["Value"]["Weak"]):
@@ -250,19 +252,48 @@ for i in range(resist_random["Value"]["Abosrb"]):
 #Functions
 
 def check_for_updates():
-    if requests.get("https://api.github.com/repos/Lakifume/SotnKindAndFair/releases/latest").json()["tag_name"] != config[1]["Value"]["Tag"]:
+    if os.path.isfile("OldSotnKindAndFair.exe"):
+        os.remove("OldSotnKindAndFair.exe")
+    try:
+        api = requests.get("https://api.github.com/repos/Lakifume/SotnKindAndFair/releases/latest").json()
+    except requests.ConnectionError:
+        return
+    for i in config:
+        if i["Key"] == "Version":
+            tag = i["Value"]["Tag"]
+    if api["tag_name"] != tag:
         while True:
-            choice = input("New version found, update ? (Y/N):\n").upper()
+            choice = input("New version found:\n\n" + api["body"] + "\n\nUpdate ? (Y/N):\n").upper()
             if choice == "Y" or choice == "N":
+                print("")
                 break
         if choice == "Y":
-            if os.path.isfile("Updater.exe"):
-                subprocess.Popen("Updater.exe")
-                sys.exit()
-            else:
-                print("Error: updater not found")
-                time.sleep(1)
-        print("")
+            print("Downloading...")
+    
+            url = requests.get(api["assets"][0]["browser_download_url"])
+            open("SotnKindAndFair.zip", "wb").write(url.content)
+            
+            print("Extracting...")
+            
+            path = Path("").parent.absolute()
+            for i in os.listdir(path):
+                if i == "SotnKindAndFair.exe" or i == "SotnKindAndFair.zip":
+                    continue
+                if os.path.isfile(i):
+                    os.remove(i)
+                elif os.path.isdir(i):
+                    shutil.rmtree(i)
+            
+            os.rename("SotnKindAndFair.exe", "OldSotnKindAndFair.exe")
+            with zipfile.ZipFile("SotnKindAndFair.zip", 'r') as zip_ref:
+                zip_ref.extractall("")
+            os.remove("SotnKindAndFair.zip")
+            
+            print("Done")
+            print("")
+            time.sleep(1)
+            subprocess.Popen("SotnKindAndFair.exe")
+            sys.exit()
 
 def preset():
     if (config[0]["Value"]["Option1"] == "Y" or config[0]["Value"]["Option1"] == "N") and (config[0]["Value"]["Option2"] == "Y" or config[0]["Value"]["Option2"] == "N") and (config[0]["Value"]["Option3"] == "Y" or config[0]["Value"]["Option3"] == "N") and (config[0]["Value"]["Option4"] == "Y" or config[0]["Value"]["Option4"] == "N"):
@@ -337,7 +368,7 @@ def random_enemy(level, resist):
             else:
                 enemy_data[i]["Value"]["Level"] = enemy_data[i-1]["Value"]["Level"]
         
-        if enemy_data[i]["Key"] == "Dracula":
+        if enemy_data[i]["Key"] == "Galamoth Head" or enemy_data[i]["Key"] == "Dracula":
             continue
         
         if resist:
@@ -372,20 +403,12 @@ def description():
     file.write(str.encode("Shocking"))
     file.seek(0xF2538)
     file.write(str.encode(" flail         "))
-    file.seek(0xF2864)
-    file.write(str.encode("Moist"))
-    file.seek(0xF287F)
-    file.write(str.encode("fire"))
-    file.seek(0xF3C6D)
-    file.write(str.encode("CON"))
+    file.seek(0xF2736)
+    file.write(str.encode("N"))
     file.seek(0xF3C75)
     file.write(str.encode("O"))
     file.seek(0xF3C9A)
     file.write(str.encode("T  "))
-    file.seek(0xF3DB0)
-    file.write(str.encode("CON"))
-    file.seek(0xF4844)
-    file.write(str.encode("Resistant to evil attacks "))
     file.seek(0xF43FC)
     file.write(str.encode("Immune to water "))
     file.seek(0xF4420)
@@ -400,6 +423,8 @@ def description():
     file.write(str.encode("Immune to fire            "))
     file.seek(0xF4508)
     file.write(str.encode("Immune to light           "))
+    file.seek(0xF4844)
+    file.write(str.encode("Resistant to evil attacks "))
     file.seek(0xF486C)
     file.write(str.encode("Immunity to all status effects"))
 
