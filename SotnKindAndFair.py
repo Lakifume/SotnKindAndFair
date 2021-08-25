@@ -176,6 +176,9 @@ with open("Data\\Offsets\\Equipment.json", "r") as file_reader:
 with open("Data\\Offsets\\HandItem.json", "r") as file_reader:
     handitem_content = json.load(file_reader)
 
+with open("Data\\Offsets\\Stat.json", "r") as file_reader:
+    stat_content = json.load(file_reader)
+
 #Data
 
 with open("Data\\Values\\Enemy.json", "r") as file_reader:
@@ -186,6 +189,9 @@ with open("Data\\Values\\Equipment.json", "r") as file_reader:
 
 with open("Data\\Values\\HandItem.json", "r") as file_reader:
     handitem_data = json.load(file_reader)
+
+with open("Data\\Values\\Stat.json", "r") as file_reader:
+    stat_data = json.load(file_reader)
 
 #Random
 
@@ -277,7 +283,7 @@ def check_for_updates():
             
             path = Path("").parent.absolute()
             for i in os.listdir(path):
-                if i == "SotnKindAndFair.exe" or i == "SotnKindAndFair.zip":
+                if i == "SotnKindAndFair.exe" or i == "SotnKindAndFair.zip" or i == "Rom":
                     continue
                 if os.path.isfile(i):
                     os.remove(i)
@@ -301,7 +307,7 @@ def preset():
         print(config[0]["Value"]["Option1"])
         print("Randomize resistances ? (Y/N):")
         print(config[0]["Value"]["Option2"])
-        print("Limit level ups ? (Y/N):")
+        print("Level 1 run ? (Y/N):")
         print(config[0]["Value"]["Option3"])
         print("Apply item tweaks ? (Y/N):")
         print(config[0]["Value"]["Option4"])
@@ -326,7 +332,7 @@ def prompt():
             if config[0]["Value"]["Option2"] == "Y" or config[0]["Value"]["Option2"] == "N":
                 break
         while True:
-            config[0]["Value"]["Option3"] = input("Limit level ups ? (Y/N):\n").upper()
+            config[0]["Value"]["Option3"] = input("Level 1 run ? (Y/N):\n").upper()
             if config[0]["Value"]["Option3"] == "Y" or config[0]["Value"]["Option3"] == "N":
                 break
         while True:
@@ -389,14 +395,71 @@ def random_enemy(level, resist):
             file.write(bytes([0]))
             file.write(bytes([0]))
 
-def limit_exp():
+def stats():
+    if stat_data["Value"]["StrConIntLck"] < -0x7FFF:
+        stat_data["Value"]["StrConIntLck"] = -0x7FFF
+    if stat_data["Value"]["StrConIntLck"] > 0x8000:
+        stat_data["Value"]["StrConIntLck"] = 0x8000
+    if stat_data["Value"]["StrConIntLck"] < 0:
+        stat_data["Value"]["StrConIntLck"] += 0x10000
+    high, low = divmod(int(stat_data["Value"]["StrConIntLck"]), 0x100)
+    file.seek(int(stat_content["Value"]["StrConIntLck"], 16))
+    file.write(bytes([low]))
+    file.write(bytes([high]))
+    
+    if stat_data["Value"]["Health"] < -0x7FFF:
+        stat_data["Value"]["Health"] = -0x7FFF
+    if stat_data["Value"]["Health"] > 0x8000 - 5:
+        stat_data["Value"]["Health"] = 0x8000 - 5
+    if stat_data["Value"]["Health"] < 0:
+        stat_data["Value"]["Health"] += 0x10000
+    high, low = divmod(int(stat_data["Value"]["Health"]), 0x100)
+    file.seek(int(stat_content["Value"]["Health"], 16))
+    file.write(bytes([low]))
+    file.write(bytes([high]))
+
+    high, low = divmod(int(stat_data["Value"]["Health"]) + 5, 0x100)
+    file.seek(0x119CC4)
+    file.write(bytes([low]))
+    file.write(bytes([high]))
+    
+    if stat_data["Value"]["Hearts"] < -0x7FFF:
+        stat_data["Value"]["Hearts"] = -0x7FFF
+    if stat_data["Value"]["Hearts"] > 0x8000:
+        stat_data["Value"]["Hearts"] = 0x8000
+    if stat_data["Value"]["Hearts"] < 0:
+        stat_data["Value"]["Hearts"] += 0x10000
+    high, low = divmod(int(stat_data["Value"]["Hearts"]), 0x100)
+    file.seek(int(stat_content["Value"]["Hearts"], 16))
+    file.write(bytes([low]))
+    file.write(bytes([high]))
+    
+    if stat_data["Value"]["MaxHearts"] < -0x7FFF:
+        stat_data["Value"]["MaxHearts"] = -0x7FFF
+    if stat_data["Value"]["MaxHearts"] > 0x8000:
+        stat_data["Value"]["MaxHearts"] = 0x8000
+    if stat_data["Value"]["MaxHearts"] < 0:
+        stat_data["Value"]["MaxHearts"] += 0x10000
+    high, low = divmod(int(stat_data["Value"]["MaxHearts"]), 0x100)
+    file.seek(int(stat_content["Value"]["MaxHearts"], 16))
+    file.write(bytes([low]))
+    file.write(bytes([high]))
+    
+    if stat_data["Value"]["Mana"] < -0x7FFF:
+        stat_data["Value"]["Mana"] = -0x7FFF
+    if stat_data["Value"]["Mana"] > 0x8000:
+        stat_data["Value"]["Mana"] = 0x8000
+    if stat_data["Value"]["Mana"] < 0:
+        stat_data["Value"]["Mana"] += 0x10000
+    high, low = divmod(int(stat_data["Value"]["Mana"]), 0x100)
+    file.seek(int(stat_content["Value"]["Mana"], 16))
+    file.write(bytes([low]))
+    file.write(bytes([high]))
+
+def no_exp():
     for i in enemy_data:
-        if i["Value"]["IsBoss"]:
-            i["Value"]["ExperienceLevel1"] = math.ceil(i["Value"]["ExperienceLevel1"]/10)
-            i["Value"]["ExperienceLevel99"] = math.ceil(i["Value"]["ExperienceLevel99"]/10)
-        else:
-            i["Value"]["ExperienceLevel1"] = 0
-            i["Value"]["ExperienceLevel99"] = 0
+        i["Value"]["ExperienceLevel1"] = 0
+        i["Value"]["ExperienceLevel99"] = 0
 
 def description():
     file.seek(0xF2400)
@@ -405,6 +468,8 @@ def description():
     file.write(str.encode(" flail         "))
     file.seek(0xF2736)
     file.write(str.encode("N"))
+    file.seek(0xF3BF8)
+    file.write(str.encode("Immunity to all status effects"))
     file.seek(0xF3C75)
     file.write(str.encode("O"))
     file.seek(0xF3C9A)
@@ -441,8 +506,8 @@ def write_enemy_to_rom():
         health = math.ceil(((enemy_data[i]["Value"]["HealthLevel99"] - enemy_data[i]["Value"]["HealthLevel1"])/98)*(enemy_data[i]["Value"]["Level"]-1) + enemy_data[i]["Value"]["HealthLevel1"])
         if health < 0:
             health = 0
-        if health > 32768:
-            health = 32768
+        if health > 0x8000:
+            health = 0x8000
         high, low = divmod(health, 0x100)
         file.seek(int(enemy_content[i]["Value"]["Health"], 16))
         file.write(bytes([low]))
@@ -451,8 +516,8 @@ def write_enemy_to_rom():
         strength = math.ceil(((enemy_data[i]["Value"]["ContactDamageLevel99"] - enemy_data[i]["Value"]["ContactDamageLevel1"])/98)*(enemy_data[i]["Value"]["Level"]-1) + enemy_data[i]["Value"]["ContactDamageLevel1"])
         if strength < 0:
             strength = 0
-        if strength > 32768:
-            strength = 32768
+        if strength > 0x8000:
+            strength = 0x8000
         high, low = divmod(strength, 0x100)
         file.seek(int(enemy_content[i]["Value"]["ContactDamage"], 16))
         file.write(bytes([low]))
@@ -466,8 +531,8 @@ def write_enemy_to_rom():
         defense = math.ceil(((enemy_data[i]["Value"]["DefenseLevel99"] - enemy_data[i]["Value"]["DefenseLevel1"])/98)*(enemy_data[i]["Value"]["Level"]-1) + enemy_data[i]["Value"]["DefenseLevel1"])
         if defense < 0:
             defense = 0
-        if defense > 32768:
-            defense = 32768
+        if defense > 0x8000:
+            defense = 0x8000
         high, low = divmod(defense, 0x100)
         file.seek(int(enemy_content[i]["Value"]["Defense"], 16))
         file.write(bytes([low]))
@@ -521,8 +586,8 @@ def write_enemy_to_rom():
         experience = math.ceil(((enemy_data[i]["Value"]["ExperienceLevel99"] - enemy_data[i]["Value"]["ExperienceLevel1"])/98)*(enemy_data[i]["Value"]["Level"]-1) + enemy_data[i]["Value"]["ExperienceLevel1"])
         if experience < 0:
             experience = 0
-        if experience > 32768:
-            experience = 32768
+        if experience > 0x8000:
+            experience = 0x8000
         high, low = divmod(experience, 0x100)
         file.seek(int(enemy_content[i]["Value"]["Experience"], 16))
         file.write(bytes([low]))
@@ -532,8 +597,8 @@ def write_enemy_to_rom():
             damage = math.ceil(enemy_data[i]["Value"]["AttackDamageMultiplier"][e]*strength)
             if damage < 0:
                 damage = 0
-            if damage > 32768:
-                damage = 32768
+            if damage > 0x8000:
+                damage = 0x8000
             high, low = divmod(damage, 0x100)
             file.seek(int(enemy_content[i]["Value"]["AttackDamage"][e], 16))
             file.write(bytes([low]))
@@ -547,61 +612,61 @@ def write_enemy_to_rom():
 
 def write_item_to_rom():
     for i in range(len(equipment_content)):
-        if equipment_data[i]["Value"]["Attack"] < -32767:
-            equipment_data[i]["Value"]["Attack"] = -32767
-        if equipment_data[i]["Value"]["Attack"] > 32768:
-            equipment_data[i]["Value"]["Attack"] = 32768
+        if equipment_data[i]["Value"]["Attack"] < -0x7FFF:
+            equipment_data[i]["Value"]["Attack"] = -0x7FFF
+        if equipment_data[i]["Value"]["Attack"] > 0x8000:
+            equipment_data[i]["Value"]["Attack"] = 0x8000
         if equipment_data[i]["Value"]["Attack"] < 0:
-            equipment_data[i]["Value"]["Attack"] += 65536
+            equipment_data[i]["Value"]["Attack"] += 0x10000
         high, low = divmod(int(equipment_data[i]["Value"]["Attack"]), 0x100)
         file.seek(int(equipment_content[i]["Value"]["Attack"], 16))
         file.write(bytes([low]))
         file.write(bytes([high]))
         
-        if equipment_data[i]["Value"]["Defense"] < -32767:
-            equipment_data[i]["Value"]["Defense"] = -32767
-        if equipment_data[i]["Value"]["Defense"] > 32768:
-            equipment_data[i]["Value"]["Defense"] = 32768
+        if equipment_data[i]["Value"]["Defense"] < -0x7FFF:
+            equipment_data[i]["Value"]["Defense"] = -0x7FFF
+        if equipment_data[i]["Value"]["Defense"] > 0x8000:
+            equipment_data[i]["Value"]["Defense"] = 0x8000
         if equipment_data[i]["Value"]["Defense"] < 0:
-            equipment_data[i]["Value"]["Defense"] += 65536
+            equipment_data[i]["Value"]["Defense"] += 0x10000
         high, low = divmod(int(equipment_data[i]["Value"]["Defense"]), 0x100)
         file.seek(int(equipment_content[i]["Value"]["Defense"], 16))
         file.write(bytes([low]))
         file.write(bytes([high]))
         
-        if equipment_data[i]["Value"]["Strength"] < -127:
-            equipment_data[i]["Value"]["Strength"] = -127
-        if equipment_data[i]["Value"]["Strength"] > 128:
-            equipment_data[i]["Value"]["Strength"] = 128
+        if equipment_data[i]["Value"]["Strength"] < -0x7F:
+            equipment_data[i]["Value"]["Strength"] = -0x7F
+        if equipment_data[i]["Value"]["Strength"] > 0x80:
+            equipment_data[i]["Value"]["Strength"] = 0x80
         if equipment_data[i]["Value"]["Strength"] < 0:
-            equipment_data[i]["Value"]["Strength"] += 256
+            equipment_data[i]["Value"]["Strength"] += 0x100
         file.seek(int(equipment_content[i]["Value"]["Strength"], 16))
         file.write(bytes([int(equipment_data[i]["Value"]["Strength"])]))
         
-        if equipment_data[i]["Value"]["Constitution"] < -127:
-            equipment_data[i]["Value"]["Constitution"] = -127
-        if equipment_data[i]["Value"]["Constitution"] > 128:
-            equipment_data[i]["Value"]["Constitution"] = 128
+        if equipment_data[i]["Value"]["Constitution"] < -0x7F:
+            equipment_data[i]["Value"]["Constitution"] = -0x7F
+        if equipment_data[i]["Value"]["Constitution"] > 0x80:
+            equipment_data[i]["Value"]["Constitution"] = 0x80
         if equipment_data[i]["Value"]["Constitution"] < 0:
-            equipment_data[i]["Value"]["Constitution"] += 256
+            equipment_data[i]["Value"]["Constitution"] += 0x100
         file.seek(int(equipment_content[i]["Value"]["Constitution"], 16))
         file.write(bytes([int(equipment_data[i]["Value"]["Constitution"])]))
         
-        if equipment_data[i]["Value"]["Intelligence"] < -127:
-            equipment_data[i]["Value"]["Intelligence"] = -127
-        if equipment_data[i]["Value"]["Intelligence"] > 128:
-            equipment_data[i]["Value"]["Intelligence"] = 128
+        if equipment_data[i]["Value"]["Intelligence"] < -0x7F:
+            equipment_data[i]["Value"]["Intelligence"] = -0x7F
+        if equipment_data[i]["Value"]["Intelligence"] > 0x80:
+            equipment_data[i]["Value"]["Intelligence"] = 0x80
         if equipment_data[i]["Value"]["Intelligence"] < 0:
-            equipment_data[i]["Value"]["Intelligence"] += 256
+            equipment_data[i]["Value"]["Intelligence"] += 0x100
         file.seek(int(equipment_content[i]["Value"]["Intelligence"], 16))
         file.write(bytes([int(equipment_data[i]["Value"]["Intelligence"])]))
         
-        if equipment_data[i]["Value"]["Luck"] < -127:
-            equipment_data[i]["Value"]["Luck"] = -127
-        if equipment_data[i]["Value"]["Luck"] > 128:
-            equipment_data[i]["Value"]["Luck"] = 128
+        if equipment_data[i]["Value"]["Luck"] < -0x7F:
+            equipment_data[i]["Value"]["Luck"] = -0x7F
+        if equipment_data[i]["Value"]["Luck"] > 0x80:
+            equipment_data[i]["Value"]["Luck"] = 0x80
         if equipment_data[i]["Value"]["Luck"] < 0:
-            equipment_data[i]["Value"]["Luck"] += 256
+            equipment_data[i]["Value"]["Luck"] += 0x100
         file.seek(int(equipment_content[i]["Value"]["Luck"], 16))
         file.write(bytes([int(equipment_data[i]["Value"]["Luck"])]))
         
@@ -640,23 +705,23 @@ def write_item_to_rom():
         file.write(bytes([high]))
         
     for i in range(len(handitem_content)):
-        if handitem_data[i]["Value"]["Attack"] < -32767:
-            handitem_data[i]["Value"]["Attack"] = -32767
-        if handitem_data[i]["Value"]["Attack"] > 32768:
-            handitem_data[i]["Value"]["Attack"] = 32768
+        if handitem_data[i]["Value"]["Attack"] < -0x7FFF:
+            handitem_data[i]["Value"]["Attack"] = -0x7FFF
+        if handitem_data[i]["Value"]["Attack"] > 0x8000:
+            handitem_data[i]["Value"]["Attack"] = 0x8000
         if handitem_data[i]["Value"]["Attack"] < 0:
-            handitem_data[i]["Value"]["Attack"] += 65536
+            handitem_data[i]["Value"]["Attack"] += 0x10000
         high, low = divmod(int(handitem_data[i]["Value"]["Attack"]), 0x100)
         file.seek(int(handitem_content[i]["Value"]["Attack"], 16))
         file.write(bytes([low]))
         file.write(bytes([high]))
         
-        if handitem_data[i]["Value"]["Defense"] < -32767:
-            handitem_data[i]["Value"]["Defense"] = -32767
-        if handitem_data[i]["Value"]["Defense"] > 32768:
-            handitem_data[i]["Value"]["Defense"] = 32768
+        if handitem_data[i]["Value"]["Defense"] < -0x7FFF:
+            handitem_data[i]["Value"]["Defense"] = -0x7FFF
+        if handitem_data[i]["Value"]["Defense"] > 0x8000:
+            handitem_data[i]["Value"]["Defense"] = 0x8000
         if handitem_data[i]["Value"]["Defense"] < 0:
-            handitem_data[i]["Value"]["Defense"] += 65536
+            handitem_data[i]["Value"]["Defense"] += 0x10000
         high, low = divmod(int(handitem_data[i]["Value"]["Defense"]), 0x100)
         file.seek(int(handitem_content[i]["Value"]["Defense"], 16))
         file.write(bytes([low]))
@@ -683,34 +748,34 @@ def write_item_to_rom():
         file.write(bytes([low]))
         file.write(bytes([high]))
         
-        if handitem_data[i]["Value"]["ManaCost"] < -32767:
-            handitem_data[i]["Value"]["ManaCost"] = -32767
-        if handitem_data[i]["Value"]["ManaCost"] > 32768:
-            handitem_data[i]["Value"]["ManaCost"] = 32768
+        if handitem_data[i]["Value"]["ManaCost"] < -0x7FFF:
+            handitem_data[i]["Value"]["ManaCost"] = -0x7FFF
+        if handitem_data[i]["Value"]["ManaCost"] > 0x8000:
+            handitem_data[i]["Value"]["ManaCost"] = 0x8000
         if handitem_data[i]["Value"]["ManaCost"] < 0:
-            handitem_data[i]["Value"]["ManaCost"] += 65536
+            handitem_data[i]["Value"]["ManaCost"] += 0x10000
         high, low = divmod(int(handitem_data[i]["Value"]["ManaCost"]), 0x100)
         file.seek(int(handitem_content[i]["Value"]["ManaCost"], 16))
         file.write(bytes([low]))
         file.write(bytes([high]))
         
-        if handitem_data[i]["Value"]["StunFrames"] < -32767:
-            handitem_data[i]["Value"]["StunFrames"] = -32767
-        if handitem_data[i]["Value"]["StunFrames"] > 32768:
-            handitem_data[i]["Value"]["StunFrames"] = 32768
+        if handitem_data[i]["Value"]["StunFrames"] < -0x7FFF:
+            handitem_data[i]["Value"]["StunFrames"] = -0x7FFF
+        if handitem_data[i]["Value"]["StunFrames"] > 0x8000:
+            handitem_data[i]["Value"]["StunFrames"] = 0x8000
         if handitem_data[i]["Value"]["StunFrames"] < 0:
-            handitem_data[i]["Value"]["StunFrames"] += 65536
+            handitem_data[i]["Value"]["StunFrames"] += 0x10000
         high, low = divmod(int(handitem_data[i]["Value"]["StunFrames"]), 0x100)
         file.seek(int(handitem_content[i]["Value"]["StunFrames"], 16))
         file.write(bytes([low]))
         file.write(bytes([high]))
         
-        if handitem_data[i]["Value"]["Range"] < -32767:
-            handitem_data[i]["Value"]["Range"] = -32767
-        if handitem_data[i]["Value"]["Range"] > 32768:
-            handitem_data[i]["Value"]["Range"] = 32768
+        if handitem_data[i]["Value"]["Range"] < -0x7FFF:
+            handitem_data[i]["Value"]["Range"] = -0x7FFF
+        if handitem_data[i]["Value"]["Range"] > 0x8000:
+            handitem_data[i]["Value"]["Range"] = 0x8000
         if handitem_data[i]["Value"]["Range"] < 0:
-            handitem_data[i]["Value"]["Range"] += 65536
+            handitem_data[i]["Value"]["Range"] += 0x10000
         high, low = divmod(int(handitem_data[i]["Value"]["Range"]), 0x100)
         file.seek(int(handitem_content[i]["Value"]["Range"], 16))
         file.write(bytes([low]))
@@ -794,7 +859,9 @@ print("Working...")
 if glob.glob("Rom\\*.bin"):
     file_name = glob.glob("Rom\\*.bin")[0].split("\\")[1]
 else:
-    file_name = "NoBinFileFoundInFolder"
+    print("Error: no rom found")
+    time.sleep(3)
+    sys.exit()
 
 shutil.copyfile("Rom\\" + file_name, "ErrorRecalc\\" + file_name)
 
@@ -803,11 +870,12 @@ file = open("ErrorRecalc\\" + file_name, "r+b")
 if config[0]["Value"]["Option1"] == "Y" or config[0]["Value"]["Option2"] == "Y":
     random_enemy(config[0]["Value"]["Option1"] == "Y", config[0]["Value"]["Option2"] == "Y")
 if config[0]["Value"]["Option3"] == "Y":
-    limit_exp()
+    no_exp()
 write_enemy_to_rom()
 if config[0]["Value"]["Option4"] == "Y":
     write_item_to_rom()
     description()
+stats()
 misc()
 read_from_rom()
 
