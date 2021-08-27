@@ -732,12 +732,12 @@ class Main(QWidget):
                 else:
                     enemy_data[i]["Value"]["Level"] = enemy_data[i-1]["Value"]["Level"]
             
-            if enemy_data[i]["Key"] == "Galamoth Head" or enemy_data[i]["Key"] == "Dracula":
+            if "Intro" in enemy_data[i]["Key"]:
                 continue
             
             if resist:
                 for e in Attributes:
-                    if enemy_data[i]["Value"]["IsMainEntry"] or enemy_data[i]["Key"] == "Dracula Hands":
+                    if enemy_data[i]["Value"]["IsMainEntry"]:
                         enemy_data[i]["Value"]["Resistances"][str(e).split(".")[1]] = random.choice(resist_pool)
                     else:
                         enemy_data[i]["Value"]["Resistances"][str(e).split(".")[1]] = enemy_data[i-1]["Value"]["Resistances"][str(e).split(".")[1]]
@@ -812,6 +812,7 @@ class Main(QWidget):
             strong = 0
             immune = 0
             absorb = 0
+            
             for e in Attributes:
                 if enemy_data[i]["Value"]["Resistances"][str(e).split(".")[1]] == 0:
                     weak += e.value
@@ -821,6 +822,12 @@ class Main(QWidget):
                     immune += e.value
                 elif enemy_data[i]["Value"]["Resistances"][str(e).split(".")[1]] == 4:
                     absorb += e.value
+            
+            if enemy_data[i]["Value"]["IsImpervious"]:
+                weak = 0
+                strong = 0
+                immune = 0xFFE0
+                absorb = 0
             
             self.file.seek(int(enemy_content[i]["Value"]["Resistances"]["Weak"], 16))
             self.file.write(weak.to_bytes(2, "little"))
@@ -927,6 +934,7 @@ class Main(QWidget):
             strong = 0
             immune = 0
             absorb = 0
+            
             for e in Attributes:
                 if equipment_data[i]["Value"]["Resistances"][str(e).split(".")[1]] == 0:
                     weak += e.value
@@ -969,6 +977,7 @@ class Main(QWidget):
             self.file.write(int(handitem_data[i]["Value"]["Defense"]).to_bytes(2, "little"))
             
             total = 0
+            
             for e in Attributes:
                 if handitem_data[i]["Value"]["Element"][str(e).split(".")[1]]:
                     total += e.value
