@@ -102,13 +102,12 @@ chance_3 = [
 chance_2 = [
     "Intro Dracula 1",
     "Intro Dracula 2",
-    "Shaft"
+    "Shaft Orb"
 ]
 skip = [
     "Zombie",
     "Warg",
     "Spike ball",
-    "Shaft Orb",
     "Stone Skull"
 ]
 
@@ -179,9 +178,8 @@ class Attributes(Enum):
 #Enemies: b594c - b9f08
 #Shop: 47a3096
 
-#STR: 10cf80
+#Vlads: 10CF2C
 #Quick 99: 117cf6 (0x62 > 0x65)
-#Wing Smash: 134990 
 
 #Config
 
@@ -711,7 +709,9 @@ class Main(QWidget):
             
             if level:
                 if enemy_data[i]["Value"]["IsMainEntry"]:
-                    if enemy_data[i]["Key"] == "Dracula":
+                    if enemy_data[i]["Key"] == "Shaft":
+                        enemy_data[i]["Value"]["Level"] = shaft_level
+                    elif enemy_data[i]["Key"] == "Dracula":
                         enemy_data[i]["Value"]["Level"] = abs(shaft_level - 100)
                     elif enemy_data[i]["Key"] in below_25:
                         enemy_data[i]["Value"]["Level"] = random.choice(below_25_range)
@@ -727,12 +727,12 @@ class Main(QWidget):
                         enemy_data[i]["Value"]["Level"] = random.choice(chance_2_range)
                     else:
                         enemy_data[i]["Value"]["Level"] = random.choice(chance_8_range)
-                    if enemy_data[i]["Key"] == "Shaft":
+                    if enemy_data[i]["Key"] == "Shaft Orb":
                         shaft_level = enemy_data[i]["Value"]["Level"]
                 else:
                     enemy_data[i]["Value"]["Level"] = enemy_data[i-1]["Value"]["Level"]
             
-            if "Intro" in enemy_data[i]["Key"]:
+            if "Intro" in enemy_data[i]["Key"] or "Orb" in enemy_data[i]["Key"]:
                 continue
             
             if resist:
@@ -792,7 +792,11 @@ class Main(QWidget):
             if strength > 0x8000:
                 strength = 0x8000
             self.file.seek(int(enemy_content[i]["Value"]["ContactDamage"], 16))
-            self.file.write(strength.to_bytes(2, "little"))
+            
+            if enemy_data[i]["Value"]["HasContact"]:
+                self.file.write(strength.to_bytes(2, "little"))
+            else:
+                self.file.write((0).to_bytes(2, "little"))
             
             self.file.seek(int(enemy_content[i]["Value"]["ContactDamageType"], 16))
             self.file.write(int(enemy_data[i]["Value"]["ContactDamageType"], 16).to_bytes(2, "little"))
@@ -1106,6 +1110,8 @@ class Main(QWidget):
         self.file.write(int(stat_data["Value"]["Mana"]).to_bytes(2, "little"))
 
     def write_misc(self):
+        #self.file.seek(0x134990)
+        #self.file.write((0).to_bytes(4, "little"))
         self.file.seek(0x4369E87)
         self.file.write(str.encode("KOJI  IGA"))
         self.file.seek(0x4369EE1)
