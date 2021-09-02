@@ -102,12 +102,13 @@ chance_3 = [
 chance_2 = [
     "Intro Dracula 1",
     "Intro Dracula 2",
-    "Shaft Orb"
+    "Shaft"
 ]
 skip = [
     "Zombie",
     "Warg",
     "Spike ball",
+    "Shaft Orb",
     "Stone Skull"
 ]
 
@@ -259,13 +260,13 @@ for i in range(99):
 for i in range(99):
     chance_2_range.append(i+1)
 
-for i in range(7):
+for i in range(9):
     resist_pool.append(0)
 
-for i in range(28):
+for i in range(90):
     resist_pool.append(1)
 
-for i in range(4):
+for i in range(6):
     resist_pool.append(2)
 
 for i in range(2):
@@ -709,9 +710,7 @@ class Main(QWidget):
             
             if level:
                 if enemy_data[i]["Value"]["IsMainEntry"]:
-                    if enemy_data[i]["Key"] == "Shaft":
-                        enemy_data[i]["Value"]["Level"] = shaft_level
-                    elif enemy_data[i]["Key"] == "Dracula":
+                    if enemy_data[i]["Key"] == "Dracula":
                         enemy_data[i]["Value"]["Level"] = abs(shaft_level - 100)
                     elif enemy_data[i]["Key"] in below_25:
                         enemy_data[i]["Value"]["Level"] = random.choice(below_25_range)
@@ -727,12 +726,12 @@ class Main(QWidget):
                         enemy_data[i]["Value"]["Level"] = random.choice(chance_2_range)
                     else:
                         enemy_data[i]["Value"]["Level"] = random.choice(chance_8_range)
-                    if enemy_data[i]["Key"] == "Shaft Orb":
+                    if enemy_data[i]["Key"] == "Shaft":
                         shaft_level = enemy_data[i]["Value"]["Level"]
                 else:
                     enemy_data[i]["Value"]["Level"] = enemy_data[i-1]["Value"]["Level"]
             
-            if "Intro" in enemy_data[i]["Key"] or "Orb" in enemy_data[i]["Key"]:
+            if "Intro" in enemy_data[i]["Key"]:
                 continue
             
             if resist:
