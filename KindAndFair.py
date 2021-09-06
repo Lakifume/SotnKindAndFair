@@ -755,6 +755,9 @@ class Main(QWidget):
         for i in enemy_data:
             i["Value"]["ContactDamageLevel1"] *= 2
             i["Value"]["ContactDamageLevel99"] *= 2
+        for i in handitem_data:
+            if i["Value"]["IsFood"]:
+                i["Value"]["Attack"] *= 2
 
     def random_shop(self):
         for i in shop_data:
