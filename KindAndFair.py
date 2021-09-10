@@ -11,7 +11,7 @@ import shutil
 import requests
 import zipfile
 import subprocess
-from pathlib import Path
+import glob
 from enum import Enum
 
 #Enemy Lists
@@ -348,6 +348,10 @@ class Patch(QThread):
         else:
             shutil.move("ErrorRecalc\\rom.bin", config[4]["Value"]["String"])
         
+        os.chdir("BizhawkCheats")
+        os.rename(glob.glob("*.cht")[0], config[4]["Value"]["String"].split("\\")[-1][:-4].replace(" (Track 1)", "") + ".cht")
+        os.chdir(root)
+        
         writing()
 
 class Update(QThread):
@@ -370,15 +374,6 @@ class Update(QThread):
                 self.updateProgress.emit(progress)
         
         self.progressBar.setLabelText("Extracting...")
-        
-        path = Path("").parent.absolute()
-        for i in os.listdir(path):
-            if i == "KindAndFair.exe" or i == "SotnKindAndFair.zip":
-                continue
-            if os.path.isfile(i):
-                os.remove(i)
-            elif os.path.isdir(i):
-                shutil.rmtree(i)
         
         os.rename("KindAndFair.exe", "OldKindAndFair.exe")
         with zipfile.ZipFile("SotnKindAndFair.zip", "r") as zip_ref:
