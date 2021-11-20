@@ -2,6 +2,7 @@ from PySide6.QtCore import *
 from PySide6.QtGui import *
 from PySide6.QtWidgets import *
 import json
+import configparser
 import sys
 import random
 import math
@@ -16,93 +17,12 @@ from enum import Enum
 
 #Enemy Lists
 
-below_25 = [
+pre_minor = [
     "Slogra",
     "Gaibon"
 ]
-below_50 = [
+minor = [
     "Doppleganger 1"
-]
-chance_7 = [
-    "Gremlin",
-    "Large Slime",
-    "Slime",
-    "Wereskeleton",
-    "Hellfire Beast",
-    "Discus Lord",
-    "Grave Keeper",
-    "Bone Ark",
-    "Lossoth",
-    "Granfaloon",
-    "Granfaloon Part",
-    "Succubus",
-    "Richter"
-]
-chance_4 = [
-    "Flying Zombie Upper",
-    "Flying Zombie Lower",
-    "Lesser Demon",
-    "Gorgon",
-    "Black Panther",
-    "White Dragon",
-    "Fire Demon",
-    "Dodo Bird",
-    "Tombstone",
-    "Jack O'Bones",
-    "Yorick",
-    "Nova Skeleton",
-    "Spectral Sword 3",
-    "Orobourous",
-    "Dragon Rider",
-    "Fire Warg",
-    "Warg Rider",
-    "Bomb Knight",
-    "Bitterfly",
-    "Sniper of Goth",
-    "Ghost Dancer",
-    "Azaghal",
-    "Ctulhu",
-    "Malachi",
-    "Lion",
-    "Tin Man",
-    "Akmodan",
-    "Cloaked Knight",
-    "Darkwing Bat",
-    "Karasuman",
-    "Imp",
-    "Balloon Pod",
-    "Archer",
-    "Scarecrow",
-    "Shmoo",
-    "Beezelbub",
-    "Beezelbub Flies",
-    "Fake Trevor",
-    "Fake Grant",
-    "Fake Sypha",
-    "Medusa",
-    "The Creature",
-    "Minotaur 2",
-    "Werewolf 2",
-    "Guardian",
-    "Dark Octopus",
-    "Cave Troll",
-    "Rock Knight",
-    "Death 1",
-    "Death 2",
-    "Doppleganger 2",
-    "Blue Venus Weed Unflowered",
-    "Blue Venus Weed Flowered"
-]
-chance_3 = [
-    "Frozen Half",
-    "Salome",
-    "Galamoth",
-    "Galamoth Head"
-]
-chance_2 = [
-    "Intro Dracula 1",
-    "Intro Dracula 2",
-    "Shaft"
 ]
 skip = [
     "Zombie",
@@ -111,14 +31,7 @@ skip = [
     "Shaft Orb",
     "Stone Skull"
 ]
-
-below_25_range = []
-below_50_range = []
-chance_8_range = []
-chance_7_range = []
-chance_4_range = []
-chance_3_range = []
-chance_2_range = []
+progress_to_list = {}
 resist_pool = []
 
 log = []
@@ -184,8 +97,9 @@ class Attributes(Enum):
 
 #Config
 
-with open("Data\\config.json", "r") as file_reader:
-    config = json.load(file_reader)
+config = configparser.ConfigParser()
+config.optionxform = str
+config.read("Data\\config.ini")
 
 #Content
 
@@ -222,51 +136,33 @@ with open("Data\\Values\\Stat.json", "r") as file_reader:
     stat_data = json.load(file_reader)
 
 #Filling Enemy Lists
+for i in range(19):
+    list = []
+    for e in range(99):
+        if e <= 49:
+            for o in range(abs(i - 19)):
+                list.append(e+1)
+        else:
+            list.append(e+1)
+    progress_to_list[str(i)] = list
 
+list = []
 for i in range(25):
-    below_25_range.append(i+1)
+    list.append(i+1)
+progress_to_list["PreMinor"] = list
 
+list = []
 for i in range(50):
-    below_50_range.append(i+1)
+    list.append(i+1)
+progress_to_list["Minor"] = list
 
-for i in range(99):
-    if i <= 49:
-        for e in range(7):
-            chance_8_range.append(i+1)
-    else:
-        chance_8_range.append(i+1)
-
-for i in range(99):
-    if i <= 49:
-        for e in range(6):
-            chance_7_range.append(i+1)
-    else:
-        chance_7_range.append(i+1)
-
-for i in range(99):
-    if i <= 49:
-        for e in range(3):
-            chance_4_range.append(i+1)
-    else:
-        chance_4_range.append(i+1)
-
-for i in range(99):
-    if i <= 49:
-        for e in range(2):
-            chance_3_range.append(i+1)
-    else:
-        chance_3_range.append(i+1)
-
-for i in range(99):
-    chance_2_range.append(i+1)
-
-for i in range(9):
+for i in range(7):
     resist_pool.append(0)
 
-for i in range(90):
+for i in range(42):
     resist_pool.append(1)
 
-for i in range(6):
+for i in range(4):
     resist_pool.append(2)
 
 for i in range(2):
@@ -276,7 +172,6 @@ for i in range(1):
     resist_pool.append(4)
 
 #Filling Shop Lists
-
 i = 10
 while i <= 90:
     for e in range(10):
@@ -321,8 +216,8 @@ while i <= 9000:
 #Functions
 
 def writing():
-    with open("Data\\config.json", "w") as file_writer:
-        file_writer.write(json.dumps(config, indent=2))
+    with open("Data\\config.ini", "w") as file_writer:
+        config.write(file_writer)
     sys.exit()
 
 #Threads
@@ -343,14 +238,12 @@ class Patch(QThread):
         
         self.updateProgress.emit(1)
         
-        if config[5]["Value"]["String"] and os.path.isdir(config[5]["Value"]["String"]):
-            shutil.move("ErrorRecalc\\rom.bin", config[5]["Value"]["String"] + "\\" + config[4]["Value"]["String"].split("\\")[-1])
+        if config.get("Misc", "sOutputFolder") and os.path.isdir(config.get("Misc", "sOutputFolder")):
+            shutil.move("ErrorRecalc\\rom.bin", config.get("Misc", "sOutputFolder") + "\\" + config.get("Misc", "sInputFile").split("\\")[-1])
         else:
-            shutil.move("ErrorRecalc\\rom.bin", config[4]["Value"]["String"])
+            shutil.move("ErrorRecalc\\rom.bin", config.get("Misc", "sInputFile"))
         
-        os.chdir("BizhawkCheats")
-        os.rename(glob.glob("*.cht")[0], config[4]["Value"]["String"].split("\\")[-1][:-4].replace(" (Track 1)", "") + ".cht")
-        os.chdir(root)
+        shutil.copyfile("BizhawkCheats\\Cheats.cht", config.get("Misc", "sInputFile").split("\\")[-1][:-4].replace(" (Track 1)", "") + ".cht")
         
         writing()
 
@@ -410,96 +303,94 @@ class Main(QWidget):
 
         #Groupboxes
 
-        p = re.compile(r'(\S)([A-Z])')
-
         box_1_grid = QGridLayout()
-        self.box_1 = QGroupBox(re.sub(p, r"\1 \2", config[0]["Key"]))
+        self.box_1 = QGroupBox("Enemy Randomization")
         self.box_1.setLayout(box_1_grid)
         grid.addWidget(self.box_1, 0, 0, 1, 1)
 
         box_2_grid = QGridLayout()
-        self.box_2 = QGroupBox(re.sub(p, r"\1 \2", config[1]["Key"]))
+        self.box_2 = QGroupBox("Enemy Damage")
         self.box_2.setLayout(box_2_grid)
         grid.addWidget(self.box_2, 1, 0, 1, 1)
 
         box_3_grid = QGridLayout()
-        self.box_3 = QGroupBox(re.sub(p, r"\1 \2", config[2]["Key"]))
+        self.box_3 = QGroupBox("Shop Randomization")
         self.box_3.setLayout(box_3_grid)
         grid.addWidget(self.box_3, 0, 1, 1, 1)
 
         box_4_grid = QGridLayout()
-        self.box_4 = QGroupBox(re.sub(p, r"\1 \2", config[3]["Key"]))
+        self.box_4 = QGroupBox("Extra")
         self.box_4.setLayout(box_4_grid)
         grid.addWidget(self.box_4, 2, 0, 1, 2)
 
         box_5_grid = QGridLayout()
-        self.box_5 = QGroupBox(re.sub(p, r"\1 \2", config[4]["Key"]))
+        self.box_5 = QGroupBox("Input File")
         self.box_5.setLayout(box_5_grid)
         grid.addWidget(self.box_5, 3, 0, 1, 1)
 
         box_6_grid = QGridLayout()
-        self.box_6 = QGroupBox(re.sub(p, r"\1 \2", config[5]["Key"]))
+        self.box_6 = QGroupBox("Output Folder")
         self.box_6.setLayout(box_6_grid)
         grid.addWidget(self.box_6, 3, 1, 1, 1)
         
         #Checkboxes
 
-        self.check_box_1 = QCheckBox(re.sub(p, r"\1 \2", config[0]["Value"]["Option1Id"]), self)
+        self.check_box_1 = QCheckBox("Enemy Levels")
         self.check_box_1.setToolTip("Randomize the level of every enemy. Stats that scale with \nlevel include HP, attack, defense and EXP.\nPicking this option will disable the removal of your\nstarting equipment from Death's cutscene.")
         self.check_box_1.stateChanged.connect(self.check_box_1_changed)
         box_1_grid.addWidget(self.check_box_1, 0, 0)
 
-        self.check_box_2 = QCheckBox(re.sub(p, r"\1 \2", config[0]["Value"]["Option2Id"]), self)
+        self.check_box_2 = QCheckBox("Enemy Tolerances")
         self.check_box_2.setToolTip("Randomize the resistance/weakness attributes of every enemy.")
         self.check_box_2.stateChanged.connect(self.check_box_2_changed)
         box_1_grid.addWidget(self.check_box_2, 1, 0)
         
-        self.check_box_3 = QCheckBox(re.sub(p, r"\1 \2", config[2]["Value"]["Option1Id"]), self)
+        self.check_box_3 = QCheckBox("Item Cost")
         self.check_box_3.setToolTip("Randomize shop prices. Does not affect the relic slot.")
         self.check_box_3.stateChanged.connect(self.check_box_3_changed)
         box_3_grid.addWidget(self.check_box_3, 0, 0)
         
-        self.check_box_4 = QCheckBox(re.sub(p, r"\1 \2", config[3]["Value"]["Option1Id"]), self)
+        self.check_box_4 = QCheckBox("Level 1 Locked")
         self.check_box_4.setToolTip("Set all enemy EXP to 0, locking you at level 1 for the entire game.")
         self.check_box_4.stateChanged.connect(self.check_box_4_changed)
         box_4_grid.addWidget(self.check_box_4, 0, 0)
 
         #RadioButtons
         
-        self.radio_button_1 = QRadioButton(re.sub(p, r"\1 \2", config[1]["Value"]["Option1Id"]))
+        self.radio_button_1 = QRadioButton("x1")
         self.radio_button_1.setToolTip("Set the scaling of damage received.")
         self.radio_button_1.toggled.connect(self.radio_button_group_1_checked)
         box_2_grid.addWidget(self.radio_button_1, 0, 0)
         
-        self.radio_button_2 = QRadioButton(re.sub(p, r"\1 \2", config[1]["Value"]["Option2Id"]))
+        self.radio_button_2 = QRadioButton("x2")
         self.radio_button_2.setToolTip("Set the scaling of damage received.")
         self.radio_button_2.toggled.connect(self.radio_button_group_1_checked)
         box_2_grid.addWidget(self.radio_button_2, 1, 0)
         
         #InitCheckboxes
         
-        if config[0]["Value"]["Option1Value"]:
+        if config.getboolean("EnemyRandomization", "bEnemyLevels"):
             self.check_box_1.setChecked(True)
-        if config[0]["Value"]["Option2Value"]:
+        if config.getboolean("EnemyRandomization", "bEnemyTolerances"):
             self.check_box_2.setChecked(True)
-        if config[2]["Value"]["Option1Value"]:
+        if config.getboolean("ShopRandomization", "bItemCost"):
             self.check_box_3.setChecked(True)
-        if config[3]["Value"]["Option1Value"]:
+        if config.getboolean("Extra", "bLevelOneLocked"):
             self.check_box_4.setChecked(True)
         
-        if config[1]["Value"]["Option1Value"]:
+        if config.getboolean("EnemyDamage", "bx1"):
             self.radio_button_1.setChecked(True)
-        elif config[1]["Value"]["Option2Value"]:
+        else:
             self.radio_button_2.setChecked(True)
         
         #TextField
 
-        self.input_field = QLineEdit(config[4]["Value"]["String"], self)
+        self.input_field = QLineEdit(config.get("Misc", "sInputFile"))
         self.input_field.setToolTip("Path to your input rom.")
         self.input_field.textChanged[str].connect(self.new_input)
         box_5_grid.addWidget(self.input_field, 0, 0)
         
-        self.output_field = QLineEdit(config[5]["Value"]["String"], self)
+        self.output_field = QLineEdit(config.get("Misc", "sOutputFolder"))
         self.output_field.setToolTip("Path to your output folder.")
         self.output_field.textChanged[str].connect(self.new_output)
         box_6_grid.addWidget(self.output_field, 0, 0)
@@ -559,41 +450,41 @@ class Main(QWidget):
 
     def check_box_1_changed(self):
         if self.check_box_1.isChecked():
-            config[0]["Value"]["Option1Value"] = True
+            config.set("EnemyRandomization", "bEnemyLevels", "true")
         else:
-            config[0]["Value"]["Option1Value"] = False
+            config.set("EnemyRandomization", "bEnemyLevels", "false")
 
     def check_box_2_changed(self):
         if self.check_box_2.isChecked():
-            config[0]["Value"]["Option2Value"] = True
+            config.set("EnemyRandomization", "bEnemyTolerances", "true")
         else:
-            config[0]["Value"]["Option2Value"] = False
+            config.set("EnemyRandomization", "bEnemyTolerances", "false")
 
     def check_box_3_changed(self):
         if self.check_box_3.isChecked():
-            config[2]["Value"]["Option1Value"] = True
+            config.set("ShopRandomization", "bItemCost", "true")
         else:
-            config[2]["Value"]["Option1Value"] = False
+            config.set("ShopRandomization", "bItemCost", "false")
 
     def check_box_4_changed(self):
         if self.check_box_4.isChecked():
-            config[3]["Value"]["Option1Value"] = True
+            config.set("Extra", "bLevelOneLocked", "true")
         else:
-            config[3]["Value"]["Option1Value"] = False
+            config.set("Extra", "bLevelOneLocked", "false")
 
     def radio_button_group_1_checked(self):
         if self.radio_button_1.isChecked():
-            config[1]["Value"]["Option1Value"] = True
-            config[1]["Value"]["Option2Value"] = False
+            config.set("EnemyDamage", "bx1", "true")
+            config.set("EnemyDamage", "bx2", "false")
         else:
-            config[1]["Value"]["Option1Value"] = False
-            config[1]["Value"]["Option2Value"] = True
+            config.set("EnemyDamage", "bx1", "false")
+            config.set("EnemyDamage", "bx2", "true")
     
     def new_input(self, input):
-        config[4]["Value"]["String"] = input
+        config.set("Misc", "sInputFile", input)
     
     def new_output(self, output):
-        config[5]["Value"]["String"] = output
+        config.set("Misc", "sOutputFolder", output)
     
     def setProgress(self, progress):
         self.progressBar.setValue(progress)
@@ -602,22 +493,22 @@ class Main(QWidget):
         self.setEnabled(False)
         QApplication.processEvents()
         
-        if not config[4]["Value"]["String"] or not os.path.isfile(config[4]["Value"]["String"]):
+        if not config.get("Misc", "sInputFile") or not os.path.isfile(config.get("Misc", "sInputFile")):
             self.no_path()
             self.setEnabled(True)
             return
         
-        shutil.copyfile(config[4]["Value"]["String"], "ErrorRecalc\\rom.bin")
+        shutil.copyfile(config.get("Misc", "sInputFile"), "ErrorRecalc\\rom.bin")
         
         self.file = open("ErrorRecalc\\rom.bin", "r+b")
 
-        if config[0]["Value"]["Option1Value"] or config[0]["Value"]["Option2Value"]:
-            self.random_enemy(config[0]["Value"]["Option1Value"], config[0]["Value"]["Option2Value"])
-        if config[1]["Value"]["Option2Value"]:
+        if config.getboolean("EnemyRandomization", "bEnemyLevels") or config.getboolean("EnemyRandomization", "bEnemyTolerances"):
+            self.random_enemy(config.getboolean("EnemyRandomization", "bEnemyLevels"), config.getboolean("EnemyRandomization", "bEnemyTolerances"))
+        if config.getboolean("EnemyDamage", "bx2"):
             self.double_damage()
-        if config[2]["Value"]["Option1Value"]:
+        if config.getboolean("ShopRandomization", "bItemCost"):
             self.random_shop()
-        if config[3]["Value"]["Option1Value"]:
+        if config.getboolean("Extra", "bLevelOneLocked"):
             self.no_exp()
         self.write_enemy()
         self.write_shop()
@@ -707,20 +598,16 @@ class Main(QWidget):
                 if enemy_data[i]["Value"]["IsMainEntry"]:
                     if enemy_data[i]["Key"] == "Dracula":
                         enemy_data[i]["Value"]["Level"] = abs(shaft_level - 100)
-                    elif enemy_data[i]["Key"] in below_25:
-                        enemy_data[i]["Value"]["Level"] = random.choice(below_25_range)
-                    elif enemy_data[i]["Key"] in below_50:
-                        enemy_data[i]["Value"]["Level"] = random.choice(below_50_range)
-                    elif enemy_data[i]["Key"] in chance_7:
-                        enemy_data[i]["Value"]["Level"] = random.choice(chance_7_range)
-                    elif enemy_data[i]["Key"] in chance_4:
-                        enemy_data[i]["Value"]["Level"] = random.choice(chance_4_range)
-                    elif enemy_data[i]["Key"] in chance_3:
-                        enemy_data[i]["Value"]["Level"] = random.choice(chance_3_range)
-                    elif enemy_data[i]["Key"] in chance_2:
-                        enemy_data[i]["Value"]["Level"] = random.choice(chance_2_range)
+                    elif enemy_data[i]["Key"] in pre_minor:
+                        enemy_data[i]["Value"]["Level"] = random.choice(progress_to_list["PreMinor"])
+                    elif enemy_data[i]["Key"] in minor:
+                        enemy_data[i]["Value"]["Level"] = random.choice(progress_to_list["Minor"])
+                    elif enemy_data[i]["Value"]["Level"] > 44:
+                        enemy_data[i]["Value"]["Level"] = random.choice(progress_to_list["18"])
+                    elif enemy_data[i]["Value"]["Level"] > 42:
+                        enemy_data[i]["Value"]["Level"] = random.choice(progress_to_list["17"])
                     else:
-                        enemy_data[i]["Value"]["Level"] = random.choice(chance_8_range)
+                        enemy_data[i]["Value"]["Level"] = random.choice(progress_to_list[str(int(enemy_data[i]["Value"]["Level"]/(40/17)))])
                     if enemy_data[i]["Key"] == "Shaft":
                         shaft_level = enemy_data[i]["Value"]["Level"]
                 else:
@@ -736,9 +623,9 @@ class Main(QWidget):
                     else:
                         enemy_data[i]["Value"]["Resistances"][str(e).split(".")[1]] = enemy_data[i-1]["Value"]["Resistances"][str(e).split(".")[1]]
                 
-                if enemy_data[i]["Key"] in below_25 and enemy_data[i]["Value"]["Resistances"]["HIT"] > 2:
+                if enemy_data[i]["Key"] in pre_minor and enemy_data[i]["Value"]["Resistances"]["HIT"] > 2:
                     enemy_data[i]["Value"]["Resistances"]["HIT"] = 2
-                elif enemy_data[i]["Key"] in below_50 and enemy_data[i]["Value"]["Resistances"]["CUT"] > 2:
+                elif enemy_data[i]["Key"] in minor and enemy_data[i]["Value"]["Resistances"]["CUT"] > 2:
                     enemy_data[i]["Value"]["Resistances"]["CUT"] = 2
         
         if level:
@@ -1183,10 +1070,12 @@ class Main(QWidget):
         except requests.ConnectionError:
             self.setEnabled(True)
             return
-        for i in config:
-            if i["Key"] == "Version":
-                tag = i["Value"]["Tag"]
-        if api["tag_name"] != tag:
+        try:
+            tag = api["tag_name"]
+        except KeyError:
+            self.setEnabled(True)
+            return
+        if tag != config.get("Misc", "sVersion"):
             choice = QMessageBox.question(self, "Auto Updater", "New version found:\n\n" + api["body"] + "\n\nUpdate ?", QMessageBox.Yes | QMessageBox.No)
             if choice == QMessageBox.Yes:
                 self.progressBar = QProgressDialog("Downloading...", None, 0, api["assets"][0]["size"], self)
