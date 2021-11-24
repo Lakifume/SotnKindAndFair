@@ -85,13 +85,6 @@ class Attributes(Enum):
     LIG = 0x4000
     FLA = 0x8000
 
-#Handitem: b1118 - b37e0
-#Special: b382c - b429c
-#Equip: b4308 - b5076
-#???
-#Enemies: b594c - b9f08
-#Shop: 47a3096
-
 #Vlads: 10CF2C
 #Quick 99: 117cf6 (0x62 > 0x65)
 
@@ -115,6 +108,9 @@ with open("Data\\Offsets\\HandItem.json", "r") as file_reader:
 with open("Data\\Offsets\\Shop.json", "r") as file_reader:
     shop_content = json.load(file_reader)
 
+with open("Data\\Offsets\\Spell.json", "r") as file_reader:
+    spell_content = json.load(file_reader)
+
 with open("Data\\Offsets\\Stat.json", "r") as file_reader:
     stat_content = json.load(file_reader)
 
@@ -131,6 +127,9 @@ with open("Data\\Values\\HandItem.json", "r") as file_reader:
 
 with open("Data\\Values\\Shop.json", "r") as file_reader:
     shop_data = json.load(file_reader)
+
+with open("Data\\Values\\Spell.json", "r") as file_reader:
+    spell_data = json.load(file_reader)
 
 with open("Data\\Values\\Stat.json", "r") as file_reader:
     stat_data = json.load(file_reader)
@@ -222,21 +221,24 @@ def writing():
 
 #Threads
 
+class Signaller(QObject):
+    progress = Signal(int)
+    finished = Signal()
+
 class Patch(QThread):
-    updateProgress = Signal(int)
-    
     def __init__(self):
         QThread.__init__(self)
+        self.signaller = Signaller()
 
     def run(self):
-        self.updateProgress.emit(0)
+        self.signaller.progress.emit(0)
         
         root = os.getcwd()
         os.chdir("ErrorRecalc")
         os.system("cmd /c error_recalc.exe \"rom.bin\"")
         os.chdir(root)
         
-        self.updateProgress.emit(1)
+        self.signaller.progress.emit(1)
         
         if config.get("Misc", "sOutputFolder") and os.path.isdir(config.get("Misc", "sOutputFolder")):
             shutil.move("ErrorRecalc\\rom.bin", config.get("Misc", "sOutputFolder") + "\\" + config.get("Misc", "sInputFile").split("\\")[-1])
@@ -245,26 +247,25 @@ class Patch(QThread):
         
         shutil.copyfile("BizhawkCheats\\Cheats.cht", config.get("Misc", "sInputFile").split("\\")[-1][:-4].replace(" (Track 1)", "") + ".cht")
         
-        writing()
+        self.signaller.finished.emit()
 
 class Update(QThread):
-    updateProgress = Signal(int)
-    
     def __init__(self, progressBar, api):
         QThread.__init__(self)
+        self.signaller = Signaller()
         self.progressBar = progressBar
         self.api = api
 
     def run(self):
         progress = 0
-        self.updateProgress.emit(progress)
+        self.signaller.progress.emit(progress)
         
         with open("SotnKindAndFair.zip", "wb") as file_writer:
             url = requests.get(self.api["assets"][0]["browser_download_url"], stream=True)
             for data in url.iter_content(chunk_size=4096):
                 file_writer.write(data)
                 progress += len(data)
-                self.updateProgress.emit(progress)
+                self.signaller.progress.emit(progress)
         
         self.progressBar.setLabelText("Extracting...")
         
@@ -308,20 +309,25 @@ class Main(QWidget):
         self.box_1.setLayout(box_1_grid)
         grid.addWidget(self.box_1, 0, 0, 1, 1)
 
-        box_2_grid = QGridLayout()
-        self.box_2 = QGroupBox("Enemy Damage")
-        self.box_2.setLayout(box_2_grid)
-        grid.addWidget(self.box_2, 1, 0, 1, 1)
-
         box_3_grid = QGridLayout()
         self.box_3 = QGroupBox("Shop Randomization")
         self.box_3.setLayout(box_3_grid)
         grid.addWidget(self.box_3, 0, 1, 1, 1)
 
         box_4_grid = QGridLayout()
-        self.box_4 = QGroupBox("Extra")
+        self.box_4 = QGroupBox("Extra Tweaks")
         self.box_4.setLayout(box_4_grid)
-        grid.addWidget(self.box_4, 2, 0, 1, 2)
+        grid.addWidget(self.box_4, 1, 0, 1, 2)
+
+        box_2_grid = QGridLayout()
+        self.box_2 = QGroupBox("Enemy Damage")
+        self.box_2.setLayout(box_2_grid)
+        grid.addWidget(self.box_2, 2, 0, 1, 1)
+
+        box_7_grid = QGridLayout()
+        self.box_7 = QGroupBox("Special Mode")
+        self.box_7.setLayout(box_7_grid)
+        grid.addWidget(self.box_7, 2, 1, 1, 1)
 
         box_5_grid = QGridLayout()
         self.box_5 = QGroupBox("Input File")
@@ -354,18 +360,33 @@ class Main(QWidget):
         self.check_box_4.setToolTip("Set all enemy EXP to 0, locking you at level 1 for the entire game.")
         self.check_box_4.stateChanged.connect(self.check_box_4_changed)
         box_4_grid.addWidget(self.check_box_4, 0, 0)
+        
+        self.check_box_5 = QCheckBox("Bigtoss Only")
+        self.check_box_5.setToolTip("Any enemy attack that is not overriden by your defense will bigtoss.")
+        self.check_box_5.stateChanged.connect(self.check_box_5_changed)
+        box_4_grid.addWidget(self.check_box_5, 1, 0)
 
         #RadioButtons
         
         self.radio_button_1 = QRadioButton("x1")
-        self.radio_button_1.setToolTip("Set the scaling of damage received.")
+        self.radio_button_1.setToolTip("Enemy damage is close to vanilla.")
         self.radio_button_1.toggled.connect(self.radio_button_group_1_checked)
         box_2_grid.addWidget(self.radio_button_1, 0, 0)
         
         self.radio_button_2 = QRadioButton("x2")
-        self.radio_button_2.setToolTip("Set the scaling of damage received.")
+        self.radio_button_2.setToolTip("Base enemy attack power is doubled.")
         self.radio_button_2.toggled.connect(self.radio_button_group_1_checked)
         box_2_grid.addWidget(self.radio_button_2, 1, 0)
+        
+        self.radio_button_3 = QRadioButton("None")
+        self.radio_button_3.setToolTip("No special game mode.")
+        self.radio_button_3.toggled.connect(self.radio_button_group_2_checked)
+        box_7_grid.addWidget(self.radio_button_3, 0, 0)
+        
+        self.radio_button_4 = QRadioButton("God Mode")
+        self.radio_button_4.setToolTip("Alucard is invincible and can kill enemies by running into them.")
+        self.radio_button_4.toggled.connect(self.radio_button_group_2_checked)
+        box_7_grid.addWidget(self.radio_button_4, 1, 0)
         
         #InitCheckboxes
         
@@ -375,13 +396,20 @@ class Main(QWidget):
             self.check_box_2.setChecked(True)
         if config.getboolean("ShopRandomization", "bItemCost"):
             self.check_box_3.setChecked(True)
-        if config.getboolean("Extra", "bLevelOneLocked"):
+        if config.getboolean("ExtraTweaks", "bLevelOneLocked"):
             self.check_box_4.setChecked(True)
+        if config.getboolean("ExtraTweaks", "bBigtossOnly"):
+            self.check_box_5.setChecked(True)
         
         if config.getboolean("EnemyDamage", "bx1"):
             self.radio_button_1.setChecked(True)
         else:
             self.radio_button_2.setChecked(True)
+        
+        if config.getboolean("SpecialMode", "bNone"):
+            self.radio_button_3.setChecked(True)
+        else:
+            self.radio_button_4.setChecked(True)
         
         #TextField
 
@@ -468,9 +496,15 @@ class Main(QWidget):
 
     def check_box_4_changed(self):
         if self.check_box_4.isChecked():
-            config.set("Extra", "bLevelOneLocked", "true")
+            config.set("ExtraTweaks", "bLevelOneLocked", "true")
         else:
-            config.set("Extra", "bLevelOneLocked", "false")
+            config.set("ExtraTweaks", "bLevelOneLocked", "false")
+
+    def check_box_5_changed(self):
+        if self.check_box_5.isChecked():
+            config.set("ExtraTweaks", "bBigtossOnly", "true")
+        else:
+            config.set("ExtraTweaks", "bBigtossOnly", "false")
 
     def radio_button_group_1_checked(self):
         if self.radio_button_1.isChecked():
@@ -479,6 +513,14 @@ class Main(QWidget):
         else:
             config.set("EnemyDamage", "bx1", "false")
             config.set("EnemyDamage", "bx2", "true")
+
+    def radio_button_group_2_checked(self):
+        if self.radio_button_3.isChecked():
+            config.set("SpecialMode", "bNone", "true")
+            config.set("SpecialMode", "bGodMode", "false")
+        else:
+            config.set("SpecialMode", "bNone", "false")
+            config.set("SpecialMode", "bGodMode", "true")
     
     def new_input(self, input):
         config.set("Misc", "sInputFile", input)
@@ -486,8 +528,15 @@ class Main(QWidget):
     def new_output(self, output):
         config.set("Misc", "sOutputFolder", output)
     
-    def setProgress(self, progress):
+    def set_progress(self, progress):
         self.progressBar.setValue(progress)
+    
+    def patch_finished(self):
+        box = QMessageBox(self)
+        box.setWindowTitle("Done")
+        box.setText("Rom patched !")
+        box.exec()
+        writing()
 
     def button_1_clicked(self):
         self.setEnabled(False)
@@ -504,17 +553,23 @@ class Main(QWidget):
 
         if config.getboolean("EnemyRandomization", "bEnemyLevels") or config.getboolean("EnemyRandomization", "bEnemyTolerances"):
             self.random_enemy(config.getboolean("EnemyRandomization", "bEnemyLevels"), config.getboolean("EnemyRandomization", "bEnemyTolerances"))
-        if config.getboolean("EnemyDamage", "bx2"):
-            self.double_damage()
         if config.getboolean("ShopRandomization", "bItemCost"):
             self.random_shop()
-        if config.getboolean("Extra", "bLevelOneLocked"):
+        if config.getboolean("ExtraTweaks", "bLevelOneLocked"):
             self.no_exp()
+        if config.getboolean("ExtraTweaks", "bBigtossOnly"):
+            self.all_toss()
+        if config.getboolean("EnemyDamage", "bx2"):
+            self.double_damage()
+        if config.getboolean("SpecialMode", "bGodMode"):
+            self.god_mode()
         self.write_enemy()
         self.write_shop()
+        self.write_equip()
         self.write_item()
-        self.write_description()
+        self.write_spell()
         self.write_stats()
+        self.write_description()
         self.write_misc()
         self.read_enemy()
         
@@ -523,11 +578,10 @@ class Main(QWidget):
         self.progressBar = QProgressDialog("Patching...", None, 0, 1, self)
         self.progressBar.setWindowTitle("Status")
         self.progressBar.setWindowModality(Qt.WindowModal)
-        self.progressBar.setAutoClose(False)
-        self.progressBar.setAutoReset(False)
         
         self.worker = Patch()
-        self.worker.updateProgress.connect(self.setProgress)
+        self.worker.signaller.progress.connect(self.set_progress)
+        self.worker.signaller.finished.connect(self.patch_finished)
         self.worker.start()
     
     def button_2_clicked(self):
@@ -633,14 +687,6 @@ class Main(QWidget):
                 self.file.seek(i)
                 self.file.write((0).to_bytes(2, "little"))
 
-    def double_damage(self):
-        for i in enemy_data:
-            i["Value"]["ContactDamageLevel1"] *= 2
-            i["Value"]["ContactDamageLevel99"] *= 2
-        for i in handitem_data:
-            if i["Value"]["IsFood"]:
-                i["Value"]["Attack"] *= 2
-
     def random_shop(self):
         for i in shop_data:
             if i["Key"] == "Slot1":
@@ -659,6 +705,37 @@ class Main(QWidget):
         for i in enemy_data:
             i["Value"]["ExperienceLevel1"] = 0
             i["Value"]["ExperienceLevel99"] = 0
+
+    def all_toss(self):
+        for i in enemy_data:
+            i["Value"]["ContactDamageType"] = "0x{:04x}".format(int(int(i["Value"]["ContactDamageType"], 16)/16)*16 + 5)
+            for e in range(len(i["Value"]["AttackDamageType"])):
+                i["Value"]["AttackDamageType"][e] = "0x{:04x}".format(int(int(i["Value"]["AttackDamageType"][e], 16)/16)*16 + 5)
+
+    def double_damage(self):
+        for i in enemy_data:
+            i["Value"]["ContactDamageLevel1"] *= 2
+            i["Value"]["ContactDamageLevel99"] *= 2
+        for i in handitem_data:
+            if i["Value"]["IsFood"]:
+                i["Value"]["Attack"] *= 2
+    
+    def god_mode(self):
+        for i in enemy_data:
+            if i["Value"]["HealthLevel1"] == 32767 or "Intro" in i["Key"]:
+                continue
+            i["Value"]["HealthLevel1"] = 0
+            i["Value"]["HealthLevel99"] = 0
+            i["Value"]["ExperienceLevel1"] = 0
+            i["Value"]["ExperienceLevel99"] = 0
+        self.file.seek(0x126626)
+        self.file.write((0).to_bytes(1, "little"))
+        self.file.seek(0x3A06F52)
+        self.file.write((0).to_bytes(1, "little"))
+        self.file.seek(0x59EB092)
+        self.file.write((4096).to_bytes(2, "little"))
+        self.file.seek(0x59EBC7A)
+        self.file.write((4096).to_bytes(2, "little"))
     
     def write_enemy(self):
         for i in range(len(enemy_content)):
@@ -762,7 +839,7 @@ class Main(QWidget):
             self.file.seek(int(shop_content[i]["Value"]["Price"], 16))
             self.file.write(int(shop_data[i]["Value"]["Price"]).to_bytes(4, "little"))
 
-    def write_item(self):
+    def write_equip(self):
         for i in range(len(equipment_content)):
             if equipment_data[i]["Value"]["Attack"] < -0x7FFF:
                 equipment_data[i]["Value"]["Attack"] = -0x7FFF
@@ -844,7 +921,8 @@ class Main(QWidget):
             
             self.file.seek(int(equipment_content[i]["Value"]["Resistances"]["Absorb"], 16))
             self.file.write(absorb.to_bytes(2, "little"))
-            
+    
+    def write_item(self):
         for i in range(len(handitem_content)):
             if handitem_data[i]["Value"]["Attack"] < -0x7FFF:
                 handitem_data[i]["Value"]["Attack"] = -0x7FFF
@@ -912,37 +990,34 @@ class Main(QWidget):
             self.file.seek(int(handitem_content[i]["Value"]["Extra"], 16))
             self.file.write(int(handitem_data[i]["Value"]["Extra"], 16).to_bytes(1, "little"))
     
-    def write_description(self):
-        self.file.seek(0xF2400)
-        self.file.write(str.encode("Shocking"))
-        self.file.seek(0xF2538)
-        self.file.write(str.encode(" flail         "))
-        self.file.seek(0xF2736)
-        self.file.write(str.encode("N"))
-        self.file.seek(0xF3BF8)
-        self.file.write(str.encode("Immunity to all status effects"))
-        self.file.seek(0xF3C75)
-        self.file.write(str.encode("O"))
-        self.file.seek(0xF3C9A)
-        self.file.write(str.encode("T  "))
-        self.file.seek(0xF43FC)
-        self.file.write(str.encode("Immune to water "))
-        self.file.seek(0xF4420)
-        self.file.write(str.encode("Affection for cats          "))
-        self.file.seek(0xF4450)
-        self.file.write(str.encode("Immune to lightning         "))
-        self.file.seek(0xF4480)
-        self.file.write(str.encode("Immune to darkness          "))
-        self.file.seek(0xF44B0)
-        self.file.write(str.encode("Immune to ice            "))
-        self.file.seek(0xF44DC)
-        self.file.write(str.encode("Immune to fire            "))
-        self.file.seek(0xF4508)
-        self.file.write(str.encode("Immune to light           "))
-        self.file.seek(0xF4844)
-        self.file.write(str.encode("Resistant to evil attacks "))
-        self.file.seek(0xF486C)
-        self.file.write(str.encode("Immunity to all status effects"))
+    def write_spell(self):
+        for i in range(len(spell_content)):
+            if spell_data[i]["Value"]["ManaCost"] < -0x7F:
+                spell_data[i]["Value"]["ManaCost"] = -0x7F
+            if spell_data[i]["Value"]["ManaCost"] > 0x80:
+                spell_data[i]["Value"]["ManaCost"] = 0x80
+            if spell_data[i]["Value"]["ManaCost"] < 0:
+                spell_data[i]["Value"]["ManaCost"] += 0x100
+            self.file.seek(int(spell_content[i]["Value"]["ManaCost"], 16))
+            self.file.write(int(spell_data[i]["Value"]["ManaCost"]).to_bytes(1, "little"))
+            
+            total = 0
+            
+            for e in Attributes:
+                if spell_data[i]["Value"]["Element"][str(e).split(".")[1]]:
+                    total += e.value
+            
+            self.file.seek(int(spell_content[i]["Value"]["Element"], 16))
+            self.file.write(total.to_bytes(2, "little"))
+            
+            if spell_data[i]["Value"]["Attack"] < -0x7FFF:
+                spell_data[i]["Value"]["Attack"] = -0x7FFF
+            if spell_data[i]["Value"]["Attack"] > 0x8000:
+                spell_data[i]["Value"]["Attack"] = 0x8000
+            if spell_data[i]["Value"]["Attack"] < 0:
+                spell_data[i]["Value"]["Attack"] += 0x10000
+            self.file.seek(int(spell_content[i]["Value"]["Attack"], 16))
+            self.file.write(int(spell_data[i]["Value"]["Attack"]).to_bytes(2, "little"))
 
     def write_stats(self):
         if stat_data["Value"]["StrConIntLck"] < -0x7FFF:
@@ -992,10 +1067,42 @@ class Main(QWidget):
             stat_data["Value"]["Mana"] += 0x10000
         self.file.seek(int(stat_content["Value"]["Mana"], 16))
         self.file.write(int(stat_data["Value"]["Mana"]).to_bytes(2, "little"))
+    
+    def write_description(self):
+        self.file.seek(0xF2400)
+        self.file.write(str.encode("Shocking"))
+        self.file.seek(0xF2538)
+        self.file.write(str.encode(" flail         "))
+        self.file.seek(0xF2736)
+        self.file.write(str.encode("N"))
+        self.file.seek(0xF3BF8)
+        self.file.write(str.encode("Immunity to all status effects"))
+        self.file.seek(0xF3C75)
+        self.file.write(str.encode("O"))
+        self.file.seek(0xF3C9A)
+        self.file.write(str.encode("T  "))
+        self.file.seek(0xF43FC)
+        self.file.write(str.encode("Immune to water "))
+        self.file.seek(0xF4420)
+        self.file.write(str.encode("Affection for cats          "))
+        self.file.seek(0xF4450)
+        self.file.write(str.encode("Immune to lightning         "))
+        self.file.seek(0xF4480)
+        self.file.write(str.encode("Immune to darkness          "))
+        self.file.seek(0xF44B0)
+        self.file.write(str.encode("Immune to ice            "))
+        self.file.seek(0xF44DC)
+        self.file.write(str.encode("Immune to fire            "))
+        self.file.seek(0xF4508)
+        self.file.write(str.encode("Immune to light           "))
+        self.file.seek(0xF4844)
+        self.file.write(str.encode("Resistant to evil attacks "))
+        self.file.seek(0xF486C)
+        self.file.write(str.encode("Immunity to all status effects"))
 
     def write_misc(self):
-        #self.file.seek(0x134990)
-        #self.file.write((0).to_bytes(4, "little"))
+        self.file.seek(0x134990)
+        self.file.write((0).to_bytes(4, "little"))
         self.file.seek(0x4369E87)
         self.file.write(str.encode("KOJI  IGA"))
         self.file.seek(0x4369EE1)
@@ -1085,7 +1192,7 @@ class Main(QWidget):
                 self.progressBar.setAutoReset(False)
                 
                 self.worker = Update(self.progressBar, api)
-                self.worker.updateProgress.connect(self.setProgress)
+                self.worker.signaller.progress.connect(self.set_progress)
                 self.worker.start()
             else:
                 self.setEnabled(True)
