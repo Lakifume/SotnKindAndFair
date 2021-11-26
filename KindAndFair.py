@@ -86,7 +86,6 @@ class Attributes(Enum):
     FLA = 0x8000
 
 #Vlads: 10CF2C
-#Quick 99: 117cf6 (0x62 > 0x65)
 
 #Config
 
@@ -314,18 +313,18 @@ class Main(QWidget):
         self.box_3.setLayout(box_3_grid)
         grid.addWidget(self.box_3, 0, 1, 1, 1)
 
-        box_4_grid = QGridLayout()
-        self.box_4 = QGroupBox("Extra Tweaks")
-        self.box_4.setLayout(box_4_grid)
-        grid.addWidget(self.box_4, 1, 0, 1, 2)
-
         box_2_grid = QGridLayout()
         self.box_2 = QGroupBox("Enemy Damage")
         self.box_2.setLayout(box_2_grid)
-        grid.addWidget(self.box_2, 2, 0, 1, 1)
+        grid.addWidget(self.box_2, 1, 0, 1, 1)
+
+        box_4_grid = QGridLayout()
+        self.box_4 = QGroupBox("Player Level")
+        self.box_4.setLayout(box_4_grid)
+        grid.addWidget(self.box_4, 2, 0, 1, 1)
 
         box_7_grid = QGridLayout()
-        self.box_7 = QGroupBox("Special Mode")
+        self.box_7 = QGroupBox("Player Knockback")
         self.box_7.setLayout(box_7_grid)
         grid.addWidget(self.box_7, 2, 1, 1, 1)
 
@@ -355,38 +354,58 @@ class Main(QWidget):
         self.check_box_3.setToolTip("Randomize shop prices. Does not affect the relic slot.")
         self.check_box_3.stateChanged.connect(self.check_box_3_changed)
         box_3_grid.addWidget(self.check_box_3, 0, 0)
-        
-        self.check_box_4 = QCheckBox("Level 1 Locked")
-        self.check_box_4.setToolTip("Set all enemy EXP to 0, locking you at level 1 for the entire game.")
-        self.check_box_4.stateChanged.connect(self.check_box_4_changed)
-        box_4_grid.addWidget(self.check_box_4, 0, 0)
-        
-        self.check_box_5 = QCheckBox("Bigtoss Only")
-        self.check_box_5.setToolTip("Any enemy attack that is not overriden by your defense will bigtoss.")
-        self.check_box_5.stateChanged.connect(self.check_box_5_changed)
-        box_4_grid.addWidget(self.check_box_5, 1, 0)
 
         #RadioButtons
         
-        self.radio_button_1 = QRadioButton("x1")
+        self.radio_button_1 = QRadioButton("Normal")
         self.radio_button_1.setToolTip("Enemy damage is close to vanilla.")
         self.radio_button_1.toggled.connect(self.radio_button_group_1_checked)
         box_2_grid.addWidget(self.radio_button_1, 0, 0)
         
-        self.radio_button_2 = QRadioButton("x2")
-        self.radio_button_2.setToolTip("Base enemy attack power is doubled.")
+        self.radio_button_2 = QRadioButton("None")
+        self.radio_button_2.setToolTip("Enemies are inoffensive and die upon contact.")
         self.radio_button_2.toggled.connect(self.radio_button_group_1_checked)
         box_2_grid.addWidget(self.radio_button_2, 1, 0)
         
-        self.radio_button_3 = QRadioButton("None")
-        self.radio_button_3.setToolTip("No special game mode.")
-        self.radio_button_3.toggled.connect(self.radio_button_group_2_checked)
-        box_7_grid.addWidget(self.radio_button_3, 0, 0)
+        self.radio_button_3 = QRadioButton("Doubled")
+        self.radio_button_3.setToolTip("Base enemy attack power is doubled.")
+        self.radio_button_3.toggled.connect(self.radio_button_group_1_checked)
+        box_2_grid.addWidget(self.radio_button_3, 0, 1)
         
-        self.radio_button_4 = QRadioButton("God Mode")
-        self.radio_button_4.setToolTip("Alucard is invincible and can kill enemies by running into them.")
+        self.radio_button_4 = QRadioButton("Normal")
+        self.radio_button_4.setToolTip("Alucard receives EXP and levels up normally.")
         self.radio_button_4.toggled.connect(self.radio_button_group_2_checked)
-        box_7_grid.addWidget(self.radio_button_4, 1, 0)
+        box_4_grid.addWidget(self.radio_button_4, 0, 0)
+        
+        self.radio_button_5 = QRadioButton("Level 1")
+        self.radio_button_5.setToolTip("Alucard is locked at level 1 for the entire game.")
+        self.radio_button_5.toggled.connect(self.radio_button_group_2_checked)
+        box_4_grid.addWidget(self.radio_button_5, 1, 0)
+        
+        self.radio_button_6 = QRadioButton("Level 99")
+        self.radio_button_6.setToolTip("Alucard will reach the maximum level instantly.")
+        self.radio_button_6.toggled.connect(self.radio_button_group_2_checked)
+        box_4_grid.addWidget(self.radio_button_6, 0, 1)
+        
+        self.radio_button_7 = QRadioButton("Normal")
+        self.radio_button_7.setToolTip("Alucard's knockback will be based on the nature of the\nenemy attack.")
+        self.radio_button_7.toggled.connect(self.radio_button_group_3_checked)
+        box_7_grid.addWidget(self.radio_button_7, 0, 0)
+        
+        self.radio_button_8 = QRadioButton("Low")
+        self.radio_button_8.setToolTip("Alucard will always flinch when taking damage.")
+        self.radio_button_8.toggled.connect(self.radio_button_group_3_checked)
+        box_7_grid.addWidget(self.radio_button_8, 1, 0)
+        
+        self.radio_button_9 = QRadioButton("Medium")
+        self.radio_button_9.setToolTip("Alucard will always jump back when taking damage.")
+        self.radio_button_9.toggled.connect(self.radio_button_group_3_checked)
+        box_7_grid.addWidget(self.radio_button_9, 0, 1)
+        
+        self.radio_button_10 = QRadioButton("Bigtoss")
+        self.radio_button_10.setToolTip("Alucard will always go flying across the room when\ntaking damage. Base enemy damage will be reduced\nby 20% to compensate for the extra collision damage.")
+        self.radio_button_10.toggled.connect(self.radio_button_group_3_checked)
+        box_7_grid.addWidget(self.radio_button_10, 1, 1)
         
         #InitCheckboxes
         
@@ -396,20 +415,29 @@ class Main(QWidget):
             self.check_box_2.setChecked(True)
         if config.getboolean("ShopRandomization", "bItemCost"):
             self.check_box_3.setChecked(True)
-        if config.getboolean("ExtraTweaks", "bLevelOneLocked"):
-            self.check_box_4.setChecked(True)
-        if config.getboolean("ExtraTweaks", "bBigtossOnly"):
-            self.check_box_5.setChecked(True)
         
-        if config.getboolean("EnemyDamage", "bx1"):
+        if config.getboolean("EnemyDamage", "bNormal"):
             self.radio_button_1.setChecked(True)
-        else:
+        elif config.getboolean("EnemyDamage", "bNone"):
             self.radio_button_2.setChecked(True)
-        
-        if config.getboolean("SpecialMode", "bNone"):
-            self.radio_button_3.setChecked(True)
         else:
+            self.radio_button_3.setChecked(True)
+        
+        if config.getboolean("PlayerLevel", "bNormal"):
             self.radio_button_4.setChecked(True)
+        elif config.getboolean("PlayerLevel", "bLevel1"):
+            self.radio_button_5.setChecked(True)
+        else:
+            self.radio_button_6.setChecked(True)
+        
+        if config.getboolean("PlayerKnockback", "bNormal"):
+            self.radio_button_7.setChecked(True)
+        elif config.getboolean("PlayerKnockback", "bLow"):
+            self.radio_button_8.setChecked(True)
+        elif config.getboolean("PlayerKnockback", "bMedium"):
+            self.radio_button_9.setChecked(True)
+        else:
+            self.radio_button_10.setChecked(True)
         
         #TextField
 
@@ -494,33 +522,55 @@ class Main(QWidget):
         else:
             config.set("ShopRandomization", "bItemCost", "false")
 
-    def check_box_4_changed(self):
-        if self.check_box_4.isChecked():
-            config.set("ExtraTweaks", "bLevelOneLocked", "true")
-        else:
-            config.set("ExtraTweaks", "bLevelOneLocked", "false")
-
-    def check_box_5_changed(self):
-        if self.check_box_5.isChecked():
-            config.set("ExtraTweaks", "bBigtossOnly", "true")
-        else:
-            config.set("ExtraTweaks", "bBigtossOnly", "false")
-
     def radio_button_group_1_checked(self):
         if self.radio_button_1.isChecked():
-            config.set("EnemyDamage", "bx1", "true")
-            config.set("EnemyDamage", "bx2", "false")
+            config.set("EnemyDamage", "bNormal", "true")
+            config.set("EnemyDamage", "bNone", "false")
+            config.set("EnemyDamage", "bDoubled", "false")
+        elif self.radio_button_2.isChecked():
+            config.set("EnemyDamage", "bNormal", "false")
+            config.set("EnemyDamage", "bNone", "true")
+            config.set("EnemyDamage", "bDoubled", "false")
         else:
-            config.set("EnemyDamage", "bx1", "false")
-            config.set("EnemyDamage", "bx2", "true")
+            config.set("EnemyDamage", "bNormal", "false")
+            config.set("EnemyDamage", "bNone", "false")
+            config.set("EnemyDamage", "bDoubled", "true")
 
     def radio_button_group_2_checked(self):
-        if self.radio_button_3.isChecked():
-            config.set("SpecialMode", "bNone", "true")
-            config.set("SpecialMode", "bGodMode", "false")
+        if self.radio_button_4.isChecked():
+            config.set("PlayerLevel", "bNormal", "true")
+            config.set("PlayerLevel", "bLevel1", "false")
+            config.set("PlayerLevel", "bLevel99", "false")
+        elif self.radio_button_5.isChecked():
+            config.set("PlayerLevel", "bNormal", "false")
+            config.set("PlayerLevel", "bLevel1", "true")
+            config.set("PlayerLevel", "bLevel99", "false")
         else:
-            config.set("SpecialMode", "bNone", "false")
-            config.set("SpecialMode", "bGodMode", "true")
+            config.set("PlayerLevel", "bNormal", "false")
+            config.set("PlayerLevel", "bLevel1", "false")
+            config.set("PlayerLevel", "bLevel99", "true")
+
+    def radio_button_group_3_checked(self):
+        if self.radio_button_7.isChecked():
+            config.set("PlayerKnockback", "bNormal", "true")
+            config.set("PlayerKnockback", "bLow", "false")
+            config.set("PlayerKnockback", "bMedium", "false")
+            config.set("PlayerKnockback", "bBigtoss", "false")
+        elif self.radio_button_8.isChecked():
+            config.set("PlayerKnockback", "bNormal", "false")
+            config.set("PlayerKnockback", "bLow", "true")
+            config.set("PlayerKnockback", "bMedium", "false")
+            config.set("PlayerKnockback", "bBigtoss", "false")
+        elif self.radio_button_9.isChecked():
+            config.set("PlayerKnockback", "bNormal", "false")
+            config.set("PlayerKnockback", "bLow", "false")
+            config.set("PlayerKnockback", "bMedium", "true")
+            config.set("PlayerKnockback", "bBigtoss", "false")
+        else:
+            config.set("PlayerKnockback", "bNormal", "false")
+            config.set("PlayerKnockback", "bLow", "false")
+            config.set("PlayerKnockback", "bMedium", "false")
+            config.set("PlayerKnockback", "bBigtoss", "true")
     
     def new_input(self, input):
         config.set("Misc", "sInputFile", input)
@@ -555,15 +605,23 @@ class Main(QWidget):
             self.random_enemy(config.getboolean("EnemyRandomization", "bEnemyLevels"), config.getboolean("EnemyRandomization", "bEnemyTolerances"))
         if config.getboolean("ShopRandomization", "bItemCost"):
             self.random_shop()
-        if config.getboolean("ExtraTweaks", "bLevelOneLocked"):
-            self.no_exp()
-        if config.getboolean("ExtraTweaks", "bBigtossOnly"):
-            self.all_toss()
-        if config.getboolean("EnemyDamage", "bx2"):
+        
+        if config.getboolean("EnemyDamage", "bNone"):
+            self.no_damage()
+        elif config.getboolean("EnemyDamage", "bDoubled"):
             self.double_damage()
-        if config.getboolean("SpecialMode", "bGodMode"):
-            self.god_mode()
-        self.write_enemy()
+        
+        if config.getboolean("PlayerLevel", "bLevel1"):
+            self.modify_exp(0, 0)
+        elif config.getboolean("PlayerLevel", "bLevel99"):
+            self.modify_exp(0x65, 0x340226ab)
+        
+        if config.getboolean("PlayerKnockback", "bLow"):
+            self.knockback_type(2)
+        elif config.getboolean("PlayerKnockback", "bMedium"):
+            self.knockback_type(3)
+        
+        self.write_enemy(config.getboolean("PlayerKnockback", "bBigtoss"))
         self.write_shop()
         self.write_equip()
         self.write_item()
@@ -645,9 +703,9 @@ class Main(QWidget):
     
     def random_enemy(self, level, resist):
         for i in range(len(enemy_data)):
+            #Level
             if enemy_data[i]["Key"] in skip:
                 continue
-            
             if level:
                 if enemy_data[i]["Value"]["IsMainEntry"]:
                     if enemy_data[i]["Key"] == "Dracula":
@@ -666,22 +724,21 @@ class Main(QWidget):
                         shaft_level = enemy_data[i]["Value"]["Level"]
                 else:
                     enemy_data[i]["Value"]["Level"] = enemy_data[i-1]["Value"]["Level"]
-            
+            #Resistances
             if "Intro" in enemy_data[i]["Key"]:
                 continue
-            
             if resist:
                 for e in Attributes:
                     if enemy_data[i]["Value"]["IsMainEntry"]:
                         enemy_data[i]["Value"]["Resistances"][str(e).split(".")[1]] = random.choice(resist_pool)
                     else:
                         enemy_data[i]["Value"]["Resistances"][str(e).split(".")[1]] = enemy_data[i-1]["Value"]["Resistances"][str(e).split(".")[1]]
-                
+                #EarlyResistances
                 if enemy_data[i]["Key"] in pre_minor and enemy_data[i]["Value"]["Resistances"]["HIT"] > 2:
                     enemy_data[i]["Value"]["Resistances"]["HIT"] = 2
                 elif enemy_data[i]["Key"] in minor and enemy_data[i]["Value"]["Resistances"]["CUT"] > 2:
                     enemy_data[i]["Value"]["Resistances"]["CUT"] = 2
-        
+        #DeathRemoval
         if level:
             for i in removal_offset:
                 self.file.seek(i)
@@ -700,17 +757,22 @@ class Main(QWidget):
                 if chosen >= 10000:
                     chosen += random.choice(thousand)
             i["Value"]["Price"] = chosen
-
-    def no_exp(self):
+    
+    def no_damage(self):
         for i in enemy_data:
-            i["Value"]["ExperienceLevel1"] = 0
-            i["Value"]["ExperienceLevel99"] = 0
-
-    def all_toss(self):
-        for i in enemy_data:
-            i["Value"]["ContactDamageType"] = "0x{:04x}".format(int(int(i["Value"]["ContactDamageType"], 16)/16)*16 + 5)
-            for e in range(len(i["Value"]["AttackDamageType"])):
-                i["Value"]["AttackDamageType"][e] = "0x{:04x}".format(int(int(i["Value"]["AttackDamageType"][e], 16)/16)*16 + 5)
+            if i["Value"]["HealthLevel1"] == 32767 or "Intro" in i["Key"]:
+                continue
+            i["Value"]["HealthLevel1"] = 0
+            i["Value"]["HealthLevel99"] = 0
+        #Invulnerability
+        self.file.seek(0x126626)
+        self.file.write((0).to_bytes(1, "little"))
+        self.file.seek(0x3A06F52)
+        self.file.write((0).to_bytes(1, "little"))
+        self.file.seek(0x59EB092)
+        self.file.write((0x1000).to_bytes(2, "little"))
+        self.file.seek(0x59EBC7A)
+        self.file.write((0x1000).to_bytes(2, "little"))
 
     def double_damage(self):
         for i in enemy_data:
@@ -719,26 +781,22 @@ class Main(QWidget):
         for i in handitem_data:
             if i["Value"]["IsFood"]:
                 i["Value"]["Attack"] *= 2
-    
-    def god_mode(self):
+
+    def modify_exp(self, player, familiar):
+        self.file.seek(0x117cf6)
+        self.file.write(player.to_bytes(1, "little"))
+        self.file.seek(0x117da0)
+        self.file.write(familiar.to_bytes(4, "little"))
+
+    def knockback_type(self, id):
         for i in enemy_data:
-            if i["Value"]["HealthLevel1"] == 32767 or "Intro" in i["Key"]:
-                continue
-            i["Value"]["HealthLevel1"] = 0
-            i["Value"]["HealthLevel99"] = 0
-            i["Value"]["ExperienceLevel1"] = 0
-            i["Value"]["ExperienceLevel99"] = 0
-        self.file.seek(0x126626)
-        self.file.write((0).to_bytes(1, "little"))
-        self.file.seek(0x3A06F52)
-        self.file.write((0).to_bytes(1, "little"))
-        self.file.seek(0x59EB092)
-        self.file.write((4096).to_bytes(2, "little"))
-        self.file.seek(0x59EBC7A)
-        self.file.write((4096).to_bytes(2, "little"))
+            i["Value"]["ContactDamageType"] = "0x{:04x}".format(int(int(i["Value"]["ContactDamageType"], 16)/16)*16 + id)
+            for e in range(len(i["Value"]["AttackDamageType"])):
+                i["Value"]["AttackDamageType"][e] = "0x{:04x}".format(int(int(i["Value"]["AttackDamageType"][e], 16)/16)*16 + id)
     
-    def write_enemy(self):
+    def write_enemy(self, bigtoss):
         for i in range(len(enemy_content)):
+            #Health
             health = math.ceil(((enemy_data[i]["Value"]["HealthLevel99"] - enemy_data[i]["Value"]["HealthLevel1"])/98)*(enemy_data[i]["Value"]["Level"]-1) + enemy_data[i]["Value"]["HealthLevel1"])
             if health < 0:
                 health = 0
@@ -746,22 +804,26 @@ class Main(QWidget):
                 health = 0x8000
             self.file.seek(int(enemy_content[i]["Value"]["Health"], 16))
             self.file.write(health.to_bytes(2, "little"))
-            
+            #ContactDamage
             strength = math.ceil(((enemy_data[i]["Value"]["ContactDamageLevel99"] - enemy_data[i]["Value"]["ContactDamageLevel1"])/98)*(enemy_data[i]["Value"]["Level"]-1) + enemy_data[i]["Value"]["ContactDamageLevel1"])
             if strength < 0:
                 strength = 0
             if strength > 0x8000:
                 strength = 0x8000
             self.file.seek(int(enemy_content[i]["Value"]["ContactDamage"], 16))
-            
-            if enemy_data[i]["Value"]["HasContact"]:
-                self.file.write(strength.to_bytes(2, "little"))
-            else:
+            if not enemy_data[i]["Value"]["HasContact"]:
                 self.file.write((0).to_bytes(2, "little"))
-            
+            elif bigtoss and not "Intro" in enemy_data[i]["Key"] and int(enemy_data[i]["Value"]["ContactDamageType"], 16) % 16 != 5:
+                self.file.write(int(strength*0.8).to_bytes(2, "little"))
+            else:
+                self.file.write(strength.to_bytes(2, "little"))
+            #ContactDamageType
             self.file.seek(int(enemy_content[i]["Value"]["ContactDamageType"], 16))
-            self.file.write(int(enemy_data[i]["Value"]["ContactDamageType"], 16).to_bytes(2, "little"))
-            
+            if bigtoss and not "Intro" in enemy_data[i]["Key"]:
+                self.file.write((int(int(enemy_data[i]["Value"]["ContactDamageType"], 16)/16)*16 + 5).to_bytes(2, "little"))
+            else:
+                self.file.write(int(enemy_data[i]["Value"]["ContactDamageType"], 16).to_bytes(2, "little"))
+            #Defense
             defense = math.ceil(((enemy_data[i]["Value"]["DefenseLevel99"] - enemy_data[i]["Value"]["DefenseLevel1"])/98)*(enemy_data[i]["Value"]["Level"]-1) + enemy_data[i]["Value"]["DefenseLevel1"])
             if defense < 0:
                 defense = 0
@@ -769,15 +831,14 @@ class Main(QWidget):
                 defense = 0x8000
             self.file.seek(int(enemy_content[i]["Value"]["Defense"], 16))
             self.file.write(defense.to_bytes(2, "little"))
-            
+            #Surface
             self.file.seek(int(enemy_content[i]["Value"]["Surface"], 16))
             self.file.write(int(enemy_data[i]["Value"]["Surface"], 16).to_bytes(2, "little"))
-            
+            #Resistances
             weak = 0
             strong = 0
             immune = 0
             absorb = 0
-            
             for e in Attributes:
                 if enemy_data[i]["Value"]["Resistances"][str(e).split(".")[1]] == 0:
                     weak += e.value
@@ -787,28 +848,23 @@ class Main(QWidget):
                     immune += e.value
                 elif enemy_data[i]["Value"]["Resistances"][str(e).split(".")[1]] == 4:
                     absorb += e.value
-            
             if enemy_data[i]["Value"]["IsImpervious"]:
                 weak = 0
                 strong = 0
                 immune = 0xFFE0
                 absorb = 0
-            
             self.file.seek(int(enemy_content[i]["Value"]["Resistances"]["Weak"], 16))
             self.file.write(weak.to_bytes(2, "little"))
-            
             self.file.seek(int(enemy_content[i]["Value"]["Resistances"]["Strong"], 16))
             self.file.write(strong.to_bytes(2, "little"))
-            
             self.file.seek(int(enemy_content[i]["Value"]["Resistances"]["Immune"], 16))
             self.file.write(immune.to_bytes(2, "little"))
-            
             self.file.seek(int(enemy_content[i]["Value"]["Resistances"]["Absorb"], 16))
             self.file.write(absorb.to_bytes(2, "little"))
-            
+            #Level
             self.file.seek(int(enemy_content[i]["Value"]["Level"], 16))
             self.file.write(enemy_data[i]["Value"]["Level"].to_bytes(2, "little"))
-            
+            #Experience
             experience = math.ceil(((enemy_data[i]["Value"]["ExperienceLevel99"] - enemy_data[i]["Value"]["ExperienceLevel1"])/98)*(enemy_data[i]["Value"]["Level"]-1) + enemy_data[i]["Value"]["ExperienceLevel1"])
             if experience < 0:
                 experience = 0
@@ -816,7 +872,7 @@ class Main(QWidget):
                 experience = 0x8000
             self.file.seek(int(enemy_content[i]["Value"]["Experience"], 16))
             self.file.write(experience.to_bytes(2, "little"))
-            
+            #AttackDamage
             for e in range(len(enemy_content[i]["Value"]["AttackDamage"])):
                 damage = math.ceil(enemy_data[i]["Value"]["AttackDamageMultiplier"][e]*strength)
                 if damage < 0:
@@ -824,14 +880,21 @@ class Main(QWidget):
                 if damage > 0x8000:
                     damage = 0x8000
                 self.file.seek(int(enemy_content[i]["Value"]["AttackDamage"][e], 16))
-                self.file.write(damage.to_bytes(2, "little"))
-            
+                if bigtoss and not "Intro" in enemy_data[i]["Key"] and int(enemy_data[i]["Value"]["AttackDamageType"][e], 16) % 16 != 5:
+                    self.file.write(int(damage*0.8).to_bytes(2, "little"))
+                else:
+                    self.file.write(damage.to_bytes(2, "little"))
+            #AttackDamageType
             for e in range(len(enemy_content[i]["Value"]["AttackDamageType"])):
                 self.file.seek(int(enemy_content[i]["Value"]["AttackDamageType"][e], 16))
-                self.file.write(int(enemy_data[i]["Value"]["AttackDamageType"][e], 16).to_bytes(2, "little"))
+                if bigtoss and not "Intro" in enemy_data[i]["Key"]:
+                    self.file.write((int(int(enemy_data[i]["Value"]["AttackDamageType"][e], 16)/16)*16 + 5).to_bytes(2, "little"))
+                else:
+                    self.file.write(int(enemy_data[i]["Value"]["AttackDamageType"][e], 16).to_bytes(2, "little"))
 
     def write_shop(self):
         for i in range(len(shop_content)):
+            #Price
             if shop_data[i]["Value"]["Price"] < 0:
                 shop_data[i]["Value"]["Price"] = 0
             if shop_data[i]["Value"]["Price"] > 0x80000000:
@@ -841,6 +904,7 @@ class Main(QWidget):
 
     def write_equip(self):
         for i in range(len(equipment_content)):
+            #Attack
             if equipment_data[i]["Value"]["Attack"] < -0x7FFF:
                 equipment_data[i]["Value"]["Attack"] = -0x7FFF
             if equipment_data[i]["Value"]["Attack"] > 0x8000:
@@ -849,7 +913,7 @@ class Main(QWidget):
                 equipment_data[i]["Value"]["Attack"] += 0x10000
             self.file.seek(int(equipment_content[i]["Value"]["Attack"], 16))
             self.file.write(int(equipment_data[i]["Value"]["Attack"]).to_bytes(2, "little"))
-            
+            #Defense
             if equipment_data[i]["Value"]["Defense"] < -0x7FFF:
                 equipment_data[i]["Value"]["Defense"] = -0x7FFF
             if equipment_data[i]["Value"]["Defense"] > 0x8000:
@@ -858,7 +922,7 @@ class Main(QWidget):
                 equipment_data[i]["Value"]["Defense"] += 0x10000
             self.file.seek(int(equipment_content[i]["Value"]["Defense"], 16))
             self.file.write(int(equipment_data[i]["Value"]["Defense"]).to_bytes(2, "little"))
-            
+            #Strength
             if equipment_data[i]["Value"]["Strength"] < -0x7F:
                 equipment_data[i]["Value"]["Strength"] = -0x7F
             if equipment_data[i]["Value"]["Strength"] > 0x80:
@@ -867,7 +931,7 @@ class Main(QWidget):
                 equipment_data[i]["Value"]["Strength"] += 0x100
             self.file.seek(int(equipment_content[i]["Value"]["Strength"], 16))
             self.file.write(int(equipment_data[i]["Value"]["Strength"]).to_bytes(1, "little"))
-            
+            #Constitution
             if equipment_data[i]["Value"]["Constitution"] < -0x7F:
                 equipment_data[i]["Value"]["Constitution"] = -0x7F
             if equipment_data[i]["Value"]["Constitution"] > 0x80:
@@ -876,7 +940,7 @@ class Main(QWidget):
                 equipment_data[i]["Value"]["Constitution"] += 0x100
             self.file.seek(int(equipment_content[i]["Value"]["Constitution"], 16))
             self.file.write(int(equipment_data[i]["Value"]["Constitution"]).to_bytes(1, "little"))
-            
+            #Intelligence
             if equipment_data[i]["Value"]["Intelligence"] < -0x7F:
                 equipment_data[i]["Value"]["Intelligence"] = -0x7F
             if equipment_data[i]["Value"]["Intelligence"] > 0x80:
@@ -885,7 +949,7 @@ class Main(QWidget):
                 equipment_data[i]["Value"]["Intelligence"] += 0x100
             self.file.seek(int(equipment_content[i]["Value"]["Intelligence"], 16))
             self.file.write(int(equipment_data[i]["Value"]["Intelligence"]).to_bytes(1, "little"))
-            
+            #Luck
             if equipment_data[i]["Value"]["Luck"] < -0x7F:
                 equipment_data[i]["Value"]["Luck"] = -0x7F
             if equipment_data[i]["Value"]["Luck"] > 0x80:
@@ -894,12 +958,11 @@ class Main(QWidget):
                 equipment_data[i]["Value"]["Luck"] += 0x100
             self.file.seek(int(equipment_content[i]["Value"]["Luck"], 16))
             self.file.write(int(equipment_data[i]["Value"]["Luck"]).to_bytes(1, "little"))
-            
+            #Resistances
             weak = 0
             strong = 0
             immune = 0
             absorb = 0
-            
             for e in Attributes:
                 if equipment_data[i]["Value"]["Resistances"][str(e).split(".")[1]] == 0:
                     weak += e.value
@@ -909,21 +972,18 @@ class Main(QWidget):
                     immune += e.value
                 elif equipment_data[i]["Value"]["Resistances"][str(e).split(".")[1]] == 4:
                     absorb += e.value
-            
             self.file.seek(int(equipment_content[i]["Value"]["Resistances"]["Weak"], 16))
             self.file.write(weak.to_bytes(2, "little"))
-            
             self.file.seek(int(equipment_content[i]["Value"]["Resistances"]["Strong"], 16))
             self.file.write(strong.to_bytes(2, "little"))
-            
             self.file.seek(int(equipment_content[i]["Value"]["Resistances"]["Immune"], 16))
             self.file.write(immune.to_bytes(2, "little"))
-            
             self.file.seek(int(equipment_content[i]["Value"]["Resistances"]["Absorb"], 16))
             self.file.write(absorb.to_bytes(2, "little"))
     
     def write_item(self):
         for i in range(len(handitem_content)):
+            #Attack
             if handitem_data[i]["Value"]["Attack"] < -0x7FFF:
                 handitem_data[i]["Value"]["Attack"] = -0x7FFF
             if handitem_data[i]["Value"]["Attack"] > 0x8000:
@@ -932,7 +992,7 @@ class Main(QWidget):
                 handitem_data[i]["Value"]["Attack"] += 0x10000
             self.file.seek(int(handitem_content[i]["Value"]["Attack"], 16))
             self.file.write(int(handitem_data[i]["Value"]["Attack"]).to_bytes(2, "little"))
-            
+            #Defense
             if handitem_data[i]["Value"]["Defense"] < -0x7FFF:
                 handitem_data[i]["Value"]["Defense"] = -0x7FFF
             if handitem_data[i]["Value"]["Defense"] > 0x8000:
@@ -941,25 +1001,23 @@ class Main(QWidget):
                 handitem_data[i]["Value"]["Defense"] += 0x10000
             self.file.seek(int(handitem_content[i]["Value"]["Defense"], 16))
             self.file.write(int(handitem_data[i]["Value"]["Defense"]).to_bytes(2, "little"))
-            
+            #Attributes
             total = 0
-            
             for e in Attributes:
                 if handitem_data[i]["Value"]["Element"][str(e).split(".")[1]]:
                     total += e.value
-            
             self.file.seek(int(handitem_content[i]["Value"]["Element"], 16))
             self.file.write(total.to_bytes(2, "little"))
-            
+            #Sprite
             self.file.seek(int(handitem_content[i]["Value"]["Sprite"], 16))
             self.file.write(int(handitem_data[i]["Value"]["Sprite"], 16).to_bytes(1, "little"))
-            
+            #Special
             self.file.seek(int(handitem_content[i]["Value"]["Special"], 16))
             self.file.write(int(handitem_data[i]["Value"]["Special"], 16).to_bytes(1, "little"))
-            
+            #Spell
             self.file.seek(int(handitem_content[i]["Value"]["Spell"], 16))
             self.file.write(int(handitem_data[i]["Value"]["Spell"], 16).to_bytes(2, "little"))
-            
+            #ManaCost
             if handitem_data[i]["Value"]["ManaCost"] < -0x7FFF:
                 handitem_data[i]["Value"]["ManaCost"] = -0x7FFF
             if handitem_data[i]["Value"]["ManaCost"] > 0x8000:
@@ -968,7 +1026,7 @@ class Main(QWidget):
                 handitem_data[i]["Value"]["ManaCost"] += 0x10000
             self.file.seek(int(handitem_content[i]["Value"]["ManaCost"], 16))
             self.file.write(int(handitem_data[i]["Value"]["ManaCost"]).to_bytes(2, "little"))
-            
+            #StunFrames
             if handitem_data[i]["Value"]["StunFrames"] < -0x7FFF:
                 handitem_data[i]["Value"]["StunFrames"] = -0x7FFF
             if handitem_data[i]["Value"]["StunFrames"] > 0x8000:
@@ -977,7 +1035,7 @@ class Main(QWidget):
                 handitem_data[i]["Value"]["StunFrames"] += 0x10000
             self.file.seek(int(handitem_content[i]["Value"]["StunFrames"], 16))
             self.file.write(int(handitem_data[i]["Value"]["StunFrames"]).to_bytes(2, "little"))
-            
+            #Range
             if handitem_data[i]["Value"]["Range"] < -0x7FFF:
                 handitem_data[i]["Value"]["Range"] = -0x7FFF
             if handitem_data[i]["Value"]["Range"] > 0x8000:
@@ -986,12 +1044,13 @@ class Main(QWidget):
                 handitem_data[i]["Value"]["Range"] += 0x10000
             self.file.seek(int(handitem_content[i]["Value"]["Range"], 16))
             self.file.write(int(handitem_data[i]["Value"]["Range"]).to_bytes(2, "little"))
-            
+            #Extra
             self.file.seek(int(handitem_content[i]["Value"]["Extra"], 16))
             self.file.write(int(handitem_data[i]["Value"]["Extra"], 16).to_bytes(1, "little"))
     
     def write_spell(self):
         for i in range(len(spell_content)):
+            #ManaCost
             if spell_data[i]["Value"]["ManaCost"] < -0x7F:
                 spell_data[i]["Value"]["ManaCost"] = -0x7F
             if spell_data[i]["Value"]["ManaCost"] > 0x80:
@@ -1000,16 +1059,14 @@ class Main(QWidget):
                 spell_data[i]["Value"]["ManaCost"] += 0x100
             self.file.seek(int(spell_content[i]["Value"]["ManaCost"], 16))
             self.file.write(int(spell_data[i]["Value"]["ManaCost"]).to_bytes(1, "little"))
-            
+            #Attributes
             total = 0
-            
             for e in Attributes:
                 if spell_data[i]["Value"]["Element"][str(e).split(".")[1]]:
                     total += e.value
-            
             self.file.seek(int(spell_content[i]["Value"]["Element"], 16))
             self.file.write(total.to_bytes(2, "little"))
-            
+            #Attack
             if spell_data[i]["Value"]["Attack"] < -0x7FFF:
                 spell_data[i]["Value"]["Attack"] = -0x7FFF
             if spell_data[i]["Value"]["Attack"] > 0x8000:
@@ -1020,6 +1077,7 @@ class Main(QWidget):
             self.file.write(int(spell_data[i]["Value"]["Attack"]).to_bytes(2, "little"))
 
     def write_stats(self):
+        #StrConIntLck
         if stat_data["Value"]["StrConIntLck"] < -0x7FFF:
             stat_data["Value"]["StrConIntLck"] = -0x7FFF
         if stat_data["Value"]["StrConIntLck"] > 0x8000:
@@ -1028,7 +1086,7 @@ class Main(QWidget):
             stat_data["Value"]["StrConIntLck"] += 0x10000
         self.file.seek(int(stat_content["Value"]["StrConIntLck"], 16))
         self.file.write(int(stat_data["Value"]["StrConIntLck"]).to_bytes(2, "little"))
-        
+        #Health
         if stat_data["Value"]["Health"] < -0x7FFF:
             stat_data["Value"]["Health"] = -0x7FFF
         if stat_data["Value"]["Health"] > 0x8000 - 5:
@@ -1037,10 +1095,10 @@ class Main(QWidget):
             stat_data["Value"]["Health"] += 0x10000
         self.file.seek(int(stat_content["Value"]["Health"], 16))
         self.file.write(int(stat_data["Value"]["Health"]).to_bytes(2, "little"))
-        
+        #HealthFix
         self.file.seek(0x119CC4)
         self.file.write(int(stat_data["Value"]["Health"] + 5).to_bytes(2, "little"))
-        
+        #Hearts
         if stat_data["Value"]["Hearts"] < -0x7FFF:
             stat_data["Value"]["Hearts"] = -0x7FFF
         if stat_data["Value"]["Hearts"] > 0x8000:
@@ -1049,7 +1107,7 @@ class Main(QWidget):
             stat_data["Value"]["Hearts"] += 0x10000
         self.file.seek(int(stat_content["Value"]["Hearts"], 16))
         self.file.write(int(stat_data["Value"]["Hearts"]).to_bytes(2, "little"))
-        
+        #MaxHearts
         if stat_data["Value"]["MaxHearts"] < -0x7FFF:
             stat_data["Value"]["MaxHearts"] = -0x7FFF
         if stat_data["Value"]["MaxHearts"] > 0x8000:
@@ -1058,7 +1116,7 @@ class Main(QWidget):
             stat_data["Value"]["MaxHearts"] += 0x10000
         self.file.seek(int(stat_content["Value"]["MaxHearts"], 16))
         self.file.write(int(stat_data["Value"]["MaxHearts"]).to_bytes(2, "little"))
-        
+        #Mana
         if stat_data["Value"]["Mana"] < -0x7FFF:
             stat_data["Value"]["Mana"] = -0x7FFF
         if stat_data["Value"]["Mana"] > 0x8000:
@@ -1101,8 +1159,10 @@ class Main(QWidget):
         self.file.write(str.encode("Immunity to all status effects"))
 
     def write_misc(self):
+        #ContinuousWingSmash
         self.file.seek(0x134990)
         self.file.write((0).to_bytes(4, "little"))
+        #CreditsFix
         self.file.seek(0x4369E87)
         self.file.write(str.encode("KOJI  IGA"))
         self.file.seek(0x4369EE1)
@@ -1115,21 +1175,25 @@ class Main(QWidget):
             entry = {}
             entry["Key"] = i["Key"]
             entry["Value"] = {}
+            #Health
             self.file.seek(int(i["Value"]["Health"], 16))
             entry["Value"]["Health"] = int.from_bytes(self.file.read(2), "little")
+            #ContactDamage
             self.file.seek(int(i["Value"]["ContactDamage"], 16))
             entry["Value"]["ContactDamage"] = int.from_bytes(self.file.read(2), "little")
+            #ContactDamageType
             self.file.seek(int(i["Value"]["ContactDamageType"], 16))
             entry["Value"]["ContactDamageType"] = "0x{:04x}".format(int.from_bytes(self.file.read(2), "little"))
+            #Defense
             self.file.seek(int(i["Value"]["Defense"], 16))
             entry["Value"]["Defense"] = int.from_bytes(self.file.read(2), "little")
+            #Surface
             self.file.seek(int(i["Value"]["Surface"], 16))
             entry["Value"]["Surface"] = "0x{:04x}".format(int.from_bytes(self.file.read(2), "little"))
-            
+            #Resistances
             entry["Value"]["Resistances"] = {}
             for e in Attributes:
                 entry["Value"]["Resistances"][str(e).split(".")[1]] = 1
-            
             self.file.seek(int(i["Value"]["Resistances"]["Weak"], 16))
             total = int.from_bytes(self.file.read(2), "little")
             for e in Attributes:
@@ -1150,16 +1214,18 @@ class Main(QWidget):
             for e in Attributes:
                 if (total & e.value) != 0:
                     entry["Value"]["Resistances"][str(e).split(".")[1]] = 4
-            
+            #Level
             self.file.seek(int(i["Value"]["Level"], 16))
             entry["Value"]["Level"] = int.from_bytes(self.file.read(2), "little")
+            #Experience
             self.file.seek(int(i["Value"]["Experience"], 16))
             entry["Value"]["Experience"] = int.from_bytes(self.file.read(2), "little")
-    
+            #AttackDamage
             entry["Value"]["AttackDamage"] = []
             for e in i["Value"]["AttackDamage"]:
                 self.file.seek(int(e, 16))
                 entry["Value"]["AttackDamage"].append(int.from_bytes(self.file.read(2), "little"))
+            #AttackDamageType
             entry["Value"]["AttackDamageType"] = []
             for e in i["Value"]["AttackDamageType"]:
                 self.file.seek(int(e, 16))
