@@ -17,10 +17,6 @@ from enum import Enum
 
 #Enemy Lists
 
-pre_minor = [
-    "Slogra",
-    "Gaibon"
-]
 minor = [
     "Doppleganger 1"
 ]
@@ -42,6 +38,7 @@ base = []
 ten = []
 hundred = []
 thousand = []
+ten_thousand = []
 
 #Misc Lists
 
@@ -145,11 +142,6 @@ for i in range(19):
     progress_to_list[str(i)] = list
 
 list = []
-for i in range(25):
-    list.append(i+1)
-progress_to_list["PreMinor"] = list
-
-list = []
 for i in range(50):
     list.append(i+1)
 progress_to_list["Minor"] = list
@@ -175,41 +167,42 @@ while i <= 90:
     for e in range(10):
         base.append(i)
     i += 10
-
 i = 100
 while i <= 900:
     for e in range(10):
         base.append(i)
     i += 100
-
 i = 1000
 while i <= 9000:
     for e in range(10):
         base.append(i)
     i += 1000
-
 i = 10000
 while i <= 90000:
     for e in range(10):
         base.append(i)
     i += 10000
-
-base.append(100000)
-
+i = 100000
+while i <= 400000:
+    base.append(i)
+    i += 100000
+base.append(500000)
 i = 0
 while i <= 90:
     ten.append(i)
     i += 10
-
 i = 0
 while i <= 900:
     hundred.append(i)
     i += 100
-
 i = 0
 while i <= 9000:
     thousand.append(i)
     i += 1000
+i = 0
+while i <= 90000:
+    ten_thousand.append(i)
+    i += 10000
 
 #Functions
 
@@ -241,10 +234,10 @@ class Patch(QThread):
         
         if config.get("Misc", "sOutputFolder") and os.path.isdir(config.get("Misc", "sOutputFolder")):
             shutil.move("ErrorRecalc\\rom.bin", config.get("Misc", "sOutputFolder") + "\\" + config.get("Misc", "sInputFile").split("\\")[-1])
+            shutil.copyfile("BizhawkCheats\\Cheats.cht", config.get("Misc", "sOutputFolder") + "\\" + config.get("Misc", "sInputFile").split("\\")[-1][:-4].replace(" (Track 1)", "") + ".cht")
         else:
             shutil.move("ErrorRecalc\\rom.bin", config.get("Misc", "sInputFile"))
-        
-        shutil.copyfile("BizhawkCheats\\Cheats.cht", config.get("Misc", "sInputFile").split("\\")[-1][:-4].replace(" (Track 1)", "") + ".cht")
+            shutil.copyfile("BizhawkCheats\\Cheats.cht", config.get("Misc", "sInputFile")[:-4].replace(" (Track 1)", "") + ".cht")
         
         self.signaller.finished.emit()
 
@@ -259,6 +252,8 @@ class Update(QThread):
         progress = 0
         self.signaller.progress.emit(progress)
         
+        #Download
+        
         with open("SotnKindAndFair.zip", "wb") as file_writer:
             url = requests.get(self.api["assets"][0]["browser_download_url"], stream=True)
             for data in url.iter_content(chunk_size=4096):
@@ -268,10 +263,34 @@ class Update(QThread):
         
         self.progressBar.setLabelText("Extracting...")
         
+        #PurgeFolders
+        
+        shutil.rmtree("BizhawkCheats")
+        shutil.rmtree("Data")
+        shutil.rmtree("ErrorRecalc")
+        
         os.rename("KindAndFair.exe", "OldKindAndFair.exe")
         with zipfile.ZipFile("SotnKindAndFair.zip", "r") as zip_ref:
             zip_ref.extractall("")
         os.remove("SotnKindAndFair.zip")
+        
+        #CarryPreviousConfig
+        
+        new_config = configparser.ConfigParser()
+        new_config.optionxform = str
+        new_config.read("Data\\config.ini")
+        for each_section in new_config.sections():
+            for (each_key, each_val) in new_config.items(each_section):
+                if each_key == "sVersion":
+                    continue
+                try:
+                    new_config.set(each_section, each_key, config.get(each_section, each_key))
+                except (configparser.NoSectionError, configparser.NoOptionError):
+                    continue
+        with open("Data\\config.ini", "w") as file_writer:
+            new_config.write(file_writer)
+        
+        #OpenNewEXE
         
         subprocess.Popen("KindAndFair.exe")
         sys.exit()
@@ -292,6 +311,7 @@ class Main(QWidget):
         + "QDialog{background-color: #1d150f}"
         + "QProgressDialog{background-color: #1d150f}"
         + "QPushButton{background-color: #1d150f}"
+        + "QDoubleSpinBox{background-color: #1d150f}"
         + "QLineEdit{background-color: #1d150f}"
         + "QMenu{background-color: #1d150f}"
         + "QToolTip{border: 0px; background-color: #1d150f; color: #ffffff; font-family: Cambria; font-size: 18px}")
@@ -319,14 +339,9 @@ class Main(QWidget):
         grid.addWidget(self.box_2, 1, 0, 1, 1)
 
         box_4_grid = QGridLayout()
-        self.box_4 = QGroupBox("Player Level")
+        self.box_4 = QGroupBox("Extra")
         self.box_4.setLayout(box_4_grid)
-        grid.addWidget(self.box_4, 2, 0, 1, 1)
-
-        box_7_grid = QGridLayout()
-        self.box_7 = QGroupBox("Player Knockback")
-        self.box_7.setLayout(box_7_grid)
-        grid.addWidget(self.box_7, 2, 1, 1, 1)
+        grid.addWidget(self.box_4, 2, 0, 1, 2)
 
         box_5_grid = QGridLayout()
         self.box_5 = QGroupBox("Input File")
@@ -355,57 +370,31 @@ class Main(QWidget):
         self.check_box_3.stateChanged.connect(self.check_box_3_changed)
         box_3_grid.addWidget(self.check_box_3, 0, 0)
 
-        #RadioButtons
+        self.check_box_4 = QCheckBox("Level 1 Locked")
+        self.check_box_4.setToolTip("Alucard is locked at level 1 for the entire game.")
+        self.check_box_4.stateChanged.connect(self.check_box_4_changed)
+        box_4_grid.addWidget(self.check_box_4, 0, 0)
         
-        self.radio_button_1 = QRadioButton("Normal")
-        self.radio_button_1.setToolTip("Enemy damage is close to vanilla.")
-        self.radio_button_1.toggled.connect(self.radio_button_group_1_checked)
-        box_2_grid.addWidget(self.radio_button_1, 0, 0)
+        self.check_box_5 = QCheckBox("BigtossOnly")
+        self.check_box_5.setToolTip("Alucard will always go flying across the room when\ntaking damage. Base enemy damage will be reduced\nby 10% to compensate for the extra collision damage.")
+        self.check_box_5.stateChanged.connect(self.check_box_5_changed)
+        box_4_grid.addWidget(self.check_box_5, 1, 0)
         
-        self.radio_button_2 = QRadioButton("None")
-        self.radio_button_2.setToolTip("Enemies are inoffensive and die upon contact.")
-        self.radio_button_2.toggled.connect(self.radio_button_group_1_checked)
-        box_2_grid.addWidget(self.radio_button_2, 1, 0)
+        #SpinBoxes
         
-        self.radio_button_3 = QRadioButton("Doubled")
-        self.radio_button_3.setToolTip("Base enemy attack power is doubled.")
-        self.radio_button_3.toggled.connect(self.radio_button_group_1_checked)
-        box_2_grid.addWidget(self.radio_button_3, 0, 1)
+        if config.getfloat("EnemyDamage", "fDamageMultiplier") < 0.0:
+            config.set("EnemyDamage", "fDamageMultiplier", "0.0")
+        if config.getfloat("EnemyDamage", "fDamageMultiplier") > 3.0:
+            config.set("EnemyDamage", "fDamageMultiplier", "3.0")
         
-        self.radio_button_4 = QRadioButton("Normal")
-        self.radio_button_4.setToolTip("Alucard receives EXP and levels up normally.")
-        self.radio_button_4.toggled.connect(self.radio_button_group_2_checked)
-        box_4_grid.addWidget(self.radio_button_4, 0, 0)
-        
-        self.radio_button_5 = QRadioButton("Level 1")
-        self.radio_button_5.setToolTip("Alucard is locked at level 1 for the entire game.")
-        self.radio_button_5.toggled.connect(self.radio_button_group_2_checked)
-        box_4_grid.addWidget(self.radio_button_5, 1, 0)
-        
-        self.radio_button_6 = QRadioButton("Level 99")
-        self.radio_button_6.setToolTip("Alucard will reach the maximum level instantly.")
-        self.radio_button_6.toggled.connect(self.radio_button_group_2_checked)
-        box_4_grid.addWidget(self.radio_button_6, 0, 1)
-        
-        self.radio_button_7 = QRadioButton("Normal")
-        self.radio_button_7.setToolTip("Alucard's knockback will be based on the nature of the\nenemy attack.")
-        self.radio_button_7.toggled.connect(self.radio_button_group_3_checked)
-        box_7_grid.addWidget(self.radio_button_7, 0, 0)
-        
-        self.radio_button_8 = QRadioButton("Low")
-        self.radio_button_8.setToolTip("Alucard will always flinch when taking damage.")
-        self.radio_button_8.toggled.connect(self.radio_button_group_3_checked)
-        box_7_grid.addWidget(self.radio_button_8, 1, 0)
-        
-        self.radio_button_9 = QRadioButton("Medium")
-        self.radio_button_9.setToolTip("Alucard will always jump back when taking damage.")
-        self.radio_button_9.toggled.connect(self.radio_button_group_3_checked)
-        box_7_grid.addWidget(self.radio_button_9, 0, 1)
-        
-        self.radio_button_10 = QRadioButton("Bigtoss")
-        self.radio_button_10.setToolTip("Alucard will always go flying across the room when\ntaking damage. Base enemy damage will be reduced\nby 20% to compensate for the extra collision damage.")
-        self.radio_button_10.toggled.connect(self.radio_button_group_3_checked)
-        box_7_grid.addWidget(self.radio_button_10, 1, 1)
+        self.damage_box = QDoubleSpinBox()
+        self.damage_box.setToolTip("Multiplier of damage received.\n(1.0 is close to vanilla)")
+        self.damage_box.setDecimals(1)
+        self.damage_box.setRange(0.0, 3.0)
+        self.damage_box.setSingleStep(0.1)
+        self.damage_box.setValue(config.getfloat("EnemyDamage", "fDamageMultiplier"))
+        self.damage_box.valueChanged.connect(self.new_damage)
+        box_2_grid.addWidget(self.damage_box, 0, 0)
         
         #InitCheckboxes
         
@@ -415,29 +404,10 @@ class Main(QWidget):
             self.check_box_2.setChecked(True)
         if config.getboolean("ShopRandomization", "bItemCost"):
             self.check_box_3.setChecked(True)
-        
-        if config.getboolean("EnemyDamage", "bNormal"):
-            self.radio_button_1.setChecked(True)
-        elif config.getboolean("EnemyDamage", "bNone"):
-            self.radio_button_2.setChecked(True)
-        else:
-            self.radio_button_3.setChecked(True)
-        
-        if config.getboolean("PlayerLevel", "bNormal"):
-            self.radio_button_4.setChecked(True)
-        elif config.getboolean("PlayerLevel", "bLevel1"):
-            self.radio_button_5.setChecked(True)
-        else:
-            self.radio_button_6.setChecked(True)
-        
-        if config.getboolean("PlayerKnockback", "bNormal"):
-            self.radio_button_7.setChecked(True)
-        elif config.getboolean("PlayerKnockback", "bLow"):
-            self.radio_button_8.setChecked(True)
-        elif config.getboolean("PlayerKnockback", "bMedium"):
-            self.radio_button_9.setChecked(True)
-        else:
-            self.radio_button_10.setChecked(True)
+        if config.getboolean("Extra", "bLevel1Locked"):
+            self.check_box_4.setChecked(True)
+        if config.getboolean("Extra", "bBigtossOnly"):
+            self.check_box_5.setChecked(True)
         
         #TextField
 
@@ -522,55 +492,22 @@ class Main(QWidget):
         else:
             config.set("ShopRandomization", "bItemCost", "false")
 
-    def radio_button_group_1_checked(self):
-        if self.radio_button_1.isChecked():
-            config.set("EnemyDamage", "bNormal", "true")
-            config.set("EnemyDamage", "bNone", "false")
-            config.set("EnemyDamage", "bDoubled", "false")
-        elif self.radio_button_2.isChecked():
-            config.set("EnemyDamage", "bNormal", "false")
-            config.set("EnemyDamage", "bNone", "true")
-            config.set("EnemyDamage", "bDoubled", "false")
+    def check_box_4_changed(self):
+        if self.check_box_4.isChecked():
+            config.set("Extra", "bLevel1Locked", "true")
+            self.damage_box.setRange(0.0, 2.0)
         else:
-            config.set("EnemyDamage", "bNormal", "false")
-            config.set("EnemyDamage", "bNone", "false")
-            config.set("EnemyDamage", "bDoubled", "true")
+            config.set("Extra", "bLevel1Locked", "false")
+            self.damage_box.setRange(0.0, 3.0)
 
-    def radio_button_group_2_checked(self):
-        if self.radio_button_4.isChecked():
-            config.set("PlayerLevel", "bNormal", "true")
-            config.set("PlayerLevel", "bLevel1", "false")
-            config.set("PlayerLevel", "bLevel99", "false")
-        elif self.radio_button_5.isChecked():
-            config.set("PlayerLevel", "bNormal", "false")
-            config.set("PlayerLevel", "bLevel1", "true")
-            config.set("PlayerLevel", "bLevel99", "false")
+    def check_box_5_changed(self):
+        if self.check_box_5.isChecked():
+            config.set("Extra", "bBigtossOnly", "true")
         else:
-            config.set("PlayerLevel", "bNormal", "false")
-            config.set("PlayerLevel", "bLevel1", "false")
-            config.set("PlayerLevel", "bLevel99", "true")
-
-    def radio_button_group_3_checked(self):
-        if self.radio_button_7.isChecked():
-            config.set("PlayerKnockback", "bNormal", "true")
-            config.set("PlayerKnockback", "bLow", "false")
-            config.set("PlayerKnockback", "bMedium", "false")
-            config.set("PlayerKnockback", "bBigtoss", "false")
-        elif self.radio_button_8.isChecked():
-            config.set("PlayerKnockback", "bNormal", "false")
-            config.set("PlayerKnockback", "bLow", "true")
-            config.set("PlayerKnockback", "bMedium", "false")
-            config.set("PlayerKnockback", "bBigtoss", "false")
-        elif self.radio_button_9.isChecked():
-            config.set("PlayerKnockback", "bNormal", "false")
-            config.set("PlayerKnockback", "bLow", "false")
-            config.set("PlayerKnockback", "bMedium", "true")
-            config.set("PlayerKnockback", "bBigtoss", "false")
-        else:
-            config.set("PlayerKnockback", "bNormal", "false")
-            config.set("PlayerKnockback", "bLow", "false")
-            config.set("PlayerKnockback", "bMedium", "false")
-            config.set("PlayerKnockback", "bBigtoss", "true")
+            config.set("Extra", "bBigtossOnly", "false")
+    
+    def new_damage(self):
+        config.set("EnemyDamage", "fDamageMultiplier", str(round(self.damage_box.value(),1)))
     
     def new_input(self, input):
         config.set("Misc", "sInputFile", input)
@@ -606,22 +543,16 @@ class Main(QWidget):
         if config.getboolean("ShopRandomization", "bItemCost"):
             self.random_shop()
         
-        if config.getboolean("EnemyDamage", "bNone"):
+        if config.getfloat("EnemyDamage", "fDamageMultiplier") == 0.0:
             self.no_damage()
-        elif config.getboolean("EnemyDamage", "bDoubled"):
-            self.double_damage()
+        self.multiply_damage()
         
-        if config.getboolean("PlayerLevel", "bLevel1"):
-            self.modify_exp(0, 0)
-        elif config.getboolean("PlayerLevel", "bLevel99"):
-            self.modify_exp(0x65, 0x340226ab)
+        if config.getboolean("Extra", "bLevel1Locked"):
+            self.no_exp()
+        if config.getboolean("Extra", "bBigtossOnly"):
+            self.all_bigtoss()
         
-        if config.getboolean("PlayerKnockback", "bLow"):
-            self.knockback_type(2)
-        elif config.getboolean("PlayerKnockback", "bMedium"):
-            self.knockback_type(3)
-        
-        self.write_enemy(config.getboolean("PlayerKnockback", "bBigtoss"))
+        self.write_enemy()
         self.write_shop()
         self.write_equip()
         self.write_item()
@@ -655,7 +586,7 @@ class Main(QWidget):
     def button_4_clicked(self):
         box = QMessageBox(self)
         box.setWindowTitle("About")
-        box.setText("Applying this mod to your rom will change several things by default:<br/><br/><span style=\"color: #f6b26b;\">Balance enemy stats</span>: Bring enemy stat pools closer to each other and avoid extremes like what the vanilla game does.<br/><br/><span style=\"color: #f6b26b;\">Tweak equipment</span>: Tone down god tier items, adjust MP costs and improve underpowered techniques and spells.<br/><br/><span style=\"color: #f6b26b;\">Improve starting stats</span>: Start the game with a minimum of 100 HP and 50 MP.<br/><br/><span style=\"color: #f6b26b;\">Assign elemental attributes</span>: Give player/enemy attacks proper elemental attributes when needed.<br/><br/><span style=\"color: #f6b26b;\">Rework knockback</span>: Make enemy knockback based on the nature of the attack rather than its damage output.")
+        box.setText("Applying this mod to your rom will change several things by default:<br/><br/><span style=\"color: #f6b26b;\">Balance enemy stats</span>: Bring enemy stat pools closer to each other and avoid extremes like what the vanilla game does.<br/><br/><span style=\"color: #f6b26b;\">Tweak equipment</span>: Tone down god tier items, adjust MP costs and improve underpowered techniques and spells.<br/><br/><span style=\"color: #f6b26b;\">Improve starting stats</span>: Start the game with a minimum of 120 HP and 50 MP.<br/><br/><span style=\"color: #f6b26b;\">Assign elemental attributes</span>: Give player/enemy attacks proper elemental attributes when needed.<br/><br/><span style=\"color: #f6b26b;\">Rework knockback</span>: Make enemy knockback based on the nature of the attack rather than its damage output.")
         box.exec()
     
     def button_5_clicked(self):
@@ -710,8 +641,6 @@ class Main(QWidget):
                 if enemy_data[i]["Value"]["IsMainEntry"]:
                     if enemy_data[i]["Key"] == "Dracula":
                         enemy_data[i]["Value"]["Level"] = abs(shaft_level - 100)
-                    elif enemy_data[i]["Key"] in pre_minor:
-                        enemy_data[i]["Value"]["Level"] = random.choice(progress_to_list["PreMinor"])
                     elif enemy_data[i]["Key"] in minor:
                         enemy_data[i]["Value"]["Level"] = random.choice(progress_to_list["Minor"])
                     elif enemy_data[i]["Value"]["Level"] > 44:
@@ -733,29 +662,29 @@ class Main(QWidget):
                         enemy_data[i]["Value"]["Resistances"][str(e).split(".")[1]] = random.choice(resist_pool)
                     else:
                         enemy_data[i]["Value"]["Resistances"][str(e).split(".")[1]] = enemy_data[i-1]["Value"]["Resistances"][str(e).split(".")[1]]
-                #EarlyResistances
-                if enemy_data[i]["Key"] in pre_minor and enemy_data[i]["Value"]["Resistances"]["HIT"] > 2:
-                    enemy_data[i]["Value"]["Resistances"]["HIT"] = 2
-                elif enemy_data[i]["Key"] in minor and enemy_data[i]["Value"]["Resistances"]["CUT"] > 2:
-                    enemy_data[i]["Value"]["Resistances"]["CUT"] = 2
         #DeathRemoval
         if level:
             for i in removal_offset:
                 self.file.seek(i)
                 self.file.write((0).to_bytes(2, "little"))
+        #LibraryCard
+        self.file.seek(0x4BAA2B0)
+        self.file.write((0xA6).to_bytes(1, "little"))
 
     def random_shop(self):
         for i in shop_data:
             if i["Key"] == "Slot1":
                 continue
             chosen = random.choice(base)
-            if chosen != 100000:
+            if chosen < 500000:
                 if chosen >= 100:
                     chosen += random.choice(ten)
                 if chosen >= 1000:
                     chosen += random.choice(hundred)
                 if chosen >= 10000:
                     chosen += random.choice(thousand)
+                if chosen >= 100000:
+                    chosen += random.choice(ten_thousand)
             i["Value"]["Price"] = chosen
     
     def no_damage(self):
@@ -774,27 +703,29 @@ class Main(QWidget):
         self.file.seek(0x59EBC7A)
         self.file.write((0x1000).to_bytes(2, "little"))
 
-    def double_damage(self):
+    def multiply_damage(self):
         for i in enemy_data:
-            i["Value"]["ContactDamageLevel1"] *= 2
-            i["Value"]["ContactDamageLevel99"] *= 2
+            i["Value"]["ContactDamageLevel1"] = int(i["Value"]["ContactDamageLevel1"]*config.getfloat("EnemyDamage", "fDamageMultiplier"))
+            i["Value"]["ContactDamageLevel99"] = int(i["Value"]["ContactDamageLevel99"]*config.getfloat("EnemyDamage", "fDamageMultiplier"))
         for i in handitem_data:
             if i["Value"]["IsFood"]:
-                i["Value"]["Attack"] *= 2
+                i["Value"]["Attack"] = int(i["Value"]["Attack"]*config.getfloat("EnemyDamage", "fDamageMultiplier"))
 
-    def modify_exp(self, player, familiar):
+    def no_exp(self):
         self.file.seek(0x117cf6)
-        self.file.write(player.to_bytes(1, "little"))
+        self.file.write((0).to_bytes(1, "little"))
         self.file.seek(0x117da0)
-        self.file.write(familiar.to_bytes(4, "little"))
+        self.file.write((0).to_bytes(4, "little"))
 
-    def knockback_type(self, id):
+    def all_bigtoss(self):
         for i in enemy_data:
-            i["Value"]["ContactDamageType"] = "0x{:04x}".format(int(int(i["Value"]["ContactDamageType"], 16)/16)*16 + id)
+            if "Intro" in i["Key"]:
+                continue
+            i["Value"]["ContactDamageType"] = "0x{:04x}".format(int(int(i["Value"]["ContactDamageType"], 16)/16)*16 + 5)
             for e in range(len(i["Value"]["AttackDamageType"])):
-                i["Value"]["AttackDamageType"][e] = "0x{:04x}".format(int(int(i["Value"]["AttackDamageType"][e], 16)/16)*16 + id)
+                i["Value"]["AttackDamageType"][e] = "0x{:04x}".format(int(int(i["Value"]["AttackDamageType"][e], 16)/16)*16 + 5)
     
-    def write_enemy(self, bigtoss):
+    def write_enemy(self):
         for i in range(len(enemy_content)):
             #Health
             health = math.ceil(((enemy_data[i]["Value"]["HealthLevel99"] - enemy_data[i]["Value"]["HealthLevel1"])/98)*(enemy_data[i]["Value"]["Level"]-1) + enemy_data[i]["Value"]["HealthLevel1"])
@@ -813,16 +744,13 @@ class Main(QWidget):
             self.file.seek(int(enemy_content[i]["Value"]["ContactDamage"], 16))
             if not enemy_data[i]["Value"]["HasContact"]:
                 self.file.write((0).to_bytes(2, "little"))
-            elif bigtoss and not "Intro" in enemy_data[i]["Key"] and int(enemy_data[i]["Value"]["ContactDamageType"], 16) % 16 != 5:
-                self.file.write(int(strength*0.8).to_bytes(2, "little"))
+            elif int(enemy_data[i]["Value"]["ContactDamageType"], 16) % 16 == 5:
+                self.file.write(int(strength*0.9).to_bytes(2, "little"))
             else:
                 self.file.write(strength.to_bytes(2, "little"))
             #ContactDamageType
             self.file.seek(int(enemy_content[i]["Value"]["ContactDamageType"], 16))
-            if bigtoss and not "Intro" in enemy_data[i]["Key"]:
-                self.file.write((int(int(enemy_data[i]["Value"]["ContactDamageType"], 16)/16)*16 + 5).to_bytes(2, "little"))
-            else:
-                self.file.write(int(enemy_data[i]["Value"]["ContactDamageType"], 16).to_bytes(2, "little"))
+            self.file.write(int(enemy_data[i]["Value"]["ContactDamageType"], 16).to_bytes(2, "little"))
             #Defense
             defense = math.ceil(((enemy_data[i]["Value"]["DefenseLevel99"] - enemy_data[i]["Value"]["DefenseLevel1"])/98)*(enemy_data[i]["Value"]["Level"]-1) + enemy_data[i]["Value"]["DefenseLevel1"])
             if defense < 0:
@@ -880,17 +808,14 @@ class Main(QWidget):
                 if damage > 0x8000:
                     damage = 0x8000
                 self.file.seek(int(enemy_content[i]["Value"]["AttackDamage"][e], 16))
-                if bigtoss and not "Intro" in enemy_data[i]["Key"] and int(enemy_data[i]["Value"]["AttackDamageType"][e], 16) % 16 != 5:
-                    self.file.write(int(damage*0.8).to_bytes(2, "little"))
+                if int(enemy_data[i]["Value"]["AttackDamageType"][e], 16) % 16 == 5:
+                    self.file.write(int(damage*0.9).to_bytes(2, "little"))
                 else:
                     self.file.write(damage.to_bytes(2, "little"))
             #AttackDamageType
             for e in range(len(enemy_content[i]["Value"]["AttackDamageType"])):
                 self.file.seek(int(enemy_content[i]["Value"]["AttackDamageType"][e], 16))
-                if bigtoss and not "Intro" in enemy_data[i]["Key"]:
-                    self.file.write((int(int(enemy_data[i]["Value"]["AttackDamageType"][e], 16)/16)*16 + 5).to_bytes(2, "little"))
-                else:
-                    self.file.write(int(enemy_data[i]["Value"]["AttackDamageType"][e], 16).to_bytes(2, "little"))
+                self.file.write(int(enemy_data[i]["Value"]["AttackDamageType"][e], 16).to_bytes(2, "little"))
 
     def write_shop(self):
         for i in range(len(shop_content)):
