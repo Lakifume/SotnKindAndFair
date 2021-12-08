@@ -30,8 +30,6 @@ skip = [
 progress_to_list = {}
 resist_pool = []
 
-log = []
-
 #Shop Lists
 
 base = []
@@ -534,6 +532,9 @@ class Main(QWidget):
             self.setEnabled(True)
             return
         
+        if not os.path.isdir("SpoilerLog"):
+            os.makedirs("SpoilerLog")
+        
         shutil.copyfile(config.get("Misc", "sInputFile"), "ErrorRecalc\\rom.bin")
         
         self.file = open("ErrorRecalc\\rom.bin", "r+b")
@@ -553,11 +554,11 @@ class Main(QWidget):
             self.all_bigtoss()
         
         self.write_enemy()
-        self.write_shop()
         self.write_equip()
         self.write_item()
+        self.write_shop()
         self.write_spell()
-        self.write_stats()
+        self.write_stat()
         self.write_description()
         self.write_misc()
         self.read_enemy()
@@ -603,7 +604,7 @@ class Main(QWidget):
         label3_image = QLabel()
         label3_image.setPixmap(QPixmap("Data\\profile3.png"))
         label3_text = QLabel()
-        label3_text.setText("<span style=\"font-weight: bold; color: #b96f49;\">Mauk</span><br/>Offset researcher<br/><a href=\"https://castlevaniamodding.boards.net/thread/593/castlevania-sotn-mod-ps1\"><font face=Cambria color=#b96f49>Hack</font></a>")
+        label3_text.setText("<span style=\"font-weight: bold; color: #b96f49;\">Mauk</span><br/>Sotn modder<br/><a href=\"https://castlevaniamodding.boards.net/thread/593/castlevania-sotn-mod-ps1\"><font face=Cambria color=#b96f49>Hack</font></a>")
         label3_text.setOpenExternalLinks(True)
         label4_image = QLabel()
         label4_image.setPixmap(QPixmap("Data\\profile4.png"))
@@ -662,6 +663,7 @@ class Main(QWidget):
                         enemy_data[i]["Value"]["Resistances"][str(e).split(".")[1]] = random.choice(resist_pool)
                     else:
                         enemy_data[i]["Value"]["Resistances"][str(e).split(".")[1]] = enemy_data[i-1]["Value"]["Resistances"][str(e).split(".")[1]]
+        
         #DeathRemoval
         if level:
             for i in removal_offset:
@@ -817,16 +819,6 @@ class Main(QWidget):
                 self.file.seek(int(enemy_content[i]["Value"]["AttackDamageType"][e], 16))
                 self.file.write(int(enemy_data[i]["Value"]["AttackDamageType"][e], 16).to_bytes(2, "little"))
 
-    def write_shop(self):
-        for i in range(len(shop_content)):
-            #Price
-            if shop_data[i]["Value"]["Price"] < 0:
-                shop_data[i]["Value"]["Price"] = 0
-            if shop_data[i]["Value"]["Price"] > 0x80000000:
-                shop_data[i]["Value"]["Price"] = 0x80000000
-            self.file.seek(int(shop_content[i]["Value"]["Price"], 16))
-            self.file.write(int(shop_data[i]["Value"]["Price"]).to_bytes(4, "little"))
-
     def write_equip(self):
         for i in range(len(equipment_content)):
             #Attack
@@ -926,7 +918,7 @@ class Main(QWidget):
                 handitem_data[i]["Value"]["Defense"] += 0x10000
             self.file.seek(int(handitem_content[i]["Value"]["Defense"], 16))
             self.file.write(int(handitem_data[i]["Value"]["Defense"]).to_bytes(2, "little"))
-            #Attributes
+            #Element
             total = 0
             for e in Attributes:
                 if handitem_data[i]["Value"]["Element"][str(e).split(".")[1]]:
@@ -972,6 +964,16 @@ class Main(QWidget):
             #Extra
             self.file.seek(int(handitem_content[i]["Value"]["Extra"], 16))
             self.file.write(int(handitem_data[i]["Value"]["Extra"], 16).to_bytes(1, "little"))
+
+    def write_shop(self):
+        for i in range(len(shop_content)):
+            #Price
+            if shop_data[i]["Value"]["Price"] < 0:
+                shop_data[i]["Value"]["Price"] = 0
+            if shop_data[i]["Value"]["Price"] > 0x80000000:
+                shop_data[i]["Value"]["Price"] = 0x80000000
+            self.file.seek(int(shop_content[i]["Value"]["Price"], 16))
+            self.file.write(int(shop_data[i]["Value"]["Price"]).to_bytes(4, "little"))
     
     def write_spell(self):
         for i in range(len(spell_content)):
@@ -984,7 +986,7 @@ class Main(QWidget):
                 spell_data[i]["Value"]["ManaCost"] += 0x100
             self.file.seek(int(spell_content[i]["Value"]["ManaCost"], 16))
             self.file.write(int(spell_data[i]["Value"]["ManaCost"]).to_bytes(1, "little"))
-            #Attributes
+            #Element
             total = 0
             for e in Attributes:
                 if spell_data[i]["Value"]["Element"][str(e).split(".")[1]]:
@@ -1001,7 +1003,7 @@ class Main(QWidget):
             self.file.seek(int(spell_content[i]["Value"]["Attack"], 16))
             self.file.write(int(spell_data[i]["Value"]["Attack"]).to_bytes(2, "little"))
 
-    def write_stats(self):
+    def write_stat(self):
         #StrConIntLck
         if stat_data["Value"]["StrConIntLck"] < -0x7FFF:
             stat_data["Value"]["StrConIntLck"] = -0x7FFF
@@ -1096,6 +1098,7 @@ class Main(QWidget):
         self.file.write(str.encode("KOJI  IGA"))
     
     def read_enemy(self):
+        log = []
         for i in enemy_content:
             entry = {}
             entry["Key"] = i["Key"]
@@ -1157,8 +1160,187 @@ class Main(QWidget):
                 entry["Value"]["AttackDamageType"].append("0x{:04x}".format(int.from_bytes(self.file.read(2), "little")))
             log.append(entry)
         
-        with open("SpoilerLog.json", "w") as file_writer:
+        with open("SpoilerLog\\Enemy.json", "w") as file_writer:
             file_writer.write(json.dumps(log, indent=2))
+    
+    def read_equip(self):
+        log = []
+        for i in equipment_content:
+            entry = {}
+            entry["Key"] = i["Key"]
+            entry["Value"] = {}
+            #Attack
+            self.file.seek(int(i["Value"]["Attack"], 16))
+            entry["Value"]["Attack"] = int.from_bytes(self.file.read(2), "little")
+            if entry["Value"]["Attack"] > 0x8000:
+                entry["Value"]["Attack"] = entry["Value"]["Attack"] - 0x10000
+            #Defense
+            self.file.seek(int(i["Value"]["Defense"], 16))
+            entry["Value"]["Defense"] = int.from_bytes(self.file.read(2), "little")
+            if entry["Value"]["Defense"] > 0x8000:
+                entry["Value"]["Defense"] = entry["Value"]["Defense"] - 0x10000
+            #Strength
+            self.file.seek(int(i["Value"]["Strength"], 16))
+            entry["Value"]["Strength"] = int.from_bytes(self.file.read(1), "little")
+            if entry["Value"]["Strength"] > 0x80:
+                entry["Value"]["Strength"] = entry["Value"]["Strength"] - 0x100
+            #Constitution
+            self.file.seek(int(i["Value"]["Constitution"], 16))
+            entry["Value"]["Constitution"] = int.from_bytes(self.file.read(1), "little")
+            if entry["Value"]["Constitution"] > 0x80:
+                entry["Value"]["Constitution"] = entry["Value"]["Constitution"] - 0x100
+            #Intelligence
+            self.file.seek(int(i["Value"]["Intelligence"], 16))
+            entry["Value"]["Intelligence"] = int.from_bytes(self.file.read(1), "little")
+            if entry["Value"]["Intelligence"] > 0x80:
+                entry["Value"]["Intelligence"] = entry["Value"]["Intelligence"] - 0x100
+            #Luck
+            self.file.seek(int(i["Value"]["Luck"], 16))
+            entry["Value"]["Luck"] = int.from_bytes(self.file.read(1), "little")
+            if entry["Value"]["Luck"] > 0x80:
+                entry["Value"]["Luck"] = entry["Value"]["Luck"] - 0x100
+            #Resistances
+            entry["Value"]["Resistances"] = {}
+            for e in Attributes:
+                entry["Value"]["Resistances"][str(e).split(".")[1]] = 1
+            self.file.seek(int(i["Value"]["Resistances"]["Weak"], 16))
+            total = int.from_bytes(self.file.read(2), "little")
+            for e in Attributes:
+                if (total & e.value) != 0:
+                    entry["Value"]["Resistances"][str(e).split(".")[1]] = 0
+            self.file.seek(int(i["Value"]["Resistances"]["Strong"], 16))
+            total = int.from_bytes(self.file.read(2), "little")
+            for e in Attributes:
+                if (total & e.value) != 0:
+                    entry["Value"]["Resistances"][str(e).split(".")[1]] = 2
+            self.file.seek(int(i["Value"]["Resistances"]["Immune"], 16))
+            total = int.from_bytes(self.file.read(2), "little")
+            for e in Attributes:
+                if (total & e.value) != 0:
+                    entry["Value"]["Resistances"][str(e).split(".")[1]] = 3
+            self.file.seek(int(i["Value"]["Resistances"]["Absorb"], 16))
+            total = int.from_bytes(self.file.read(2), "little")
+            for e in Attributes:
+                if (total & e.value) != 0:
+                    entry["Value"]["Resistances"][str(e).split(".")[1]] = 4
+            log.append(entry)
+        
+        with open("SpoilerLog\\Equipment.json", "w") as file_writer:
+            file_writer.write(json.dumps(log, indent=2))
+    
+    def read_item(self):
+        log = []
+        for i in handitem_content:
+            entry = {}
+            entry["Key"] = i["Key"]
+            entry["Value"] = {}
+            #Attack
+            self.file.seek(int(i["Value"]["Attack"], 16))
+            entry["Value"]["Attack"] = int.from_bytes(self.file.read(2), "little")
+            if entry["Value"]["Attack"] > 0x8000:
+                entry["Value"]["Attack"] = entry["Value"]["Attack"] - 0x10000
+            #Defense
+            self.file.seek(int(i["Value"]["Defense"], 16))
+            entry["Value"]["Defense"] = int.from_bytes(self.file.read(2), "little")
+            if entry["Value"]["Defense"] > 0x8000:
+                entry["Value"]["Defense"] = entry["Value"]["Defense"] - 0x10000
+            #Element
+            entry["Value"]["Element"] = {}
+            for e in Attributes:
+                entry["Value"]["Element"][str(e).split(".")[1]] = False
+            self.file.seek(int(i["Value"]["Element"], 16))
+            total = int.from_bytes(self.file.read(2), "little")
+            for e in Attributes:
+                if (total & e.value) != 0:
+                    entry["Value"]["Element"][str(e).split(".")[1]] = True
+            #Sprite
+            self.file.seek(int(i["Value"]["Sprite"], 16))
+            entry["Value"]["Sprite"] = "0x{:02x}".format(int.from_bytes(self.file.read(1), "little"))
+            #Special
+            self.file.seek(int(i["Value"]["Special"], 16))
+            entry["Value"]["Special"] = "0x{:02x}".format(int.from_bytes(self.file.read(1), "little"))
+            #Spell
+            self.file.seek(int(i["Value"]["Spell"], 16))
+            entry["Value"]["Spell"] = "0x{:04x}".format(int.from_bytes(self.file.read(2), "little"))
+            #ManaCost
+            self.file.seek(int(i["Value"]["ManaCost"], 16))
+            entry["Value"]["ManaCost"] = int.from_bytes(self.file.read(2), "little")
+            #StunFrames
+            self.file.seek(int(i["Value"]["StunFrames"], 16))
+            entry["Value"]["StunFrames"] = int.from_bytes(self.file.read(2), "little")
+            #Range
+            self.file.seek(int(i["Value"]["Range"], 16))
+            entry["Value"]["Range"] = int.from_bytes(self.file.read(2), "little")
+            #Extra
+            self.file.seek(int(i["Value"]["Extra"], 16))
+            entry["Value"]["Extra"] = "0x{:02x}".format(int.from_bytes(self.file.read(1), "little"))
+            log.append(entry)
+        
+        with open("SpoilerLog\\HandItem.json", "w") as file_writer:
+            file_writer.write(json.dumps(log, indent=2))
+    
+    def read_shop(self):
+        log = []
+        for i in shop_content:
+            entry = {}
+            entry["Key"] = i["Key"]
+            entry["Value"] = {}
+            #Price
+            self.file.seek(int(i["Value"]["Price"], 16))
+            entry["Value"]["Price"] = int.from_bytes(self.file.read(4), "little")
+            log.append(entry)
+        
+        with open("SpoilerLog\\Shop.json", "w") as file_writer:
+            file_writer.write(json.dumps(log, indent=2))
+    
+    def read_spell(self):
+        log = []
+        for i in spell_content:
+            entry = {}
+            entry["Key"] = i["Key"]
+            entry["Value"] = {}
+            #ManaCost
+            self.file.seek(int(i["Value"]["ManaCost"], 16))
+            entry["Value"]["ManaCost"] = int.from_bytes(self.file.read(1), "little")
+            #Element
+            entry["Value"]["Element"] = {}
+            for e in Attributes:
+                entry["Value"]["Element"][str(e).split(".")[1]] = False
+            self.file.seek(int(i["Value"]["Element"], 16))
+            total = int.from_bytes(self.file.read(2), "little")
+            for e in Attributes:
+                if (total & e.value) != 0:
+                    entry["Value"]["Element"][str(e).split(".")[1]] = True
+            #Attack
+            self.file.seek(int(i["Value"]["Attack"], 16))
+            entry["Value"]["Attack"] = int.from_bytes(self.file.read(2), "little")
+            log.append(entry)
+        
+        with open("SpoilerLog\\Spell.json", "w") as file_writer:
+            file_writer.write(json.dumps(log, indent=2))
+    
+    def read_stat(self):
+        entry = {}
+        entry["Key"] = stat_content["Key"]
+        entry["Value"] = {}
+        #StrConIntLck
+        self.file.seek(int(stat_content["Value"]["StrConIntLck"], 16))
+        entry["Value"]["StrConIntLck"] = int.from_bytes(self.file.read(2), "little")
+        #Health
+        self.file.seek(int(stat_content["Value"]["Health"], 16))
+        entry["Value"]["Health"] = int.from_bytes(self.file.read(2), "little")
+        #Hearts
+        self.file.seek(int(stat_content["Value"]["Hearts"], 16))
+        entry["Value"]["Hearts"] = int.from_bytes(self.file.read(2), "little")
+        #MaxHearts
+        self.file.seek(int(stat_content["Value"]["MaxHearts"], 16))
+        entry["Value"]["MaxHearts"] = int.from_bytes(self.file.read(2), "little")
+        #Mana
+        self.file.seek(int(stat_content["Value"]["Mana"], 16))
+        entry["Value"]["Mana"] = int.from_bytes(self.file.read(2), "little")
+        
+        with open("SpoilerLog\\Stat.json", "w") as file_writer:
+            file_writer.write(json.dumps(entry, indent=2))
     
     def check_for_updates(self):
         if os.path.isfile("OldKindAndFair.exe"):
