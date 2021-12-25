@@ -166,7 +166,8 @@ while i <= 90000:
     i += 10000
 i = 100000
 while i <= 400000:
-    base.append(i)
+    for e in range(10):
+        base.append(i)
     i += 100000
 base.append(500000)
 i = 0
