@@ -20,23 +20,69 @@ from enum import Enum
 minor = [
     "Doppleganger 1"
 ]
-skip = [
-    "Zombie",
-    "Warg",
+level_skip = [
+    "Stone Skull",
     "Spike ball",
-    "Shaft Orb",
-    "Stone Skull"
+    "Evil Priest",
+    "Zombie",
+    "Warg"
 ]
-progress_to_list = {}
+resist_skip = [
+    "Intro Dracula 1",
+    "Intro Dracula 2",
+    "Stone Skull",
+    "Spike ball",
+    "Evil Priest"
+]
 resist_pool = []
 
-#Shop Lists
+#Offsets
 
-base = []
-ten = []
-hundred = []
-thousand = []
-ten_thousand = []
+enemy_offset = {
+    "Health": 4,
+    "Damage": 6,
+    "DamageType": 8,
+    "Defense": 10,
+    "Surface": 12,
+    "Weak": 14,
+    "Strong": 16,
+    "Immune": 18,
+    "Absorb": 20,
+    "Level": 22,
+    "Experience": 24,
+}
+equip_offset = {
+    "Attack": 8,
+    "Defense": 10,
+    "Strength": 12,
+    "Constitution": 13,
+    "Intelligence": 14,
+    "Luck": 15,
+    "Weak": 16,
+    "Strong": 18,
+    "Immune": 20,
+    "Absorb": 22
+}
+item_offset = {
+    "Attack": 8,
+    "Defense": 10,
+    "Element": 12,
+    "Sprite": 15,
+    "Special": 24,
+    "Cooldown": 26,
+    "Spell": 28,
+    "ManaCost": 36,
+    "StunFrames": 38,
+    "Range": 40,
+    "Extra": 42
+}
+spell_offset = {
+    "ManaCost": 12,
+    "Cooldown": 13,
+    "StunFrames": 14,
+    "Element": 22,
+    "Attack": 24
+}
 
 #Misc Lists
 
@@ -119,14 +165,19 @@ with open("Data\\Values\\Equipment.json", "r") as file_reader:
 with open("Data\\Values\\HandItem.json", "r") as file_reader:
     handitem_data = json.load(file_reader)
 
-with open("Data\\Values\\Shop.json", "r") as file_reader:
-    shop_data = json.load(file_reader)
-
 with open("Data\\Values\\Spell.json", "r") as file_reader:
     spell_data = json.load(file_reader)
 
 with open("Data\\Values\\Stat.json", "r") as file_reader:
     stat_data = json.load(file_reader)
+
+#Dict
+
+with open("Data\\Dicts\\ItemId.json", "r") as file_reader:
+    id_dict = json.load(file_reader)
+
+with open("Data\\Dicts\\ItemPrice.json", "r") as file_reader:
+    price_dict = json.load(file_reader)
 
 for i in range(7):
     resist_pool.append(0)
@@ -142,50 +193,6 @@ for i in range(2):
 
 for i in range(1):
     resist_pool.append(4)
-
-#Filling Shop Lists
-i = 10
-while i <= 90:
-    for e in range(10):
-        base.append(i)
-    i += 10
-i = 100
-while i <= 900:
-    for e in range(10):
-        base.append(i)
-    i += 100
-i = 1000
-while i <= 9000:
-    for e in range(10):
-        base.append(i)
-    i += 1000
-i = 10000
-while i <= 90000:
-    for e in range(10):
-        base.append(i)
-    i += 10000
-i = 100000
-while i <= 400000:
-    for e in range(10):
-        base.append(i)
-    i += 100000
-base.append(500000)
-i = 0
-while i <= 90:
-    ten.append(i)
-    i += 10
-i = 0
-while i <= 900:
-    hundred.append(i)
-    i += 100
-i = 0
-while i <= 9000:
-    thousand.append(i)
-    i += 1000
-i = 0
-while i <= 90000:
-    ten_thousand.append(i)
-    i += 10000
 
 #Functions
 
@@ -311,15 +318,10 @@ class Main(QWidget):
         self.box_1.setLayout(box_1_grid)
         grid.addWidget(self.box_1, 0, 0, 1, 1)
 
-        box_3_grid = QGridLayout()
-        self.box_3 = QGroupBox("Shop Randomization")
-        self.box_3.setLayout(box_3_grid)
-        grid.addWidget(self.box_3, 0, 1, 1, 1)
-
         box_2_grid = QGridLayout()
         self.box_2 = QGroupBox("Enemy Damage")
         self.box_2.setLayout(box_2_grid)
-        grid.addWidget(self.box_2, 1, 0, 1, 1)
+        grid.addWidget(self.box_2, 0, 1, 1, 1)
 
         box_4_grid = QGridLayout()
         self.box_4 = QGroupBox("Extra")
@@ -348,25 +350,15 @@ class Main(QWidget):
         self.check_box_2.stateChanged.connect(self.check_box_2_changed)
         box_1_grid.addWidget(self.check_box_2, 1, 0)
         
-        self.check_box_3 = QCheckBox("Item Cost")
-        self.check_box_3.setToolTip("Randomize shop prices. Does not affect the relic slot.")
-        self.check_box_3.stateChanged.connect(self.check_box_3_changed)
-        box_3_grid.addWidget(self.check_box_3, 0, 0)
-
-        self.check_box_4 = QCheckBox("Level 1 Locked")
-        self.check_box_4.setToolTip("Alucard is locked at level 1 for the entire game.")
-        self.check_box_4.stateChanged.connect(self.check_box_4_changed)
-        box_4_grid.addWidget(self.check_box_4, 0, 0)
+        self.check_box_6 = QCheckBox("Continuous Wing Smash")
+        self.check_box_6.setToolTip("Wing smashes will cost more MP to initially cast\nbut will no longer need to be chained.")
+        self.check_box_6.stateChanged.connect(self.check_box_6_changed)
+        box_4_grid.addWidget(self.check_box_6, 0, 0)
         
         self.check_box_5 = QCheckBox("Bigtoss Only")
         self.check_box_5.setToolTip("Alucard will always go flying across the room when\ntaking damage. Base enemy damage will be slightly\nreduced to compensate for the extra collision damage.")
         self.check_box_5.stateChanged.connect(self.check_box_5_changed)
         box_4_grid.addWidget(self.check_box_5, 1, 0)
-        
-        self.check_box_6 = QCheckBox("Continuous Wing Smash")
-        self.check_box_6.setToolTip("Wing smashes will cost more MP to initially cast\nbut will no longer need to be chained.")
-        self.check_box_6.stateChanged.connect(self.check_box_6_changed)
-        box_4_grid.addWidget(self.check_box_6, 0, 1)
         
         #SpinBoxes
         
@@ -390,14 +382,10 @@ class Main(QWidget):
             self.check_box_1.setChecked(True)
         if config.getboolean("EnemyRandomization", "bEnemyTolerances"):
             self.check_box_2.setChecked(True)
-        if config.getboolean("ShopRandomization", "bItemCost"):
-            self.check_box_3.setChecked(True)
-        if config.getboolean("Extra", "bLevel1Locked"):
-            self.check_box_4.setChecked(True)
-        if config.getboolean("Extra", "bBigtossOnly"):
-            self.check_box_5.setChecked(True)
         if config.getboolean("Extra", "bContinuousSmash"):
             self.check_box_6.setChecked(True)
+        if config.getboolean("Extra", "bBigtossOnly"):
+            self.check_box_5.setChecked(True)
         
         #TextField
 
@@ -476,31 +464,17 @@ class Main(QWidget):
         else:
             config.set("EnemyRandomization", "bEnemyTolerances", "false")
 
-    def check_box_3_changed(self):
-        if self.check_box_3.isChecked():
-            config.set("ShopRandomization", "bItemCost", "true")
+    def check_box_6_changed(self):
+        if self.check_box_6.isChecked():
+            config.set("Extra", "bContinuousSmash", "true")
         else:
-            config.set("ShopRandomization", "bItemCost", "false")
-
-    def check_box_4_changed(self):
-        if self.check_box_4.isChecked():
-            config.set("Extra", "bLevel1Locked", "true")
-            self.damage_box.setRange(0.0, 2.0)
-        else:
-            config.set("Extra", "bLevel1Locked", "false")
-            self.damage_box.setRange(0.0, 3.0)
+            config.set("Extra", "bContinuousSmash", "false")
 
     def check_box_5_changed(self):
         if self.check_box_5.isChecked():
             config.set("Extra", "bBigtossOnly", "true")
         else:
             config.set("Extra", "bBigtossOnly", "false")
-
-    def check_box_6_changed(self):
-        if self.check_box_6.isChecked():
-            config.set("Extra", "bContinuousSmash", "true")
-        else:
-            config.set("Extra", "bContinuousSmash", "false")
     
     def new_damage(self):
         config.set("EnemyDamage", "fDamageMultiplier", str(round(self.damage_box.value(),1)))
@@ -539,15 +513,11 @@ class Main(QWidget):
 
         if config.getboolean("EnemyRandomization", "bEnemyLevels") or config.getboolean("EnemyRandomization", "bEnemyTolerances"):
             self.random_enemy(config.getboolean("EnemyRandomization", "bEnemyLevels"), config.getboolean("EnemyRandomization", "bEnemyTolerances"))
-        if config.getboolean("ShopRandomization", "bItemCost"):
-            self.random_shop()
         
         if config.getfloat("EnemyDamage", "fDamageMultiplier") == 0.0:
             self.no_damage()
         self.multiply_damage()
         
-        if config.getboolean("Extra", "bLevel1Locked"):
-            self.no_exp()
         if config.getboolean("Extra", "bBigtossOnly"):
             self.all_bigtoss()
         if config.getboolean("Extra", "bContinuousSmash"):
@@ -562,6 +532,11 @@ class Main(QWidget):
         self.write_description()
         self.write_misc()
         self.read_enemy()
+        #self.read_equip()
+        #self.read_item()
+        #self.read_shop()
+        #self.read_spell()
+        #self.read_stat()
         
         self.file.close()
         
@@ -587,7 +562,7 @@ class Main(QWidget):
     def button_4_clicked(self):
         box = QMessageBox(self)
         box.setWindowTitle("About")
-        box.setText("Applying this mod to your rom will change several things by default:<br/><br/><span style=\"color: #f6b26b;\">Balance enemy stats</span>: Bring enemy stat pools closer to each other and avoid extremes like what the vanilla game does.<br/><br/><span style=\"color: #f6b26b;\">Tweak equipment</span>: Tone down god tier items, adjust MP costs and improve underpowered techniques and spells.<br/><br/><span style=\"color: #f6b26b;\">Improve starting stats</span>: Start the game with a minimum of 120 HP and 50 MP.<br/><br/><span style=\"color: #f6b26b;\">Assign elemental attributes</span>: Give player/enemy attacks proper elemental attributes when needed.<br/><br/><span style=\"color: #f6b26b;\">Rework knockback</span>: Make enemy knockback based on the nature of the attack rather than its damage output.")
+        box.setText("Applying this mod to your rom will change several things by default:<br/><br/><span style=\"color: #f6b26b;\">Balance enemy stats</span> by improving difficulty progression and avoiding extremes like what the vanilla game does.<br/><br/><span style=\"color: #f6b26b;\">Tweak equipment</span> by toning down god tier items, adjusting MP costs and improving underpowered techniques and spells.<br/><br/><span style=\"color: #f6b26b;\">Improve starting stats</span> with a minimum of 100 HP and 40 MP.<br/><br/><span style=\"color: #f6b26b;\">Assign elemental attributes</span> by giving player/enemy attacks the proper attributes when needed.<br/><br/><span style=\"color: #f6b26b;\">Rework enemy knockback</span> by making it based on the nature of the attack rather than its damage output.<br/><br/><span style=\"color: #f6b26b;\">And more...</span>")
         box.exec()
     
     def button_5_clicked(self):
@@ -637,12 +612,10 @@ class Main(QWidget):
         keys_list = list(enemy_data)
         for i in range(len(keys_list)):
             #Level
-            if keys_list[i] in skip:
-                continue
-            if level:
+            if level and not keys_list[i] in level_skip:
                 if enemy_data[keys_list[i]]["IsMainEntry"]:
                     if keys_list[i] == "Shaft":
-                        enemy_data[keys_list[i]]["Level"] = random.choice(self.create_list(999, 1, 50))
+                        enemy_data[keys_list[i]]["Level"] = random.choice(self.create_list(999, 1, 99))
                     elif keys_list[i] == "Dracula":
                         enemy_data[keys_list[i]]["Level"] = abs(enemy_data["Shaft"]["Level"] - 100)
                     elif keys_list[i] in minor:
@@ -652,9 +625,7 @@ class Main(QWidget):
                 else:
                     enemy_data[keys_list[i]]["Level"] = enemy_data[keys_list[i-1]]["Level"]
             #Resistances
-            if "Intro" in keys_list[i]:
-                continue
-            if resist:
+            if resist and not keys_list[i] in resist_skip:
                 for e in Attributes:
                     if enemy_data[keys_list[i]]["IsMainEntry"]:
                         enemy_data[keys_list[i]]["Resistances"][str(e).split(".")[1]] = random.choice(resist_pool)
@@ -667,7 +638,7 @@ class Main(QWidget):
                 self.file.write((0).to_bytes(2, "little"))
         #LibraryCard
         self.file.seek(0x4BAA2B0)
-        self.file.write((0xA6).to_bytes(1, "little"))
+        self.file.write((0x00A6).to_bytes(2, "little"))
 
     def create_list(self, value, minimum, maximum):
         list = []
@@ -677,22 +648,6 @@ class Main(QWidget):
                 list.append(list_int)
             list_int += 1
         return list
-
-    def random_shop(self):
-        for i in shop_data:
-            if i == "Slot1":
-                continue
-            chosen = random.choice(base)
-            if chosen < 500000:
-                if chosen >= 100:
-                    chosen += random.choice(ten)
-                if chosen >= 1000:
-                    chosen += random.choice(hundred)
-                if chosen >= 10000:
-                    chosen += random.choice(thousand)
-                if chosen >= 100000:
-                    chosen += random.choice(ten_thousand)
-            shop_data[i] = chosen
     
     def no_damage(self):
         for i in enemy_data:
@@ -700,6 +655,8 @@ class Main(QWidget):
                 continue
             enemy_data[i]["HealthLevel1"] = 0
             enemy_data[i]["HealthLevel99"] = 0
+            enemy_data[i]["ExperienceLevel1"] = 0
+            enemy_data[i]["ExperienceLevel99"] = 0
         #Invulnerability
         self.file.seek(0x126626)
         self.file.write((0).to_bytes(1, "little"))
@@ -712,11 +669,10 @@ class Main(QWidget):
 
     def multiply_damage(self):
         for i in enemy_data:
+            if i == "Evil Priest":
+                continue
             enemy_data[i]["ContactDamageLevel1"] = int(enemy_data[i]["ContactDamageLevel1"]*config.getfloat("EnemyDamage", "fDamageMultiplier"))
             enemy_data[i]["ContactDamageLevel99"] = int(enemy_data[i]["ContactDamageLevel99"]*config.getfloat("EnemyDamage", "fDamageMultiplier"))
-        for i in handitem_data:
-            if handitem_data[i]["IsFood"]:
-                handitem_data[i]["Attack"] = int(handitem_data[i]["Attack"]*config.getfloat("EnemyDamage", "fDamageMultiplier"))
 
     def no_exp(self):
         self.file.seek(0x117cf6)
@@ -737,23 +693,34 @@ class Main(QWidget):
         self.file.seek(0x134990)
         self.file.write((0).to_bytes(4, "little"))
     
+    def check_offset(self, offset):
+        start = 0x18
+        position = int((offset - start)/0x930) + 1
+        if offset >= start + 0x930*position - 0x130:
+            offset += 0x130
+        return offset
+    
     def write_enemy(self):
         for i in enemy_content:
             #Health
             health = math.ceil(((enemy_data[i]["HealthLevel99"] - enemy_data[i]["HealthLevel1"])/98)*(enemy_data[i]["Level"]-1) + enemy_data[i]["HealthLevel1"])
+            if health < -0x8000:
+                health = -0x8000
+            if health > 0x7FFF:
+                health = 0x7FFF
             if health < 0:
-                health = 0
-            if health > 0x8000:
-                health = 0x8000
-            self.file.seek(int(enemy_content[i]["Health"], 16))
+                health += 0x10000
+            self.file.seek(self.check_offset(int(enemy_content[i]["EnemyAddress"], 16) + enemy_offset["Health"]))
             self.file.write(health.to_bytes(2, "little"))
             #ContactDamage
             strength = math.ceil(((enemy_data[i]["ContactDamageLevel99"] - enemy_data[i]["ContactDamageLevel1"])/98)*(enemy_data[i]["Level"]-1) + enemy_data[i]["ContactDamageLevel1"])
+            if strength < -0x8000:
+                strength = -0x8000
+            if strength > 0x7FFF:
+                strength = 0x7FFF
             if strength < 0:
-                strength = 0
-            if strength > 0x8000:
-                strength = 0x8000
-            self.file.seek(int(enemy_content[i]["ContactDamage"], 16))
+                strength += 0x10000
+            self.file.seek(self.check_offset(int(enemy_content[i]["EnemyAddress"], 16) + enemy_offset["Damage"]))
             if not enemy_data[i]["HasContact"]:
                 self.file.write((0).to_bytes(2, "little"))
             elif int(enemy_data[i]["ContactDamageType"], 16) % 16 == 5:
@@ -761,18 +728,20 @@ class Main(QWidget):
             else:
                 self.file.write(strength.to_bytes(2, "little"))
             #ContactDamageType
-            self.file.seek(int(enemy_content[i]["ContactDamageType"], 16))
+            self.file.seek(self.check_offset(int(enemy_content[i]["EnemyAddress"], 16) + enemy_offset["DamageType"]))
             self.file.write(int(enemy_data[i]["ContactDamageType"], 16).to_bytes(2, "little"))
             #Defense
             defense = math.ceil(((enemy_data[i]["DefenseLevel99"] - enemy_data[i]["DefenseLevel1"])/98)*(enemy_data[i]["Level"]-1) + enemy_data[i]["DefenseLevel1"])
+            if defense < -0x8000:
+                defense = -0x8000
+            if defense > 0x7FFF:
+                defense = 0x7FFF
             if defense < 0:
-                defense = 0
-            if defense > 0x8000:
-                defense = 0x8000
-            self.file.seek(int(enemy_content[i]["Defense"], 16))
+                defense += 0x10000
+            self.file.seek(self.check_offset(int(enemy_content[i]["EnemyAddress"], 16) + enemy_offset["Defense"]))
             self.file.write(defense.to_bytes(2, "little"))
             #Surface
-            self.file.seek(int(enemy_content[i]["Surface"], 16))
+            self.file.seek(self.check_offset(int(enemy_content[i]["EnemyAddress"], 16) + enemy_offset["Surface"]))
             self.file.write(int(enemy_data[i]["Surface"], 16).to_bytes(2, "little"))
             #Resistances
             weak = 0
@@ -793,97 +762,153 @@ class Main(QWidget):
                 strong = 0
                 immune = 0xFFE0
                 absorb = 0
-            self.file.seek(int(enemy_content[i]["Resistances"]["Weak"], 16))
+            self.file.seek(self.check_offset(int(enemy_content[i]["EnemyAddress"], 16) + enemy_offset["Weak"]))
             self.file.write(weak.to_bytes(2, "little"))
-            self.file.seek(int(enemy_content[i]["Resistances"]["Strong"], 16))
+            self.file.seek(self.check_offset(int(enemy_content[i]["EnemyAddress"], 16) + enemy_offset["Strong"]))
             self.file.write(strong.to_bytes(2, "little"))
-            self.file.seek(int(enemy_content[i]["Resistances"]["Immune"], 16))
+            self.file.seek(self.check_offset(int(enemy_content[i]["EnemyAddress"], 16) + enemy_offset["Immune"]))
             self.file.write(immune.to_bytes(2, "little"))
-            self.file.seek(int(enemy_content[i]["Resistances"]["Absorb"], 16))
+            self.file.seek(self.check_offset(int(enemy_content[i]["EnemyAddress"], 16) + enemy_offset["Absorb"]))
             self.file.write(absorb.to_bytes(2, "little"))
             #Level
-            self.file.seek(int(enemy_content[i]["Level"], 16))
+            if enemy_data[i]["Level"] < -0x8000:
+                enemy_data[i]["Level"] = -0x8000
+            if enemy_data[i]["Level"] > 0x7FFF:
+                enemy_data[i]["Level"] = 0x7FFF
+            if enemy_data[i]["Level"] < 0:
+                enemy_data[i]["Level"] += 0x10000
+            self.file.seek(self.check_offset(int(enemy_content[i]["EnemyAddress"], 16) + enemy_offset["Level"]))
             self.file.write(enemy_data[i]["Level"].to_bytes(2, "little"))
             #Experience
             experience = math.ceil(((enemy_data[i]["ExperienceLevel99"] - enemy_data[i]["ExperienceLevel1"])/98)*(enemy_data[i]["Level"]-1) + enemy_data[i]["ExperienceLevel1"])
+            if experience < -0x8000:
+                experience = -0x8000
+            if experience > 0x7FFF:
+                experience = 0x7FFF
             if experience < 0:
-                experience = 0
-            if experience > 0x8000:
-                experience = 0x8000
-            self.file.seek(int(enemy_content[i]["Experience"], 16))
+                experience += 0x10000
+            self.file.seek(self.check_offset(int(enemy_content[i]["EnemyAddress"], 16) + enemy_offset["Experience"]))
             self.file.write(experience.to_bytes(2, "little"))
-            #AttackDamage
-            for e in range(len(enemy_content[i]["AttackDamage"])):
+            #StopwatchTolerance
+            self.file.seek(self.check_offset(int(enemy_content[i]["EnemyAddress"], 16) + 37))
+            if enemy_data[i]["IsBoss"]:
+                self.file.write((0x30).to_bytes(1, "little"))
+            elif enemy_data[i]["Level"] >= 40:
+                self.file.write((0x34).to_bytes(1, "little"))
+            elif enemy_data[i]["Level"] >= 20:
+                self.file.write((0x16).to_bytes(1, "little"))
+            else:
+                self.file.write((0x14).to_bytes(1, "little"))
+            #NoStun
+            offset = self.check_offset(int(enemy_content[i]["EnemyAddress"], 16) + 38)
+            self.file.seek(offset)
+            if int.from_bytes(self.file.read(1), "little") < 0x40:
+                self.file.seek(offset)
+                self.file.write((0x40).to_bytes(1, "little"))
+            #Attack
+            for e in range(len(enemy_content[i]["AttackAddress"])):
+                #AttackDamage
                 damage = math.ceil(enemy_data[i]["AttackDamageMultiplier"][e]*strength)
+                if damage < -0x8000:
+                    damage = -0x8000
+                if damage > 0x7FFF:
+                    damage = 0x7FFF
                 if damage < 0:
-                    damage = 0
-                if damage > 0x8000:
-                    damage = 0x8000
-                self.file.seek(int(enemy_content[i]["AttackDamage"][e], 16))
+                    damage += 0x10000
+                self.file.seek(self.check_offset(int(enemy_content[i]["AttackAddress"][e], 16) + enemy_offset["Damage"]))
                 if int(enemy_data[i]["AttackDamageType"][e], 16) % 16 == 5:
                     self.file.write(int(damage*(1 - config.getfloat("EnemyDamage", "fDamageMultiplier")/20)).to_bytes(2, "little"))
                 else:
                     self.file.write(damage.to_bytes(2, "little"))
-            #AttackDamageType
-            for e in range(len(enemy_content[i]["AttackDamageType"])):
-                self.file.seek(int(enemy_content[i]["AttackDamageType"][e], 16))
+                #AttackDamageType
+                self.file.seek(self.check_offset(int(enemy_content[i]["AttackAddress"][e], 16) + enemy_offset["DamageType"]))
                 self.file.write(int(enemy_data[i]["AttackDamageType"][e], 16).to_bytes(2, "little"))
+                #AttackStopwatchTolerance
+                self.file.seek(self.check_offset(int(enemy_content[i]["AttackAddress"][e], 16) + 37))
+                if enemy_data[i]["Level"] >= 40 or enemy_data[i]["IsBoss"]:
+                    self.file.write((0x20).to_bytes(1, "little"))
+                elif enemy_data[i]["Level"] >= 20:
+                    self.file.write((0x12).to_bytes(1, "little"))
+                else:
+                    self.file.write((0x00).to_bytes(1, "little"))
+                #AttackNoStun
+                offset = self.check_offset(int(enemy_content[i]["AttackAddress"][e], 16) + 38)
+                self.file.seek(offset)
+                if int.from_bytes(self.file.read(1), "little") < 0x40:
+                    self.file.seek(offset)
+                    self.file.write((0x40).to_bytes(1, "little"))
+        #IntroDracShownDamage
+        self.file.seek(0xB7677)
+        self.file.write((0x08).to_bytes(1, "little"))
+        self.file.seek(0xB76EF)
+        self.file.write((0x08).to_bytes(1, "little"))
+        #ZombieTrevorShownDamage
+        self.file.seek(0xB94E4)
+        self.file.write((0x10).to_bytes(1, "little"))
+        self.file.seek(0xB94E7)
+        self.file.write((0x08).to_bytes(1, "little"))
+        #BeezFliesShownDamage
+        self.file.seek(0xB9267)
+        self.file.write((0x08).to_bytes(1, "little"))
+        #ShaftOrb
+        self.file.seek(0xB92B7)
+        self.file.write((0x08).to_bytes(1, "little"))
 
     def write_equip(self):
         for i in equipment_content:
             #Attack
-            if equipment_data[i]["Attack"] < -0x7FFF:
-                equipment_data[i]["Attack"] = -0x7FFF
-            if equipment_data[i]["Attack"] > 0x8000:
-                equipment_data[i]["Attack"] = 0x8000
+            if equipment_data[i]["Attack"] < -0x8000:
+                equipment_data[i]["Attack"] = -0x8000
+            if equipment_data[i]["Attack"] > 0x7FFF:
+                equipment_data[i]["Attack"] = 0x7FFF
             if equipment_data[i]["Attack"] < 0:
                 equipment_data[i]["Attack"] += 0x10000
-            self.file.seek(int(equipment_content[i]["Attack"], 16))
+            self.file.seek(self.check_offset(int(equipment_content[i], 16) + equip_offset["Attack"]))
             self.file.write(int(equipment_data[i]["Attack"]).to_bytes(2, "little"))
             #Defense
-            if equipment_data[i]["Defense"] < -0x7FFF:
-                equipment_data[i]["Defense"] = -0x7FFF
-            if equipment_data[i]["Defense"] > 0x8000:
-                equipment_data[i]["Defense"] = 0x8000
+            if equipment_data[i]["Defense"] < -0x8000:
+                equipment_data[i]["Defense"] = -0x8000
+            if equipment_data[i]["Defense"] > 0x7FFF:
+                equipment_data[i]["Defense"] = 0x7FFF
             if equipment_data[i]["Defense"] < 0:
                 equipment_data[i]["Defense"] += 0x10000
-            self.file.seek(int(equipment_content[i]["Defense"], 16))
+            self.file.seek(self.check_offset(int(equipment_content[i], 16) + equip_offset["Defense"]))
             self.file.write(int(equipment_data[i]["Defense"]).to_bytes(2, "little"))
             #Strength
-            if equipment_data[i]["Strength"] < -0x7F:
-                equipment_data[i]["Strength"] = -0x7F
-            if equipment_data[i]["Strength"] > 0x80:
-                equipment_data[i]["Strength"] = 0x80
+            if equipment_data[i]["Strength"] < -0x80:
+                equipment_data[i]["Strength"] = -0x80
+            if equipment_data[i]["Strength"] > 0x7F:
+                equipment_data[i]["Strength"] = 0x7F
             if equipment_data[i]["Strength"] < 0:
                 equipment_data[i]["Strength"] += 0x100
-            self.file.seek(int(equipment_content[i]["Strength"], 16))
+            self.file.seek(self.check_offset(int(equipment_content[i], 16) + equip_offset["Strength"]))
             self.file.write(int(equipment_data[i]["Strength"]).to_bytes(1, "little"))
             #Constitution
-            if equipment_data[i]["Constitution"] < -0x7F:
-                equipment_data[i]["Constitution"] = -0x7F
-            if equipment_data[i]["Constitution"] > 0x80:
-                equipment_data[i]["Constitution"] = 0x80
+            if equipment_data[i]["Constitution"] < -0x80:
+                equipment_data[i]["Constitution"] = -0x80
+            if equipment_data[i]["Constitution"] > 0x7F:
+                equipment_data[i]["Constitution"] = 0x7F
             if equipment_data[i]["Constitution"] < 0:
                 equipment_data[i]["Constitution"] += 0x100
-            self.file.seek(int(equipment_content[i]["Constitution"], 16))
+            self.file.seek(self.check_offset(int(equipment_content[i], 16) + equip_offset["Constitution"]))
             self.file.write(int(equipment_data[i]["Constitution"]).to_bytes(1, "little"))
             #Intelligence
-            if equipment_data[i]["Intelligence"] < -0x7F:
-                equipment_data[i]["Intelligence"] = -0x7F
-            if equipment_data[i]["Intelligence"] > 0x80:
-                equipment_data[i]["Intelligence"] = 0x80
+            if equipment_data[i]["Intelligence"] < -0x80:
+                equipment_data[i]["Intelligence"] = -0x80
+            if equipment_data[i]["Intelligence"] > 0x7F:
+                equipment_data[i]["Intelligence"] = 0x7F
             if equipment_data[i]["Intelligence"] < 0:
                 equipment_data[i]["Intelligence"] += 0x100
-            self.file.seek(int(equipment_content[i]["Intelligence"], 16))
+            self.file.seek(self.check_offset(int(equipment_content[i], 16) + equip_offset["Intelligence"]))
             self.file.write(int(equipment_data[i]["Intelligence"]).to_bytes(1, "little"))
             #Luck
-            if equipment_data[i]["Luck"] < -0x7F:
-                equipment_data[i]["Luck"] = -0x7F
-            if equipment_data[i]["Luck"] > 0x80:
-                equipment_data[i]["Luck"] = 0x80
+            if equipment_data[i]["Luck"] < -0x80:
+                equipment_data[i]["Luck"] = -0x80
+            if equipment_data[i]["Luck"] > 0x7F:
+                equipment_data[i]["Luck"] = 0x7F
             if equipment_data[i]["Luck"] < 0:
                 equipment_data[i]["Luck"] += 0x100
-            self.file.seek(int(equipment_content[i]["Luck"], 16))
+            self.file.seek(self.check_offset(int(equipment_content[i], 16) + equip_offset["Luck"]))
             self.file.write(int(equipment_data[i]["Luck"]).to_bytes(1, "little"))
             #Resistances
             weak = 0
@@ -899,135 +924,171 @@ class Main(QWidget):
                     immune += e.value
                 elif equipment_data[i]["Resistances"][str(e).split(".")[1]] == 4:
                     absorb += e.value
-            self.file.seek(int(equipment_content[i]["Resistances"]["Weak"], 16))
+            self.file.seek(self.check_offset(int(equipment_content[i], 16) + equip_offset["Weak"]))
             self.file.write(weak.to_bytes(2, "little"))
-            self.file.seek(int(equipment_content[i]["Resistances"]["Strong"], 16))
+            self.file.seek(self.check_offset(int(equipment_content[i], 16) + equip_offset["Strong"]))
             self.file.write(strong.to_bytes(2, "little"))
-            self.file.seek(int(equipment_content[i]["Resistances"]["Immune"], 16))
+            self.file.seek(self.check_offset(int(equipment_content[i], 16) + equip_offset["Immune"]))
             self.file.write(immune.to_bytes(2, "little"))
-            self.file.seek(int(equipment_content[i]["Resistances"]["Absorb"], 16))
+            self.file.seek(self.check_offset(int(equipment_content[i], 16) + equip_offset["Absorb"]))
             self.file.write(absorb.to_bytes(2, "little"))
     
     def write_item(self):
         for i in handitem_content:
             #Attack
-            if handitem_data[i]["Attack"] < -0x7FFF:
-                handitem_data[i]["Attack"] = -0x7FFF
-            if handitem_data[i]["Attack"] > 0x8000:
-                handitem_data[i]["Attack"] = 0x8000
+            if handitem_data[i]["Attack"] < -0x8000:
+                handitem_data[i]["Attack"] = -0x8000
+            if handitem_data[i]["Attack"] > 0x7FFF:
+                handitem_data[i]["Attack"] = 0x7FFF
             if handitem_data[i]["Attack"] < 0:
                 handitem_data[i]["Attack"] += 0x10000
-            self.file.seek(int(handitem_content[i]["Attack"], 16))
+            self.file.seek(self.check_offset(int(handitem_content[i], 16) + item_offset["Attack"]))
             self.file.write(int(handitem_data[i]["Attack"]).to_bytes(2, "little"))
             #Defense
-            if handitem_data[i]["Defense"] < -0x7FFF:
-                handitem_data[i]["Defense"] = -0x7FFF
-            if handitem_data[i]["Defense"] > 0x8000:
-                handitem_data[i]["Defense"] = 0x8000
+            if handitem_data[i]["Defense"] < -0x8000:
+                handitem_data[i]["Defense"] = -0x8000
+            if handitem_data[i]["Defense"] > 0x7FFF:
+                handitem_data[i]["Defense"] = 0x7FFF
             if handitem_data[i]["Defense"] < 0:
                 handitem_data[i]["Defense"] += 0x10000
-            self.file.seek(int(handitem_content[i]["Defense"], 16))
+            self.file.seek(self.check_offset(int(handitem_content[i], 16) + item_offset["Defense"]))
             self.file.write(int(handitem_data[i]["Defense"]).to_bytes(2, "little"))
             #Element
             total = 0
             for e in Attributes:
                 if handitem_data[i]["Element"][str(e).split(".")[1]]:
                     total += e.value
-            self.file.seek(int(handitem_content[i]["Element"], 16))
+            self.file.seek(self.check_offset(int(handitem_content[i], 16) + item_offset["Element"]))
             self.file.write(total.to_bytes(2, "little"))
             #Sprite
-            self.file.seek(int(handitem_content[i]["Sprite"], 16))
+            self.file.seek(self.check_offset(int(handitem_content[i], 16) + item_offset["Sprite"]))
             self.file.write(int(handitem_data[i]["Sprite"], 16).to_bytes(1, "little"))
             #Special
-            self.file.seek(int(handitem_content[i]["Special"], 16))
+            self.file.seek(self.check_offset(int(handitem_content[i], 16) + item_offset["Special"]))
             self.file.write(int(handitem_data[i]["Special"], 16).to_bytes(1, "little"))
+            #Cooldown
+            if handitem_data[i]["Cooldown"] < -0x8000:
+                handitem_data[i]["Cooldown"] = -0x8000
+            if handitem_data[i]["Cooldown"] > 0x7FFF:
+                handitem_data[i]["Cooldown"] = 0x7FFF
+            if handitem_data[i]["Cooldown"] < 0:
+                handitem_data[i]["Cooldown"] += 0x10000
+            self.file.seek(self.check_offset(int(handitem_content[i], 16) + item_offset["Cooldown"]))
+            self.file.write(int(handitem_data[i]["Cooldown"]).to_bytes(2, "little"))
             #Spell
-            self.file.seek(int(handitem_content[i]["Spell"], 16))
+            self.file.seek(self.check_offset(int(handitem_content[i], 16) + item_offset["Spell"]))
             self.file.write(int(handitem_data[i]["Spell"], 16).to_bytes(2, "little"))
             #ManaCost
-            if handitem_data[i]["ManaCost"] < -0x7FFF:
-                handitem_data[i]["ManaCost"] = -0x7FFF
-            if handitem_data[i]["ManaCost"] > 0x8000:
-                handitem_data[i]["ManaCost"] = 0x8000
+            if handitem_data[i]["ManaCost"] < -0x8000:
+                handitem_data[i]["ManaCost"] = -0x8000
+            if handitem_data[i]["ManaCost"] > 0x7FFF:
+                handitem_data[i]["ManaCost"] = 0x7FFF
             if handitem_data[i]["ManaCost"] < 0:
                 handitem_data[i]["ManaCost"] += 0x10000
-            self.file.seek(int(handitem_content[i]["ManaCost"], 16))
+            self.file.seek(self.check_offset(int(handitem_content[i], 16) + item_offset["ManaCost"]))
             self.file.write(int(handitem_data[i]["ManaCost"]).to_bytes(2, "little"))
             #StunFrames
-            if handitem_data[i]["StunFrames"] < -0x7FFF:
-                handitem_data[i]["StunFrames"] = -0x7FFF
-            if handitem_data[i]["StunFrames"] > 0x8000:
-                handitem_data[i]["StunFrames"] = 0x8000
+            if handitem_data[i]["StunFrames"] < -0x8000:
+                handitem_data[i]["StunFrames"] = -0x8000
+            if handitem_data[i]["StunFrames"] > 0x7FFF:
+                handitem_data[i]["StunFrames"] = 0x7FFF
             if handitem_data[i]["StunFrames"] < 0:
                 handitem_data[i]["StunFrames"] += 0x10000
-            self.file.seek(int(handitem_content[i]["StunFrames"], 16))
+            self.file.seek(self.check_offset(int(handitem_content[i], 16) + item_offset["StunFrames"]))
             self.file.write(int(handitem_data[i]["StunFrames"]).to_bytes(2, "little"))
             #Range
-            if handitem_data[i]["Range"] < -0x7FFF:
-                handitem_data[i]["Range"] = -0x7FFF
-            if handitem_data[i]["Range"] > 0x8000:
-                handitem_data[i]["Range"] = 0x8000
+            if handitem_data[i]["Range"] < -0x8000:
+                handitem_data[i]["Range"] = -0x8000
+            if handitem_data[i]["Range"] > 0x7FFF:
+                handitem_data[i]["Range"] = 0x7FFF
             if handitem_data[i]["Range"] < 0:
                 handitem_data[i]["Range"] += 0x10000
-            self.file.seek(int(handitem_content[i]["Range"], 16))
+            self.file.seek(self.check_offset(int(handitem_content[i], 16) + item_offset["Range"]))
             self.file.write(int(handitem_data[i]["Range"]).to_bytes(2, "little"))
             #Extra
-            self.file.seek(int(handitem_content[i]["Extra"], 16))
+            self.file.seek(self.check_offset(int(handitem_content[i], 16) + item_offset["Extra"]))
             self.file.write(int(handitem_data[i]["Extra"], 16).to_bytes(1, "little"))
 
     def write_shop(self):
         for i in shop_content:
-            #Price
-            if shop_data[i] < 0:
-                shop_data[i] = 0
-            if shop_data[i] > 0x80000000:
-                shop_data[i] = 0x80000000
-            self.file.seek(int(shop_content[i], 16))
-            self.file.write(int(shop_data[i]).to_bytes(4, "little"))
+            self.file.seek(int(shop_content[i], 16) - 4)
+            if int.from_bytes(self.file.read(1), "little") != 0:
+                shift = 0xA9
+            else:
+                shift = 0x00
+            self.file.seek(int(shop_content[i], 16) - 2)
+            price = price_dict[id_dict["0x{:04x}".format(int.from_bytes(self.file.read(2), "little") + shift)]]
+            if price < -0x80000000:
+                price = -0x80000000
+            if price > 0x7FFFFFFF:
+                price = 0x7FFFFFFF
+            if price < 0:
+                price += 0x100000000
+            self.file.write(int(price).to_bytes(4, "little"))
+        self.file.seek(0x47A31E8)
+        self.file.write((100).to_bytes(4, "little"))
     
     def write_spell(self):
         for i in spell_content:
             #ManaCost
-            if spell_data[i]["ManaCost"] < -0x7F:
-                spell_data[i]["ManaCost"] = -0x7F
-            if spell_data[i]["ManaCost"] > 0x80:
-                spell_data[i]["ManaCost"] = 0x80
+            if spell_data[i]["ManaCost"] < -0x80:
+                spell_data[i]["ManaCost"] = -0x80
+            if spell_data[i]["ManaCost"] > 0x7F:
+                spell_data[i]["ManaCost"] = 0x7F
             if spell_data[i]["ManaCost"] < 0:
                 spell_data[i]["ManaCost"] += 0x100
-            self.file.seek(int(spell_content[i]["ManaCost"], 16))
+            self.file.seek(self.check_offset(int(spell_content[i], 16) + spell_offset["ManaCost"]))
             self.file.write(int(spell_data[i]["ManaCost"]).to_bytes(1, "little"))
+            #Cooldown
+            if spell_data[i]["Cooldown"] < -0x80:
+                spell_data[i]["Cooldown"] = -0x80
+            if spell_data[i]["Cooldown"] > 0x7F:
+                spell_data[i]["Cooldown"] = 0x7F
+            if spell_data[i]["Cooldown"] < 0:
+                spell_data[i]["Cooldown"] += 0x100
+            self.file.seek(self.check_offset(int(spell_content[i], 16) + spell_offset["Cooldown"]))
+            self.file.write(int(spell_data[i]["Cooldown"]).to_bytes(1, "little"))
+            #StunFrames
+            if spell_data[i]["StunFrames"] < -0x8000:
+                spell_data[i]["StunFrames"] = -0x8000
+            if spell_data[i]["StunFrames"] > 0x7FFF:
+                spell_data[i]["StunFrames"] = 0x7FFF
+            if spell_data[i]["StunFrames"] < 0:
+                spell_data[i]["StunFrames"] += 0x10000
+            self.file.seek(self.check_offset(int(spell_content[i], 16) + spell_offset["StunFrames"]))
+            self.file.write(int(spell_data[i]["StunFrames"]).to_bytes(2, "little"))
             #Element
             total = 0
             for e in Attributes:
                 if spell_data[i]["Element"][str(e).split(".")[1]]:
                     total += e.value
-            self.file.seek(int(spell_content[i]["Element"], 16))
+            self.file.seek(self.check_offset(int(spell_content[i], 16) + spell_offset["Element"]))
             self.file.write(total.to_bytes(2, "little"))
             #Attack
-            if spell_data[i]["Attack"] < -0x7FFF:
-                spell_data[i]["Attack"] = -0x7FFF
-            if spell_data[i]["Attack"] > 0x8000:
-                spell_data[i]["Attack"] = 0x8000
+            if spell_data[i]["Attack"] < -0x8000:
+                spell_data[i]["Attack"] = -0x8000
+            if spell_data[i]["Attack"] > 0x7FFF:
+                spell_data[i]["Attack"] = 0x7FFF
             if spell_data[i]["Attack"] < 0:
                 spell_data[i]["Attack"] += 0x10000
-            self.file.seek(int(spell_content[i]["Attack"], 16))
+            self.file.seek(self.check_offset(int(spell_content[i], 16) + spell_offset["Attack"]))
             self.file.write(int(spell_data[i]["Attack"]).to_bytes(2, "little"))
 
     def write_stat(self):
         #StrConIntLck
-        if stat_data["StrConIntLck"] < -0x7FFF:
-            stat_data["StrConIntLck"] = -0x7FFF
-        if stat_data["StrConIntLck"] > 0x8000:
-            stat_data["StrConIntLck"] = 0x8000
+        if stat_data["StrConIntLck"] < -0x8000:
+            stat_data["StrConIntLck"] = -0x8000
+        if stat_data["StrConIntLck"] > 0x7FFF:
+            stat_data["StrConIntLck"] = 0x7FFF
         if stat_data["StrConIntLck"] < 0:
             stat_data["StrConIntLck"] += 0x10000
         self.file.seek(int(stat_content["StrConIntLck"], 16))
         self.file.write(int(stat_data["StrConIntLck"]).to_bytes(2, "little"))
         #Health
-        if stat_data["Health"] < -0x7FFF:
-            stat_data["Health"] = -0x7FFF
-        if stat_data["Health"] > 0x8000 - 5:
-            stat_data["Health"] = 0x8000 - 5
+        if stat_data["Health"] < -0x8000:
+            stat_data["Health"] = -0x8000
+        if stat_data["Health"] > 0x7FFF - 5:
+            stat_data["Health"] = 0x7FFF - 5
         if stat_data["Health"] < 0:
             stat_data["Health"] += 0x10000
         self.file.seek(int(stat_content["Health"], 16))
@@ -1036,28 +1097,28 @@ class Main(QWidget):
         self.file.seek(0x119CC4)
         self.file.write(int(stat_data["Health"] + 5).to_bytes(2, "little"))
         #Hearts
-        if stat_data["Hearts"] < -0x7FFF:
-            stat_data["Hearts"] = -0x7FFF
-        if stat_data["Hearts"] > 0x8000:
-            stat_data["Hearts"] = 0x8000
+        if stat_data["Hearts"] < -0x8000:
+            stat_data["Hearts"] = -0x8000
+        if stat_data["Hearts"] > 0x7FFF:
+            stat_data["Hearts"] = 0x7FFF
         if stat_data["Hearts"] < 0:
             stat_data["Hearts"] += 0x10000
         self.file.seek(int(stat_content["Hearts"], 16))
         self.file.write(int(stat_data["Hearts"]).to_bytes(2, "little"))
         #MaxHearts
-        if stat_data["MaxHearts"] < -0x7FFF:
-            stat_data["MaxHearts"] = -0x7FFF
-        if stat_data["MaxHearts"] > 0x8000:
-            stat_data["MaxHearts"] = 0x8000
+        if stat_data["MaxHearts"] < -0x8000:
+            stat_data["MaxHearts"] = -0x8000
+        if stat_data["MaxHearts"] > 0x7FFF:
+            stat_data["MaxHearts"] = 0x7FFF
         if stat_data["MaxHearts"] < 0:
             stat_data["MaxHearts"] += 0x10000
         self.file.seek(int(stat_content["MaxHearts"], 16))
         self.file.write(int(stat_data["MaxHearts"]).to_bytes(2, "little"))
         #Mana
-        if stat_data["Mana"] < -0x7FFF:
-            stat_data["Mana"] = -0x7FFF
-        if stat_data["Mana"] > 0x8000:
-            stat_data["Mana"] = 0x8000
+        if stat_data["Mana"] < -0x8000:
+            stat_data["Mana"] = -0x8000
+        if stat_data["Mana"] > 0x7FFF:
+            stat_data["Mana"] = 0x7FFF
         if stat_data["Mana"] < 0:
             stat_data["Mana"] += 0x10000
         self.file.seek(int(stat_content["Mana"], 16))
@@ -1068,8 +1129,12 @@ class Main(QWidget):
         self.file.write(str.encode("Shocking"))
         self.file.seek(0xF2538)
         self.file.write(str.encode(" flail         "))
-        self.file.seek(0xF2736)
-        self.file.write(str.encode("N"))
+        self.file.seek(0xF2639)
+        self.file.write(str.encode("               "))
+        self.file.seek(0xF2735)
+        self.file.write(str.encode("EEP"))
+        self.file.seek(0xF2740)
+        self.file.write(str.encode("Blazing sword of flame "))
         self.file.seek(0xF3BF8)
         self.file.write(str.encode("Immunity to all status effects"))
         self.file.seek(0xF3C75)
@@ -1091,9 +1156,33 @@ class Main(QWidget):
         self.file.seek(0xF4508)
         self.file.write(str.encode("Immune to light           "))
         self.file.seek(0xF4844)
-        self.file.write(str.encode("Resistant to evil attacks "))
+        self.file.write(str.encode("Strong vs. dark attacks   "))
         self.file.seek(0xF486C)
         self.file.write(str.encode("Immunity to all status effects"))
+        self.file.seek(0xF48C4)
+        self.file.write(str.encode("Stro"))
+        self.file.seek(0xF49F8)
+        self.file.write(str.encode("ng vs D water attacks "))
+        self.file.seek(0xF49FD)
+        self.file.write((0x81).to_bytes(1, "little"))
+        self.file.seek(0xF4A10)
+        self.file.write(str.encode("7ATER MAIL    "))
+        self.file.seek(0xF4A15)
+        self.file.write((0).to_bytes(1, "little"))
+        self.file.seek(0xF4A1A)
+        self.file.write((0).to_bytes(4, "little"))
+        self.file.seek(0xF4A2F)
+        self.file.write(str.encode(" attacks       "))
+        self.file.seek(0xF4A8C)
+        self.file.write(str.encode(" attacks       "))
+        self.file.seek(0xF2ABC)
+        self.file.write(str.encode("DEF { P O  "))
+        self.file.seek(0xF2ABF)
+        self.file.write((0x81).to_bytes(1, "little"))
+        self.file.seek(0xF2AC1)
+        self.file.write((0x82).to_bytes(1, "little"))
+        self.file.seek(0xF2AC3)
+        self.file.write((0x82).to_bytes(1, "little"))
 
     def write_misc(self):
         self.file.seek(0x4369E87)
@@ -1102,65 +1191,80 @@ class Main(QWidget):
         self.file.write(str.encode("KOJI  IGA"))
         self.file.seek(0x4369FBC)
         self.file.write(str.encode("KOJI  IGA"))
+        self.file.seek(0x3A06851)
+        self.file.write((0x40).to_bytes(1, "little"))
     
     def read_enemy(self):
         log = {}
-        for i in enemy_content:
+        for i in enemy_data:
             log[i] = {}
             #Health
-            self.file.seek(int(enemy_content[i]["Health"], 16))
+            self.file.seek(self.check_offset(int(enemy_content[i]["EnemyAddress"], 16) + enemy_offset["Health"]))
             log[i]["Health"] = int.from_bytes(self.file.read(2), "little")
+            if log[i]["Health"] > 0x7FFF:
+                log[i]["Health"] -= 0x10000
             #ContactDamage
-            self.file.seek(int(enemy_content[i]["ContactDamage"], 16))
+            self.file.seek(self.check_offset(int(enemy_content[i]["EnemyAddress"], 16) + enemy_offset["Damage"]))
             log[i]["ContactDamage"] = int.from_bytes(self.file.read(2), "little")
+            if log[i]["ContactDamage"] > 0x7FFF:
+                log[i]["ContactDamage"] -= 0x10000
             #ContactDamageType
-            self.file.seek(int(enemy_content[i]["ContactDamageType"], 16))
+            self.file.seek(self.check_offset(int(enemy_content[i]["EnemyAddress"], 16) + enemy_offset["DamageType"]))
             log[i]["ContactDamageType"] = "0x{:04x}".format(int.from_bytes(self.file.read(2), "little"))
             #Defense
-            self.file.seek(int(enemy_content[i]["Defense"], 16))
+            self.file.seek(self.check_offset(int(enemy_content[i]["EnemyAddress"], 16) + enemy_offset["Defense"]))
             log[i]["Defense"] = int.from_bytes(self.file.read(2), "little")
+            if log[i]["Defense"] > 0x7FFF:
+                log[i]["Defense"] -= 0x10000
             #Surface
-            self.file.seek(int(enemy_content[i]["Surface"], 16))
+            self.file.seek(self.check_offset(int(enemy_content[i]["EnemyAddress"], 16) + enemy_offset["Surface"]))
             log[i]["Surface"] = "0x{:04x}".format(int.from_bytes(self.file.read(2), "little"))
             #Resistances
             log[i]["Resistances"] = {}
             for e in Attributes:
                 log[i]["Resistances"][str(e).split(".")[1]] = 1
-            self.file.seek(int(enemy_content[i]["Resistances"]["Weak"], 16))
+            self.file.seek(self.check_offset(int(enemy_content[i]["EnemyAddress"], 16) + enemy_offset["Weak"]))
             total = int.from_bytes(self.file.read(2), "little")
             for e in Attributes:
                 if (total & e.value) != 0:
                     log[i]["Resistances"][str(e).split(".")[1]] = 0
-            self.file.seek(int(enemy_content[i]["Resistances"]["Strong"], 16))
+            self.file.seek(self.check_offset(int(enemy_content[i]["EnemyAddress"], 16) + enemy_offset["Strong"]))
             total = int.from_bytes(self.file.read(2), "little")
             for e in Attributes:
                 if (total & e.value) != 0:
                     log[i]["Resistances"][str(e).split(".")[1]] = 2
-            self.file.seek(int(enemy_content[i]["Resistances"]["Immune"], 16))
+            self.file.seek(self.check_offset(int(enemy_content[i]["EnemyAddress"], 16) + enemy_offset["Immune"]))
             total = int.from_bytes(self.file.read(2), "little")
             for e in Attributes:
                 if (total & e.value) != 0:
                     log[i]["Resistances"][str(e).split(".")[1]] = 3
-            self.file.seek(int(enemy_content[i]["Resistances"]["Absorb"], 16))
+            self.file.seek(self.check_offset(int(enemy_content[i]["EnemyAddress"], 16) + enemy_offset["Absorb"]))
             total = int.from_bytes(self.file.read(2), "little")
             for e in Attributes:
                 if (total & e.value) != 0:
                     log[i]["Resistances"][str(e).split(".")[1]] = 4
             #Level
-            self.file.seek(int(enemy_content[i]["Level"], 16))
+            self.file.seek(self.check_offset(int(enemy_content[i]["EnemyAddress"], 16) + enemy_offset["Level"]))
             log[i]["Level"] = int.from_bytes(self.file.read(2), "little")
+            if log[i]["Level"] > 0x7FFF:
+                log[i]["Level"] -= 0x10000
             #Experience
-            self.file.seek(int(enemy_content[i]["Experience"], 16))
+            self.file.seek(self.check_offset(int(enemy_content[i]["EnemyAddress"], 16) + enemy_offset["Experience"]))
             log[i]["Experience"] = int.from_bytes(self.file.read(2), "little")
+            if log[i]["Experience"] > 0x7FFF:
+                log[i]["Experience"] -= 0x10000
             #AttackDamage
             log[i]["AttackDamage"] = []
-            for e in enemy_content[i]["AttackDamage"]:
-                self.file.seek(int(e, 16))
-                log[i]["AttackDamage"].append(int.from_bytes(self.file.read(2), "little"))
+            for e in enemy_content[i]["AttackAddress"]:
+                self.file.seek(self.check_offset(int(e, 16) + enemy_offset["Damage"]))
+                damage = int.from_bytes(self.file.read(2), "little")
+                if damage > 0x7FFF:
+                    damage -= 0x10000
+                log[i]["AttackDamage"].append(damage)
             #AttackDamageType
             log[i]["AttackDamageType"] = []
-            for e in enemy_content[i]["AttackDamageType"]:
-                self.file.seek(int(e, 16))
+            for e in enemy_content[i]["AttackAddress"]:
+                self.file.seek(self.check_offset(int(e, 16) + enemy_offset["DamageType"]))
                 log[i]["AttackDamageType"].append("0x{:04x}".format(int.from_bytes(self.file.read(2), "little")))
         
         with open("SpoilerLog\\Enemy.json", "w") as file_writer:
@@ -1168,38 +1272,38 @@ class Main(QWidget):
     
     def read_equip(self):
         log = {}
-        for i in equipment_content:
+        for i in equipment_data:
             log[i] = {}
             #Attack
             self.file.seek(int(equipment_content[i]["Attack"], 16))
             log[i]["Attack"] = int.from_bytes(self.file.read(2), "little")
-            if log[i]["Attack"] > 0x8000:
-                log[i]["Attack"] = log[i]["Attack"] - 0x10000
+            if log[i]["Attack"] > 0x7FFF:
+                log[i]["Attack"] -= 0x10000
             #Defense
             self.file.seek(int(equipment_content[i]["Defense"], 16))
             log[i]["Defense"] = int.from_bytes(self.file.read(2), "little")
-            if log[i]["Defense"] > 0x8000:
-                log[i]["Defense"] = log[i]["Defense"] - 0x10000
+            if log[i]["Defense"] > 0x7FFF:
+                log[i]["Defense"] -= 0x10000
             #Strength
             self.file.seek(int(equipment_content[i]["Strength"], 16))
             log[i]["Strength"] = int.from_bytes(self.file.read(1), "little")
-            if log[i]["Strength"] > 0x80:
-                log[i]["Strength"] = log[i]["Strength"] - 0x100
+            if log[i]["Strength"] > 0x7F:
+                log[i]["Strength"] -= 0x100
             #Constitution
             self.file.seek(int(equipment_content[i]["Constitution"], 16))
             log[i]["Constitution"] = int.from_bytes(self.file.read(1), "little")
-            if log[i]["Constitution"] > 0x80:
-                log[i]["Constitution"] = log[i]["Constitution"] - 0x100
+            if log[i]["Constitution"] > 0x7F:
+                log[i]["Constitution"] -= 0x100
             #Intelligence
             self.file.seek(int(equipment_content[i]["Intelligence"], 16))
             log[i]["Intelligence"] = int.from_bytes(self.file.read(1), "little")
-            if log[i]["Intelligence"] > 0x80:
-                log[i]["Intelligence"] = log[i]["Intelligence"] - 0x100
+            if log[i]["Intelligence"] > 0x7F:
+                log[i]["Intelligence"] -= 0x100
             #Luck
             self.file.seek(int(equipment_content[i]["Luck"], 16))
             log[i]["Luck"] = int.from_bytes(self.file.read(1), "little")
-            if log[i]["Luck"] > 0x80:
-                log[i]["Luck"] = log[i]["Luck"] - 0x100
+            if log[i]["Luck"] > 0x7F:
+                log[i]["Luck"] -= 0x100
             #Resistances
             log[i]["Resistances"] = {}
             for e in Attributes:
@@ -1230,18 +1334,18 @@ class Main(QWidget):
     
     def read_item(self):
         log = {}
-        for i in handitem_content:
+        for i in handitem_data:
             log[i] = {}
             #Attack
             self.file.seek(int(handitem_content[i]["Attack"], 16))
             log[i]["Attack"] = int.from_bytes(self.file.read(2), "little")
-            if log[i]["Attack"] > 0x8000:
-                log[i]["Attack"] = log[i]["Attack"] - 0x10000
+            if log[i]["Attack"] > 0x7FFF:
+                log[i]["Attack"] -= 0x10000
             #Defense
             self.file.seek(int(handitem_content[i]["Defense"], 16))
             log[i]["Defense"] = int.from_bytes(self.file.read(2), "little")
-            if log[i]["Defense"] > 0x8000:
-                log[i]["Defense"] = log[i]["Defense"] - 0x10000
+            if log[i]["Defense"] > 0x7FFF:
+                log[i]["Defense"] -= 0x10000
             #Element
             log[i]["Element"] = {}
             for e in Attributes:
@@ -1263,12 +1367,18 @@ class Main(QWidget):
             #ManaCost
             self.file.seek(int(handitem_content[i]["ManaCost"], 16))
             log[i]["ManaCost"] = int.from_bytes(self.file.read(2), "little")
+            if log[i]["ManaCost"] > 0x7FFF:
+                log[i]["ManaCost"] -= 0x10000
             #StunFrames
             self.file.seek(int(handitem_content[i]["StunFrames"], 16))
             log[i]["StunFrames"] = int.from_bytes(self.file.read(2), "little")
+            if log[i]["StunFrames"] > 0x7FFF:
+                log[i]["StunFrames"] -= 0x10000
             #Range
             self.file.seek(int(handitem_content[i]["Range"], 16))
             log[i]["Range"] = int.from_bytes(self.file.read(2), "little")
+            if log[i]["Range"] > 0x7FFF:
+                log[i]["Range"] -= 0x10000
             #Extra
             self.file.seek(int(handitem_content[i]["Extra"], 16))
             log[i]["Extra"] = "0x{:02x}".format(int.from_bytes(self.file.read(1), "little"))
@@ -1281,19 +1391,33 @@ class Main(QWidget):
         for i in shop_content:
             log[i] = {}
             #Price
-            self.file.seek(int(shop_content[i]["Price"], 16))
-            log[i]["Price"] = int.from_bytes(self.file.read(4), "little")
+            self.file.seek(int(shop_content[i], 16))
+            log[i] = int.from_bytes(self.file.read(4), "little")
+            if log[i] > 0x7FFFFFFF:
+                log[i] -= 0x100000000
         
         with open("SpoilerLog\\Shop.json", "w") as file_writer:
             file_writer.write(json.dumps(log, indent=2))
     
     def read_spell(self):
         log = {}
-        for i in spell_content:
+        for i in spell_data:
             log[i] = {}
             #ManaCost
             self.file.seek(int(spell_content[i]["ManaCost"], 16))
             log[i]["ManaCost"] = int.from_bytes(self.file.read(1), "little")
+            if log[i]["ManaCost"] > 0x7F:
+                log[i]["ManaCost"] -= 0x100
+            #Cooldown
+            self.file.seek(int(spell_content[i]["Cooldown"], 16))
+            log[i]["Cooldown"] = int.from_bytes(self.file.read(1), "little")
+            if log[i]["Cooldown"] > 0x7F:
+                log[i]["Cooldown"] -= 0x100
+            #StunFrames
+            self.file.seek(int(spell_content[i]["StunFrames"], 16))
+            log[i]["StunFrames"] = int.from_bytes(self.file.read(2), "little")
+            if log[i]["StunFrames"] > 0x7FFF:
+                log[i]["StunFrames"] -= 0x10000
             #Element
             log[i]["Element"] = {}
             for e in Attributes:
@@ -1306,30 +1430,42 @@ class Main(QWidget):
             #Attack
             self.file.seek(int(spell_content[i]["Attack"], 16))
             log[i]["Attack"] = int.from_bytes(self.file.read(2), "little")
+            if log[i]["Attack"] > 0x7FFF:
+                log[i]["Attack"] -= 0x10000
         
         with open("SpoilerLog\\Spell.json", "w") as file_writer:
             file_writer.write(json.dumps(log, indent=2))
     
     def read_stat(self):
         log = {}
-        #StrConIntLck
-        self.file.seek(int(stat_content["StrConIntLck"], 16))
-        log["StrConIntLck"] = int.from_bytes(self.file.read(2), "little")
         #Health
         self.file.seek(int(stat_content["Health"], 16))
         log["Health"] = int.from_bytes(self.file.read(2), "little")
-        #Hearts
-        self.file.seek(int(stat_content["Hearts"], 16))
-        log["Hearts"] = int.from_bytes(self.file.read(2), "little")
-        #MaxHearts
-        self.file.seek(int(stat_content["MaxHearts"], 16))
-        log["MaxHearts"] = int.from_bytes(self.file.read(2), "little")
+        if log["Health"] > 0x7FFF:
+            log["Health"] -= 0x10000
         #Mana
         self.file.seek(int(stat_content["Mana"], 16))
         log["Mana"] = int.from_bytes(self.file.read(2), "little")
+        if log["Mana"] > 0x7FFF:
+            log["Mana"] -= 0x10000
+        #Hearts
+        self.file.seek(int(stat_content["Hearts"], 16))
+        log["Hearts"] = int.from_bytes(self.file.read(2), "little")
+        if log["Hearts"] > 0x7FFF:
+            log["Hearts"] -= 0x10000
+        #MaxHearts
+        self.file.seek(int(stat_content["MaxHearts"], 16))
+        log["MaxHearts"] = int.from_bytes(self.file.read(2), "little")
+        if log["MaxHearts"] > 0x7FFF:
+            log["MaxHearts"] -= 0x10000
+        #StrConIntLck
+        self.file.seek(int(stat_content["StrConIntLck"], 16))
+        log["StrConIntLck"] = int.from_bytes(self.file.read(2), "little")
+        if log["StrConIntLck"] > 0x7FFF:
+            log["StrConIntLck"] -= 0x10000
         
         with open("SpoilerLog\\Stat.json", "w") as file_writer:
-            file_writer.write(json.dumps(entry, indent=2))
+            file_writer.write(json.dumps(log, indent=2))
     
     def check_for_updates(self):
         if os.path.isfile("OldKindAndFair.exe"):
