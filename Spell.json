@@ -1,0 +1,522 @@
+{
+  "Summon Spirit": {
+    "ManaCost": 10,
+    "Cooldown": 20,
+    "StunFrames": 8,
+    "Extra": "0x01",
+    "Element": {
+      "HIT": true,
+      "CUT": false,
+      "POI": false,
+      "CUR": true,
+      "STO": false,
+      "WAT": false,
+      "DAR": false,
+      "HOL": false,
+      "ICE": false,
+      "LIG": false,
+      "FLA": false
+    },
+    "Attack": 12
+  },
+  "Dark Metamorphosis": {
+    "ManaCost": 15,
+    "Cooldown": 40,
+    "StunFrames": 10,
+    "Extra": "0x81",
+    "Element": {
+      "HIT": false,
+      "CUT": true,
+      "POI": false,
+      "CUR": false,
+      "STO": false,
+      "WAT": false,
+      "DAR": false,
+      "HOL": false,
+      "ICE": false,
+      "LIG": false,
+      "FLA": false
+    },
+    "Attack": 30
+  },
+  "Hellfire": {
+    "ManaCost": 30,
+    "Cooldown": 20,
+    "StunFrames": 8,
+    "Extra": "0x01",
+    "Element": {
+      "HIT": false,
+      "CUT": false,
+      "POI": false,
+      "CUR": false,
+      "STO": false,
+      "WAT": false,
+      "DAR": false,
+      "HOL": false,
+      "ICE": false,
+      "LIG": false,
+      "FLA": true
+    },
+    "Attack": 30
+  },
+  "Tetra Spirit": {
+    "ManaCost": 40,
+    "Cooldown": 20,
+    "StunFrames": 8,
+    "Extra": "0x01",
+    "Element": {
+      "HIT": true,
+      "CUT": false,
+      "POI": false,
+      "CUR": true,
+      "STO": false,
+      "WAT": false,
+      "DAR": false,
+      "HOL": false,
+      "ICE": false,
+      "LIG": false,
+      "FLA": false
+    },
+    "Attack": 10
+  },
+  "Soul Steal": {
+    "ManaCost": 80,
+    "Cooldown": 10,
+    "StunFrames": 8,
+    "Extra": "0x02",
+    "Element": {
+      "HIT": true,
+      "CUT": false,
+      "POI": false,
+      "CUR": false,
+      "STO": false,
+      "WAT": false,
+      "DAR": false,
+      "HOL": false,
+      "ICE": false,
+      "LIG": false,
+      "FLA": false
+    },
+    "Attack": 10
+  },
+  "Wing Smash": {
+    "ManaCost": 15,
+    "Cooldown": 20,
+    "StunFrames": 10,
+    "Extra": "0x01",
+    "Element": {
+      "HIT": true,
+      "CUT": false,
+      "POI": false,
+      "CUR": false,
+      "STO": false,
+      "WAT": false,
+      "DAR": true,
+      "HOL": false,
+      "ICE": false,
+      "LIG": false,
+      "FLA": false
+    },
+    "Attack": 50
+  },
+  "Sword Brothers": {
+    "ManaCost": 50,
+    "Cooldown": 20,
+    "StunFrames": 8,
+    "Extra": "0x81",
+    "Element": {
+      "HIT": false,
+      "CUT": true,
+      "POI": false,
+      "CUR": false,
+      "STO": false,
+      "WAT": false,
+      "DAR": false,
+      "HOL": false,
+      "ICE": false,
+      "LIG": false,
+      "FLA": false
+    },
+    "Attack": 20
+  },
+  "Fire of Bat": {
+    "ManaCost": 10,
+    "Cooldown": 10,
+    "StunFrames": 10,
+    "Extra": "0x01",
+    "Element": {
+      "HIT": false,
+      "CUT": false,
+      "POI": false,
+      "CUR": false,
+      "STO": false,
+      "WAT": false,
+      "DAR": false,
+      "HOL": false,
+      "ICE": false,
+      "LIG": false,
+      "FLA": true
+    },
+    "Attack": 100
+  },
+  "Force of Echo": {
+    "ManaCost": 10,
+    "Cooldown": 10,
+    "StunFrames": 20,
+    "Extra": "0x01",
+    "Element": {
+      "HIT": true,
+      "CUT": false,
+      "POI": false,
+      "CUR": false,
+      "STO": false,
+      "WAT": false,
+      "DAR": false,
+      "HOL": false,
+      "ICE": false,
+      "LIG": false,
+      "FLA": false
+    },
+    "Attack": 30
+  },
+  "Wolf Dash Bite": {
+    "ManaCost": 0,
+    "Cooldown": 20,
+    "StunFrames": 20,
+    "Extra": "0x81",
+    "Element": {
+      "HIT": false,
+      "CUT": true,
+      "POI": false,
+      "CUR": false,
+      "STO": false,
+      "WAT": false,
+      "DAR": false,
+      "HOL": false,
+      "ICE": false,
+      "LIG": false,
+      "FLA": false
+    },
+    "Attack": 50
+  },
+  "Gas Cloud": {
+    "ManaCost": 1,
+    "Cooldown": 20,
+    "StunFrames": 20,
+    "Extra": "0x01",
+    "Element": {
+      "HIT": false,
+      "CUT": false,
+      "POI": true,
+      "CUR": false,
+      "STO": false,
+      "WAT": false,
+      "DAR": false,
+      "HOL": false,
+      "ICE": false,
+      "LIG": false,
+      "FLA": false
+    },
+    "Attack": 10
+  },
+  "Wolf Dash": {
+    "ManaCost": 5,
+    "Cooldown": 20,
+    "StunFrames": 10,
+    "Extra": "0x01",
+    "Element": {
+      "HIT": true,
+      "CUT": false,
+      "POI": false,
+      "CUR": false,
+      "STO": false,
+      "WAT": false,
+      "DAR": false,
+      "HOL": false,
+      "ICE": false,
+      "LIG": false,
+      "FLA": false
+    },
+    "Attack": 50
+  },
+  "Wolf Bite": {
+    "ManaCost": 0,
+    "Cooldown": 40,
+    "StunFrames": 10,
+    "Extra": "0x81",
+    "Element": {
+      "HIT": false,
+      "CUT": true,
+      "POI": false,
+      "CUR": false,
+      "STO": false,
+      "WAT": false,
+      "DAR": false,
+      "HOL": false,
+      "ICE": false,
+      "LIG": false,
+      "FLA": false
+    },
+    "Attack": 50
+  },
+  "Bat Familiar": {
+    "ManaCost": 0,
+    "Cooldown": 10,
+    "StunFrames": 4,
+    "Extra": "0x01",
+    "Element": {
+      "HIT": true,
+      "CUT": false,
+      "POI": false,
+      "CUR": false,
+      "STO": false,
+      "WAT": false,
+      "DAR": false,
+      "HOL": false,
+      "ICE": false,
+      "LIG": false,
+      "FLA": false
+    },
+    "Attack": 10
+  },
+  "Bat Familiar Fire": {
+    "ManaCost": 0,
+    "Cooldown": 10,
+    "StunFrames": 10,
+    "Extra": "0x01",
+    "Element": {
+      "HIT": false,
+      "CUT": false,
+      "POI": false,
+      "CUR": false,
+      "STO": false,
+      "WAT": false,
+      "DAR": false,
+      "HOL": false,
+      "ICE": false,
+      "LIG": false,
+      "FLA": true
+    },
+    "Attack": 17
+  },
+  "Ghost Familiar 1": {
+    "ManaCost": 0,
+    "Cooldown": 2,
+    "StunFrames": 4,
+    "Extra": "0x01",
+    "Element": {
+      "HIT": true,
+      "CUT": false,
+      "POI": false,
+      "CUR": false,
+      "STO": false,
+      "WAT": false,
+      "DAR": false,
+      "HOL": false,
+      "ICE": false,
+      "LIG": false,
+      "FLA": false
+    },
+    "Attack": 10
+  },
+  "Ghost Familiar 2": {
+    "ManaCost": 0,
+    "Cooldown": 2,
+    "StunFrames": 4,
+    "Extra": "0x02",
+    "Element": {
+      "HIT": false,
+      "CUT": false,
+      "POI": false,
+      "CUR": true,
+      "STO": false,
+      "WAT": false,
+      "DAR": true,
+      "HOL": false,
+      "ICE": false,
+      "LIG": false,
+      "FLA": false
+    },
+    "Attack": 16
+  },
+  "Sword Familiar 1": {
+    "ManaCost": 0,
+    "Cooldown": 20,
+    "StunFrames": 4,
+    "Extra": "0x81",
+    "Element": {
+      "HIT": false,
+      "CUT": true,
+      "POI": false,
+      "CUR": false,
+      "STO": false,
+      "WAT": false,
+      "DAR": false,
+      "HOL": false,
+      "ICE": false,
+      "LIG": false,
+      "FLA": false
+    },
+    "Attack": 5
+  },
+  "Sword Familiar 2": {
+    "ManaCost": 0,
+    "Cooldown": 20,
+    "StunFrames": 4,
+    "Extra": "0x81",
+    "Element": {
+      "HIT": false,
+      "CUT": true,
+      "POI": false,
+      "CUR": false,
+      "STO": false,
+      "WAT": false,
+      "DAR": false,
+      "HOL": false,
+      "ICE": false,
+      "LIG": false,
+      "FLA": false
+    },
+    "Attack": 10
+  },
+  "Sword Familiar 3": {
+    "ManaCost": 0,
+    "Cooldown": 20,
+    "StunFrames": 8,
+    "Extra": "0x81",
+    "Element": {
+      "HIT": false,
+      "CUT": true,
+      "POI": false,
+      "CUR": false,
+      "STO": false,
+      "WAT": false,
+      "DAR": false,
+      "HOL": false,
+      "ICE": false,
+      "LIG": false,
+      "FLA": false
+    },
+    "Attack": 5
+  },
+  "Devil Familiar 1": {
+    "ManaCost": 0,
+    "Cooldown": 20,
+    "StunFrames": 8,
+    "Extra": "0x81",
+    "Element": {
+      "HIT": false,
+      "CUT": true,
+      "POI": false,
+      "CUR": false,
+      "STO": false,
+      "WAT": false,
+      "DAR": false,
+      "HOL": false,
+      "ICE": false,
+      "LIG": false,
+      "FLA": false
+    },
+    "Attack": 10
+  },
+  "Devil Familiar 2": {
+    "ManaCost": 0,
+    "Cooldown": 4,
+    "StunFrames": 8,
+    "Extra": "0x81",
+    "Element": {
+      "HIT": false,
+      "CUT": true,
+      "POI": false,
+      "CUR": false,
+      "STO": false,
+      "WAT": false,
+      "DAR": false,
+      "HOL": false,
+      "ICE": false,
+      "LIG": false,
+      "FLA": false
+    },
+    "Attack": 5
+  },
+  "Devil Familiar Fire": {
+    "ManaCost": 0,
+    "Cooldown": 20,
+    "StunFrames": 8,
+    "Extra": "0x81",
+    "Element": {
+      "HIT": false,
+      "CUT": true,
+      "POI": false,
+      "CUR": false,
+      "STO": false,
+      "WAT": false,
+      "DAR": false,
+      "HOL": false,
+      "ICE": false,
+      "LIG": false,
+      "FLA": true
+    },
+    "Attack": 15
+  },
+  "Devil Familiar Ice": {
+    "ManaCost": 0,
+    "Cooldown": 20,
+    "StunFrames": 8,
+    "Extra": "0x81",
+    "Element": {
+      "HIT": false,
+      "CUT": true,
+      "POI": false,
+      "CUR": false,
+      "STO": false,
+      "WAT": false,
+      "DAR": false,
+      "HOL": false,
+      "ICE": true,
+      "LIG": false,
+      "FLA": false
+    },
+    "Attack": 20
+  },
+  "Devil Familiar Thunder": {
+    "ManaCost": 0,
+    "Cooldown": 20,
+    "StunFrames": 8,
+    "Extra": "0x81",
+    "Element": {
+      "HIT": false,
+      "CUT": true,
+      "POI": false,
+      "CUR": false,
+      "STO": false,
+      "WAT": false,
+      "DAR": false,
+      "HOL": false,
+      "ICE": false,
+      "LIG": true,
+      "FLA": false
+    },
+    "Attack": 20
+  },
+  "Devil Familiar Super Thunder": {
+    "ManaCost": 0,
+    "Cooldown": 20,
+    "StunFrames": 8,
+    "Extra": "0x81",
+    "Element": {
+      "HIT": false,
+      "CUT": true,
+      "POI": false,
+      "CUR": false,
+      "STO": false,
+      "WAT": false,
+      "DAR": false,
+      "HOL": false,
+      "ICE": false,
+      "LIG": true,
+      "FLA": false
+    },
+    "Attack": 30
+  }
+}
