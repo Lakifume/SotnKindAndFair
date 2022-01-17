@@ -2675,7 +2675,7 @@
     "Extra": "0x81"
   },
   "Icebrand": {
-    "Attack": 42,
+    "Attack": 30,
     "Defense": 0,
     "Element": {
       "HIT": false,
@@ -2700,7 +2700,7 @@
     "Extra": "0x81"
   },
   "Icebrand Special": {
-    "Attack": 140,
+    "Attack": 80,
     "Defense": 0,
     "Element": {
       "HIT": false,
