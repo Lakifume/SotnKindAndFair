@@ -1,0 +1,7 @@
+{
+  "Health": 500,
+  "Mana": 50,
+  "Hearts": 10,
+  "MaxHearts": 20,
+  "StrConIntLck": 50
+}

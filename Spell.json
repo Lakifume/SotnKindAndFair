@@ -5,7 +5,7 @@
     "StunFrames": 8,
     "Extra": "0x01",
     "Element": {
-      "HIT": true,
+      "HIT": false,
       "CUT": false,
       "POI": false,
       "CUR": true,
@@ -17,7 +17,7 @@
       "LIG": false,
       "FLA": false
     },
-    "Attack": 12
+    "Attack": 55
   },
   "Dark Metamorphosis": {
     "ManaCost": 15,
@@ -57,15 +57,15 @@
       "LIG": false,
       "FLA": true
     },
-    "Attack": 30
+    "Attack": 150
   },
   "Tetra Spirit": {
-    "ManaCost": 40,
+    "ManaCost": 55,
     "Cooldown": 20,
     "StunFrames": 8,
     "Extra": "0x01",
     "Element": {
-      "HIT": true,
+      "HIT": false,
       "CUT": false,
       "POI": false,
       "CUR": true,
@@ -77,30 +77,30 @@
       "LIG": false,
       "FLA": false
     },
-    "Attack": 10
+    "Attack": 60
   },
   "Soul Steal": {
-    "ManaCost": 80,
+    "ManaCost": 100,
     "Cooldown": 10,
     "StunFrames": 8,
     "Extra": "0x02",
     "Element": {
-      "HIT": true,
+      "HIT": false,
       "CUT": false,
       "POI": false,
       "CUR": false,
       "STO": false,
       "WAT": false,
-      "DAR": false,
+      "DAR": true,
       "HOL": false,
       "ICE": false,
       "LIG": false,
       "FLA": false
     },
-    "Attack": 10
+    "Attack": 30
   },
   "Wing Smash": {
-    "ManaCost": 15,
+    "ManaCost": 35,
     "Cooldown": 20,
     "StunFrames": 10,
     "Extra": "0x01",
@@ -117,7 +117,7 @@
       "LIG": false,
       "FLA": false
     },
-    "Attack": 50
+    "Attack": 150
   },
   "Sword Brothers": {
     "ManaCost": 50,
@@ -137,7 +137,7 @@
       "LIG": false,
       "FLA": false
     },
-    "Attack": 20
+    "Attack": 123
   },
   "Fire of Bat": {
     "ManaCost": 10,
@@ -157,7 +157,7 @@
       "LIG": false,
       "FLA": true
     },
-    "Attack": 100
+    "Attack": 350
   },
   "Force of Echo": {
     "ManaCost": 10,
@@ -177,7 +177,7 @@
       "LIG": false,
       "FLA": false
     },
-    "Attack": 30
+    "Attack": 50
   },
   "Wolf Dash Bite": {
     "ManaCost": 0,
@@ -197,7 +197,7 @@
       "LIG": false,
       "FLA": false
     },
-    "Attack": 50
+    "Attack": 200
   },
   "Gas Cloud": {
     "ManaCost": 1,
@@ -237,7 +237,7 @@
       "LIG": false,
       "FLA": false
     },
-    "Attack": 50
+    "Attack": 200
   },
   "Wolf Bite": {
     "ManaCost": 0,
@@ -257,7 +257,7 @@
       "LIG": false,
       "FLA": false
     },
-    "Attack": 50
+    "Attack": 100
   },
   "Bat Familiar": {
     "ManaCost": 0,
@@ -277,7 +277,7 @@
       "LIG": false,
       "FLA": false
     },
-    "Attack": 10
+    "Attack": 100
   },
   "Bat Familiar Fire": {
     "ManaCost": 0,
@@ -297,7 +297,7 @@
       "LIG": false,
       "FLA": true
     },
-    "Attack": 17
+    "Attack": 170
   },
   "Ghost Familiar 1": {
     "ManaCost": 0,
@@ -317,7 +317,7 @@
       "LIG": false,
       "FLA": false
     },
-    "Attack": 10
+    "Attack": 100
   },
   "Ghost Familiar 2": {
     "ManaCost": 0,
@@ -337,7 +337,7 @@
       "LIG": false,
       "FLA": false
     },
-    "Attack": 16
+    "Attack": 160
   },
   "Sword Familiar 1": {
     "ManaCost": 0,
@@ -357,7 +357,7 @@
       "LIG": false,
       "FLA": false
     },
-    "Attack": 5
+    "Attack": 50
   },
   "Sword Familiar 2": {
     "ManaCost": 0,
@@ -377,7 +377,7 @@
       "LIG": false,
       "FLA": false
     },
-    "Attack": 10
+    "Attack": 100
   },
   "Sword Familiar 3": {
     "ManaCost": 0,
@@ -397,7 +397,7 @@
       "LIG": false,
       "FLA": false
     },
-    "Attack": 5
+    "Attack": 50
   },
   "Devil Familiar 1": {
     "ManaCost": 0,
@@ -417,7 +417,7 @@
       "LIG": false,
       "FLA": false
     },
-    "Attack": 10
+    "Attack": 100
   },
   "Devil Familiar 2": {
     "ManaCost": 0,
@@ -437,7 +437,7 @@
       "LIG": false,
       "FLA": false
     },
-    "Attack": 5
+    "Attack": 50
   },
   "Devil Familiar Fire": {
     "ManaCost": 0,
@@ -457,7 +457,7 @@
       "LIG": false,
       "FLA": true
     },
-    "Attack": 15
+    "Attack": 150
   },
   "Devil Familiar Ice": {
     "ManaCost": 0,
@@ -477,7 +477,7 @@
       "LIG": false,
       "FLA": false
     },
-    "Attack": 20
+    "Attack": 200
   },
   "Devil Familiar Thunder": {
     "ManaCost": 0,
@@ -497,7 +497,7 @@
       "LIG": true,
       "FLA": false
     },
-    "Attack": 20
+    "Attack": 200
   },
   "Devil Familiar Super Thunder": {
     "ManaCost": 0,
@@ -517,6 +517,6 @@
       "LIG": true,
       "FLA": false
     },
-    "Attack": 30
+    "Attack": 300
   }
 }

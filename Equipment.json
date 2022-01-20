@@ -1,10 +1,10 @@
 {
   "Sunglasses": {
     "Attack": 0,
-    "Defense": 1,
+    "Defense": 5,
     "Strength": 0,
     "Constitution": 0,
-    "Intelligence": -1,
+    "Intelligence": 7,
     "Luck": 0,
     "Resistances": {
       "HIT": 1,
@@ -22,10 +22,10 @@
   },
   "Goggles": {
     "Attack": 0,
-    "Defense": 1,
+    "Defense": 7,
     "Strength": 0,
     "Constitution": 0,
-    "Intelligence": 4,
+    "Intelligence": 6,
     "Luck": 0,
     "Resistances": {
       "HIT": 1,
@@ -43,10 +43,10 @@
   },
   "Holy Glasses": {
     "Attack": 0,
-    "Defense": 1,
+    "Defense": 7,
     "Strength": 0,
     "Constitution": 0,
-    "Intelligence": 5,
+    "Intelligence": 15,
     "Luck": 0,
     "Resistances": {
       "HIT": 1,
@@ -64,10 +64,10 @@
   },
   "Ballroom Mask": {
     "Attack": 0,
-    "Defense": 2,
+    "Defense": 11,
     "Strength": 0,
-    "Constitution": 0,
-    "Intelligence": 0,
+    "Constitution": 2,
+    "Intelligence": 15,
     "Luck": 0,
     "Resistances": {
       "HIT": 1,
@@ -85,11 +85,11 @@
   },
   "Stone Mask": {
     "Attack": 0,
-    "Defense": 2,
+    "Defense": 8,
     "Strength": 0,
-    "Constitution": 0,
-    "Intelligence": 4,
-    "Luck": 0,
+    "Constitution": -1,
+    "Intelligence": 10,
+    "Luck": -5,
     "Resistances": {
       "HIT": 1,
       "CUT": 1,
@@ -106,10 +106,10 @@
   },
   "Bandanna": {
     "Attack": 0,
-    "Defense": 2,
-    "Strength": 0,
+    "Defense": 7,
+    "Strength": 3,
     "Constitution": 0,
-    "Intelligence": 1,
+    "Intelligence": 5,
     "Luck": 0,
     "Resistances": {
       "HIT": 1,
@@ -127,10 +127,10 @@
   },
   "Felt Hat": {
     "Attack": 0,
-    "Defense": 1,
+    "Defense": 9,
     "Strength": 0,
-    "Constitution": 0,
-    "Intelligence": 1,
+    "Constitution": 3,
+    "Intelligence": 5,
     "Luck": 0,
     "Resistances": {
       "HIT": 1,
@@ -148,11 +148,11 @@
   },
   "Leather Hat": {
     "Attack": 0,
-    "Defense": 2,
+    "Defense": 11,
     "Strength": 0,
     "Constitution": 0,
-    "Intelligence": 0,
-    "Luck": 0,
+    "Intelligence": 5,
+    "Luck": 3,
     "Resistances": {
       "HIT": 2,
       "CUT": 1,
@@ -169,11 +169,11 @@
   },
   "Velvet Hat": {
     "Attack": 0,
-    "Defense": 1,
+    "Defense": 7,
     "Strength": 0,
     "Constitution": 0,
-    "Intelligence": 2,
-    "Luck": 0,
+    "Intelligence": 10,
+    "Luck": 6,
     "Resistances": {
       "HIT": 1,
       "CUT": 1,
@@ -190,10 +190,10 @@
   },
   "Wizard Hat": {
     "Attack": 0,
-    "Defense": 5,
+    "Defense": 8,
     "Strength": 1,
     "Constitution": 2,
-    "Intelligence": 10,
+    "Intelligence": 99,
     "Luck": 0,
     "Resistances": {
       "HIT": 1,
@@ -211,10 +211,10 @@
   },
   "Steel Helm": {
     "Attack": 0,
-    "Defense": 3,
+    "Defense": 20,
     "Strength": 0,
-    "Constitution": 0,
-    "Intelligence": 1,
+    "Constitution": 5,
+    "Intelligence": 5,
     "Luck": 0,
     "Resistances": {
       "HIT": 1,
@@ -231,11 +231,11 @@
     }
   },
   "Dragon Helm": {
-    "Attack": 0,
-    "Defense": 1,
-    "Strength": 2,
+    "Attack": 44,
+    "Defense": 7,
+    "Strength": 5,
     "Constitution": 0,
-    "Intelligence": 0,
+    "Intelligence": 15,
     "Luck": 0,
     "Resistances": {
       "HIT": 1,
@@ -253,10 +253,10 @@
   },
   "Circlet": {
     "Attack": 0,
-    "Defense": 0,
+    "Defense": 5,
     "Strength": 0,
     "Constitution": 0,
-    "Intelligence": 5,
+    "Intelligence": 15,
     "Luck": 0,
     "Resistances": {
       "HIT": 1,
@@ -277,7 +277,7 @@
     "Defense": 0,
     "Strength": 0,
     "Constitution": 0,
-    "Intelligence": 8,
+    "Intelligence": 20,
     "Luck": 0,
     "Resistances": {
       "HIT": 1,
@@ -296,9 +296,9 @@
   "Coral Circlet": {
     "Attack": 0,
     "Defense": 0,
-    "Strength": -10,
+    "Strength": 0,
     "Constitution": 0,
-    "Intelligence": 10,
+    "Intelligence": 40,
     "Luck": 0,
     "Resistances": {
       "HIT": 1,
@@ -306,7 +306,7 @@
       "POI": 1,
       "CUR": 1,
       "STO": 1,
-      "WAT": 3,
+      "WAT": 2,
       "DAR": 1,
       "HOL": 1,
       "ICE": 1,
@@ -317,9 +317,9 @@
   "Topaz Circlet": {
     "Attack": 0,
     "Defense": 0,
-    "Strength": -10,
+    "Strength": 0,
     "Constitution": 0,
-    "Intelligence": 10,
+    "Intelligence": 40,
     "Luck": 0,
     "Resistances": {
       "HIT": 1,
@@ -328,7 +328,7 @@
       "CUR": 1,
       "STO": 1,
       "WAT": 1,
-      "DAR": 3,
+      "DAR": 2,
       "HOL": 1,
       "ICE": 1,
       "LIG": 1,
@@ -338,9 +338,9 @@
   "Gold Circlet": {
     "Attack": 0,
     "Defense": 0,
-    "Strength": -10,
+    "Strength": 0,
     "Constitution": 0,
-    "Intelligence": 10,
+    "Intelligence": 40,
     "Luck": 0,
     "Resistances": {
       "HIT": 1,
@@ -350,7 +350,7 @@
       "STO": 1,
       "WAT": 1,
       "DAR": 1,
-      "HOL": 3,
+      "HOL": 2,
       "ICE": 1,
       "LIG": 1,
       "FLA": 1
@@ -359,9 +359,9 @@
   "Opal Circlet": {
     "Attack": 0,
     "Defense": 0,
-    "Strength": -10,
+    "Strength": 0,
     "Constitution": 0,
-    "Intelligence": 10,
+    "Intelligence": 40,
     "Luck": 0,
     "Resistances": {
       "HIT": 1,
@@ -372,7 +372,7 @@
       "WAT": 1,
       "DAR": 1,
       "HOL": 1,
-      "ICE": 3,
+      "ICE": 2,
       "LIG": 1,
       "FLA": 1
     }
@@ -380,9 +380,9 @@
   "Beryl Circlet": {
     "Attack": 0,
     "Defense": 0,
-    "Strength": -10,
+    "Strength": 0,
     "Constitution": 0,
-    "Intelligence": 10,
+    "Intelligence": 40,
     "Luck": 0,
     "Resistances": {
       "HIT": 1,
@@ -394,16 +394,16 @@
       "DAR": 1,
       "HOL": 1,
       "ICE": 1,
-      "LIG": 3,
+      "LIG": 2,
       "FLA": 1
     }
   },
   "Ruby Circlet": {
     "Attack": 0,
     "Defense": 0,
-    "Strength": -10,
+    "Strength": 0,
     "Constitution": 0,
-    "Intelligence": 10,
+    "Intelligence": 40,
     "Luck": 0,
     "Resistances": {
       "HIT": 1,
@@ -416,7 +416,7 @@
       "HOL": 1,
       "ICE": 1,
       "LIG": 1,
-      "FLA": 3
+      "FLA": 2
     }
   },
   "Silver Crown": {
@@ -424,8 +424,8 @@
     "Defense": 0,
     "Strength": 0,
     "Constitution": 0,
-    "Intelligence": 12,
-    "Luck": 0,
+    "Intelligence": 25,
+    "Luck": 12,
     "Resistances": {
       "HIT": 1,
       "CUT": 1,
@@ -442,10 +442,10 @@
   },
   "Cloth Tunic": {
     "Attack": 0,
-    "Defense": 1,
+    "Defense": 10,
     "Strength": 0,
     "Constitution": 0,
-    "Intelligence": 0,
+    "Intelligence": 5,
     "Luck": 0,
     "Resistances": {
       "HIT": 1,
@@ -463,10 +463,10 @@
   },
   "Hide Cuirass": {
     "Attack": 0,
-    "Defense": 3,
+    "Defense": 18,
     "Strength": 0,
     "Constitution": 0,
-    "Intelligence": 0,
+    "Intelligence": 5,
     "Luck": 0,
     "Resistances": {
       "HIT": 1,
@@ -484,11 +484,11 @@
   },
   "Alucart Mail": {
     "Attack": 0,
-    "Defense": 2,
+    "Defense": 21,
     "Strength": 0,
     "Constitution": 0,
-    "Intelligence": 0,
-    "Luck": 0,
+    "Intelligence": 15,
+    "Luck": 15,
     "Resistances": {
       "HIT": 2,
       "CUT": 2,
@@ -505,10 +505,10 @@
   },
   "Bronze Cuirass": {
     "Attack": 0,
-    "Defense": 5,
+    "Defense": 25,
     "Strength": 0,
     "Constitution": 0,
-    "Intelligence": 0,
+    "Intelligence": 7,
     "Luck": 0,
     "Resistances": {
       "HIT": 1,
@@ -526,10 +526,10 @@
   },
   "Iron Cuirass": {
     "Attack": 0,
-    "Defense": 7,
+    "Defense": 30,
     "Strength": 0,
     "Constitution": 0,
-    "Intelligence": 0,
+    "Intelligence": 8,
     "Luck": 0,
     "Resistances": {
       "HIT": 1,
@@ -547,10 +547,10 @@
   },
   "Healing Mail": {
     "Attack": 0,
-    "Defense": 8,
+    "Defense": 30,
     "Strength": 0,
     "Constitution": 0,
-    "Intelligence": 0,
+    "Intelligence": 15,
     "Luck": 0,
     "Resistances": {
       "HIT": 1,
@@ -568,7 +568,7 @@
   },
   "Walk Armor": {
     "Attack": 0,
-    "Defense": 0,
+    "Defense": 30,
     "Strength": -10,
     "Constitution": -10,
     "Intelligence": -10,
@@ -589,10 +589,10 @@
   },
   "Steel Cuirass": {
     "Attack": 0,
-    "Defense": 10,
+    "Defense": 35,
     "Strength": 0,
     "Constitution": 0,
-    "Intelligence": 0,
+    "Intelligence": 9,
     "Luck": 0,
     "Resistances": {
       "HIT": 1,
@@ -610,10 +610,10 @@
   },
   "Silver Plate": {
     "Attack": 0,
-    "Defense": 12,
+    "Defense": 40,
     "Strength": 0,
     "Constitution": 0,
-    "Intelligence": 0,
+    "Intelligence": 10,
     "Luck": 0,
     "Resistances": {
       "HIT": 1,
@@ -631,10 +631,10 @@
   },
   "Gold Plate": {
     "Attack": 0,
-    "Defense": 15,
+    "Defense": 35,
     "Strength": 0,
     "Constitution": 0,
-    "Intelligence": 0,
+    "Intelligence": 12,
     "Luck": 0,
     "Resistances": {
       "HIT": 0,
@@ -652,10 +652,10 @@
   },
   "Mirror Cuirass": {
     "Attack": 0,
-    "Defense": 15,
+    "Defense": 29,
     "Strength": 0,
     "Constitution": 0,
-    "Intelligence": 0,
+    "Intelligence": 12,
     "Luck": 0,
     "Resistances": {
       "HIT": 1,
@@ -673,10 +673,10 @@
   },
   "Dark Armor": {
     "Attack": 0,
-    "Defense": 20,
+    "Defense": 38,
     "Strength": 0,
     "Constitution": 0,
-    "Intelligence": 0,
+    "Intelligence": 20,
     "Luck": 0,
     "Resistances": {
       "HIT": 1,
@@ -694,10 +694,10 @@
   },
   "Holy Mail": {
     "Attack": 0,
-    "Defense": 15,
+    "Defense": 34,
     "Strength": 0,
     "Constitution": 0,
-    "Intelligence": 0,
+    "Intelligence": 11,
     "Luck": 0,
     "Resistances": {
       "HIT": 1,
@@ -715,10 +715,10 @@
   },
   "Ice Mail": {
     "Attack": 0,
-    "Defense": 15,
+    "Defense": 33,
     "Strength": 0,
     "Constitution": 0,
-    "Intelligence": 0,
+    "Intelligence": 11,
     "Luck": 0,
     "Resistances": {
       "HIT": 1,
@@ -736,10 +736,10 @@
   },
   "Lightning Mail": {
     "Attack": 0,
-    "Defense": 17,
+    "Defense": 37,
     "Strength": 0,
     "Constitution": 0,
-    "Intelligence": 0,
+    "Intelligence": 12,
     "Luck": 0,
     "Resistances": {
       "HIT": 1,
@@ -757,10 +757,10 @@
   },
   "Fire Mail": {
     "Attack": 0,
-    "Defense": 14,
+    "Defense": 32,
     "Strength": 0,
     "Constitution": 0,
-    "Intelligence": 0,
+    "Intelligence": 11,
     "Luck": 0,
     "Resistances": {
       "HIT": 1,
@@ -778,10 +778,10 @@
   },
   "Platinum Mail": {
     "Attack": 0,
-    "Defense": 18,
+    "Defense": 50,
     "Strength": 0,
     "Constitution": 0,
-    "Intelligence": 0,
+    "Intelligence": 10,
     "Luck": 0,
     "Resistances": {
       "HIT": 1,
@@ -799,10 +799,10 @@
   },
   "Spike Breaker": {
     "Attack": 0,
-    "Defense": 5,
+    "Defense": 25,
     "Strength": 0,
     "Constitution": 0,
-    "Intelligence": 0,
+    "Intelligence": 5,
     "Luck": 0,
     "Resistances": {
       "HIT": 1,
@@ -820,10 +820,10 @@
   },
   "Brilliant Mail": {
     "Attack": 0,
-    "Defense": 12,
+    "Defense": 35,
     "Strength": 0,
     "Constitution": 0,
-    "Intelligence": 10,
+    "Intelligence": 40,
     "Luck": 0,
     "Resistances": {
       "HIT": 1,
@@ -840,11 +840,11 @@
     }
   },
   "Fury Plate": {
-    "Attack": 6,
-    "Defense": 12,
+    "Attack": 66,
+    "Defense": 42,
     "Strength": 0,
     "Constitution": 0,
-    "Intelligence": 0,
+    "Intelligence": 11,
     "Luck": 0,
     "Resistances": {
       "HIT": 1,
@@ -862,10 +862,10 @@
   },
   "Mojo Mail": {
     "Attack": 0,
-    "Defense": 15,
+    "Defense": 40,
     "Strength": 0,
     "Constitution": 5,
-    "Intelligence": 5,
+    "Intelligence": 20,
     "Luck": 0,
     "Resistances": {
       "HIT": 1,
@@ -883,10 +883,10 @@
   },
   "Diamond Plate": {
     "Attack": 0,
-    "Defense": 30,
+    "Defense": 60,
     "Strength": 0,
     "Constitution": 0,
-    "Intelligence": 0,
+    "Intelligence": 10,
     "Luck": 0,
     "Resistances": {
       "HIT": 0,
@@ -904,10 +904,10 @@
   },
   "Dracula Tunic": {
     "Attack": 2,
-    "Defense": 35,
+    "Defense": 55,
     "Strength": 1,
     "Constitution": -5,
-    "Intelligence": 5,
+    "Intelligence": 66,
     "Luck": -10,
     "Resistances": {
       "HIT": 1,
@@ -925,10 +925,10 @@
   },
   "God's Garb": {
     "Attack": 0,
-    "Defense": 50,
+    "Defense": 99,
     "Strength": 0,
     "Constitution": 0,
-    "Intelligence": 0,
+    "Intelligence": 25,
     "Luck": 0,
     "Resistances": {
       "HIT": 1,
@@ -946,10 +946,10 @@
   },
   "Axe Lord Armor": {
     "Attack": 12,
-    "Defense": 40,
+    "Defense": 120,
     "Strength": 0,
     "Constitution": 0,
-    "Intelligence": 0,
+    "Intelligence": 99,
     "Luck": 0,
     "Resistances": {
       "HIT": 1,
@@ -967,10 +967,10 @@
   },
   "Alucard Mail": {
     "Attack": 0,
-    "Defense": 25,
+    "Defense": 55,
     "Strength": 0,
     "Constitution": 0,
-    "Intelligence": 0,
+    "Intelligence": 15,
     "Luck": 0,
     "Resistances": {
       "HIT": 1,
@@ -990,8 +990,8 @@
     "Attack": 0,
     "Defense": 0,
     "Strength": 0,
-    "Constitution": 2,
-    "Intelligence": 0,
+    "Constitution": 5,
+    "Intelligence": 4,
     "Luck": 0,
     "Resistances": {
       "HIT": 1,
@@ -1011,8 +1011,8 @@
     "Attack": 0,
     "Defense": 0,
     "Strength": 0,
-    "Constitution": 5,
-    "Intelligence": 0,
+    "Constitution": 15,
+    "Intelligence": 10,
     "Luck": 0,
     "Resistances": {
       "HIT": 1,
@@ -1032,8 +1032,8 @@
     "Attack": 0,
     "Defense": 0,
     "Strength": 0,
-    "Constitution": 1,
-    "Intelligence": 0,
+    "Constitution": 3,
+    "Intelligence": 5,
     "Luck": -10,
     "Resistances": {
       "HIT": 1,
@@ -1053,8 +1053,8 @@
     "Attack": 0,
     "Defense": 0,
     "Strength": 0,
-    "Constitution": 9,
-    "Intelligence": 7,
+    "Constitution": 25,
+    "Intelligence": 35,
     "Luck": 0,
     "Resistances": {
       "HIT": 1,
@@ -1066,16 +1066,16 @@
       "DAR": 1,
       "HOL": 1,
       "ICE": 1,
-      "LIG": 1,
-      "FLA": 1
+      "LIG": 2,
+      "FLA": 0
     }
   },
   "Crystal Cloak": {
     "Attack": 0,
     "Defense": 0,
     "Strength": 0,
-    "Constitution": 7,
-    "Intelligence": 2,
+    "Constitution": 20,
+    "Intelligence": 15,
     "Luck": 0,
     "Resistances": {
       "HIT": 1,
@@ -1094,10 +1094,10 @@
   "Royal Cloak": {
     "Attack": 0,
     "Defense": 0,
-    "Strength": 3,
-    "Constitution": 10,
-    "Intelligence": 0,
-    "Luck": 0,
+    "Strength": 0,
+    "Constitution": 30,
+    "Intelligence": 13,
+    "Luck": 10,
     "Resistances": {
       "HIT": 1,
       "CUT": 1,
@@ -1116,8 +1116,8 @@
     "Attack": 0,
     "Defense": 0,
     "Strength": 0,
-    "Constitution": 9,
-    "Intelligence": 5,
+    "Constitution": 31,
+    "Intelligence": 18,
     "Luck": 15,
     "Resistances": {
       "HIT": 1,
@@ -1137,9 +1137,9 @@
     "Attack": 0,
     "Defense": 0,
     "Strength": 0,
-    "Constitution": 10,
-    "Intelligence": 10,
-    "Luck": 5,
+    "Constitution": 32,
+    "Intelligence": 25,
+    "Luck": 0,
     "Resistances": {
       "HIT": 1,
       "CUT": 1,
@@ -1349,7 +1349,7 @@
     "Strength": 0,
     "Constitution": 0,
     "Intelligence": 0,
-    "Luck": 30,
+    "Luck": 40,
     "Resistances": {
       "HIT": 1,
       "CUT": 1,
@@ -1369,7 +1369,7 @@
     "Defense": 0,
     "Strength": 0,
     "Constitution": 0,
-    "Intelligence": 7,
+    "Intelligence": 77,
     "Luck": 0,
     "Resistances": {
       "HIT": 1,
@@ -1407,11 +1407,11 @@
     }
   },
   "Ring of Pales": {
-    "Attack": 0,
-    "Defense": 0,
+    "Attack": 66,
+    "Defense": 6,
     "Strength": 0,
-    "Constitution": 6,
-    "Intelligence": 6,
+    "Constitution": 16,
+    "Intelligence": 66,
     "Luck": 6,
     "Resistances": {
       "HIT": 1,
@@ -1428,8 +1428,8 @@
     }
   },
   "Ring of Ares": {
-    "Attack": 24,
-    "Defense": -24,
+    "Attack": 240,
+    "Defense": -240,
     "Strength": 0,
     "Constitution": 0,
     "Intelligence": 0,
@@ -1449,11 +1449,11 @@
     }
   },
   "Ring of Feanor": {
-    "Attack": 7,
-    "Defense": 7,
+    "Attack": 70,
+    "Defense": 15,
     "Strength": 0,
     "Constitution": 0,
-    "Intelligence": 7,
+    "Intelligence": 70,
     "Luck": 7,
     "Resistances": {
       "HIT": 1,
@@ -1470,11 +1470,11 @@
     }
   },
   "Ring of Varda": {
-    "Attack": 10,
-    "Defense": -5,
+    "Attack": 333,
+    "Defense": -333,
     "Strength": 0,
     "Constitution": 10,
-    "Intelligence": 10,
+    "Intelligence": 66,
     "Luck": 10,
     "Resistances": {
       "HIT": 1,
@@ -1492,7 +1492,7 @@
   },
   "Necklace of J": {
     "Attack": 0,
-    "Defense": 5,
+    "Defense": 25,
     "Strength": 0,
     "Constitution": 0,
     "Intelligence": 0,
@@ -1513,7 +1513,7 @@
   },
   "Nauglamir": {
     "Attack": 0,
-    "Defense": 15,
+    "Defense": 50,
     "Strength": 0,
     "Constitution": 0,
     "Intelligence": 0,
@@ -1533,12 +1533,12 @@
     }
   },
   "Moonstone": {
-    "Attack": 0,
-    "Defense": 0,
+    "Attack": 20,
+    "Defense": 8,
     "Strength": 0,
-    "Constitution": 0,
-    "Intelligence": 0,
-    "Luck": 0,
+    "Constitution": 2,
+    "Intelligence": 20,
+    "Luck": 2,
     "Resistances": {
       "HIT": 1,
       "CUT": 1,
@@ -1554,12 +1554,12 @@
     }
   },
   "Sunstone": {
-    "Attack": 0,
-    "Defense": 0,
+    "Attack": 20,
+    "Defense": 8,
     "Strength": 0,
-    "Constitution": 0,
-    "Intelligence": 0,
-    "Luck": 0,
+    "Constitution": 2,
+    "Intelligence": 20,
+    "Luck": 2,
     "Resistances": {
       "HIT": 1,
       "CUT": 1,
@@ -1578,9 +1578,9 @@
     "Attack": 0,
     "Defense": 0,
     "Strength": 0,
-    "Constitution": 1,
-    "Intelligence": 1,
-    "Luck": 1,
+    "Constitution": 5,
+    "Intelligence": 10,
+    "Luck": 5,
     "Resistances": {
       "HIT": 1,
       "CUT": 1,
@@ -1598,10 +1598,10 @@
   "Ankh of Life": {
     "Attack": 0,
     "Defense": 0,
-    "Strength": 1,
+    "Strength": 0,
     "Constitution": 0,
     "Intelligence": 0,
-    "Luck": 1,
+    "Luck": 9,
     "Resistances": {
       "HIT": 1,
       "CUT": 1,
@@ -1617,11 +1617,11 @@
     }
   },
   "Mystic Pendant": {
-    "Attack": 0,
+    "Attack": -56,
     "Defense": 0,
-    "Strength": -10,
+    "Strength": 0,
     "Constitution": 0,
-    "Intelligence": 0,
+    "Intelligence": 20,
     "Luck": 0,
     "Resistances": {
       "HIT": 1,
@@ -1638,7 +1638,7 @@
     }
   },
   "Covenant Stone": {
-    "Attack": 10,
+    "Attack": 100,
     "Defense": 0,
     "Strength": 0,
     "Constitution": 0,
@@ -1659,7 +1659,7 @@
     }
   },
   "King's Stone": {
-    "Attack": 20,
+    "Attack": 200,
     "Defense": 0,
     "Strength": 0,
     "Constitution": 0,
@@ -1680,12 +1680,12 @@
     }
   },
   "Medal": {
-    "Attack": 1,
-    "Defense": 1,
-    "Strength": 1,
-    "Constitution": 1,
-    "Intelligence": 1,
-    "Luck": 1,
+    "Attack": 10,
+    "Defense": 10,
+    "Strength": 0,
+    "Constitution": 5,
+    "Intelligence": 10,
+    "Luck": 5,
     "Resistances": {
       "HIT": 1,
       "CUT": 1,
@@ -1704,9 +1704,9 @@
     "Attack": 0,
     "Defense": 0,
     "Strength": 0,
-    "Constitution": 3,
-    "Intelligence": 3,
-    "Luck": 3,
+    "Constitution": 8,
+    "Intelligence": 30,
+    "Luck": 5,
     "Resistances": {
       "HIT": 1,
       "CUT": 1,
@@ -1764,7 +1764,7 @@
     }
   },
   "Gauntlet": {
-    "Attack": 5,
+    "Attack": 50,
     "Defense": 0,
     "Strength": 0,
     "Constitution": 0,
