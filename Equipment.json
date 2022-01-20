@@ -1160,7 +1160,7 @@
     "Strength": 0,
     "Constitution": 0,
     "Intelligence": 0,
-    "Luck": 0,
+    "Luck": 1,
     "Resistances": {
       "HIT": 1,
       "CUT": 1,
@@ -1181,7 +1181,7 @@
     "Strength": 0,
     "Constitution": 0,
     "Intelligence": 0,
-    "Luck": 0,
+    "Luck": 2,
     "Resistances": {
       "HIT": 1,
       "CUT": 1,
@@ -1202,7 +1202,7 @@
     "Strength": 0,
     "Constitution": 0,
     "Intelligence": 0,
-    "Luck": 0,
+    "Luck": 3,
     "Resistances": {
       "HIT": 1,
       "CUT": 1,
@@ -1223,7 +1223,7 @@
     "Strength": 0,
     "Constitution": 0,
     "Intelligence": 0,
-    "Luck": 0,
+    "Luck": 5,
     "Resistances": {
       "HIT": 1,
       "CUT": 1,
@@ -1244,7 +1244,7 @@
     "Strength": 0,
     "Constitution": 0,
     "Intelligence": 0,
-    "Luck": 0,
+    "Luck": 8,
     "Resistances": {
       "HIT": 1,
       "CUT": 1,
@@ -1265,7 +1265,7 @@
     "Strength": 0,
     "Constitution": 0,
     "Intelligence": 0,
-    "Luck": 0,
+    "Luck": 12,
     "Resistances": {
       "HIT": 1,
       "CUT": 1,
@@ -1286,7 +1286,7 @@
     "Strength": 0,
     "Constitution": 0,
     "Intelligence": 0,
-    "Luck": 0,
+    "Luck": 20,
     "Resistances": {
       "HIT": 1,
       "CUT": 1,
@@ -1304,10 +1304,10 @@
   "Gold Ring": {
     "Attack": 0,
     "Defense": 0,
-    "Strength": 0,
+    "Strength": 5,
     "Constitution": 0,
     "Intelligence": 0,
-    "Luck": 0,
+    "Luck": 5,
     "Resistances": {
       "HIT": 1,
       "CUT": 1,
@@ -1327,8 +1327,8 @@
     "Defense": 0,
     "Strength": 0,
     "Constitution": 0,
-    "Intelligence": 0,
-    "Luck": 0,
+    "Intelligence": 5,
+    "Luck": 5,
     "Resistances": {
       "HIT": 1,
       "CUT": 1,
@@ -1391,7 +1391,7 @@
     "Strength": 0,
     "Constitution": 0,
     "Intelligence": 0,
-    "Luck": 10,
+    "Luck": 30,
     "Resistances": {
       "HIT": 1,
       "CUT": 1,
@@ -1471,7 +1471,7 @@
   },
   "Ring of Varda": {
     "Attack": 333,
-    "Defense": -333,
+    "Defense": 10,
     "Strength": 0,
     "Constitution": 10,
     "Intelligence": 66,
@@ -1492,7 +1492,7 @@
   },
   "Necklace of J": {
     "Attack": 0,
-    "Defense": 25,
+    "Defense": 15,
     "Strength": 0,
     "Constitution": 0,
     "Intelligence": 0,
@@ -1513,7 +1513,7 @@
   },
   "Nauglamir": {
     "Attack": 0,
-    "Defense": 50,
+    "Defense": 30,
     "Strength": 0,
     "Constitution": 0,
     "Intelligence": 0,

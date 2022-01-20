@@ -3125,7 +3125,7 @@
     "Extra": "0x81"
   },
   "Mace": {
-    "Attack": 135,
+    "Attack": 111,
     "Defense": 0,
     "Element": {
       "HIT": true,
@@ -3150,7 +3150,7 @@
     "Extra": "0x01"
   },
   "Morningstar": {
-    "Attack": 129,
+    "Attack": 135,
     "Defense": 0,
     "Element": {
       "HIT": true,
@@ -3175,7 +3175,7 @@
     "Extra": "0x01"
   },
   "Shield Rod": {
-    "Attack": 112,
+    "Attack": 107,
     "Defense": 0,
     "Element": {
       "HIT": true,
@@ -3350,7 +3350,7 @@
     "Extra": "0x06"
   },
   "Moon Rod Special": {
-    "Attack": 120,
+    "Attack": 78,
     "Defense": 0,
     "Element": {
       "HIT": false,
