@@ -193,7 +193,7 @@
     "Defense": 8,
     "Strength": 1,
     "Constitution": 2,
-    "Intelligence": 99,
+    "Intelligence": 50,
     "Luck": 0,
     "Resistances": {
       "HIT": 1,
@@ -211,7 +211,7 @@
   },
   "Steel Helm": {
     "Attack": 0,
-    "Defense": 20,
+    "Defense": 18,
     "Strength": 0,
     "Constitution": 5,
     "Intelligence": 5,
@@ -235,7 +235,7 @@
     "Defense": 7,
     "Strength": 5,
     "Constitution": 0,
-    "Intelligence": 15,
+    "Intelligence": 0,
     "Luck": 0,
     "Resistances": {
       "HIT": 1,
@@ -256,7 +256,7 @@
     "Defense": 5,
     "Strength": 0,
     "Constitution": 0,
-    "Intelligence": 15,
+    "Intelligence": 10,
     "Luck": 0,
     "Resistances": {
       "HIT": 1,
@@ -277,7 +277,7 @@
     "Defense": 0,
     "Strength": 0,
     "Constitution": 0,
-    "Intelligence": 20,
+    "Intelligence": 15,
     "Luck": 0,
     "Resistances": {
       "HIT": 1,
@@ -298,7 +298,7 @@
     "Defense": 0,
     "Strength": 0,
     "Constitution": 0,
-    "Intelligence": 40,
+    "Intelligence": 30,
     "Luck": 0,
     "Resistances": {
       "HIT": 1,
@@ -319,7 +319,7 @@
     "Defense": 0,
     "Strength": 0,
     "Constitution": 0,
-    "Intelligence": 40,
+    "Intelligence": 20,
     "Luck": 0,
     "Resistances": {
       "HIT": 1,
@@ -340,7 +340,7 @@
     "Defense": 0,
     "Strength": 0,
     "Constitution": 0,
-    "Intelligence": 40,
+    "Intelligence": 30,
     "Luck": 0,
     "Resistances": {
       "HIT": 1,
@@ -361,7 +361,7 @@
     "Defense": 0,
     "Strength": 0,
     "Constitution": 0,
-    "Intelligence": 40,
+    "Intelligence": 30,
     "Luck": 0,
     "Resistances": {
       "HIT": 1,
@@ -424,7 +424,7 @@
     "Defense": 0,
     "Strength": 0,
     "Constitution": 0,
-    "Intelligence": 25,
+    "Intelligence": 18,
     "Luck": 12,
     "Resistances": {
       "HIT": 1,
@@ -569,10 +569,10 @@
   "Walk Armor": {
     "Attack": 0,
     "Defense": 30,
-    "Strength": -10,
-    "Constitution": -10,
-    "Intelligence": -10,
-    "Luck": -10,
+    "Strength": -25,
+    "Constitution": -25,
+    "Intelligence": -25,
+    "Luck": -25,
     "Resistances": {
       "HIT": 1,
       "CUT": 1,
@@ -637,16 +637,16 @@
     "Intelligence": 12,
     "Luck": 0,
     "Resistances": {
-      "HIT": 0,
+      "HIT": 1,
       "CUT": 1,
       "POI": 1,
       "CUR": 1,
-      "STO": 1,
+      "STO": 3,
       "WAT": 1,
       "DAR": 1,
-      "HOL": 2,
+      "HOL": 1,
       "ICE": 1,
-      "LIG": 0,
+      "LIG": 1,
       "FLA": 1
     }
   },
@@ -823,7 +823,7 @@
     "Defense": 35,
     "Strength": 0,
     "Constitution": 0,
-    "Intelligence": 40,
+    "Intelligence": 30,
     "Luck": 0,
     "Resistances": {
       "HIT": 1,
@@ -903,10 +903,10 @@
     }
   },
   "Dracula Tunic": {
-    "Attack": 2,
+    "Attack": 0,
     "Defense": 55,
-    "Strength": 1,
-    "Constitution": -5,
+    "Strength": 10,
+    "Constitution": -15,
     "Intelligence": 66,
     "Luck": -10,
     "Resistances": {
@@ -928,7 +928,7 @@
     "Defense": 99,
     "Strength": 0,
     "Constitution": 0,
-    "Intelligence": 25,
+    "Intelligence": 15,
     "Luck": 0,
     "Resistances": {
       "HIT": 1,
@@ -970,7 +970,7 @@
     "Defense": 55,
     "Strength": 0,
     "Constitution": 0,
-    "Intelligence": 15,
+    "Intelligence": 20,
     "Luck": 0,
     "Resistances": {
       "HIT": 1,
@@ -988,7 +988,7 @@
   },
   "Cloth Cape": {
     "Attack": 0,
-    "Defense": 0,
+    "Defense": 5,
     "Strength": 0,
     "Constitution": 5,
     "Intelligence": 4,
@@ -1009,7 +1009,7 @@
   },
   "Reverse Cloak": {
     "Attack": 0,
-    "Defense": 0,
+    "Defense": 8,
     "Strength": 0,
     "Constitution": 15,
     "Intelligence": 10,
@@ -1029,12 +1029,12 @@
     }
   },
   "Blood Cloak": {
-    "Attack": 0,
-    "Defense": 0,
-    "Strength": 0,
-    "Constitution": 3,
-    "Intelligence": 5,
-    "Luck": -10,
+    "Attack": -20,
+    "Defense": -20,
+    "Strength": -20,
+    "Constitution": -20,
+    "Intelligence": -20,
+    "Luck": -20,
     "Resistances": {
       "HIT": 1,
       "CUT": 1,
@@ -1051,10 +1051,10 @@
   },
   "Elven Cloak": {
     "Attack": 0,
-    "Defense": 0,
+    "Defense": 10,
     "Strength": 0,
     "Constitution": 25,
-    "Intelligence": 35,
+    "Intelligence": 30,
     "Luck": 0,
     "Resistances": {
       "HIT": 1,
@@ -1072,7 +1072,7 @@
   },
   "Crystal Cloak": {
     "Attack": 0,
-    "Defense": 0,
+    "Defense": 12,
     "Strength": 0,
     "Constitution": 20,
     "Intelligence": 15,
@@ -1093,7 +1093,7 @@
   },
   "Royal Cloak": {
     "Attack": 0,
-    "Defense": 0,
+    "Defense": 15,
     "Strength": 0,
     "Constitution": 30,
     "Intelligence": 13,
@@ -1114,9 +1114,9 @@
   },
   "Joseph's Cloak": {
     "Attack": 0,
-    "Defense": 0,
+    "Defense": 18,
     "Strength": 0,
-    "Constitution": 31,
+    "Constitution": 32,
     "Intelligence": 18,
     "Luck": 15,
     "Resistances": {
@@ -1135,9 +1135,9 @@
   },
   "Twilight Cloak": {
     "Attack": 0,
-    "Defense": 0,
+    "Defense": 20,
     "Strength": 0,
-    "Constitution": 32,
+    "Constitution": 35,
     "Intelligence": 25,
     "Luck": 0,
     "Resistances": {
@@ -1369,7 +1369,7 @@
     "Defense": 0,
     "Strength": 0,
     "Constitution": 0,
-    "Intelligence": 77,
+    "Intelligence": 25,
     "Luck": 0,
     "Resistances": {
       "HIT": 1,
@@ -1407,11 +1407,11 @@
     }
   },
   "Ring of Pales": {
-    "Attack": 66,
+    "Attack": 16,
     "Defense": 6,
-    "Strength": 0,
+    "Strength": 6,
     "Constitution": 16,
-    "Intelligence": 66,
+    "Intelligence": 26,
     "Luck": 6,
     "Resistances": {
       "HIT": 1,
@@ -1449,12 +1449,12 @@
     }
   },
   "Ring of Feanor": {
-    "Attack": 70,
-    "Defense": 15,
-    "Strength": 0,
-    "Constitution": 0,
-    "Intelligence": 70,
-    "Luck": 7,
+    "Attack": 0,
+    "Defense": 0,
+    "Strength": 17,
+    "Constitution": 17,
+    "Intelligence": 17,
+    "Luck": 17,
     "Resistances": {
       "HIT": 1,
       "CUT": 1,
@@ -1470,12 +1470,12 @@
     }
   },
   "Ring of Varda": {
-    "Attack": 333,
-    "Defense": 10,
-    "Strength": 0,
-    "Constitution": 10,
-    "Intelligence": 66,
-    "Luck": 10,
+    "Attack": 30,
+    "Defense": 30,
+    "Strength": 30,
+    "Constitution": 30,
+    "Intelligence": 30,
+    "Luck": 30,
     "Resistances": {
       "HIT": 1,
       "CUT": 1,
@@ -1537,7 +1537,7 @@
     "Defense": 8,
     "Strength": 0,
     "Constitution": 2,
-    "Intelligence": 20,
+    "Intelligence": 10,
     "Luck": 2,
     "Resistances": {
       "HIT": 1,
@@ -1558,7 +1558,7 @@
     "Defense": 8,
     "Strength": 0,
     "Constitution": 2,
-    "Intelligence": 20,
+    "Intelligence": 10,
     "Luck": 2,
     "Resistances": {
       "HIT": 1,
@@ -1621,7 +1621,7 @@
     "Defense": 0,
     "Strength": 0,
     "Constitution": 0,
-    "Intelligence": 20,
+    "Intelligence": 12,
     "Luck": 0,
     "Resistances": {
       "HIT": 1,
@@ -1683,9 +1683,9 @@
     "Attack": 10,
     "Defense": 10,
     "Strength": 0,
-    "Constitution": 5,
-    "Intelligence": 10,
-    "Luck": 5,
+    "Constitution": 0,
+    "Intelligence": 0,
+    "Luck": 0,
     "Resistances": {
       "HIT": 1,
       "CUT": 1,
@@ -1704,9 +1704,9 @@
     "Attack": 0,
     "Defense": 0,
     "Strength": 0,
-    "Constitution": 8,
-    "Intelligence": 30,
-    "Luck": 5,
+    "Constitution": 14,
+    "Intelligence": 14,
+    "Luck": 14,
     "Resistances": {
       "HIT": 1,
       "CUT": 1,
@@ -1788,7 +1788,7 @@
     "Attack": 0,
     "Defense": 0,
     "Strength": 0,
-    "Constitution": 4,
+    "Constitution": 5,
     "Intelligence": 0,
     "Luck": 0,
     "Resistances": {

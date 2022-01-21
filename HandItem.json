@@ -1600,7 +1600,7 @@
     "Extra": "0x01"
   },
   "Knuckle Duster": {
-    "Attack": 153,
+    "Attack": 113,
     "Defense": 0,
     "Element": {
       "HIT": true,
@@ -1625,7 +1625,7 @@
     "Extra": "0x01"
   },
   "Blue Knuckles": {
-    "Attack": 125,
+    "Attack": 136,
     "Defense": 0,
     "Element": {
       "HIT": true,
@@ -1650,7 +1650,7 @@
     "Extra": "0x01"
   },
   "Jewel Knuckles": {
-    "Attack": 115,
+    "Attack": 123,
     "Defense": 0,
     "Element": {
       "HIT": true,
@@ -1675,7 +1675,7 @@
     "Extra": "0x01"
   },
   "Iron Fist": {
-    "Attack": 153,
+    "Attack": 235,
     "Defense": 0,
     "Element": {
       "HIT": true,
@@ -1725,7 +1725,7 @@
     "Extra": "0x01"
   },
   "Fist of Tulkas": {
-    "Attack": 195,
+    "Attack": 255,
     "Defense": 0,
     "Element": {
       "HIT": true,
@@ -1750,7 +1750,7 @@
     "Extra": "0x01"
   },
   "Fist of Tulkas Special": {
-    "Attack": 144,
+    "Attack": 200,
     "Defense": 0,
     "Element": {
       "HIT": true,
@@ -1769,13 +1769,13 @@
     "Special": "0x00",
     "Cooldown": 10,
     "Spell": "0x0000",
-    "ManaCost": 0,
+    "ManaCost": 8,
     "StunFrames": 4,
     "Range": 2,
     "Extra": "0x01"
   },
   "Fist of Tulkas Fireball": {
-    "Attack": 222,
+    "Attack": 300,
     "Defense": 0,
     "Element": {
       "HIT": false,
@@ -1794,7 +1794,7 @@
     "Special": "0x00",
     "Cooldown": 10,
     "Spell": "0x0000",
-    "ManaCost": 5,
+    "ManaCost": 10,
     "StunFrames": 4,
     "Range": 2,
     "Extra": "0x01"
@@ -1900,7 +1900,7 @@
     "Extra": "0x81"
   },
   "Holbein Dagger": {
-    "Attack": 137,
+    "Attack": 144,
     "Defense": 0,
     "Element": {
       "HIT": false,
@@ -2025,7 +2025,7 @@
     "Extra": "0x85"
   },
   "Shotel": {
-    "Attack": 142,
+    "Attack": 172,
     "Defense": 0,
     "Element": {
       "HIT": false,
@@ -2050,7 +2050,7 @@
     "Extra": "0x81"
   },
   "Shotel Special": {
-    "Attack": 145,
+    "Attack": 165,
     "Defense": 0,
     "Element": {
       "HIT": false,
@@ -2069,7 +2069,7 @@
     "Special": "0x00",
     "Cooldown": 30,
     "Spell": "0x0000",
-    "ManaCost": 0,
+    "ManaCost": 5,
     "StunFrames": 4,
     "Range": 2,
     "Extra": "0x81"
@@ -2119,7 +2119,7 @@
     "Special": "0x00",
     "Cooldown": 8,
     "Spell": "0x0000",
-    "ManaCost": 0,
+    "ManaCost": 5,
     "StunFrames": 4,
     "Range": 2,
     "Extra": "0x81"
@@ -2169,7 +2169,7 @@
     "Special": "0x00",
     "Cooldown": 8,
     "Spell": "0x0000",
-    "ManaCost": 0,
+    "ManaCost": 5,
     "StunFrames": 4,
     "Range": 2,
     "Extra": "0x81"
@@ -2200,56 +2200,6 @@
     "Extra": "0x81"
   },
   "Scimitar": {
-    "Attack": 105,
-    "Defense": 0,
-    "Element": {
-      "HIT": false,
-      "CUT": true,
-      "POI": false,
-      "CUR": false,
-      "STO": false,
-      "WAT": false,
-      "DAR": false,
-      "HOL": false,
-      "ICE": false,
-      "LIG": false,
-      "FLA": false
-    },
-    "Sprite": "0x00",
-    "Special": "0x00",
-    "Cooldown": 12,
-    "Spell": "0x0000",
-    "ManaCost": 0,
-    "StunFrames": 4,
-    "Range": 2,
-    "Extra": "0x81"
-  },
-  "Cutlass": {
-    "Attack": 110,
-    "Defense": 0,
-    "Element": {
-      "HIT": false,
-      "CUT": true,
-      "POI": false,
-      "CUR": false,
-      "STO": false,
-      "WAT": false,
-      "DAR": false,
-      "HOL": false,
-      "ICE": false,
-      "LIG": false,
-      "FLA": false
-    },
-    "Sprite": "0x00",
-    "Special": "0x00",
-    "Cooldown": 12,
-    "Spell": "0x0000",
-    "ManaCost": 0,
-    "StunFrames": 4,
-    "Range": 2,
-    "Extra": "0x81"
-  },
-  "Saber": {
     "Attack": 115,
     "Defense": 0,
     "Element": {
@@ -2274,57 +2224,7 @@
     "Range": 2,
     "Extra": "0x81"
   },
-  "Falchion": {
-    "Attack": 120,
-    "Defense": 0,
-    "Element": {
-      "HIT": false,
-      "CUT": true,
-      "POI": false,
-      "CUR": false,
-      "STO": false,
-      "WAT": false,
-      "DAR": false,
-      "HOL": false,
-      "ICE": false,
-      "LIG": false,
-      "FLA": false
-    },
-    "Sprite": "0x00",
-    "Special": "0x00",
-    "Cooldown": 12,
-    "Spell": "0x0000",
-    "ManaCost": 0,
-    "StunFrames": 4,
-    "Range": 2,
-    "Extra": "0x81"
-  },
-  "Broadsword": {
-    "Attack": 125,
-    "Defense": 0,
-    "Element": {
-      "HIT": false,
-      "CUT": true,
-      "POI": false,
-      "CUR": false,
-      "STO": false,
-      "WAT": false,
-      "DAR": false,
-      "HOL": false,
-      "ICE": false,
-      "LIG": false,
-      "FLA": false
-    },
-    "Sprite": "0x00",
-    "Special": "0x00",
-    "Cooldown": 12,
-    "Spell": "0x0000",
-    "ManaCost": 0,
-    "StunFrames": 4,
-    "Range": 2,
-    "Extra": "0x81"
-  },
-  "Bekatowa": {
+  "Cutlass": {
     "Attack": 130,
     "Defense": 0,
     "Element": {
@@ -2349,8 +2249,108 @@
     "Range": 2,
     "Extra": "0x81"
   },
+  "Saber": {
+    "Attack": 145,
+    "Defense": 0,
+    "Element": {
+      "HIT": false,
+      "CUT": true,
+      "POI": false,
+      "CUR": false,
+      "STO": false,
+      "WAT": false,
+      "DAR": false,
+      "HOL": false,
+      "ICE": false,
+      "LIG": false,
+      "FLA": false
+    },
+    "Sprite": "0x00",
+    "Special": "0x00",
+    "Cooldown": 12,
+    "Spell": "0x0000",
+    "ManaCost": 0,
+    "StunFrames": 4,
+    "Range": 2,
+    "Extra": "0x81"
+  },
+  "Falchion": {
+    "Attack": 210,
+    "Defense": 0,
+    "Element": {
+      "HIT": false,
+      "CUT": true,
+      "POI": false,
+      "CUR": false,
+      "STO": false,
+      "WAT": false,
+      "DAR": false,
+      "HOL": false,
+      "ICE": false,
+      "LIG": false,
+      "FLA": false
+    },
+    "Sprite": "0x00",
+    "Special": "0x00",
+    "Cooldown": 12,
+    "Spell": "0x0000",
+    "ManaCost": 0,
+    "StunFrames": 4,
+    "Range": 2,
+    "Extra": "0x81"
+  },
+  "Broadsword": {
+    "Attack": 175,
+    "Defense": 0,
+    "Element": {
+      "HIT": false,
+      "CUT": true,
+      "POI": false,
+      "CUR": false,
+      "STO": false,
+      "WAT": false,
+      "DAR": false,
+      "HOL": false,
+      "ICE": false,
+      "LIG": false,
+      "FLA": false
+    },
+    "Sprite": "0x00",
+    "Special": "0x00",
+    "Cooldown": 12,
+    "Spell": "0x0000",
+    "ManaCost": 0,
+    "StunFrames": 4,
+    "Range": 2,
+    "Extra": "0x81"
+  },
+  "Bekatowa": {
+    "Attack": 200,
+    "Defense": 0,
+    "Element": {
+      "HIT": false,
+      "CUT": true,
+      "POI": false,
+      "CUR": false,
+      "STO": false,
+      "WAT": false,
+      "DAR": false,
+      "HOL": false,
+      "ICE": false,
+      "LIG": false,
+      "FLA": false
+    },
+    "Sprite": "0x00",
+    "Special": "0x00",
+    "Cooldown": 12,
+    "Spell": "0x0000",
+    "ManaCost": 0,
+    "StunFrames": 4,
+    "Range": 2,
+    "Extra": "0x81"
+  },
   "Damascus Sword": {
-    "Attack": 133,
+    "Attack": 170,
     "Defense": 0,
     "Element": {
       "HIT": false,
@@ -2375,7 +2375,7 @@
     "Extra": "0x81"
   },
   "Hunter Sword": {
-    "Attack": 140,
+    "Attack": 190,
     "Defense": -5,
     "Element": {
       "HIT": false,
@@ -2400,7 +2400,7 @@
     "Extra": "0x81"
   },
   "Bastard Sword": {
-    "Attack": 135,
+    "Attack": 215,
     "Defense": 0,
     "Element": {
       "HIT": false,
@@ -2425,7 +2425,7 @@
     "Extra": "0x81"
   },
   "Talwar": {
-    "Attack": 140,
+    "Attack": 230,
     "Defense": 0,
     "Element": {
       "HIT": false,
@@ -2450,7 +2450,7 @@
     "Extra": "0x81"
   },
   "Alucart Sword": {
-    "Attack": 103,
+    "Attack": 110,
     "Defense": 0,
     "Element": {
       "HIT": false,
@@ -2475,7 +2475,7 @@
     "Extra": "0x81"
   },
   "Tyrfing": {
-    "Attack": 152,
+    "Attack": 220,
     "Defense": 0,
     "Element": {
       "HIT": false,
@@ -2500,7 +2500,7 @@
     "Extra": "0x81"
   },
   "Sword of Hador": {
-    "Attack": 137,
+    "Attack": 210,
     "Defense": 5,
     "Element": {
       "HIT": false,
@@ -2525,7 +2525,7 @@
     "Extra": "0x81"
   },
   "Luminus": {
-    "Attack": 159,
+    "Attack": 255,
     "Defense": -7,
     "Element": {
       "HIT": false,
@@ -2550,7 +2550,7 @@
     "Extra": "0x81"
   },
   "Harper": {
-    "Attack": 150,
+    "Attack": 232,
     "Defense": -15,
     "Element": {
       "HIT": false,
@@ -2570,13 +2570,13 @@
     "Cooldown": 14,
     "Spell": "0x0000",
     "ManaCost": 0,
-    "StunFrames": 6,
+    "StunFrames": 16,
     "Range": 2,
     "Extra": "0x81"
   },
   "Gram": {
-    "Attack": 135,
-    "Defense": -3,
+    "Attack": 218,
+    "Defense": -12,
     "Element": {
       "HIT": true,
       "CUT": true,
@@ -2595,13 +2595,13 @@
     "Cooldown": 14,
     "Spell": "0x0000",
     "ManaCost": 0,
-    "StunFrames": 2,
+    "StunFrames": 10,
     "Range": 2,
     "Extra": "0x81"
   },
   "Dark Blade": {
-    "Attack": 200,
-    "Defense": -12,
+    "Attack": 365,
+    "Defense": -24,
     "Element": {
       "HIT": false,
       "CUT": false,
@@ -2609,7 +2609,7 @@
       "CUR": false,
       "STO": false,
       "WAT": true,
-      "DAR": true,
+      "DAR": false,
       "HOL": false,
       "ICE": false,
       "LIG": false,
@@ -2625,7 +2625,7 @@
     "Extra": "0x81"
   },
   "Firebrand": {
-    "Attack": 134,
+    "Attack": 180,
     "Defense": 0,
     "Element": {
       "HIT": false,
@@ -2650,7 +2650,7 @@
     "Extra": "0x81"
   },
   "Firebrand Special": {
-    "Attack": 56,
+    "Attack": 120,
     "Defense": 0,
     "Element": {
       "HIT": false,
@@ -2675,7 +2675,7 @@
     "Extra": "0x81"
   },
   "Icebrand": {
-    "Attack": 128,
+    "Attack": 164,
     "Defense": 0,
     "Element": {
       "HIT": false,
@@ -2700,7 +2700,7 @@
     "Extra": "0x81"
   },
   "Icebrand Special": {
-    "Attack": 200,
+    "Attack": 300,
     "Defense": 0,
     "Element": {
       "HIT": false,
@@ -2725,7 +2725,7 @@
     "Extra": "0x81"
   },
   "Thunderbrand": {
-    "Attack": 134,
+    "Attack": 180,
     "Defense": 0,
     "Element": {
       "HIT": false,
@@ -2750,7 +2750,7 @@
     "Extra": "0x81"
   },
   "Thunderbrand Special": {
-    "Attack": 185,
+    "Attack": 255,
     "Defense": 0,
     "Element": {
       "HIT": false,
@@ -2775,7 +2775,7 @@
     "Extra": "0x81"
   },
   "Holy Sword": {
-    "Attack": 129,
+    "Attack": 177,
     "Defense": 0,
     "Element": {
       "HIT": false,
@@ -2800,7 +2800,7 @@
     "Extra": "0x81"
   },
   "Holy Sword Special": {
-    "Attack": 135,
+    "Attack": 255,
     "Defense": 0,
     "Element": {
       "HIT": false,
@@ -2825,7 +2825,7 @@
     "Extra": "0x81"
   },
   "Mormegil": {
-    "Attack": 200,
+    "Attack": 400,
     "Defense": -10,
     "Element": {
       "HIT": false,
@@ -2850,7 +2850,7 @@
     "Extra": "0x81"
   },
   "Marsil": {
-    "Attack": 111,
+    "Attack": 158,
     "Defense": -10,
     "Element": {
       "HIT": false,
@@ -2875,7 +2875,7 @@
     "Extra": "0x81"
   },
   "Marsil Special": {
-    "Attack": 150,
+    "Attack": 130,
     "Defense": 0,
     "Element": {
       "HIT": false,
@@ -2900,7 +2900,7 @@
     "Extra": "0x81"
   },
   "Gurthang": {
-    "Attack": 122,
+    "Attack": 142,
     "Defense": 0,
     "Element": {
       "HIT": false,
@@ -2975,7 +2975,7 @@
     "Extra": "0x81"
   },
   "Alucard Sword": {
-    "Attack": 135,
+    "Attack": 200,
     "Defense": 0,
     "Element": {
       "HIT": false,
@@ -3000,7 +3000,7 @@
     "Extra": "0x81"
   },
   "Alucard Sword Warp": {
-    "Attack": 147,
+    "Attack": 182,
     "Defense": 0,
     "Element": {
       "HIT": false,
@@ -3025,7 +3025,7 @@
     "Extra": "0x81"
   },
   "Terminus Est": {
-    "Attack": 128,
+    "Attack": 199,
     "Defense": 0,
     "Element": {
       "HIT": false,
@@ -3075,7 +3075,7 @@
     "Extra": "0x82"
   },
   "Badelaire": {
-    "Attack": 120,
+    "Attack": 160,
     "Defense": 0,
     "Element": {
       "HIT": false,
@@ -3100,7 +3100,7 @@
     "Extra": "0x81"
   },
   "Sword Familiar": {
-    "Attack": 150,
+    "Attack": 250,
     "Defense": 0,
     "Element": {
       "HIT": false,
@@ -3145,12 +3145,12 @@
     "Cooldown": 20,
     "Spell": "0x0000",
     "ManaCost": 0,
-    "StunFrames": 4,
+    "StunFrames": 10,
     "Range": 2,
     "Extra": "0x01"
   },
   "Morningstar": {
-    "Attack": 135,
+    "Attack": 175,
     "Defense": 0,
     "Element": {
       "HIT": true,
@@ -3170,7 +3170,7 @@
     "Cooldown": 22,
     "Spell": "0x0000",
     "ManaCost": 0,
-    "StunFrames": 4,
+    "StunFrames": 10,
     "Range": 2,
     "Extra": "0x01"
   },
@@ -3195,12 +3195,12 @@
     "Cooldown": 20,
     "Spell": "0x0000",
     "ManaCost": 0,
-    "StunFrames": 4,
+    "StunFrames": 20,
     "Range": 2,
     "Extra": "0x01"
   },
   "Shield Rod Special": {
-    "Attack": 132,
+    "Attack": 162,
     "Defense": 0,
     "Element": {
       "HIT": true,
@@ -3220,7 +3220,7 @@
     "Cooldown": 10,
     "Spell": "0x0000",
     "ManaCost": 0,
-    "StunFrames": 4,
+    "StunFrames": 24,
     "Range": 2,
     "Extra": "0x01"
   },
@@ -3270,7 +3270,7 @@
     "Cooldown": 20,
     "Spell": "0x0000",
     "ManaCost": 0,
-    "StunFrames": 4,
+    "StunFrames": 24,
     "Range": 2,
     "Extra": "0x01"
   },
@@ -3320,15 +3320,15 @@
     "Cooldown": 20,
     "Spell": "0x0000",
     "ManaCost": 0,
-    "StunFrames": 4,
+    "StunFrames": 14,
     "Range": 2,
     "Extra": "0x01"
   },
   "Moon Rod": {
-    "Attack": 122,
+    "Attack": 152,
     "Defense": 0,
     "Element": {
-      "HIT": true,
+      "HIT": false,
       "CUT": false,
       "POI": false,
       "CUR": false,
@@ -3345,7 +3345,7 @@
     "Cooldown": 20,
     "Spell": "0x0000",
     "ManaCost": 2,
-    "StunFrames": 4,
+    "StunFrames": 14,
     "Range": 2,
     "Extra": "0x06"
   },
@@ -3475,7 +3475,7 @@
     "Extra": "0x81"
   },
   "Vorpal Blade": {
-    "Attack": -50,
+    "Attack": -150,
     "Defense": 0,
     "Element": {
       "HIT": false,
@@ -3500,8 +3500,8 @@
     "Extra": "0x81"
   },
   "Crissaegrim": {
-    "Attack": -100,
-    "Defense": 0,
+    "Attack": -300,
+    "Defense": -30,
     "Element": {
       "HIT": false,
       "CUT": true,
@@ -3525,7 +3525,7 @@
     "Extra": "0x81"
   },
   "Claymore": {
-    "Attack": 150,
+    "Attack": 210,
     "Defense": 0,
     "Element": {
       "HIT": false,
@@ -3550,7 +3550,7 @@
     "Extra": "0x81"
   },
   "Claymore Thrust": {
-    "Attack": 180,
+    "Attack": 250,
     "Defense": 0,
     "Element": {
       "HIT": true,
@@ -3575,7 +3575,7 @@
     "Extra": "0x81"
   },
   "Sword of Dawn": {
-    "Attack": 170,
+    "Attack": 250,
     "Defense": 0,
     "Element": {
       "HIT": false,
@@ -3600,7 +3600,7 @@
     "Extra": "0x81"
   },
   "Sword of Dawn Special": {
-    "Attack": 52,
+    "Attack": 77,
     "Defense": 0,
     "Element": {
       "HIT": true,
@@ -3625,7 +3625,7 @@
     "Extra": "0x01"
   },
   "Flamberge": {
-    "Attack": 180,
+    "Attack": 275,
     "Defense": 0,
     "Element": {
       "HIT": false,
@@ -3650,7 +3650,7 @@
     "Extra": "0x81"
   },
   "Flamberge Thrust": {
-    "Attack": 200,
+    "Attack": 350,
     "Defense": 0,
     "Element": {
       "HIT": false,
@@ -3675,7 +3675,7 @@
     "Extra": "0x81"
   },
   "Zwei Hander": {
-    "Attack": 200,
+    "Attack": 300,
     "Defense": 0,
     "Element": {
       "HIT": false,
@@ -3700,7 +3700,7 @@
     "Extra": "0x81"
   },
   "Zwei Hander Thrust": {
-    "Attack": 220,
+    "Attack": 365,
     "Defense": 0,
     "Element": {
       "HIT": false,
@@ -3725,7 +3725,7 @@
     "Extra": "0x81"
   },
   "Obsidian Sword": {
-    "Attack": 205,
+    "Attack": 326,
     "Defense": 0,
     "Element": {
       "HIT": false,
@@ -3750,7 +3750,7 @@
     "Extra": "0x81"
   },
   "Obsidian Sword Thrust": {
-    "Attack": 223,
+    "Attack": 356,
     "Defense": 0,
     "Element": {
       "HIT": false,
@@ -3775,7 +3775,7 @@
     "Extra": "0x81"
   },
   "Great Sword": {
-    "Attack": 210,
+    "Attack": 345,
     "Defense": 0,
     "Element": {
       "HIT": true,
@@ -3795,12 +3795,12 @@
     "Cooldown": 15,
     "Spell": "0x0000",
     "ManaCost": 0,
-    "StunFrames": 4,
+    "StunFrames": 14,
     "Range": 2,
     "Extra": "0x81"
   },
   "Estoc": {
-    "Attack": 152,
+    "Attack": 211,
     "Defense": 5,
     "Element": {
       "HIT": false,
@@ -3825,7 +3825,7 @@
     "Extra": "0x81"
   },
   "Red Rust": {
-    "Attack": 114,
+    "Attack": 123,
     "Defense": 0,
     "Element": {
       "HIT": false,
@@ -3850,7 +3850,7 @@
     "Extra": "0x81"
   },
   "Takemitsu": {
-    "Attack": 122,
+    "Attack": 133,
     "Defense": 0,
     "Element": {
       "HIT": true,
@@ -3875,7 +3875,7 @@
     "Extra": "0x01"
   },
   "Namakura": {
-    "Attack": 128,
+    "Attack": 133,
     "Defense": 0,
     "Element": {
       "HIT": false,
@@ -3925,8 +3925,8 @@
     "Extra": "0x81"
   },
   "Katana": {
-    "Attack": 175,
-    "Defense": -10,
+    "Attack": 250,
+    "Defense": -50,
     "Element": {
       "HIT": false,
       "CUT": true,
@@ -3950,7 +3950,7 @@
     "Extra": "0x81"
   },
   "Katana Special": {
-    "Attack": 188,
+    "Attack": 300,
     "Defense": 0,
     "Element": {
       "HIT": false,
@@ -3975,8 +3975,8 @@
     "Extra": "0x81"
   },
   "Osafune Katana": {
-    "Attack": 200,
-    "Defense": -22,
+    "Attack": 300,
+    "Defense": -70,
     "Element": {
       "HIT": false,
       "CUT": true,
@@ -4000,7 +4000,7 @@
     "Extra": "0x81"
   },
   "Osafune Katana Special": {
-    "Attack": 210,
+    "Attack": 360,
     "Defense": 0,
     "Element": {
       "HIT": false,
@@ -4025,7 +4025,7 @@
     "Extra": "0x81"
   },
   "Osafune Katana Warp": {
-    "Attack": 210,
+    "Attack": 390,
     "Defense": 0,
     "Element": {
       "HIT": false,
@@ -4050,8 +4050,8 @@
     "Extra": "0x81"
   },
   "Yasutsuna": {
-    "Attack": 223,
-    "Defense": -33,
+    "Attack": 10,
+    "Defense": -150,
     "Element": {
       "HIT": false,
       "CUT": true,
@@ -4075,8 +4075,8 @@
     "Extra": "0x81"
   },
   "Masamune": {
-    "Attack": 255,
-    "Defense": -44,
+    "Attack": 500,
+    "Defense": -100,
     "Element": {
       "HIT": false,
       "CUT": true,
@@ -4100,7 +4100,7 @@
     "Extra": "0x81"
   },
   "Masamune Warp": {
-    "Attack": 255,
+    "Attack": 360,
     "Defense": 0,
     "Element": {
       "HIT": false,
@@ -4701,7 +4701,7 @@
   },
   "Knight Shield": {
     "Attack": 0,
-    "Defense": 8,
+    "Defense": 10,
     "Element": {
       "HIT": false,
       "CUT": false,
@@ -4751,7 +4751,7 @@
   },
   "Iron Shield": {
     "Attack": 0,
-    "Defense": 15,
+    "Defense": 25,
     "Element": {
       "HIT": false,
       "CUT": false,
@@ -4801,7 +4801,7 @@
   },
   "Axelord Shield": {
     "Attack": 0,
-    "Defense": 16,
+    "Defense": 30,
     "Element": {
       "HIT": false,
       "CUT": false,
@@ -4825,7 +4825,7 @@
     "Extra": "0x01"
   },
   "Axelord Shield Spell": {
-    "Attack": 100,
+    "Attack": 300,
     "Defense": 0,
     "Element": {
       "HIT": false,
@@ -4851,7 +4851,7 @@
   },
   "Herald Shield": {
     "Attack": 0,
-    "Defense": 10,
+    "Defense": 15,
     "Element": {
       "HIT": false,
       "CUT": false,
@@ -4951,7 +4951,7 @@
   },
   "Goddess Shield": {
     "Attack": 0,
-    "Defense": 20,
+    "Defense": 50,
     "Element": {
       "HIT": false,
       "CUT": false,
@@ -5001,7 +5001,7 @@
   },
   "Shaman Shield": {
     "Attack": 0,
-    "Defense": 14,
+    "Defense": 25,
     "Element": {
       "HIT": false,
       "CUT": false,
@@ -5051,7 +5051,7 @@
   },
   "Medusa Shield": {
     "Attack": 122,
-    "Defense": 5,
+    "Defense": 13,
     "Element": {
       "HIT": false,
       "CUT": false,
@@ -5101,7 +5101,7 @@
   },
   "Skull Shield": {
     "Attack": 0,
-    "Defense": 13,
+    "Defense": 22,
     "Element": {
       "HIT": false,
       "CUT": false,
@@ -5151,7 +5151,7 @@
   },
   "Fire Shield": {
     "Attack": 0,
-    "Defense": 13,
+    "Defense": 28,
     "Element": {
       "HIT": false,
       "CUT": false,
@@ -5201,7 +5201,7 @@
   },
   "Alucard Shield": {
     "Attack": 0,
-    "Defense": 15,
+    "Defense": 40,
     "Element": {
       "HIT": false,
       "CUT": false,
@@ -5251,7 +5251,7 @@
   },
   "Alucart Shield": {
     "Attack": 0,
-    "Defense": 6,
+    "Defense": 13,
     "Element": {
       "HIT": false,
       "CUT": false,
