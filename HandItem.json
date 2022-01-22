@@ -2825,7 +2825,7 @@
     "Extra": "0x81"
   },
   "Mormegil": {
-    "Attack": 400,
+    "Attack": 350,
     "Defense": -10,
     "Element": {
       "HIT": false,
@@ -2900,7 +2900,7 @@
     "Extra": "0x81"
   },
   "Gurthang": {
-    "Attack": 142,
+    "Attack": 172,
     "Defense": 0,
     "Element": {
       "HIT": false,
@@ -2925,7 +2925,7 @@
     "Extra": "0x81"
   },
   "Gurthang Special": {
-    "Attack": 130,
+    "Attack": 203,
     "Defense": 0,
     "Element": {
       "HIT": false,
@@ -2950,7 +2950,7 @@
     "Extra": "0x81"
   },
   "Mablung Sword": {
-    "Attack": 125,
+    "Attack": 135,
     "Defense": 10,
     "Element": {
       "HIT": false,
@@ -2975,7 +2975,7 @@
     "Extra": "0x81"
   },
   "Alucard Sword": {
-    "Attack": 200,
+    "Attack": 230,
     "Defense": 0,
     "Element": {
       "HIT": false,
@@ -3150,7 +3150,7 @@
     "Extra": "0x01"
   },
   "Morningstar": {
-    "Attack": 175,
+    "Attack": 215,
     "Defense": 0,
     "Element": {
       "HIT": true,
@@ -3225,7 +3225,7 @@
     "Extra": "0x01"
   },
   "Holy Rod": {
-    "Attack": 105,
+    "Attack": 95,
     "Defense": 0,
     "Element": {
       "HIT": true,
@@ -3275,7 +3275,7 @@
     "Extra": "0x01"
   },
   "Star Flail": {
-    "Attack": 117,
+    "Attack": 105,
     "Defense": 0,
     "Element": {
       "HIT": true,
@@ -3344,7 +3344,7 @@
     "Special": "0xac",
     "Cooldown": 20,
     "Spell": "0x0000",
-    "ManaCost": 2,
+    "ManaCost": 3,
     "StunFrames": 14,
     "Range": 2,
     "Extra": "0x06"
@@ -4751,7 +4751,7 @@
   },
   "Iron Shield": {
     "Attack": 0,
-    "Defense": 25,
+    "Defense": 15,
     "Element": {
       "HIT": false,
       "CUT": false,
@@ -4851,7 +4851,7 @@
   },
   "Herald Shield": {
     "Attack": 0,
-    "Defense": 15,
+    "Defense": 12,
     "Element": {
       "HIT": false,
       "CUT": false,
@@ -4901,7 +4901,7 @@
   },
   "Dark Shield": {
     "Attack": 100,
-    "Defense": 12,
+    "Defense": 8,
     "Element": {
       "HIT": false,
       "CUT": false,
@@ -4951,7 +4951,7 @@
   },
   "Goddess Shield": {
     "Attack": 0,
-    "Defense": 50,
+    "Defense": 30,
     "Element": {
       "HIT": false,
       "CUT": false,
@@ -5001,7 +5001,7 @@
   },
   "Shaman Shield": {
     "Attack": 0,
-    "Defense": 25,
+    "Defense": 15,
     "Element": {
       "HIT": false,
       "CUT": false,
@@ -5051,7 +5051,7 @@
   },
   "Medusa Shield": {
     "Attack": 122,
-    "Defense": 13,
+    "Defense": 6,
     "Element": {
       "HIT": false,
       "CUT": false,
@@ -5101,7 +5101,7 @@
   },
   "Skull Shield": {
     "Attack": 0,
-    "Defense": 22,
+    "Defense": 16,
     "Element": {
       "HIT": false,
       "CUT": false,
@@ -5151,7 +5151,7 @@
   },
   "Fire Shield": {
     "Attack": 0,
-    "Defense": 28,
+    "Defense": 18,
     "Element": {
       "HIT": false,
       "CUT": false,
@@ -5201,7 +5201,7 @@
   },
   "Alucard Shield": {
     "Attack": 0,
-    "Defense": 40,
+    "Defense": 20,
     "Element": {
       "HIT": false,
       "CUT": false,
@@ -5251,7 +5251,7 @@
   },
   "Alucart Shield": {
     "Attack": 0,
-    "Defense": 13,
+    "Defense": 12,
     "Element": {
       "HIT": false,
       "CUT": false,

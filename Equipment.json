@@ -1,7 +1,7 @@
 {
   "Sunglasses": {
     "Attack": 0,
-    "Defense": 5,
+    "Defense": 0,
     "Strength": 0,
     "Constitution": 0,
     "Intelligence": 7,
@@ -22,10 +22,10 @@
   },
   "Goggles": {
     "Attack": 0,
-    "Defense": 7,
+    "Defense": 5,
     "Strength": 0,
     "Constitution": 0,
-    "Intelligence": 6,
+    "Intelligence": 3,
     "Luck": 0,
     "Resistances": {
       "HIT": 1,
@@ -43,7 +43,7 @@
   },
   "Holy Glasses": {
     "Attack": 0,
-    "Defense": 7,
+    "Defense": 0,
     "Strength": 0,
     "Constitution": 0,
     "Intelligence": 15,
@@ -64,10 +64,10 @@
   },
   "Ballroom Mask": {
     "Attack": 0,
-    "Defense": 11,
+    "Defense": 5,
     "Strength": 0,
-    "Constitution": 2,
-    "Intelligence": 15,
+    "Constitution": 9,
+    "Intelligence": 9,
     "Luck": 0,
     "Resistances": {
       "HIT": 1,
@@ -84,10 +84,10 @@
     }
   },
   "Stone Mask": {
-    "Attack": 0,
+    "Attack": 10,
     "Defense": 8,
     "Strength": 0,
-    "Constitution": -1,
+    "Constitution": 0,
     "Intelligence": 10,
     "Luck": -5,
     "Resistances": {
@@ -105,9 +105,9 @@
     }
   },
   "Bandanna": {
-    "Attack": 0,
-    "Defense": 7,
-    "Strength": 3,
+    "Attack": 16,
+    "Defense": 10,
+    "Strength": 0,
     "Constitution": 0,
     "Intelligence": 5,
     "Luck": 0,
@@ -190,9 +190,9 @@
   },
   "Wizard Hat": {
     "Attack": 0,
-    "Defense": 8,
-    "Strength": 1,
-    "Constitution": 2,
+    "Defense": 10,
+    "Strength": 0,
+    "Constitution": 0,
     "Intelligence": 50,
     "Luck": 0,
     "Resistances": {
@@ -211,10 +211,10 @@
   },
   "Steel Helm": {
     "Attack": 0,
-    "Defense": 18,
+    "Defense": 15,
     "Strength": 0,
-    "Constitution": 5,
-    "Intelligence": 5,
+    "Constitution": 0,
+    "Intelligence": 0,
     "Luck": 0,
     "Resistances": {
       "HIT": 1,
@@ -231,9 +231,9 @@
     }
   },
   "Dragon Helm": {
-    "Attack": 44,
+    "Attack": 22,
     "Defense": 7,
-    "Strength": 5,
+    "Strength": 0,
     "Constitution": 0,
     "Intelligence": 0,
     "Luck": 0,
@@ -484,22 +484,22 @@
   },
   "Alucart Mail": {
     "Attack": 0,
-    "Defense": 21,
+    "Defense": 55,
     "Strength": 0,
     "Constitution": 0,
-    "Intelligence": 15,
-    "Luck": 15,
+    "Intelligence": 20,
+    "Luck": 0,
     "Resistances": {
-      "HIT": 2,
-      "CUT": 2,
+      "HIT": 0,
+      "CUT": 0,
       "POI": 2,
       "CUR": 2,
       "STO": 2,
-      "WAT": 2,
-      "DAR": 2,
-      "HOL": 2,
-      "ICE": 2,
-      "LIG": 2,
+      "WAT": 1,
+      "DAR": 1,
+      "HOL": 1,
+      "ICE": 1,
+      "LIG": 1,
       "FLA": 1
     }
   },
@@ -852,7 +852,7 @@
       "POI": 1,
       "CUR": 1,
       "STO": 1,
-      "WAT": 1,
+      "WAT": 0,
       "DAR": 1,
       "HOL": 1,
       "ICE": 1,
@@ -903,10 +903,10 @@
     }
   },
   "Dracula Tunic": {
-    "Attack": 0,
+    "Attack": 10,
     "Defense": 55,
-    "Strength": 10,
-    "Constitution": -15,
+    "Strength": 0,
+    "Constitution": 0,
     "Intelligence": 66,
     "Luck": -10,
     "Resistances": {
@@ -996,7 +996,7 @@
     "Resistances": {
       "HIT": 1,
       "CUT": 1,
-      "POI": 1,
+      "POI": 0,
       "CUR": 1,
       "STO": 1,
       "WAT": 1,
@@ -1020,7 +1020,7 @@
       "POI": 1,
       "CUR": 1,
       "STO": 1,
-      "WAT": 1,
+      "WAT": 0,
       "DAR": 1,
       "HOL": 1,
       "ICE": 1,
@@ -1029,24 +1029,24 @@
     }
   },
   "Blood Cloak": {
-    "Attack": -20,
-    "Defense": -20,
-    "Strength": -20,
-    "Constitution": -20,
-    "Intelligence": -20,
+    "Attack": 0,
+    "Defense": 0,
+    "Strength": 0,
+    "Constitution": 10,
+    "Intelligence": 10,
     "Luck": -20,
     "Resistances": {
-      "HIT": 1,
-      "CUT": 1,
+      "HIT": 0,
+      "CUT": 0,
       "POI": 1,
       "CUR": 1,
       "STO": 1,
-      "WAT": 1,
-      "DAR": 1,
-      "HOL": 1,
-      "ICE": 1,
-      "LIG": 1,
-      "FLA": 1
+      "WAT": 0,
+      "DAR": 0,
+      "HOL": 0,
+      "ICE": 0,
+      "LIG": 0,
+      "FLA": 0
     }
   },
   "Elven Cloak": {
@@ -1066,7 +1066,7 @@
       "DAR": 1,
       "HOL": 1,
       "ICE": 1,
-      "LIG": 2,
+      "LIG": 1,
       "FLA": 0
     }
   },
@@ -1084,7 +1084,7 @@
       "CUR": 1,
       "STO": 1,
       "WAT": 1,
-      "DAR": 1,
+      "DAR": 0,
       "HOL": 1,
       "ICE": 1,
       "LIG": 1,
@@ -1104,10 +1104,10 @@
       "POI": 1,
       "CUR": 1,
       "STO": 1,
-      "WAT": 2,
+      "WAT": 1,
       "DAR": 1,
       "HOL": 1,
-      "ICE": 1,
+      "ICE": 0,
       "LIG": 1,
       "FLA": 1
     }
@@ -1127,7 +1127,7 @@
       "STO": 1,
       "WAT": 1,
       "DAR": 1,
-      "HOL": 1,
+      "HOL": 0,
       "ICE": 1,
       "LIG": 1,
       "FLA": 1
@@ -1144,7 +1144,7 @@
       "HIT": 1,
       "CUT": 1,
       "POI": 1,
-      "CUR": 1,
+      "CUR": 0,
       "STO": 1,
       "WAT": 1,
       "DAR": 1,
@@ -1302,9 +1302,9 @@
     }
   },
   "Gold Ring": {
-    "Attack": 0,
+    "Attack": 5,
     "Defense": 0,
-    "Strength": 5,
+    "Strength": 0,
     "Constitution": 0,
     "Intelligence": 0,
     "Luck": 5,
@@ -1407,11 +1407,11 @@
     }
   },
   "Ring of Pales": {
-    "Attack": 16,
+    "Attack": 6,
     "Defense": 6,
-    "Strength": 6,
-    "Constitution": 16,
-    "Intelligence": 26,
+    "Strength": 0,
+    "Constitution": 6,
+    "Intelligence": 6,
     "Luck": 6,
     "Resistances": {
       "HIT": 1,
@@ -1451,8 +1451,8 @@
   "Ring of Feanor": {
     "Attack": 0,
     "Defense": 0,
-    "Strength": 17,
-    "Constitution": 17,
+    "Strength": 0,
+    "Constitution": 0,
     "Intelligence": 17,
     "Luck": 17,
     "Resistances": {
@@ -1472,7 +1472,7 @@
   "Ring of Varda": {
     "Attack": 30,
     "Defense": 30,
-    "Strength": 30,
+    "Strength": 0,
     "Constitution": 30,
     "Intelligence": 30,
     "Luck": 30,
@@ -1533,12 +1533,12 @@
     }
   },
   "Moonstone": {
-    "Attack": 20,
-    "Defense": 8,
+    "Attack": 0,
+    "Defense": 0,
     "Strength": 0,
-    "Constitution": 2,
-    "Intelligence": 10,
-    "Luck": 2,
+    "Constitution": 5,
+    "Intelligence": 0,
+    "Luck": 5,
     "Resistances": {
       "HIT": 1,
       "CUT": 1,
@@ -1554,12 +1554,12 @@
     }
   },
   "Sunstone": {
-    "Attack": 20,
-    "Defense": 8,
+    "Attack": 5,
+    "Defense": 0,
     "Strength": 0,
-    "Constitution": 2,
-    "Intelligence": 10,
-    "Luck": 2,
+    "Constitution": 0,
+    "Intelligence": 5,
+    "Luck": 0,
     "Resistances": {
       "HIT": 1,
       "CUT": 1,
@@ -1601,7 +1601,7 @@
     "Strength": 0,
     "Constitution": 0,
     "Intelligence": 0,
-    "Luck": 9,
+    "Luck": 14,
     "Resistances": {
       "HIT": 1,
       "CUT": 1,
@@ -1727,7 +1727,7 @@
     "Strength": 0,
     "Constitution": 0,
     "Intelligence": 0,
-    "Luck": 9,
+    "Luck": 21,
     "Resistances": {
       "HIT": 1,
       "CUT": 1,

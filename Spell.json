@@ -80,7 +80,7 @@
     "Attack": 60
   },
   "Soul Steal": {
-    "ManaCost": 100,
+    "ManaCost": 80,
     "Cooldown": 10,
     "StunFrames": 8,
     "Extra": "0x02",
@@ -157,7 +157,7 @@
       "LIG": false,
       "FLA": true
     },
-    "Attack": 350
+    "Attack": 255
   },
   "Force of Echo": {
     "ManaCost": 10,

@@ -169,11 +169,11 @@
   "Zombie": {
     "HealthLevel1": 10,
     "HealthLevel99": 1000,
-    "ContactDamageLevel1": 50,
-    "ContactDamageLevel99": 350,
+    "ContactDamageLevel1": 100,
+    "ContactDamageLevel99": 300,
     "ContactDamageType": "0x0022",
-    "DefenseLevel1": 2,
-    "DefenseLevel99": 200,
+    "DefenseLevel1": 1,
+    "DefenseLevel99": 20,
     "Surface": "0x0023",
     "Resistances": {
       "HIT": 1,
@@ -201,10 +201,10 @@
     "HealthLevel1": 200,
     "HealthLevel99": 3000,
     "ContactDamageLevel1": 150,
-    "ContactDamageLevel99": 350,
+    "ContactDamageLevel99": 300,
     "ContactDamageType": "0x0022",
-    "DefenseLevel1": 2,
-    "DefenseLevel99": 200,
+    "DefenseLevel1": 1,
+    "DefenseLevel99": 20,
     "Surface": "0x0033",
     "Resistances": {
       "HIT": 2,
@@ -237,11 +237,11 @@
   "Bat": {
     "HealthLevel1": 1,
     "HealthLevel99": 3000,
-    "ContactDamageLevel1": 50,
-    "ContactDamageLevel99": 350,
+    "ContactDamageLevel1": 100,
+    "ContactDamageLevel99": 300,
     "ContactDamageType": "0x0022",
-    "DefenseLevel1": 2,
-    "DefenseLevel99": 200,
+    "DefenseLevel1": 1,
+    "DefenseLevel99": 20,
     "Surface": "0x0037",
     "Resistances": {
       "HIT": 1,
@@ -268,11 +268,11 @@
   "Merman 1": {
     "HealthLevel1": 100,
     "HealthLevel99": 3000,
-    "ContactDamageLevel1": 50,
-    "ContactDamageLevel99": 350,
+    "ContactDamageLevel1": 100,
+    "ContactDamageLevel99": 300,
     "ContactDamageType": "0x0022",
-    "DefenseLevel1": 2,
-    "DefenseLevel99": 200,
+    "DefenseLevel1": 1,
+    "DefenseLevel99": 20,
     "Surface": "0x0033",
     "Resistances": {
       "HIT": 1,
@@ -287,7 +287,7 @@
       "LIG": 0,
       "FLA": 1
     },
-    "Level": 3,
+    "Level": 13,
     "ExperienceLevel1": 9,
     "ExperienceLevel99": 111,
     "AttackDamageMultiplier": [
@@ -303,11 +303,11 @@
   "Merman 2": {
     "HealthLevel1": 50,
     "HealthLevel99": 3000,
-    "ContactDamageLevel1": 50,
-    "ContactDamageLevel99": 350,
+    "ContactDamageLevel1": 100,
+    "ContactDamageLevel99": 300,
     "ContactDamageType": "0x0022",
-    "DefenseLevel1": 2,
-    "DefenseLevel99": 200,
+    "DefenseLevel1": 1,
+    "DefenseLevel99": 20,
     "Surface": "0x0033",
     "Resistances": {
       "HIT": 1,
@@ -322,7 +322,7 @@
       "LIG": 0,
       "FLA": 1
     },
-    "Level": 3,
+    "Level": 15,
     "ExperienceLevel1": 9,
     "ExperienceLevel99": 111,
     "AttackDamageMultiplier": [
@@ -338,11 +338,11 @@
   "Bone Scimitar": {
     "HealthLevel1": 170,
     "HealthLevel99": 3000,
-    "ContactDamageLevel1": 50,
-    "ContactDamageLevel99": 350,
+    "ContactDamageLevel1": 100,
+    "ContactDamageLevel99": 300,
     "ContactDamageType": "0x0022",
-    "DefenseLevel1": 2,
-    "DefenseLevel99": 200,
+    "DefenseLevel1": 1,
+    "DefenseLevel99": 20,
     "Surface": "0x0023",
     "Resistances": {
       "HIT": 0,
@@ -369,11 +369,11 @@
   "Skeleton": {
     "HealthLevel1": 200,
     "HealthLevel99": 3000,
-    "ContactDamageLevel1": 50,
-    "ContactDamageLevel99": 350,
+    "ContactDamageLevel1": 100,
+    "ContactDamageLevel99": 300,
     "ContactDamageType": "0x0022",
-    "DefenseLevel1": 2,
-    "DefenseLevel99": 200,
+    "DefenseLevel1": 1,
+    "DefenseLevel99": 20,
     "Surface": "0x0023",
     "Resistances": {
       "HIT": 0,
@@ -404,11 +404,11 @@
   "Blood Skeleton": {
     "HealthLevel1": 100,
     "HealthLevel99": 3000,
-    "ContactDamageLevel1": 50,
-    "ContactDamageLevel99": 350,
+    "ContactDamageLevel1": 100,
+    "ContactDamageLevel99": 300,
     "ContactDamageType": "0x0022",
-    "DefenseLevel1": 2,
-    "DefenseLevel99": 200,
+    "DefenseLevel1": 1,
+    "DefenseLevel99": 20,
     "Surface": "0x0003",
     "Resistances": {
       "HIT": 1,
@@ -435,11 +435,11 @@
   "Spittle Bone": {
     "HealthLevel1": 130,
     "HealthLevel99": 3000,
-    "ContactDamageLevel1": 50,
-    "ContactDamageLevel99": 350,
+    "ContactDamageLevel1": 100,
+    "ContactDamageLevel99": 300,
     "ContactDamageType": "0x0022",
-    "DefenseLevel1": 2,
-    "DefenseLevel99": 200,
+    "DefenseLevel1": 1,
+    "DefenseLevel99": 20,
     "Surface": "0x0023",
     "Resistances": {
       "HIT": 1,
@@ -470,11 +470,11 @@
   "Green Axe Knight": {
     "HealthLevel1": 300,
     "HealthLevel99": 3000,
-    "ContactDamageLevel1": 50,
-    "ContactDamageLevel99": 350,
+    "ContactDamageLevel1": 100,
+    "ContactDamageLevel99": 300,
     "ContactDamageType": "0x0022",
     "DefenseLevel1": 20,
-    "DefenseLevel99": 200,
+    "DefenseLevel99": 20,
     "Surface": "0x0023",
     "Resistances": {
       "HIT": 1,
@@ -505,11 +505,11 @@
   "Slogra": {
     "HealthLevel1": 2000,
     "HealthLevel99": 4000,
-    "ContactDamageLevel1": 50,
+    "ContactDamageLevel1": 100,
     "ContactDamageLevel99": 450,
     "ContactDamageType": "0x0022",
-    "DefenseLevel1": 2,
-    "DefenseLevel99": 200,
+    "DefenseLevel1": 1,
+    "DefenseLevel99": 20,
     "Surface": "0x0023",
     "Resistances": {
       "HIT": 2,
@@ -542,11 +542,11 @@
   "Gaibon": {
     "HealthLevel1": 1800,
     "HealthLevel99": 4000,
-    "ContactDamageLevel1": 50,
+    "ContactDamageLevel1": 100,
     "ContactDamageLevel99": 450,
     "ContactDamageType": "0x0022",
-    "DefenseLevel1": 2,
-    "DefenseLevel99": 200,
+    "DefenseLevel1": 1,
+    "DefenseLevel99": 20,
     "Surface": "0x0023",
     "Resistances": {
       "HIT": 2,
@@ -579,11 +579,11 @@
   "Bloody Zombie": {
     "HealthLevel1": 200,
     "HealthLevel99": 3000,
-    "ContactDamageLevel1": 50,
-    "ContactDamageLevel99": 350,
+    "ContactDamageLevel1": 100,
+    "ContactDamageLevel99": 300,
     "ContactDamageType": "0x0043",
-    "DefenseLevel1": 2,
-    "DefenseLevel99": 200,
+    "DefenseLevel1": 1,
+    "DefenseLevel99": 20,
     "Surface": "0x0033",
     "Resistances": {
       "HIT": 2,
@@ -610,11 +610,11 @@
   "Ouija Table": {
     "HealthLevel1": 100,
     "HealthLevel99": 3000,
-    "ContactDamageLevel1": 50,
-    "ContactDamageLevel99": 350,
+    "ContactDamageLevel1": 100,
+    "ContactDamageLevel99": 300,
     "ContactDamageType": "0x0022",
-    "DefenseLevel1": 2,
-    "DefenseLevel99": 200,
+    "DefenseLevel1": 1,
+    "DefenseLevel99": 20,
     "Surface": "0x0023",
     "Resistances": {
       "HIT": 2,
@@ -645,11 +645,11 @@
   "Slinger": {
     "HealthLevel1": 200,
     "HealthLevel99": 3000,
-    "ContactDamageLevel1": 50,
-    "ContactDamageLevel99": 350,
+    "ContactDamageLevel1": 100,
+    "ContactDamageLevel99": 300,
     "ContactDamageType": "0x0022",
-    "DefenseLevel1": 2,
-    "DefenseLevel99": 200,
+    "DefenseLevel1": 1,
+    "DefenseLevel99": 20,
     "Surface": "0x0023",
     "Resistances": {
       "HIT": 1,
@@ -680,11 +680,11 @@
   "Marionette": {
     "HealthLevel1": 200,
     "HealthLevel99": 3000,
-    "ContactDamageLevel1": 50,
-    "ContactDamageLevel99": 350,
+    "ContactDamageLevel1": 100,
+    "ContactDamageLevel99": 300,
     "ContactDamageType": "0x0022",
-    "DefenseLevel1": 2,
-    "DefenseLevel99": 200,
+    "DefenseLevel1": 1,
+    "DefenseLevel99": 20,
     "Surface": "0x0023",
     "Resistances": {
       "HIT": 2,
@@ -711,11 +711,11 @@
   "Ghost": {
     "HealthLevel1": 40,
     "HealthLevel99": 3000,
-    "ContactDamageLevel1": 50,
-    "ContactDamageLevel99": 350,
+    "ContactDamageLevel1": 100,
+    "ContactDamageLevel99": 300,
     "ContactDamageType": "0x0802",
-    "DefenseLevel1": 2,
-    "DefenseLevel99": 200,
+    "DefenseLevel1": 1,
+    "DefenseLevel99": 20,
     "Surface": "0x0027",
     "Resistances": {
       "HIT": 2,
@@ -742,11 +742,11 @@
   "Flea Man": {
     "HealthLevel1": 40,
     "HealthLevel99": 3000,
-    "ContactDamageLevel1": 50,
-    "ContactDamageLevel99": 350,
+    "ContactDamageLevel1": 100,
+    "ContactDamageLevel99": 300,
     "ContactDamageType": "0x0022",
-    "DefenseLevel1": 2,
-    "DefenseLevel99": 200,
+    "DefenseLevel1": 1,
+    "DefenseLevel99": 20,
     "Surface": "0x0033",
     "Resistances": {
       "HIT": 2,
@@ -773,11 +773,11 @@
   "Diplocephalus": {
     "HealthLevel1": 800,
     "HealthLevel99": 3000,
-    "ContactDamageLevel1": 50,
-    "ContactDamageLevel99": 350,
+    "ContactDamageLevel1": 100,
+    "ContactDamageLevel99": 300,
     "ContactDamageType": "0x0022",
-    "DefenseLevel1": 2,
-    "DefenseLevel99": 200,
+    "DefenseLevel1": 1,
+    "DefenseLevel99": 20,
     "Surface": "0x0033",
     "Resistances": {
       "HIT": 2,
@@ -812,11 +812,11 @@
   "Stone Rose": {
     "HealthLevel1": 300,
     "HealthLevel99": 3000,
-    "ContactDamageLevel1": 50,
-    "ContactDamageLevel99": 350,
+    "ContactDamageLevel1": 100,
+    "ContactDamageLevel99": 300,
     "ContactDamageType": "0x0022",
-    "DefenseLevel1": 2,
-    "DefenseLevel99": 200,
+    "DefenseLevel1": 1,
+    "DefenseLevel99": 20,
     "Surface": "0x0023",
     "Resistances": {
       "HIT": 2,
@@ -849,8 +849,8 @@
   "Medusa head": {
     "HealthLevel1": 30,
     "HealthLevel99": 1000,
-    "ContactDamageLevel1": 50,
-    "ContactDamageLevel99": 350,
+    "ContactDamageLevel1": 100,
+    "ContactDamageLevel99": 300,
     "ContactDamageType": "0x0022",
     "DefenseLevel1": 0,
     "DefenseLevel99": 0,
@@ -880,11 +880,11 @@
   "Blue Axe Knight": {
     "HealthLevel1": 250,
     "HealthLevel99": 3000,
-    "ContactDamageLevel1": 50,
-    "ContactDamageLevel99": 350,
+    "ContactDamageLevel1": 100,
+    "ContactDamageLevel99": 300,
     "ContactDamageType": "0x0022",
-    "DefenseLevel1": 20,
-    "DefenseLevel99": 200,
+    "DefenseLevel1": 30,
+    "DefenseLevel99": 30,
     "Surface": "0x0023",
     "Resistances": {
       "HIT": 1,
@@ -917,11 +917,11 @@
   "Dhuron": {
     "HealthLevel1": 200,
     "HealthLevel99": 3000,
-    "ContactDamageLevel1": 50,
-    "ContactDamageLevel99": 350,
+    "ContactDamageLevel1": 100,
+    "ContactDamageLevel99": 300,
     "ContactDamageType": "0x0022",
-    "DefenseLevel1": 2,
-    "DefenseLevel99": 200,
+    "DefenseLevel1": 1,
+    "DefenseLevel99": 20,
     "Surface": "0x0023",
     "Resistances": {
       "HIT": 1,
@@ -952,8 +952,8 @@
   "Ectoplasm": {
     "HealthLevel1": 100,
     "HealthLevel99": 3000,
-    "ContactDamageLevel1": 50,
-    "ContactDamageLevel99": 350,
+    "ContactDamageLevel1": 100,
+    "ContactDamageLevel99": 300,
     "ContactDamageType": "0x0102",
     "DefenseLevel1": 0,
     "DefenseLevel99": 0,
@@ -993,11 +993,11 @@
   "Spellbook": {
     "HealthLevel1": 200,
     "HealthLevel99": 3000,
-    "ContactDamageLevel1": 50,
-    "ContactDamageLevel99": 350,
+    "ContactDamageLevel1": 100,
+    "ContactDamageLevel99": 300,
     "ContactDamageType": "0x0022",
-    "DefenseLevel1": 2,
-    "DefenseLevel99": 200,
+    "DefenseLevel1": 1,
+    "DefenseLevel99": 20,
     "Surface": "0x0023",
     "Resistances": {
       "HIT": 2,
@@ -1032,11 +1032,11 @@
   "Magic Tome": {
     "HealthLevel1": 200,
     "HealthLevel99": 3000,
-    "ContactDamageLevel1": 50,
-    "ContactDamageLevel99": 350,
+    "ContactDamageLevel1": 100,
+    "ContactDamageLevel99": 300,
     "ContactDamageType": "0x0022",
-    "DefenseLevel1": 2,
-    "DefenseLevel99": 200,
+    "DefenseLevel1": 1,
+    "DefenseLevel99": 20,
     "Surface": "0x0023",
     "Resistances": {
       "HIT": 2,
@@ -1067,8 +1067,8 @@
   "Thornweed": {
     "HealthLevel1": 70,
     "HealthLevel99": 3000,
-    "ContactDamageLevel1": 50,
-    "ContactDamageLevel99": 350,
+    "ContactDamageLevel1": 100,
+    "ContactDamageLevel99": 300,
     "ContactDamageType": "0x0022",
     "DefenseLevel1": 0,
     "DefenseLevel99": 10,
@@ -1098,11 +1098,11 @@
   "Spear Guard": {
     "HealthLevel1": 200,
     "HealthLevel99": 3000,
-    "ContactDamageLevel1": 50,
-    "ContactDamageLevel99": 350,
+    "ContactDamageLevel1": 100,
+    "ContactDamageLevel99": 300,
     "ContactDamageType": "0x0022",
     "DefenseLevel1": 15,
-    "DefenseLevel99": 200,
+    "DefenseLevel99": 20,
     "Surface": "0x0023",
     "Resistances": {
       "HIT": 1,
@@ -1137,11 +1137,11 @@
   "Bone Archer": {
     "HealthLevel1": 200,
     "HealthLevel99": 3000,
-    "ContactDamageLevel1": 50,
-    "ContactDamageLevel99": 350,
+    "ContactDamageLevel1": 100,
+    "ContactDamageLevel99": 300,
     "ContactDamageType": "0x0022",
-    "DefenseLevel1": 2,
-    "DefenseLevel99": 200,
+    "DefenseLevel1": 1,
+    "DefenseLevel99": 20,
     "Surface": "0x0023",
     "Resistances": {
       "HIT": 1,
@@ -1172,8 +1172,8 @@
   "Toad": {
     "HealthLevel1": 100,
     "HealthLevel99": 3000,
-    "ContactDamageLevel1": 50,
-    "ContactDamageLevel99": 350,
+    "ContactDamageLevel1": 100,
+    "ContactDamageLevel99": 300,
     "ContactDamageType": "0x0022",
     "DefenseLevel1": 0,
     "DefenseLevel99": 10,
@@ -1203,8 +1203,8 @@
   "Frog": {
     "HealthLevel1": 100,
     "HealthLevel99": 3000,
-    "ContactDamageLevel1": 50,
-    "ContactDamageLevel99": 350,
+    "ContactDamageLevel1": 100,
+    "ContactDamageLevel99": 300,
     "ContactDamageType": "0x0022",
     "DefenseLevel1": 0,
     "DefenseLevel99": 10,
@@ -1234,11 +1234,11 @@
   "Fishhead": {
     "HealthLevel1": 150,
     "HealthLevel99": 3000,
-    "ContactDamageLevel1": 50,
-    "ContactDamageLevel99": 350,
+    "ContactDamageLevel1": 100,
+    "ContactDamageLevel99": 300,
     "ContactDamageType": "0x0022",
-    "DefenseLevel1": 2,
-    "DefenseLevel99": 200,
+    "DefenseLevel1": 1,
+    "DefenseLevel99": 20,
     "Surface": "0x0023",
     "Resistances": {
       "HIT": 0,
@@ -1253,12 +1253,12 @@
       "LIG": 0,
       "FLA": 0
     },
-    "Level": 13,
+    "Level": 20,
     "ExperienceLevel1": 12,
     "ExperienceLevel99": 133,
     "AttackDamageMultiplier": [
-      1.1,
-      1.25
+      1.35,
+      1.55
     ],
     "AttackDamageType": [
       "0x8003",
@@ -1271,11 +1271,11 @@
   "Frozen Shade": {
     "HealthLevel1": 500,
     "HealthLevel99": 3000,
-    "ContactDamageLevel1": 50,
-    "ContactDamageLevel99": 350,
+    "ContactDamageLevel1": 100,
+    "ContactDamageLevel99": 300,
     "ContactDamageType": "0x2002",
-    "DefenseLevel1": 2,
-    "DefenseLevel99": 200,
+    "DefenseLevel1": 1,
+    "DefenseLevel99": 20,
     "Surface": "0x0023",
     "Resistances": {
       "HIT": 2,
@@ -1290,12 +1290,12 @@
       "LIG": 2,
       "FLA": 1
     },
-    "Level": 14,
+    "Level": 16,
     "ExperienceLevel1": 15,
     "ExperienceLevel99": 177,
     "AttackDamageMultiplier": [
-      0.75,
-      1.25
+      1.35,
+      1.55
     ],
     "AttackDamageType": [
       "0x2002",
@@ -1308,11 +1308,11 @@
   "Killer Fish": {
     "HealthLevel1": 300,
     "HealthLevel99": 3000,
-    "ContactDamageLevel1": 50,
-    "ContactDamageLevel99": 350,
+    "ContactDamageLevel1": 100,
+    "ContactDamageLevel99": 300,
     "ContactDamageType": "0x0022",
-    "DefenseLevel1": 2,
-    "DefenseLevel99": 200,
+    "DefenseLevel1": 1,
+    "DefenseLevel99": 20,
     "Surface": "0x0023",
     "Resistances": {
       "HIT": 2,
@@ -1339,11 +1339,11 @@
   "Bone Pillar": {
     "HealthLevel1": 150,
     "HealthLevel99": 3000,
-    "ContactDamageLevel1": 50,
-    "ContactDamageLevel99": 350,
+    "ContactDamageLevel1": 100,
+    "ContactDamageLevel99": 300,
     "ContactDamageType": "0x0022",
-    "DefenseLevel1": 2,
-    "DefenseLevel99": 200,
+    "DefenseLevel1": 1,
+    "DefenseLevel99": 20,
     "Surface": "0x0023",
     "Resistances": {
       "HIT": 0,
@@ -1374,11 +1374,11 @@
   "Corner Guard": {
     "HealthLevel1": 200,
     "HealthLevel99": 3000,
-    "ContactDamageLevel1": 50,
-    "ContactDamageLevel99": 350,
+    "ContactDamageLevel1": 100,
+    "ContactDamageLevel99": 300,
     "ContactDamageType": "0x0022",
-    "DefenseLevel1": 20,
-    "DefenseLevel99": 200,
+    "DefenseLevel1": 5,
+    "DefenseLevel99": 5,
     "Surface": "0x0023",
     "Resistances": {
       "HIT": 1,
@@ -1409,11 +1409,11 @@
   "Spectral Sword 2": {
     "HealthLevel1": 1200,
     "HealthLevel99": 5000,
-    "ContactDamageLevel1": 50,
-    "ContactDamageLevel99": 350,
+    "ContactDamageLevel1": 100,
+    "ContactDamageLevel99": 300,
     "ContactDamageType": "0x1002",
-    "DefenseLevel1": 2,
-    "DefenseLevel99": 200,
+    "DefenseLevel1": 1,
+    "DefenseLevel99": 20,
     "Surface": "0x0023",
     "Resistances": {
       "HIT": 1,
@@ -1440,10 +1440,10 @@
   "Spectral Sword 2 Swords": {
     "HealthLevel1": 30,
     "HealthLevel99": 3000,
-    "ContactDamageLevel1": 50,
-    "ContactDamageLevel99": 350,
+    "ContactDamageLevel1": 100,
+    "ContactDamageLevel99": 300,
     "ContactDamageType": "0x0043",
-    "DefenseLevel1": 2,
+    "DefenseLevel1": 1,
     "DefenseLevel99": 30,
     "Surface": "0x0003",
     "Resistances": {
@@ -1471,11 +1471,11 @@
   "Skelrang": {
     "HealthLevel1": 200,
     "HealthLevel99": 3000,
-    "ContactDamageLevel1": 50,
-    "ContactDamageLevel99": 350,
+    "ContactDamageLevel1": 100,
+    "ContactDamageLevel99": 300,
     "ContactDamageType": "0x0022",
-    "DefenseLevel1": 2,
-    "DefenseLevel99": 200,
+    "DefenseLevel1": 1,
+    "DefenseLevel99": 20,
     "Surface": "0x0023",
     "Resistances": {
       "HIT": 1,
@@ -1506,11 +1506,11 @@
   "Black Crow": {
     "HealthLevel1": 200,
     "HealthLevel99": 200,
-    "ContactDamageLevel1": 50,
-    "ContactDamageLevel99": 350,
+    "ContactDamageLevel1": 100,
+    "ContactDamageLevel99": 300,
     "ContactDamageType": "0x0022",
-    "DefenseLevel1": 2,
-    "DefenseLevel99": 200,
+    "DefenseLevel1": 1,
+    "DefenseLevel99": 20,
     "Surface": "0x0033",
     "Resistances": {
       "HIT": 2,
@@ -1537,11 +1537,11 @@
   "Blue Raven": {
     "HealthLevel1": 200,
     "HealthLevel99": 200,
-    "ContactDamageLevel1": 50,
-    "ContactDamageLevel99": 350,
+    "ContactDamageLevel1": 100,
+    "ContactDamageLevel99": 300,
     "ContactDamageType": "0x0022",
-    "DefenseLevel1": 2,
-    "DefenseLevel99": 200,
+    "DefenseLevel1": 1,
+    "DefenseLevel99": 20,
     "Surface": "0x0033",
     "Resistances": {
       "HIT": 2,
@@ -1568,11 +1568,11 @@
   "Winged Guard": {
     "HealthLevel1": 350,
     "HealthLevel99": 350,
-    "ContactDamageLevel1": 50,
-    "ContactDamageLevel99": 350,
+    "ContactDamageLevel1": 100,
+    "ContactDamageLevel99": 300,
     "ContactDamageType": "0x0022",
     "DefenseLevel1": 10,
-    "DefenseLevel99": 200,
+    "DefenseLevel99": 20,
     "Surface": "0x0023",
     "Resistances": {
       "HIT": 1,
@@ -1599,11 +1599,11 @@
   "Hunting Girl": {
     "HealthLevel1": 300,
     "HealthLevel99": 3000,
-    "ContactDamageLevel1": 50,
-    "ContactDamageLevel99": 350,
+    "ContactDamageLevel1": 100,
+    "ContactDamageLevel99": 300,
     "ContactDamageType": "0x0022",
-    "DefenseLevel1": 10,
-    "DefenseLevel99": 200,
+    "DefenseLevel1": 20,
+    "DefenseLevel99": 20,
     "Surface": "0x0023",
     "Resistances": {
       "HIT": 1,
@@ -1634,11 +1634,11 @@
   "Bone Halberd": {
     "HealthLevel1": 180,
     "HealthLevel99": 3000,
-    "ContactDamageLevel1": 50,
-    "ContactDamageLevel99": 350,
+    "ContactDamageLevel1": 100,
+    "ContactDamageLevel99": 300,
     "ContactDamageType": "0x0022",
-    "DefenseLevel1": 2,
-    "DefenseLevel99": 200,
+    "DefenseLevel1": 1,
+    "DefenseLevel99": 20,
     "Surface": "0x0023",
     "Resistances": {
       "HIT": 1,
@@ -1669,11 +1669,11 @@
   "Flea Rider": {
     "HealthLevel1": 300,
     "HealthLevel99": 300,
-    "ContactDamageLevel1": 50,
+    "ContactDamageLevel1": 100,
     "ContactDamageLevel99": 333,
     "ContactDamageType": "0x0022",
-    "DefenseLevel1": 2,
-    "DefenseLevel99": 200,
+    "DefenseLevel1": 1,
+    "DefenseLevel99": 20,
     "Surface": "0x0033",
     "Resistances": {
       "HIT": 1,
@@ -1700,11 +1700,11 @@
   "Spectral Sword 1": {
     "HealthLevel1": 1500,
     "HealthLevel99": 5000,
-    "ContactDamageLevel1": 50,
-    "ContactDamageLevel99": 350,
+    "ContactDamageLevel1": 100,
+    "ContactDamageLevel99": 300,
     "ContactDamageType": "0x1002",
-    "DefenseLevel1": 2,
-    "DefenseLevel99": 200,
+    "DefenseLevel1": 1,
+    "DefenseLevel99": 20,
     "Surface": "0x0023",
     "Resistances": {
       "HIT": 1,
@@ -1731,11 +1731,11 @@
   "Spectral Sword 1 Weapons": {
     "HealthLevel1": 30,
     "HealthLevel99": 3000,
-    "ContactDamageLevel1": 50,
-    "ContactDamageLevel99": 350,
+    "ContactDamageLevel1": 100,
+    "ContactDamageLevel99": 300,
     "ContactDamageType": "0x0022",
-    "DefenseLevel1": 2,
-    "DefenseLevel99": 200,
+    "DefenseLevel1": 1,
+    "DefenseLevel99": 20,
     "Surface": "0x0003",
     "Resistances": {
       "HIT": 1,
@@ -1762,11 +1762,11 @@
   "Blade soldier": {
     "HealthLevel1": 200,
     "HealthLevel99": 3000,
-    "ContactDamageLevel1": 50,
-    "ContactDamageLevel99": 350,
+    "ContactDamageLevel1": 100,
+    "ContactDamageLevel99": 300,
     "ContactDamageType": "0x0022",
-    "DefenseLevel1": 2,
-    "DefenseLevel99": 200,
+    "DefenseLevel1": 1,
+    "DefenseLevel99": 20,
     "Surface": "0x0023",
     "Resistances": {
       "HIT": 1,
@@ -1797,11 +1797,11 @@
   "Blade Master": {
     "HealthLevel1": 300,
     "HealthLevel99": 3000,
-    "ContactDamageLevel1": 50,
-    "ContactDamageLevel99": 350,
+    "ContactDamageLevel1": 100,
+    "ContactDamageLevel99": 300,
     "ContactDamageType": "0x0022",
     "DefenseLevel1": 15,
-    "DefenseLevel99": 200,
+    "DefenseLevel99": 20,
     "Surface": "0x0023",
     "Resistances": {
       "HIT": 2,
@@ -1832,11 +1832,11 @@
   "Paranthropus": {
     "HealthLevel1": 500,
     "HealthLevel99": 3000,
-    "ContactDamageLevel1": 50,
-    "ContactDamageLevel99": 350,
+    "ContactDamageLevel1": 100,
+    "ContactDamageLevel99": 300,
     "ContactDamageType": "0x0022",
     "DefenseLevel1": 50,
-    "DefenseLevel99": 200,
+    "DefenseLevel99": 50,
     "Surface": "0x0023",
     "Resistances": {
       "HIT": 1,
@@ -1869,11 +1869,11 @@
   "Plate Lord": {
     "HealthLevel1": 300,
     "HealthLevel99": 3000,
-    "ContactDamageLevel1": 50,
-    "ContactDamageLevel99": 350,
+    "ContactDamageLevel1": 100,
+    "ContactDamageLevel99": 300,
     "ContactDamageType": "0x0022",
     "DefenseLevel1": 20,
-    "DefenseLevel99": 200,
+    "DefenseLevel99": 20,
     "Surface": "0x0023",
     "Resistances": {
       "HIT": 1,
@@ -1904,11 +1904,11 @@
   "Owl": {
     "HealthLevel1": 200,
     "HealthLevel99": 3000,
-    "ContactDamageLevel1": 50,
-    "ContactDamageLevel99": 350,
+    "ContactDamageLevel1": 100,
+    "ContactDamageLevel99": 300,
     "ContactDamageType": "0x0022",
-    "DefenseLevel1": 2,
-    "DefenseLevel99": 200,
+    "DefenseLevel1": 1,
+    "DefenseLevel99": 20,
     "Surface": "0x0033",
     "Resistances": {
       "HIT": 2,
@@ -1935,11 +1935,11 @@
   "Owl Knight": {
     "HealthLevel1": 300,
     "HealthLevel99": 3000,
-    "ContactDamageLevel1": 50,
-    "ContactDamageLevel99": 350,
+    "ContactDamageLevel1": 100,
+    "ContactDamageLevel99": 300,
     "ContactDamageType": "0x0022",
     "DefenseLevel1": 20,
-    "DefenseLevel99": 200,
+    "DefenseLevel99": 20,
     "Surface": "0x0023",
     "Resistances": {
       "HIT": 1,
@@ -1970,11 +1970,11 @@
   "Armor Lord": {
     "HealthLevel1": 400,
     "HealthLevel99": 3000,
-    "ContactDamageLevel1": 50,
-    "ContactDamageLevel99": 350,
+    "ContactDamageLevel1": 100,
+    "ContactDamageLevel99": 300,
     "ContactDamageType": "0x0022",
-    "DefenseLevel1": 32,
-    "DefenseLevel99": 200,
+    "DefenseLevel1": 55,
+    "DefenseLevel99": 55,
     "Surface": "0x0023",
     "Resistances": {
       "HIT": 1,
@@ -2007,11 +2007,11 @@
   "Bone Musket": {
     "HealthLevel1": 80,
     "HealthLevel99": 3000,
-    "ContactDamageLevel1": 50,
-    "ContactDamageLevel99": 350,
+    "ContactDamageLevel1": 100,
+    "ContactDamageLevel99": 300,
     "ContactDamageType": "0x0022",
-    "DefenseLevel1": 2,
-    "DefenseLevel99": 200,
+    "DefenseLevel1": 1,
+    "DefenseLevel99": 20,
     "Surface": "0x0023",
     "Resistances": {
       "HIT": 1,
@@ -2042,11 +2042,11 @@
   "Werewolf 1": {
     "HealthLevel1": 800,
     "HealthLevel99": 3000,
-    "ContactDamageLevel1": 50,
-    "ContactDamageLevel99": 350,
+    "ContactDamageLevel1": 100,
+    "ContactDamageLevel99": 300,
     "ContactDamageType": "0x0022",
-    "DefenseLevel1": 2,
-    "DefenseLevel99": 200,
+    "DefenseLevel1": 1,
+    "DefenseLevel99": 20,
     "Surface": "0x0033",
     "Resistances": {
       "HIT": 2,
@@ -2081,11 +2081,11 @@
   "Minotaur 1": {
     "HealthLevel1": 800,
     "HealthLevel99": 3000,
-    "ContactDamageLevel1": 50,
-    "ContactDamageLevel99": 350,
+    "ContactDamageLevel1": 100,
+    "ContactDamageLevel99": 300,
     "ContactDamageType": "0x0022",
-    "DefenseLevel1": 2,
-    "DefenseLevel99": 200,
+    "DefenseLevel1": 1,
+    "DefenseLevel99": 20,
     "Surface": "0x0033",
     "Resistances": {
       "HIT": 2,
@@ -2118,11 +2118,11 @@
   "Corpseweed Root": {
     "HealthLevel1": 60,
     "HealthLevel99": 3000,
-    "ContactDamageLevel1": 50,
-    "ContactDamageLevel99": 350,
+    "ContactDamageLevel1": 100,
+    "ContactDamageLevel99": 300,
     "ContactDamageType": "0x0022",
-    "DefenseLevel1": 2,
-    "DefenseLevel99": 200,
+    "DefenseLevel1": 1,
+    "DefenseLevel99": 20,
     "Surface": "0x0023",
     "Resistances": {
       "HIT": 2,
@@ -2149,11 +2149,11 @@
   "Corpseweed Face": {
     "HealthLevel1": 100,
     "HealthLevel99": 3000,
-    "ContactDamageLevel1": 50,
-    "ContactDamageLevel99": 350,
+    "ContactDamageLevel1": 100,
+    "ContactDamageLevel99": 300,
     "ContactDamageType": "0x0022",
-    "DefenseLevel1": 2,
-    "DefenseLevel99": 200,
+    "DefenseLevel1": 1,
+    "DefenseLevel99": 20,
     "Surface": "0x0023",
     "Resistances": {
       "HIT": 2,
@@ -2184,11 +2184,11 @@
   "Flea Armor": {
     "HealthLevel1": 200,
     "HealthLevel99": 3000,
-    "ContactDamageLevel1": 50,
-    "ContactDamageLevel99": 350,
+    "ContactDamageLevel1": 100,
+    "ContactDamageLevel99": 300,
     "ContactDamageType": "0x0022",
-    "DefenseLevel1": 2,
-    "DefenseLevel99": 200,
+    "DefenseLevel1": 1,
+    "DefenseLevel99": 20,
     "Surface": "0x0023",
     "Resistances": {
       "HIT": 0,
@@ -2219,11 +2219,11 @@
   "Mudman": {
     "HealthLevel1": 160,
     "HealthLevel99": 3000,
-    "ContactDamageLevel1": 50,
-    "ContactDamageLevel99": 350,
+    "ContactDamageLevel1": 100,
+    "ContactDamageLevel99": 300,
     "ContactDamageType": "0x0022",
-    "DefenseLevel1": 2,
-    "DefenseLevel99": 200,
+    "DefenseLevel1": 1,
+    "DefenseLevel99": 20,
     "Surface": "0x0023",
     "Resistances": {
       "HIT": 1,
@@ -2252,13 +2252,13 @@
     "IsBoss": false
   },
   "Hammer": {
-    "HealthLevel1": 300,
+    "HealthLevel1": 2000,
     "HealthLevel99": 3000,
-    "ContactDamageLevel1": 50,
-    "ContactDamageLevel99": 350,
+    "ContactDamageLevel1": 100,
+    "ContactDamageLevel99": 300,
     "ContactDamageType": "0x0022",
-    "DefenseLevel1": 30,
-    "DefenseLevel99": 200,
+    "DefenseLevel1": 55,
+    "DefenseLevel99": 55,
     "Surface": "0x0023",
     "Resistances": {
       "HIT": 1,
@@ -2287,13 +2287,13 @@
     "IsBoss": false
   },
   "Gurkha": {
-    "HealthLevel1": 300,
+    "HealthLevel1": 2500,
     "HealthLevel99": 3000,
-    "ContactDamageLevel1": 50,
-    "ContactDamageLevel99": 350,
+    "ContactDamageLevel1": 100,
+    "ContactDamageLevel99": 300,
     "ContactDamageType": "0x0022",
     "DefenseLevel1": 40,
-    "DefenseLevel99": 200,
+    "DefenseLevel99": 55,
     "Surface": "0x0023",
     "Resistances": {
       "HIT": 1,
@@ -2308,7 +2308,7 @@
       "LIG": 0,
       "FLA": 2
     },
-    "Level": 20,
+    "Level": 30,
     "ExperienceLevel1": 24,
     "ExperienceLevel99": 288,
     "AttackDamageMultiplier": [
@@ -2322,13 +2322,13 @@
     "IsBoss": false
   },
   "Blade": {
-    "HealthLevel1": 300,
+    "HealthLevel1": 2300,
     "HealthLevel99": 3000,
-    "ContactDamageLevel1": 50,
-    "ContactDamageLevel99": 350,
+    "ContactDamageLevel1": 100,
+    "ContactDamageLevel99": 300,
     "ContactDamageType": "0x0022",
-    "DefenseLevel1": 30,
-    "DefenseLevel99": 200,
+    "DefenseLevel1": 5,
+    "DefenseLevel99": 10,
     "Surface": "0x0023",
     "Resistances": {
       "HIT": 1,
@@ -2347,8 +2347,8 @@
     "ExperienceLevel1": 24,
     "ExperienceLevel99": 288,
     "AttackDamageMultiplier": [
-      1.25,
-      1.25
+      1.5,
+      1.65
     ],
     "AttackDamageType": [
       "0x0043",
@@ -2361,11 +2361,11 @@
   "Valhalla Knight": {
     "HealthLevel1": 200,
     "HealthLevel99": 3000,
-    "ContactDamageLevel1": 50,
-    "ContactDamageLevel99": 350,
+    "ContactDamageLevel1": 100,
+    "ContactDamageLevel99": 300,
     "ContactDamageType": "0x0022",
-    "DefenseLevel1": 2,
-    "DefenseLevel99": 200,
+    "DefenseLevel1": 1,
+    "DefenseLevel99": 20,
     "Surface": "0x0023",
     "Resistances": {
       "HIT": 2,
@@ -2396,11 +2396,11 @@
   "Valhalla Horse": {
     "HealthLevel1": 200,
     "HealthLevel99": 3000,
-    "ContactDamageLevel1": 50,
-    "ContactDamageLevel99": 350,
+    "ContactDamageLevel1": 100,
+    "ContactDamageLevel99": 300,
     "ContactDamageType": "0x0022",
-    "DefenseLevel1": 2,
-    "DefenseLevel99": 200,
+    "DefenseLevel1": 1,
+    "DefenseLevel99": 20,
     "Surface": "0x0003",
     "Resistances": {
       "HIT": 2,
@@ -2427,11 +2427,11 @@
   "Skeleton Ape": {
     "HealthLevel1": 200,
     "HealthLevel99": 3000,
-    "ContactDamageLevel1": 50,
-    "ContactDamageLevel99": 350,
+    "ContactDamageLevel1": 100,
+    "ContactDamageLevel99": 300,
     "ContactDamageType": "0x0022",
-    "DefenseLevel1": 2,
-    "DefenseLevel99": 200,
+    "DefenseLevel1": 1,
+    "DefenseLevel99": 20,
     "Surface": "0x0023",
     "Resistances": {
       "HIT": 1,
@@ -2462,13 +2462,13 @@
     "IsBoss": false
   },
   "Venus Weed Unflowered": {
-    "HealthLevel1": 500,
+    "HealthLevel1": 3000,
     "HealthLevel99": 3000,
-    "ContactDamageLevel1": 50,
-    "ContactDamageLevel99": 350,
+    "ContactDamageLevel1": 100,
+    "ContactDamageLevel99": 300,
     "ContactDamageType": "0x0022",
-    "DefenseLevel1": 2,
-    "DefenseLevel99": 200,
+    "DefenseLevel1": 1,
+    "DefenseLevel99": 20,
     "Surface": "0x0023",
     "Resistances": {
       "HIT": 2,
@@ -2483,7 +2483,7 @@
       "LIG": 2,
       "FLA": 0
     },
-    "Level": 22,
+    "Level": 30,
     "ExperienceLevel1": 39,
     "ExperienceLevel99": 444,
     "AttackDamageMultiplier": [],
@@ -2493,13 +2493,13 @@
     "IsBoss": false
   },
   "Venus Weed Flowered": {
-    "HealthLevel1": 500,
+    "HealthLevel1": 3000,
     "HealthLevel99": 3000,
-    "ContactDamageLevel1": 50,
-    "ContactDamageLevel99": 350,
+    "ContactDamageLevel1": 100,
+    "ContactDamageLevel99": 300,
     "ContactDamageType": "0x0022",
-    "DefenseLevel1": 2,
-    "DefenseLevel99": 200,
+    "DefenseLevel1": 1,
+    "DefenseLevel99": 20,
     "Surface": "0x0023",
     "Resistances": {
       "HIT": 2,
@@ -2514,7 +2514,7 @@
       "LIG": 2,
       "FLA": 0
     },
-    "Level": 22,
+    "Level": 30,
     "ExperienceLevel1": 39,
     "ExperienceLevel99": 444,
     "AttackDamageMultiplier": [
@@ -2530,13 +2530,13 @@
     "IsBoss": false
   },
   "Salem Witch": {
-    "HealthLevel1": 200,
+    "HealthLevel1": 2200,
     "HealthLevel99": 3000,
-    "ContactDamageLevel1": 50,
-    "ContactDamageLevel99": 350,
+    "ContactDamageLevel1": 100,
+    "ContactDamageLevel99": 300,
     "ContactDamageType": "0x0022",
-    "DefenseLevel1": 2,
-    "DefenseLevel99": 200,
+    "DefenseLevel1": 1,
+    "DefenseLevel99": 20,
     "Surface": "0x0023",
     "Resistances": {
       "HIT": 1,
@@ -2551,7 +2551,7 @@
       "LIG": 1,
       "FLA": 1
     },
-    "Level": 23,
+    "Level": 32,
     "ExperienceLevel1": 30,
     "ExperienceLevel99": 355,
     "AttackDamageMultiplier": [
@@ -2567,13 +2567,13 @@
     "IsBoss": false
   },
   "Gremlin": {
-    "HealthLevel1": 70,
+    "HealthLevel1": 270,
     "HealthLevel99": 3000,
-    "ContactDamageLevel1": 50,
-    "ContactDamageLevel99": 350,
+    "ContactDamageLevel1": 100,
+    "ContactDamageLevel99": 300,
     "ContactDamageType": "0x0022",
-    "DefenseLevel1": 2,
-    "DefenseLevel99": 200,
+    "DefenseLevel1": 1,
+    "DefenseLevel99": 20,
     "Surface": "0x0023",
     "Resistances": {
       "HIT": 1,
@@ -2588,7 +2588,7 @@
       "LIG": 1,
       "FLA": 3
     },
-    "Level": 21,
+    "Level": 31,
     "ExperienceLevel1": 6,
     "ExperienceLevel99": 88,
     "AttackDamageMultiplier": [
@@ -2602,13 +2602,13 @@
     "IsBoss": false
   },
   "Wereskeleton": {
-    "HealthLevel1": 450,
+    "HealthLevel1": 2050,
     "HealthLevel99": 3000,
-    "ContactDamageLevel1": 50,
-    "ContactDamageLevel99": 350,
+    "ContactDamageLevel1": 100,
+    "ContactDamageLevel99": 300,
     "ContactDamageType": "0x0022",
-    "DefenseLevel1": 2,
-    "DefenseLevel99": 200,
+    "DefenseLevel1": 1,
+    "DefenseLevel99": 20,
     "Surface": "0x0023",
     "Resistances": {
       "HIT": 1,
@@ -2623,12 +2623,12 @@
       "LIG": 2,
       "FLA": 0
     },
-    "Level": 22,
+    "Level": 33,
     "ExperienceLevel1": 15,
     "ExperienceLevel99": 177,
     "AttackDamageMultiplier": [
       1.25,
-      1.0
+      1.1
     ],
     "AttackDamageType": [
       "0x0023",
@@ -2639,13 +2639,13 @@
     "IsBoss": false
   },
   "Bone Ark": {
-    "HealthLevel1": 500,
-    "HealthLevel99": 3000,
-    "ContactDamageLevel1": 50,
-    "ContactDamageLevel99": 350,
+    "HealthLevel1": 3000,
+    "HealthLevel99": 5000,
+    "ContactDamageLevel1": 100,
+    "ContactDamageLevel99": 300,
     "ContactDamageType": "0x0022",
     "DefenseLevel1": 20,
-    "DefenseLevel99": 200,
+    "DefenseLevel99": 20,
     "Surface": "0x0023",
     "Resistances": {
       "HIT": 1,
@@ -2660,7 +2660,7 @@
       "LIG": 2,
       "FLA": 0
     },
-    "Level": 24,
+    "Level": 35,
     "ExperienceLevel1": 24,
     "ExperienceLevel99": 288,
     "AttackDamageMultiplier": [
@@ -2674,13 +2674,13 @@
     "IsBoss": false
   },
   "Bone Ark Skeleton": {
-    "HealthLevel1": 200,
+    "HealthLevel1": 1800,
     "HealthLevel99": 3000,
-    "ContactDamageLevel1": 50,
-    "ContactDamageLevel99": 350,
+    "ContactDamageLevel1": 100,
+    "ContactDamageLevel99": 300,
     "ContactDamageType": "0x0022",
-    "DefenseLevel1": 2,
-    "DefenseLevel99": 200,
+    "DefenseLevel1": 1,
+    "DefenseLevel99": 20,
     "Surface": "0x0023",
     "Resistances": {
       "HIT": 0,
@@ -2695,7 +2695,7 @@
       "LIG": 1,
       "FLA": 0
     },
-    "Level": 24,
+    "Level": 30,
     "ExperienceLevel1": 6,
     "ExperienceLevel99": 66,
     "AttackDamageMultiplier": [],
@@ -2707,11 +2707,11 @@
   "Slime": {
     "HealthLevel1": 200,
     "HealthLevel99": 3000,
-    "ContactDamageLevel1": 50,
-    "ContactDamageLevel99": 350,
+    "ContactDamageLevel1": 100,
+    "ContactDamageLevel99": 300,
     "ContactDamageType": "0x0082",
-    "DefenseLevel1": 2,
-    "DefenseLevel99": 200,
+    "DefenseLevel1": 1,
+    "DefenseLevel99": 20,
     "Surface": "0x0023",
     "Resistances": {
       "HIT": 1,
@@ -2726,7 +2726,7 @@
       "LIG": 1,
       "FLA": 0
     },
-    "Level": 22,
+    "Level": 34,
     "ExperienceLevel1": 9,
     "ExperienceLevel99": 111,
     "AttackDamageMultiplier": [],
@@ -2736,13 +2736,13 @@
     "IsBoss": false
   },
   "Large Slime": {
-    "HealthLevel1": 500,
+    "HealthLevel1": 2500,
     "HealthLevel99": 3000,
-    "ContactDamageLevel1": 50,
-    "ContactDamageLevel99": 350,
+    "ContactDamageLevel1": 100,
+    "ContactDamageLevel99": 300,
     "ContactDamageType": "0x0022",
-    "DefenseLevel1": 2,
-    "DefenseLevel99": 200,
+    "DefenseLevel1": 1,
+    "DefenseLevel99": 20,
     "Surface": "0x0023",
     "Resistances": {
       "HIT": 1,
@@ -2757,7 +2757,7 @@
       "LIG": 1,
       "FLA": 0
     },
-    "Level": 25,
+    "Level": 40,
     "ExperienceLevel1": 18,
     "ExperienceLevel99": 222,
     "AttackDamageMultiplier": [],
@@ -2769,11 +2769,11 @@
   "Grave Keeper": {
     "HealthLevel1": 150,
     "HealthLevel99": 3000,
-    "ContactDamageLevel1": 50,
-    "ContactDamageLevel99": 350,
+    "ContactDamageLevel1": 100,
+    "ContactDamageLevel99": 300,
     "ContactDamageType": "0x0022",
-    "DefenseLevel1": 2,
-    "DefenseLevel99": 200,
+    "DefenseLevel1": 1,
+    "DefenseLevel99": 20,
     "Surface": "0x0033",
     "Resistances": {
       "HIT": 2,
@@ -2788,7 +2788,7 @@
       "LIG": 1,
       "FLA": 1
     },
-    "Level": 23,
+    "Level": 33,
     "ExperienceLevel1": 18,
     "ExperienceLevel99": 222,
     "AttackDamageMultiplier": [
@@ -2802,13 +2802,13 @@
     "IsBoss": false
   },
   "Hellfire Beast": {
-    "HealthLevel1": 400,
+    "HealthLevel1": 2400,
     "HealthLevel99": 3000,
-    "ContactDamageLevel1": 50,
-    "ContactDamageLevel99": 350,
+    "ContactDamageLevel1": 100,
+    "ContactDamageLevel99": 300,
     "ContactDamageType": "0x0022",
     "DefenseLevel1": 20,
-    "DefenseLevel99": 200,
+    "DefenseLevel99": 20,
     "Surface": "0x0023",
     "Resistances": {
       "HIT": 1,
@@ -2823,7 +2823,7 @@
       "LIG": 0,
       "FLA": 2
     },
-    "Level": 24,
+    "Level": 34,
     "ExperienceLevel1": 39,
     "ExperienceLevel99": 444,
     "AttackDamageMultiplier": [
@@ -2841,13 +2841,13 @@
     "IsBoss": false
   },
   "Discus Lord": {
-    "HealthLevel1": 500,
+    "HealthLevel1": 3000,
     "HealthLevel99": 3000,
-    "ContactDamageLevel1": 50,
-    "ContactDamageLevel99": 350,
+    "ContactDamageLevel1": 100,
+    "ContactDamageLevel99": 300,
     "ContactDamageType": "0x0022",
-    "DefenseLevel1": 30,
-    "DefenseLevel99": 200,
+    "DefenseLevel1": 33,
+    "DefenseLevel99": 33,
     "Surface": "0x0023",
     "Resistances": {
       "HIT": 1,
@@ -2862,7 +2862,7 @@
       "LIG": 0,
       "FLA": 2
     },
-    "Level": 24,
+    "Level": 34,
     "ExperienceLevel1": 30,
     "ExperienceLevel99": 355,
     "AttackDamageMultiplier": [
@@ -2876,13 +2876,13 @@
     "IsBoss": false
   },
   "Lossoth": {
-    "HealthLevel1": 150,
+    "HealthLevel1": 550,
     "HealthLevel99": 3000,
-    "ContactDamageLevel1": 50,
-    "ContactDamageLevel99": 350,
+    "ContactDamageLevel1": 100,
+    "ContactDamageLevel99": 300,
     "ContactDamageType": "0x0022",
-    "DefenseLevel1": 2,
-    "DefenseLevel99": 200,
+    "DefenseLevel1": 1,
+    "DefenseLevel99": 20,
     "Surface": "0x0033",
     "Resistances": {
       "HIT": 2,
@@ -2897,11 +2897,11 @@
       "LIG": 2,
       "FLA": 4
     },
-    "Level": 23,
+    "Level": 32,
     "ExperienceLevel1": 18,
     "ExperienceLevel99": 222,
     "AttackDamageMultiplier": [
-      1.25
+      1.15
     ],
     "AttackDamageType": [
       "0x8003"
@@ -2913,11 +2913,11 @@
   "Phantom Skull": {
     "HealthLevel1": 120,
     "HealthLevel99": 3000,
-    "ContactDamageLevel1": 50,
-    "ContactDamageLevel99": 350,
+    "ContactDamageLevel1": 100,
+    "ContactDamageLevel99": 300,
     "ContactDamageType": "0x1002",
     "DefenseLevel1": 10,
-    "DefenseLevel99": 200,
+    "DefenseLevel99": 20,
     "Surface": "0x0023",
     "Resistances": {
       "HIT": 1,
@@ -2932,7 +2932,7 @@
       "LIG": 1,
       "FLA": 1
     },
-    "Level": 24,
+    "Level": 30,
     "ExperienceLevel1": 6,
     "ExperienceLevel99": 88,
     "AttackDamageMultiplier": [],
@@ -2944,11 +2944,11 @@
   "Skull Lord": {
     "HealthLevel1": 900,
     "HealthLevel99": 3000,
-    "ContactDamageLevel1": 50,
-    "ContactDamageLevel99": 350,
+    "ContactDamageLevel1": 100,
+    "ContactDamageLevel99": 300,
     "ContactDamageType": "0x1002",
     "DefenseLevel1": 10,
-    "DefenseLevel99": 200,
+    "DefenseLevel99": 20,
     "Surface": "0x0023",
     "Resistances": {
       "HIT": 2,
@@ -2963,7 +2963,7 @@
       "LIG": 0,
       "FLA": 0
     },
-    "Level": 28,
+    "Level": 35,
     "ExperienceLevel1": 30,
     "ExperienceLevel99": 355,
     "AttackDamageMultiplier": [],
@@ -2973,13 +2973,13 @@
     "IsBoss": false
   },
   "Flail Guard": {
-    "HealthLevel1": 470,
+    "HealthLevel1": 1070,
     "HealthLevel99": 3000,
-    "ContactDamageLevel1": 50,
-    "ContactDamageLevel99": 350,
+    "ContactDamageLevel1": 100,
+    "ContactDamageLevel99": 300,
     "ContactDamageType": "0x0022",
     "DefenseLevel1": 20,
-    "DefenseLevel99": 200,
+    "DefenseLevel99": 20,
     "Surface": "0x0023",
     "Resistances": {
       "HIT": 1,
@@ -2994,7 +2994,7 @@
       "LIG": 1,
       "FLA": 0
     },
-    "Level": 25,
+    "Level": 34,
     "ExperienceLevel1": 15,
     "ExperienceLevel99": 177,
     "AttackDamageMultiplier": [
@@ -3010,11 +3010,11 @@
   "Golden Medusa Head": {
     "HealthLevel1": 20,
     "HealthLevel99": 1000,
-    "ContactDamageLevel1": 50,
-    "ContactDamageLevel99": 350,
+    "ContactDamageLevel1": 100,
+    "ContactDamageLevel99": 300,
     "ContactDamageType": "0x0202",
-    "DefenseLevel1": 2,
-    "DefenseLevel99": 200,
+    "DefenseLevel1": 1,
+    "DefenseLevel99": 20,
     "Surface": "0x0033",
     "Resistances": {
       "HIT": 1,
@@ -3039,17 +3039,17 @@
     "IsBoss": false
   },
   "Harpy": {
-    "HealthLevel1": 200,
+    "HealthLevel1": 600,
     "HealthLevel99": 3000,
-    "ContactDamageLevel1": 50,
-    "ContactDamageLevel99": 350,
+    "ContactDamageLevel1": 100,
+    "ContactDamageLevel99": 300,
     "ContactDamageType": "0x0022",
-    "DefenseLevel1": 2,
-    "DefenseLevel99": 200,
+    "DefenseLevel1": 1,
+    "DefenseLevel99": 20,
     "Surface": "0x0023",
     "Resistances": {
       "HIT": 2,
-      "CUT": 0,
+      "CUT": 1,
       "POI": 0,
       "CUR": 0,
       "STO": 0,
@@ -3060,7 +3060,7 @@
       "LIG": 1,
       "FLA": 0
     },
-    "Level": 26,
+    "Level": 34,
     "ExperienceLevel1": 12,
     "ExperienceLevel99": 133,
     "AttackDamageMultiplier": [
@@ -3078,13 +3078,13 @@
     "IsBoss": false
   },
   "Sword Lord": {
-    "HealthLevel1": 400,
+    "HealthLevel1": 2400,
     "HealthLevel99": 3000,
-    "ContactDamageLevel1": 50,
-    "ContactDamageLevel99": 350,
+    "ContactDamageLevel1": 100,
+    "ContactDamageLevel99": 300,
     "ContactDamageType": "0x0022",
     "DefenseLevel1": 20,
-    "DefenseLevel99": 200,
+    "DefenseLevel99": 20,
     "Surface": "0x0023",
     "Resistances": {
       "HIT": 1,
@@ -3099,7 +3099,7 @@
       "LIG": 0,
       "FLA": 2
     },
-    "Level": 27,
+    "Level": 38,
     "ExperienceLevel1": 18,
     "ExperienceLevel99": 222,
     "AttackDamageMultiplier": [
@@ -3113,10 +3113,10 @@
     "IsBoss": false
   },
   "Vandal Sword": {
-    "HealthLevel1": 400,
+    "HealthLevel1": 900,
     "HealthLevel99": 3000,
-    "ContactDamageLevel1": 50,
-    "ContactDamageLevel99": 350,
+    "ContactDamageLevel1": 100,
+    "ContactDamageLevel99": 300,
     "ContactDamageType": "0x0022",
     "DefenseLevel1": 10,
     "DefenseLevel99": 10,
@@ -3134,7 +3134,7 @@
       "LIG": 0,
       "FLA": 0
     },
-    "Level": 27,
+    "Level": 39,
     "ExperienceLevel1": 6,
     "ExperienceLevel99": 88,
     "AttackDamageMultiplier": [
@@ -3149,12 +3149,12 @@
   },
   "Yorick": {
     "HealthLevel1": 200,
-    "HealthLevel99": 6000,
-    "ContactDamageLevel1": 50,
-    "ContactDamageLevel99": 450,
+    "HealthLevel99": 2000,
+    "ContactDamageLevel1": 100,
+    "ContactDamageLevel99": 300,
     "ContactDamageType": "0x0022",
-    "DefenseLevel1": 2,
-    "DefenseLevel99": 200,
+    "DefenseLevel1": 1,
+    "DefenseLevel99": 20,
     "Surface": "0x0023",
     "Resistances": {
       "HIT": 2,
@@ -3169,7 +3169,7 @@
       "LIG": 1,
       "FLA": 0
     },
-    "Level": 29,
+    "Level": 40,
     "ExperienceLevel1": 15,
     "ExperienceLevel99": 177,
     "AttackDamageMultiplier": [],
@@ -3180,12 +3180,12 @@
   },
   "Yorick Head": {
     "HealthLevel1": 200,
-    "HealthLevel99": 6000,
-    "ContactDamageLevel1": 50,
-    "ContactDamageLevel99": 450,
+    "HealthLevel99": 3000,
+    "ContactDamageLevel1": 100,
+    "ContactDamageLevel99": 300,
     "ContactDamageType": "0x0022",
-    "DefenseLevel1": 2,
-    "DefenseLevel99": 200,
+    "DefenseLevel1": 1,
+    "DefenseLevel99": 20,
     "Surface": "0x0023",
     "Resistances": {
       "HIT": 0,
@@ -3200,7 +3200,7 @@
       "LIG": 1,
       "FLA": 0
     },
-    "Level": 29,
+    "Level": 40,
     "ExperienceLevel1": 0,
     "ExperienceLevel99": 0,
     "AttackDamageMultiplier": [],
@@ -3210,13 +3210,13 @@
     "IsBoss": false
   },
   "Tombstone": {
-    "HealthLevel1": 200,
-    "HealthLevel99": 6000,
-    "ContactDamageLevel1": 50,
-    "ContactDamageLevel99": 450,
+    "HealthLevel1": 1100,
+    "HealthLevel99": 1100,
+    "ContactDamageLevel1": 100,
+    "ContactDamageLevel99": 300,
     "ContactDamageType": "0x0102",
-    "DefenseLevel1": 50,
-    "DefenseLevel99": 200,
+    "DefenseLevel1": 150,
+    "DefenseLevel99": 150,
     "Surface": "0x0023",
     "Resistances": {
       "HIT": 0,
@@ -3231,7 +3231,7 @@
       "LIG": 1,
       "FLA": 1
     },
-    "Level": 30,
+    "Level": 41,
     "ExperienceLevel1": 0,
     "ExperienceLevel99": 0,
     "AttackDamageMultiplier": [],
@@ -3241,13 +3241,13 @@
     "IsBoss": false
   },
   "Bomb Knight": {
-    "HealthLevel1": 300,
-    "HealthLevel99": 6000,
-    "ContactDamageLevel1": 50,
-    "ContactDamageLevel99": 450,
+    "HealthLevel1": 2300,
+    "HealthLevel99": 3000,
+    "ContactDamageLevel1": 100,
+    "ContactDamageLevel99": 300,
     "ContactDamageType": "0x0022",
     "DefenseLevel1": 30,
-    "DefenseLevel99": 200,
+    "DefenseLevel99": 30,
     "Surface": "0x0023",
     "Resistances": {
       "HIT": 1,
@@ -3262,7 +3262,7 @@
       "LIG": 0,
       "FLA": 2
     },
-    "Level": 32,
+    "Level": 41,
     "ExperienceLevel1": 9,
     "ExperienceLevel99": 111,
     "AttackDamageMultiplier": [
@@ -3277,12 +3277,12 @@
   },
   "Cloaked Knight": {
     "HealthLevel1": 100,
-    "HealthLevel99": 6000,
-    "ContactDamageLevel1": 50,
-    "ContactDamageLevel99": 450,
+    "HealthLevel99": 3000,
+    "ContactDamageLevel1": 100,
+    "ContactDamageLevel99": 300,
     "ContactDamageType": "0x0022",
-    "DefenseLevel1": 20,
-    "DefenseLevel99": 200,
+    "DefenseLevel1": 1,
+    "DefenseLevel99": 20,
     "Surface": "0x0023",
     "Resistances": {
       "HIT": 0,
@@ -3297,11 +3297,11 @@
       "LIG": 0,
       "FLA": 2
     },
-    "Level": 31,
+    "Level": 37,
     "ExperienceLevel1": 6,
     "ExperienceLevel99": 88,
     "AttackDamageMultiplier": [
-      1.25
+      1.05
     ],
     "AttackDamageType": [
       "0x0043"
@@ -3311,13 +3311,13 @@
     "IsBoss": false
   },
   "Jack O'Bones": {
-    "HealthLevel1": 200,
-    "HealthLevel99": 6000,
-    "ContactDamageLevel1": 50,
-    "ContactDamageLevel99": 450,
+    "HealthLevel1": 1000,
+    "HealthLevel99": 3000,
+    "ContactDamageLevel1": 100,
+    "ContactDamageLevel99": 300,
     "ContactDamageType": "0x0022",
-    "DefenseLevel1": 2,
-    "DefenseLevel99": 200,
+    "DefenseLevel1": 1,
+    "DefenseLevel99": 20,
     "Surface": "0x0023",
     "Resistances": {
       "HIT": 1,
@@ -3332,11 +3332,11 @@
       "LIG": 1,
       "FLA": 0
     },
-    "Level": 33,
+    "Level": 42,
     "ExperienceLevel1": 15,
     "ExperienceLevel99": 177,
     "AttackDamageMultiplier": [
-      1.25
+      1.05
     ],
     "AttackDamageType": [
       "0x0023"
@@ -3346,13 +3346,13 @@
     "IsBoss": false
   },
   "Nova Skeleton": {
-    "HealthLevel1": 200,
-    "HealthLevel99": 6000,
-    "ContactDamageLevel1": 50,
-    "ContactDamageLevel99": 450,
+    "HealthLevel1": 1200,
+    "HealthLevel99": 3000,
+    "ContactDamageLevel1": 100,
+    "ContactDamageLevel99": 300,
     "ContactDamageType": "0x0022",
-    "DefenseLevel1": 2,
-    "DefenseLevel99": 200,
+    "DefenseLevel1": 1,
+    "DefenseLevel99": 20,
     "Surface": "0x0023",
     "Resistances": {
       "HIT": 1,
@@ -3367,11 +3367,11 @@
       "LIG": 1,
       "FLA": 0
     },
-    "Level": 34,
+    "Level": 46,
     "ExperienceLevel1": 15,
     "ExperienceLevel99": 177,
     "AttackDamageMultiplier": [
-      2.5
+      1.5
     ],
     "AttackDamageType": [
       "0x1003"
@@ -3382,12 +3382,12 @@
   },
   "Balloon Pod": {
     "HealthLevel1": 200,
-    "HealthLevel99": 6000,
-    "ContactDamageLevel1": 50,
-    "ContactDamageLevel99": 450,
+    "HealthLevel99": 3000,
+    "ContactDamageLevel1": 100,
+    "ContactDamageLevel99": 300,
     "ContactDamageType": "0x0022",
-    "DefenseLevel1": 2,
-    "DefenseLevel99": 200,
+    "DefenseLevel1": 1,
+    "DefenseLevel99": 20,
     "Surface": "0x0023",
     "Resistances": {
       "HIT": 1,
@@ -3402,11 +3402,11 @@
       "LIG": 2,
       "FLA": 0
     },
-    "Level": 33,
+    "Level": 40,
     "ExperienceLevel1": 12,
     "ExperienceLevel99": 133,
     "AttackDamageMultiplier": [
-      0.5
+      0.75
     ],
     "AttackDamageType": [
       "0x0082"
@@ -3416,13 +3416,13 @@
     "IsBoss": false
   },
   "Black Panther": {
-    "HealthLevel1": 50,
-    "HealthLevel99": 6000,
-    "ContactDamageLevel1": 50,
-    "ContactDamageLevel99": 450,
+    "HealthLevel1": 300,
+    "HealthLevel99": 300,
+    "ContactDamageLevel1": 100,
+    "ContactDamageLevel99": 300,
     "ContactDamageType": "0x0402",
-    "DefenseLevel1": 2,
-    "DefenseLevel99": 200,
+    "DefenseLevel1": 1,
+    "DefenseLevel99": 20,
     "Surface": "0x0033",
     "Resistances": {
       "HIT": 1,
@@ -3437,7 +3437,7 @@
       "LIG": 2,
       "FLA": 2
     },
-    "Level": 35,
+    "Level": 40,
     "ExperienceLevel1": 6,
     "ExperienceLevel99": 66,
     "AttackDamageMultiplier": [],
@@ -3447,13 +3447,13 @@
     "IsBoss": false
   },
   "Sniper of Goth": {
-    "HealthLevel1": 300,
-    "HealthLevel99": 6000,
-    "ContactDamageLevel1": 50,
-    "ContactDamageLevel99": 450,
+    "HealthLevel1": 2300,
+    "HealthLevel99": 3000,
+    "ContactDamageLevel1": 100,
+    "ContactDamageLevel99": 300,
     "ContactDamageType": "0x0022",
-    "DefenseLevel1": 2,
-    "DefenseLevel99": 200,
+    "DefenseLevel1": 1,
+    "DefenseLevel99": 20,
     "Surface": "0x0023",
     "Resistances": {
       "HIT": 1,
@@ -3468,12 +3468,12 @@
       "LIG": 0,
       "FLA": 1
     },
-    "Level": 36,
+    "Level": 44,
     "ExperienceLevel1": 12,
     "ExperienceLevel99": 133,
     "AttackDamageMultiplier": [
-      1.5,
-      1.25
+      1.25,
+      1.15
     ],
     "AttackDamageType": [
       "0x0043",
@@ -3484,13 +3484,13 @@
     "IsBoss": false
   },
   "Imp": {
-    "HealthLevel1": 30,
-    "HealthLevel99": 6000,
-    "ContactDamageLevel1": 50,
-    "ContactDamageLevel99": 450,
+    "HealthLevel1": 300,
+    "HealthLevel99": 300,
+    "ContactDamageLevel1": 100,
+    "ContactDamageLevel99": 300,
     "ContactDamageType": "0x0022",
-    "DefenseLevel1": 2,
-    "DefenseLevel99": 200,
+    "DefenseLevel1": 1,
+    "DefenseLevel99": 20,
     "Surface": "0x0023",
     "Resistances": {
       "HIT": 1,
@@ -3505,7 +3505,7 @@
       "LIG": 1,
       "FLA": 1
     },
-    "Level": 34,
+    "Level": 40,
     "ExperienceLevel1": 6,
     "ExperienceLevel99": 66,
     "AttackDamageMultiplier": [],
@@ -3515,13 +3515,13 @@
     "IsBoss": false
   },
   "Flying Zombie Upper": {
-    "HealthLevel1": 200,
-    "HealthLevel99": 6000,
-    "ContactDamageLevel1": 50,
-    "ContactDamageLevel99": 450,
+    "HealthLevel1": 2200,
+    "HealthLevel99": 3000,
+    "ContactDamageLevel1": 100,
+    "ContactDamageLevel99": 300,
     "ContactDamageType": "0x0022",
-    "DefenseLevel1": 2,
-    "DefenseLevel99": 200,
+    "DefenseLevel1": 1,
+    "DefenseLevel99": 20,
     "Surface": "0x0033",
     "Resistances": {
       "HIT": 2,
@@ -3536,7 +3536,7 @@
       "LIG": 1,
       "FLA": 0
     },
-    "Level": 36,
+    "Level": 45,
     "ExperienceLevel1": 24,
     "ExperienceLevel99": 288,
     "AttackDamageMultiplier": [],
@@ -3546,13 +3546,13 @@
     "IsBoss": false
   },
   "Flying Zombie Lower": {
-    "HealthLevel1": 200,
-    "HealthLevel99": 6000,
-    "ContactDamageLevel1": 50,
-    "ContactDamageLevel99": 450,
+    "HealthLevel1": 2200,
+    "HealthLevel99": 3000,
+    "ContactDamageLevel1": 100,
+    "ContactDamageLevel99": 300,
     "ContactDamageType": "0x0022",
-    "DefenseLevel1": 2,
-    "DefenseLevel99": 200,
+    "DefenseLevel1": 1,
+    "DefenseLevel99": 20,
     "Surface": "0x0033",
     "Resistances": {
       "HIT": 2,
@@ -3578,12 +3578,12 @@
   },
   "Ctulhu": {
     "HealthLevel1": 400,
-    "HealthLevel99": 6000,
-    "ContactDamageLevel1": 50,
-    "ContactDamageLevel99": 450,
+    "HealthLevel99": 3000,
+    "ContactDamageLevel1": 100,
+    "ContactDamageLevel99": 300,
     "ContactDamageType": "0x0022",
-    "DefenseLevel1": 2,
-    "DefenseLevel99": 200,
+    "DefenseLevel1": 1,
+    "DefenseLevel99": 20,
     "Surface": "0x0023",
     "Resistances": {
       "HIT": 2,
@@ -3598,7 +3598,7 @@
       "LIG": 1,
       "FLA": 0
     },
-    "Level": 37,
+    "Level": 40,
     "ExperienceLevel1": 39,
     "ExperienceLevel99": 444,
     "AttackDamageMultiplier": [
@@ -3616,11 +3616,11 @@
   "Karasuman": {
     "HealthLevel1": 5000,
     "HealthLevel99": 30000,
-    "ContactDamageLevel1": 50,
-    "ContactDamageLevel99": 450,
+    "ContactDamageLevel1": 100,
+    "ContactDamageLevel99": 300,
     "ContactDamageType": "0x0022",
-    "DefenseLevel1": 2,
-    "DefenseLevel99": 200,
+    "DefenseLevel1": 1,
+    "DefenseLevel99": 20,
     "Surface": "0x0023",
     "Resistances": {
       "HIT": 1,
@@ -3635,11 +3635,11 @@
       "LIG": 1,
       "FLA": 0
     },
-    "Level": 36,
+    "Level": 45,
     "ExperienceLevel1": 60,
     "ExperienceLevel99": 666,
     "AttackDamageMultiplier": [
-      0.75,
+      0.95,
       1.25,
       1.1
     ],
@@ -3654,12 +3654,12 @@
   },
   "Ghost Dancer": {
     "HealthLevel1": 200,
-    "HealthLevel99": 6000,
-    "ContactDamageLevel1": 50,
-    "ContactDamageLevel99": 450,
+    "HealthLevel99": 3000,
+    "ContactDamageLevel1": 100,
+    "ContactDamageLevel99": 300,
     "ContactDamageType": "0x0022",
-    "DefenseLevel1": 2,
-    "DefenseLevel99": 200,
+    "DefenseLevel1": 1,
+    "DefenseLevel99": 20,
     "Surface": "0x0023",
     "Resistances": {
       "HIT": 1,
@@ -3674,7 +3674,7 @@
       "LIG": 1,
       "FLA": 1
     },
-    "Level": 36,
+    "Level": 46,
     "ExperienceLevel1": 6,
     "ExperienceLevel99": 88,
     "AttackDamageMultiplier": [],
@@ -3684,13 +3684,13 @@
     "IsBoss": false
   },
   "Malachi": {
-    "HealthLevel1": 600,
-    "HealthLevel99": 6000,
-    "ContactDamageLevel1": 50,
-    "ContactDamageLevel99": 450,
+    "HealthLevel1": 4600,
+    "HealthLevel99": 4600,
+    "ContactDamageLevel1": 100,
+    "ContactDamageLevel99": 300,
     "ContactDamageType": "0x0022",
-    "DefenseLevel1": 66,
-    "DefenseLevel99": 200,
+    "DefenseLevel1": 1,
+    "DefenseLevel99": 20,
     "Surface": "0x0023",
     "Resistances": {
       "HIT": 2,
@@ -3705,12 +3705,12 @@
       "LIG": 2,
       "FLA": 3
     },
-    "Level": 37,
+    "Level": 66,
     "ExperienceLevel1": 39,
     "ExperienceLevel99": 444,
     "AttackDamageMultiplier": [
-      1.4,
-      1.25
+      1.3,
+      1.15
     ],
     "AttackDamageType": [
       "0x0083",
@@ -3721,13 +3721,13 @@
     "IsBoss": false
   },
   "Shmoo": {
-    "HealthLevel1": 100,
-    "HealthLevel99": 3000,
-    "ContactDamageLevel1": 50,
-    "ContactDamageLevel99": 450,
+    "HealthLevel1": 666,
+    "HealthLevel99": 666,
+    "ContactDamageLevel1": 100,
+    "ContactDamageLevel99": 300,
     "ContactDamageType": "0x0802",
-    "DefenseLevel1": 2,
-    "DefenseLevel99": 200,
+    "DefenseLevel1": 1,
+    "DefenseLevel99": 20,
     "Surface": "0x0023",
     "Resistances": {
       "HIT": 1,
@@ -3742,7 +3742,7 @@
       "LIG": 1,
       "FLA": 0
     },
-    "Level": 33,
+    "Level": 40,
     "ExperienceLevel1": 6,
     "ExperienceLevel99": 66,
     "AttackDamageMultiplier": [],
@@ -3752,13 +3752,13 @@
     "IsBoss": false
   },
   "Scarecrow": {
-    "HealthLevel1": 190,
-    "HealthLevel99": 6000,
-    "ContactDamageLevel1": 50,
-    "ContactDamageLevel99": 450,
+    "HealthLevel1": 1190,
+    "HealthLevel99": 3000,
+    "ContactDamageLevel1": 100,
+    "ContactDamageLevel99": 300,
     "ContactDamageType": "0x0022",
-    "DefenseLevel1": 2,
-    "DefenseLevel99": 200,
+    "DefenseLevel1": 1,
+    "DefenseLevel99": 20,
     "Surface": "0x0023",
     "Resistances": {
       "HIT": 2,
@@ -3773,7 +3773,7 @@
       "LIG": 1,
       "FLA": 0
     },
-    "Level": 34,
+    "Level": 44,
     "ExperienceLevel1": 12,
     "ExperienceLevel99": 133,
     "AttackDamageMultiplier": [],
@@ -3783,13 +3783,13 @@
     "IsBoss": false
   },
   "Lion": {
-    "HealthLevel1": 1500,
-    "HealthLevel99": 6000,
-    "ContactDamageLevel1": 50,
-    "ContactDamageLevel99": 450,
+    "HealthLevel1": 2500,
+    "HealthLevel99": 3000,
+    "ContactDamageLevel1": 100,
+    "ContactDamageLevel99": 300,
     "ContactDamageType": "0x0022",
     "DefenseLevel1": 50,
-    "DefenseLevel99": 200,
+    "DefenseLevel99": 50,
     "Surface": "0x0023",
     "Resistances": {
       "HIT": 2,
@@ -3804,11 +3804,11 @@
       "LIG": 1,
       "FLA": 2
     },
-    "Level": 35,
+    "Level": 47,
     "ExperienceLevel1": 18,
     "ExperienceLevel99": 222,
     "AttackDamageMultiplier": [
-      1.25
+      1.15
     ],
     "AttackDamageType": [
       "0x0043"
@@ -3818,13 +3818,13 @@
     "IsBoss": false
   },
   "Tin Man": {
-    "HealthLevel1": 800,
-    "HealthLevel99": 6000,
-    "ContactDamageLevel1": 50,
-    "ContactDamageLevel99": 450,
+    "HealthLevel1": 1800,
+    "HealthLevel99": 3000,
+    "ContactDamageLevel1": 100,
+    "ContactDamageLevel99": 300,
     "ContactDamageType": "0x0022",
-    "DefenseLevel1": 30,
-    "DefenseLevel99": 200,
+    "DefenseLevel1": 66,
+    "DefenseLevel99": 66,
     "Surface": "0x0023",
     "Resistances": {
       "HIT": 0,
@@ -3839,12 +3839,12 @@
       "LIG": 0,
       "FLA": 2
     },
-    "Level": 35,
+    "Level": 45,
     "ExperienceLevel1": 24,
     "ExperienceLevel99": 288,
     "AttackDamageMultiplier": [
-      1.4,
-      1.25
+      1.2,
+      1.1
     ],
     "AttackDamageType": [
       "0x0043",
@@ -3856,12 +3856,12 @@
   },
   "Werewolf 2": {
     "HealthLevel1": 200,
-    "HealthLevel99": 6000,
-    "ContactDamageLevel1": 50,
-    "ContactDamageLevel99": 450,
+    "HealthLevel99": 3000,
+    "ContactDamageLevel1": 100,
+    "ContactDamageLevel99": 300,
     "ContactDamageType": "0x0022",
-    "DefenseLevel1": 2,
-    "DefenseLevel99": 200,
+    "DefenseLevel1": 1,
+    "DefenseLevel99": 20,
     "Surface": "0x0033",
     "Resistances": {
       "HIT": 2,
@@ -3876,12 +3876,12 @@
       "LIG": 1,
       "FLA": 0
     },
-    "Level": 37,
+    "Level": 47,
     "ExperienceLevel1": 18,
     "ExperienceLevel99": 222,
     "AttackDamageMultiplier": [
-      1.25,
-      1.25
+      1.15,
+      1.05
     ],
     "AttackDamageType": [
       "0x0023",
@@ -3893,12 +3893,12 @@
   },
   "Minotaur 2": {
     "HealthLevel1": 200,
-    "HealthLevel99": 6000,
-    "ContactDamageLevel1": 50,
-    "ContactDamageLevel99": 450,
+    "HealthLevel99": 3000,
+    "ContactDamageLevel1": 100,
+    "ContactDamageLevel99": 300,
     "ContactDamageType": "0x0022",
     "DefenseLevel1": 10,
-    "DefenseLevel99": 200,
+    "DefenseLevel99": 20,
     "Surface": "0x0033",
     "Resistances": {
       "HIT": 2,
@@ -3913,11 +3913,11 @@
       "LIG": 0,
       "FLA": 1
     },
-    "Level": 38,
+    "Level": 48,
     "ExperienceLevel1": 30,
     "ExperienceLevel99": 355,
     "AttackDamageMultiplier": [
-      1.4,
+      1.25,
       0.5
     ],
     "AttackDamageType": [
@@ -3930,12 +3930,12 @@
   },
   "White Dragon": {
     "HealthLevel1": 300,
-    "HealthLevel99": 6000,
-    "ContactDamageLevel1": 50,
-    "ContactDamageLevel99": 450,
+    "HealthLevel99": 3000,
+    "ContactDamageLevel1": 100,
+    "ContactDamageLevel99": 300,
     "ContactDamageType": "0x0022",
-    "DefenseLevel1": 2,
-    "DefenseLevel99": 200,
+    "DefenseLevel1": 1,
+    "DefenseLevel99": 20,
     "Surface": "0x0003",
     "Resistances": {
       "HIT": 1,
@@ -3950,11 +3950,11 @@
       "LIG": 1,
       "FLA": 0
     },
-    "Level": 38,
+    "Level": 49,
     "ExperienceLevel1": 9,
     "ExperienceLevel99": 111,
     "AttackDamageMultiplier": [
-      1.25
+      1.15
     ],
     "AttackDamageType": [
       "0x8003"
@@ -3964,13 +3964,13 @@
     "IsBoss": false
   },
   "Spectral Sword 3": {
-    "HealthLevel1": 500,
-    "HealthLevel99": 6000,
-    "ContactDamageLevel1": 50,
-    "ContactDamageLevel99": 450,
+    "HealthLevel1": 3500,
+    "HealthLevel99": 3500,
+    "ContactDamageLevel1": 100,
+    "ContactDamageLevel99": 300,
     "ContactDamageType": "0x1002",
     "DefenseLevel1": 10,
-    "DefenseLevel99": 200,
+    "DefenseLevel99": 20,
     "Surface": "0x0023",
     "Resistances": {
       "HIT": 1,
@@ -3985,7 +3985,7 @@
       "LIG": 1,
       "FLA": 1
     },
-    "Level": 39,
+    "Level": 50,
     "ExperienceLevel1": 60,
     "ExperienceLevel99": 666,
     "AttackDamageMultiplier": [],
@@ -3996,12 +3996,12 @@
   },
   "Spectral Sword 3 Spears": {
     "HealthLevel1": 30,
-    "HealthLevel99": 6000,
-    "ContactDamageLevel1": 50,
-    "ContactDamageLevel99": 450,
+    "HealthLevel99": 3000,
+    "ContactDamageLevel1": 100,
+    "ContactDamageLevel99": 300,
     "ContactDamageType": "0x0043",
-    "DefenseLevel1": 2,
-    "DefenseLevel99": 200,
+    "DefenseLevel1": 1,
+    "DefenseLevel99": 20,
     "Surface": "0x0003",
     "Resistances": {
       "HIT": 1,
@@ -4016,7 +4016,7 @@
       "LIG": 1,
       "FLA": 0
     },
-    "Level": 39,
+    "Level": 45,
     "ExperienceLevel1": 0,
     "ExperienceLevel99": 0,
     "AttackDamageMultiplier": [],
@@ -4028,11 +4028,11 @@
   "Spectral Sword 3 Shields": {
     "HealthLevel1": 32767,
     "HealthLevel99": 32767,
-    "ContactDamageLevel1": 50,
-    "ContactDamageLevel99": 450,
+    "ContactDamageLevel1": 100,
+    "ContactDamageLevel99": 300,
     "ContactDamageType": "0x0022",
-    "DefenseLevel1": 2,
-    "DefenseLevel99": 200,
+    "DefenseLevel1": 1,
+    "DefenseLevel99": 20,
     "Surface": "0x0003",
     "Resistances": {
       "HIT": 0,
@@ -4047,7 +4047,7 @@
       "LIG": 1,
       "FLA": 1
     },
-    "Level": 39,
+    "Level": 48,
     "ExperienceLevel1": 0,
     "ExperienceLevel99": 0,
     "AttackDamageMultiplier": [],
@@ -4057,13 +4057,13 @@
     "IsBoss": false
   },
   "Archer": {
-    "HealthLevel1": 300,
-    "HealthLevel99": 6000,
-    "ContactDamageLevel1": 50,
-    "ContactDamageLevel99": 450,
+    "HealthLevel1": 1300,
+    "HealthLevel99": 3000,
+    "ContactDamageLevel1": 100,
+    "ContactDamageLevel99": 300,
     "ContactDamageType": "0x0022",
-    "DefenseLevel1": 2,
-    "DefenseLevel99": 200,
+    "DefenseLevel1": 1,
+    "DefenseLevel99": 20,
     "Surface": "0x0023",
     "Resistances": {
       "HIT": 2,
@@ -4078,11 +4078,11 @@
       "LIG": 0,
       "FLA": 0
     },
-    "Level": 39,
+    "Level": 49,
     "ExperienceLevel1": 24,
     "ExperienceLevel99": 288,
     "AttackDamageMultiplier": [
-      1.3
+      1.2
     ],
     "AttackDamageType": [
       "0x0043"
@@ -4093,12 +4093,12 @@
   },
   "Bitterfly": {
     "HealthLevel1": 200,
-    "HealthLevel99": 6000,
-    "ContactDamageLevel1": 50,
-    "ContactDamageLevel99": 450,
+    "HealthLevel99": 3000,
+    "ContactDamageLevel1": 100,
+    "ContactDamageLevel99": 300,
     "ContactDamageType": "0x0802",
-    "DefenseLevel1": 2,
-    "DefenseLevel99": 200,
+    "DefenseLevel1": 1,
+    "DefenseLevel99": 20,
     "Surface": "0x0033",
     "Resistances": {
       "HIT": 1,
@@ -4113,7 +4113,7 @@
       "LIG": 1,
       "FLA": 1
     },
-    "Level": 38,
+    "Level": 45,
     "ExperienceLevel1": 1,
     "ExperienceLevel99": 22,
     "AttackDamageMultiplier": [],
@@ -4124,12 +4124,12 @@
   },
   "Lesser Demon": {
     "HealthLevel1": 150,
-    "HealthLevel99": 6000,
-    "ContactDamageLevel1": 50,
-    "ContactDamageLevel99": 350,
+    "HealthLevel99": 3000,
+    "ContactDamageLevel1": 100,
+    "ContactDamageLevel99": 300,
     "ContactDamageType": "0x0022",
     "DefenseLevel1": 10,
-    "DefenseLevel99": 200,
+    "DefenseLevel99": 20,
     "Surface": "0x0033",
     "Resistances": {
       "HIT": 1,
@@ -4148,8 +4148,8 @@
     "ExperienceLevel1": 60,
     "ExperienceLevel99": 666,
     "AttackDamageMultiplier": [
-      1.25,
-      0.5,
+      1.15,
+      0.75,
       1.25
     ],
     "AttackDamageType": [
@@ -4162,13 +4162,13 @@
     "IsBoss": false
   },
   "Fire Demon": {
-    "HealthLevel1": 700,
-    "HealthLevel99": 6000,
-    "ContactDamageLevel1": 50,
-    "ContactDamageLevel99": 450,
+    "HealthLevel1": 4500,
+    "HealthLevel99": 4500,
+    "ContactDamageLevel1": 100,
+    "ContactDamageLevel99": 300,
     "ContactDamageType": "0x0022",
-    "DefenseLevel1": 2,
-    "DefenseLevel99": 200,
+    "DefenseLevel1": 1,
+    "DefenseLevel99": 20,
     "Surface": "0x0033",
     "Resistances": {
       "HIT": 1,
@@ -4183,11 +4183,11 @@
       "LIG": 2,
       "FLA": 3
     },
-    "Level": 41,
+    "Level": 55,
     "ExperienceLevel1": 39,
     "ExperienceLevel99": 444,
     "AttackDamageMultiplier": [
-      1.5
+      1.75
     ],
     "AttackDamageType": [
       "0x8003"
@@ -4198,12 +4198,12 @@
   },
   "Azaghal": {
     "HealthLevel1": 300,
-    "HealthLevel99": 6000,
-    "ContactDamageLevel1": 50,
-    "ContactDamageLevel99": 450,
+    "HealthLevel99": 3000,
+    "ContactDamageLevel1": 100,
+    "ContactDamageLevel99": 300,
     "ContactDamageType": "0x0022",
     "DefenseLevel1": 10,
-    "DefenseLevel99": 200,
+    "DefenseLevel99": 20,
     "Surface": "0x0023",
     "Resistances": {
       "HIT": 1,
@@ -4218,7 +4218,7 @@
       "LIG": 1,
       "FLA": 1
     },
-    "Level": 42,
+    "Level": 45,
     "ExperienceLevel1": 15,
     "ExperienceLevel99": 177,
     "AttackDamageMultiplier": [
@@ -4232,13 +4232,13 @@
     "IsBoss": false
   },
   "Gorgon": {
-    "HealthLevel1": 500,
-    "HealthLevel99": 6000,
-    "ContactDamageLevel1": 50,
-    "ContactDamageLevel99": 450,
+    "HealthLevel1": 2500,
+    "HealthLevel99": 3000,
+    "ContactDamageLevel1": 100,
+    "ContactDamageLevel99": 300,
     "ContactDamageType": "0x0022",
     "DefenseLevel1": 50,
-    "DefenseLevel99": 200,
+    "DefenseLevel99": 90,
     "Surface": "0x0023",
     "Resistances": {
       "HIT": 2,
@@ -4253,7 +4253,7 @@
       "LIG": 2,
       "FLA": 2
     },
-    "Level": 39,
+    "Level": 60,
     "ExperienceLevel1": 24,
     "ExperienceLevel99": 288,
     "AttackDamageMultiplier": [],
@@ -4264,12 +4264,12 @@
   },
   "Gorgon Head": {
     "HealthLevel1": 500,
-    "HealthLevel99": 6000,
-    "ContactDamageLevel1": 50,
-    "ContactDamageLevel99": 450,
+    "HealthLevel99": 3000,
+    "ContactDamageLevel1": 100,
+    "ContactDamageLevel99": 300,
     "ContactDamageType": "0x0022",
     "DefenseLevel1": 10,
-    "DefenseLevel99": 200,
+    "DefenseLevel99": 20,
     "Surface": "0x0023",
     "Resistances": {
       "HIT": 2,
@@ -4284,7 +4284,7 @@
       "LIG": 1,
       "FLA": 1
     },
-    "Level": 39,
+    "Level": 60,
     "ExperienceLevel1": 0,
     "ExperienceLevel99": 0,
     "AttackDamageMultiplier": [
@@ -4298,28 +4298,28 @@
     "IsBoss": false
   },
   "Guardian": {
-    "HealthLevel1": 1000,
-    "HealthLevel99": 6000,
-    "ContactDamageLevel1": 50,
-    "ContactDamageLevel99": 450,
+    "HealthLevel1": 9999,
+    "HealthLevel99": 9999,
+    "ContactDamageLevel1": 100,
+    "ContactDamageLevel99": 300,
     "ContactDamageType": "0x0022",
-    "DefenseLevel1": 60,
-    "DefenseLevel99": 200,
+    "DefenseLevel1": 0,
+    "DefenseLevel99": 10,
     "Surface": "0x0023",
     "Resistances": {
-      "HIT": 2,
-      "CUT": 2,
-      "POI": 2,
-      "CUR": 2,
-      "STO": 2,
+      "HIT": 1,
+      "CUT": 1,
+      "POI": 1,
+      "CUR": 1,
+      "STO": 1,
       "WAT": 1,
-      "DAR": 4,
+      "DAR": 1,
       "HOL": 1,
-      "ICE": 3,
-      "LIG": 3,
-      "FLA": 3
+      "ICE": 1,
+      "LIG": 1,
+      "FLA": 1
     },
-    "Level": 50,
+    "Level": 70,
     "ExperienceLevel1": 24,
     "ExperienceLevel99": 288,
     "AttackDamageMultiplier": [
@@ -4336,12 +4336,12 @@
   },
   "Orobourous": {
     "HealthLevel1": 200,
-    "HealthLevel99": 6000,
-    "ContactDamageLevel1": 50,
-    "ContactDamageLevel99": 450,
+    "HealthLevel99": 3000,
+    "ContactDamageLevel1": 100,
+    "ContactDamageLevel99": 300,
     "ContactDamageType": "0x0022",
-    "DefenseLevel1": 2,
-    "DefenseLevel99": 200,
+    "DefenseLevel1": 1,
+    "DefenseLevel99": 20,
     "Surface": "0x0023",
     "Resistances": {
       "HIT": 2,
@@ -4356,12 +4356,12 @@
       "LIG": 1,
       "FLA": 0
     },
-    "Level": 39,
+    "Level": 60,
     "ExperienceLevel1": 6,
     "ExperienceLevel99": 88,
     "AttackDamageMultiplier": [
       1.0,
-      1.0
+      1.1
     ],
     "AttackDamageType": [
       "0x0022",
@@ -4373,12 +4373,12 @@
   },
   "Dragon Rider": {
     "HealthLevel1": 200,
-    "HealthLevel99": 6000,
-    "ContactDamageLevel1": 50,
-    "ContactDamageLevel99": 450,
+    "HealthLevel99": 3000,
+    "ContactDamageLevel1": 100,
+    "ContactDamageLevel99": 300,
     "ContactDamageType": "0x0022",
-    "DefenseLevel1": 2,
-    "DefenseLevel99": 200,
+    "DefenseLevel1": 1,
+    "DefenseLevel99": 20,
     "Surface": "0x0023",
     "Resistances": {
       "HIT": 1,
@@ -4393,11 +4393,11 @@
       "LIG": 1,
       "FLA": 0
     },
-    "Level": 39,
+    "Level": 60,
     "ExperienceLevel1": 6,
     "ExperienceLevel99": 88,
     "AttackDamageMultiplier": [
-      1.0
+      1.1
     ],
     "AttackDamageType": [
       "0x0022"
@@ -4407,13 +4407,13 @@
     "IsBoss": false
   },
   "Warg Rider": {
-    "HealthLevel1": 200,
-    "HealthLevel99": 6000,
-    "ContactDamageLevel1": 50,
-    "ContactDamageLevel99": 450,
+    "HealthLevel1": 3000,
+    "HealthLevel99": 3000,
+    "ContactDamageLevel1": 100,
+    "ContactDamageLevel99": 300,
     "ContactDamageType": "0x0022",
-    "DefenseLevel1": 2,
-    "DefenseLevel99": 200,
+    "DefenseLevel1": 1,
+    "DefenseLevel99": 20,
     "Surface": "0x0023",
     "Resistances": {
       "HIT": 2,
@@ -4428,11 +4428,11 @@
       "LIG": 0,
       "FLA": 2
     },
-    "Level": 40,
+    "Level": 60,
     "ExperienceLevel1": 15,
     "ExperienceLevel99": 177,
     "AttackDamageMultiplier": [
-      1.25
+      1.15
     ],
     "AttackDamageType": [
       "0x0043"
@@ -4442,13 +4442,13 @@
     "IsBoss": false
   },
   "Fire Warg": {
-    "HealthLevel1": 500,
-    "HealthLevel99": 6000,
-    "ContactDamageLevel1": 50,
-    "ContactDamageLevel99": 450,
+    "HealthLevel1": 4500,
+    "HealthLevel99": 4500,
+    "ContactDamageLevel1": 100,
+    "ContactDamageLevel99": 300,
     "ContactDamageType": "0x0022",
-    "DefenseLevel1": 2,
-    "DefenseLevel99": 200,
+    "DefenseLevel1": 1,
+    "DefenseLevel99": 20,
     "Surface": "0x0033",
     "Resistances": {
       "HIT": 2,
@@ -4463,11 +4463,11 @@
       "LIG": 2,
       "FLA": 4
     },
-    "Level": 41,
+    "Level": 61,
     "ExperienceLevel1": 24,
     "ExperienceLevel99": 288,
     "AttackDamageMultiplier": [
-      1.25,
+      1.15,
       1.25
     ],
     "AttackDamageType": [
@@ -4481,8 +4481,8 @@
   "Dodo Bird": {
     "HealthLevel1": 10,
     "HealthLevel99": 10,
-    "ContactDamageLevel1": 50,
-    "ContactDamageLevel99": 450,
+    "ContactDamageLevel1": 100,
+    "ContactDamageLevel99": 300,
     "ContactDamageType": "0x0022",
     "DefenseLevel1": 5000,
     "DefenseLevel99": 5000,
@@ -4500,7 +4500,7 @@
       "LIG": 1,
       "FLA": 1
     },
-    "Level": 44,
+    "Level": 66,
     "ExperienceLevel1": 0,
     "ExperienceLevel99": 0,
     "AttackDamageMultiplier": [],
@@ -4510,13 +4510,13 @@
     "IsBoss": false
   },
   "Cave Troll": {
-    "HealthLevel1": 150,
-    "HealthLevel99": 6000,
-    "ContactDamageLevel1": 50,
-    "ContactDamageLevel99": 450,
+    "HealthLevel1": 1500,
+    "HealthLevel99": 3000,
+    "ContactDamageLevel1": 100,
+    "ContactDamageLevel99": 300,
     "ContactDamageType": "0x0022",
-    "DefenseLevel1": 2,
-    "DefenseLevel99": 200,
+    "DefenseLevel1": 1,
+    "DefenseLevel99": 20,
     "Surface": "0x0033",
     "Resistances": {
       "HIT": 2,
@@ -4531,12 +4531,12 @@
       "LIG": 0,
       "FLA": 2
     },
-    "Level": 41,
+    "Level": 61,
     "ExperienceLevel1": 15,
     "ExperienceLevel99": 177,
     "AttackDamageMultiplier": [
-      1.25,
-      1.5
+      1.15,
+      1.25
     ],
     "AttackDamageType": [
       "0x0023",
@@ -4548,12 +4548,12 @@
   },
   "Dark Octopus": {
     "HealthLevel1": 200,
-    "HealthLevel99": 6000,
-    "ContactDamageLevel1": 50,
-    "ContactDamageLevel99": 450,
+    "HealthLevel99": 3000,
+    "ContactDamageLevel1": 100,
+    "ContactDamageLevel99": 300,
     "ContactDamageType": "0x0022",
-    "DefenseLevel1": 2,
-    "DefenseLevel99": 200,
+    "DefenseLevel1": 1,
+    "DefenseLevel99": 20,
     "Surface": "0x0033",
     "Resistances": {
       "HIT": 2,
@@ -4568,7 +4568,7 @@
       "LIG": 0,
       "FLA": 2
     },
-    "Level": 40,
+    "Level": 60,
     "ExperienceLevel1": 6,
     "ExperienceLevel99": 88,
     "AttackDamageMultiplier": [
@@ -4582,13 +4582,13 @@
     "IsBoss": false
   },
   "Rock Knight": {
-    "HealthLevel1": 300,
-    "HealthLevel99": 6000,
-    "ContactDamageLevel1": 50,
-    "ContactDamageLevel99": 450,
+    "HealthLevel1": 1300,
+    "HealthLevel99": 8000,
+    "ContactDamageLevel1": 100,
+    "ContactDamageLevel99": 300,
     "ContactDamageType": "0x0022",
-    "DefenseLevel1": 10,
-    "DefenseLevel99": 200,
+    "DefenseLevel1": 99,
+    "DefenseLevel99": 99,
     "Surface": "0x0023",
     "Resistances": {
       "HIT": 1,
@@ -4603,7 +4603,7 @@
       "LIG": 0,
       "FLA": 3
     },
-    "Level": 42,
+    "Level": 62,
     "ExperienceLevel1": 9,
     "ExperienceLevel99": 111,
     "AttackDamageMultiplier": [
@@ -4617,13 +4617,13 @@
     "IsBoss": false
   },
   "Blue Venus Weed Unflowered": {
-    "HealthLevel1": 500,
-    "HealthLevel99": 6000,
-    "ContactDamageLevel1": 50,
-    "ContactDamageLevel99": 450,
+    "HealthLevel1": 4000,
+    "HealthLevel99": 4000,
+    "ContactDamageLevel1": 100,
+    "ContactDamageLevel99": 300,
     "ContactDamageType": "0x0022",
     "DefenseLevel1": 10,
-    "DefenseLevel99": 200,
+    "DefenseLevel99": 20,
     "Surface": "0x0023",
     "Resistances": {
       "HIT": 1,
@@ -4638,7 +4638,7 @@
       "LIG": 2,
       "FLA": 0
     },
-    "Level": 43,
+    "Level": 63,
     "ExperienceLevel1": 39,
     "ExperienceLevel99": 444,
     "AttackDamageMultiplier": [],
@@ -4648,13 +4648,13 @@
     "IsBoss": false
   },
   "Blue Venus Weed Flowered": {
-    "HealthLevel1": 600,
-    "HealthLevel99": 6000,
-    "ContactDamageLevel1": 50,
-    "ContactDamageLevel99": 450,
+    "HealthLevel1": 4000,
+    "HealthLevel99": 4000,
+    "ContactDamageLevel1": 100,
+    "ContactDamageLevel99": 300,
     "ContactDamageType": "0x0022",
     "DefenseLevel1": 10,
-    "DefenseLevel99": 200,
+    "DefenseLevel99": 20,
     "Surface": "0x0023",
     "Resistances": {
       "HIT": 1,
@@ -4669,12 +4669,12 @@
       "LIG": 2,
       "FLA": 0
     },
-    "Level": 43,
+    "Level": 63,
     "ExperienceLevel1": 39,
     "ExperienceLevel99": 444,
     "AttackDamageMultiplier": [
-      1.25,
-      1.25
+      1.10,
+      1.15
     ],
     "AttackDamageType": [
       "0x0043",
@@ -4686,12 +4686,12 @@
   },
   "Salome": {
     "HealthLevel1": 300,
-    "HealthLevel99": 6000,
-    "ContactDamageLevel1": 50,
-    "ContactDamageLevel99": 450,
+    "HealthLevel99": 4000,
+    "ContactDamageLevel1": 100,
+    "ContactDamageLevel99": 300,
     "ContactDamageType": "0x0022",
-    "DefenseLevel1": 2,
-    "DefenseLevel99": 200,
+    "DefenseLevel1": 1,
+    "DefenseLevel99": 20,
     "Surface": "0x0023",
     "Resistances": {
       "HIT": 1,
@@ -4706,13 +4706,13 @@
       "LIG": 2,
       "FLA": 2
     },
-    "Level": 45,
+    "Level": 69,
     "ExperienceLevel1": 15,
     "ExperienceLevel99": 177,
     "AttackDamageMultiplier": [
-      1.25,
-      1.25,
-      1.25
+      1.15,
+      1.05,
+      1.2
     ],
     "AttackDamageType": [
       "0x1003",
@@ -4724,13 +4724,13 @@
     "IsBoss": false
   },
   "Frozen Half": {
-    "HealthLevel1": 800,
-    "HealthLevel99": 6000,
-    "ContactDamageLevel1": 50,
-    "ContactDamageLevel99": 450,
+    "HealthLevel1": 1800,
+    "HealthLevel99": 4000,
+    "ContactDamageLevel1": 100,
+    "ContactDamageLevel99": 300,
     "ContactDamageType": "0x2002",
-    "DefenseLevel1": 2,
-    "DefenseLevel99": 200,
+    "DefenseLevel1": 1,
+    "DefenseLevel99": 20,
     "Surface": "0x0023",
     "Resistances": {
       "HIT": 1,
@@ -4745,7 +4745,7 @@
       "LIG": 2,
       "FLA": 0
     },
-    "Level": 48,
+    "Level": 75,
     "ExperienceLevel1": 60,
     "ExperienceLevel99": 666,
     "AttackDamageMultiplier": [
@@ -4765,11 +4765,11 @@
   "Doppleganger 1": {
     "HealthLevel1": 1000,
     "HealthLevel99": 9999,
-    "ContactDamageLevel1": 50,
+    "ContactDamageLevel1": 100,
     "ContactDamageLevel99": 450,
     "ContactDamageType": "0x0022",
     "DefenseLevel1": 10,
-    "DefenseLevel99": 200,
+    "DefenseLevel99": 20,
     "Surface": "0x0033",
     "Resistances": {
       "HIT": 1,
@@ -4808,11 +4808,11 @@
   "Scylla": {
     "HealthLevel1": 5000,
     "HealthLevel99": 30000,
-    "ContactDamageLevel1": 50,
+    "ContactDamageLevel1": 100,
     "ContactDamageLevel99": 450,
     "ContactDamageType": "0x0022",
-    "DefenseLevel1": 2,
-    "DefenseLevel99": 200,
+    "DefenseLevel1": 1,
+    "DefenseLevel99": 20,
     "Surface": "0x0023",
     "Resistances": {
       "HIT": 2,
@@ -4853,11 +4853,11 @@
   "Scylla Wyrm": {
     "HealthLevel1": 2500,
     "HealthLevel99": 30000,
-    "ContactDamageLevel1": 50,
+    "ContactDamageLevel1": 100,
     "ContactDamageLevel99": 450,
     "ContactDamageType": "0x0022",
-    "DefenseLevel1": 2,
-    "DefenseLevel99": 200,
+    "DefenseLevel1": 1,
+    "DefenseLevel99": 20,
     "Surface": "0x0023",
     "Resistances": {
       "HIT": 1,
@@ -4884,14 +4884,14 @@
   "Hippogryph": {
     "HealthLevel1": 5000,
     "HealthLevel99": 30000,
-    "ContactDamageLevel1": 50,
+    "ContactDamageLevel1": 100,
     "ContactDamageLevel99": 450,
     "ContactDamageType": "0x0022",
-    "DefenseLevel1": 2,
-    "DefenseLevel99": 200,
+    "DefenseLevel1": 1,
+    "DefenseLevel99": 20,
     "Surface": "0x0023",
     "Resistances": {
-      "HIT": 1,
+      "HIT": 2,
       "CUT": 1,
       "POI": 1,
       "CUR": 1,
@@ -4919,10 +4919,10 @@
   "Hippogryph Babies": {
     "HealthLevel1": 400,
     "HealthLevel99": 400,
-    "ContactDamageLevel1": 50,
+    "ContactDamageLevel1": 100,
     "ContactDamageLevel99": 450,
     "ContactDamageType": "0x0022",
-    "DefenseLevel1": 2,
+    "DefenseLevel1": 1,
     "DefenseLevel99": 5,
     "Surface": "0x0023",
     "Resistances": {
@@ -4948,26 +4948,26 @@
     "IsBoss": true
   },
   "Orlox 1": {
-    "HealthLevel1": 5000,
+    "HealthLevel1": 2000,
     "HealthLevel99": 30000,
-    "ContactDamageLevel1": 50,
+    "ContactDamageLevel1": 100,
     "ContactDamageLevel99": 450,
     "ContactDamageType": "0x0022",
     "DefenseLevel1": 10,
-    "DefenseLevel99": 200,
+    "DefenseLevel99": 20,
     "Surface": "0x0023",
     "Resistances": {
-      "HIT": 1,
+      "HIT": 2,
       "CUT": 1,
-      "POI": 1,
-      "CUR": 1,
-      "STO": 1,
+      "POI": 2,
+      "CUR": 2,
+      "STO": 2,
       "WAT": 1,
       "DAR": 2,
-      "HOL": 0,
-      "ICE": 1,
-      "LIG": 1,
-      "FLA": 1
+      "HOL": 1,
+      "ICE": 2,
+      "LIG": 2,
+      "FLA": 2
     },
     "Level": 36,
     "ExperienceLevel1": 0,
@@ -4991,24 +4991,24 @@
   "Orlox 2": {
     "HealthLevel1": 5000,
     "HealthLevel99": 30000,
-    "ContactDamageLevel1": 50,
+    "ContactDamageLevel1": 100,
     "ContactDamageLevel99": 450,
     "ContactDamageType": "0x0022",
-    "DefenseLevel1": 2,
-    "DefenseLevel99": 200,
+    "DefenseLevel1": 1,
+    "DefenseLevel99": 20,
     "Surface": "0x0023",
     "Resistances": {
       "HIT": 2,
       "CUT": 1,
-      "POI": 1,
-      "CUR": 1,
-      "STO": 1,
-      "WAT": 1,
+      "POI": 2,
+      "CUR": 2,
+      "STO": 2,
+      "WAT": 2,
       "DAR": 2,
-      "HOL": 0,
-      "ICE": 1,
-      "LIG": 1,
-      "FLA": 1
+      "HOL": 1,
+      "ICE": 2,
+      "LIG": 2,
+      "FLA": 2
     },
     "Level": 23,
     "ExperienceLevel1": 297,
@@ -5028,11 +5028,11 @@
   "Orlox 2 Part 1": {
     "HealthLevel1": 32767,
     "HealthLevel99": 32767,
-    "ContactDamageLevel1": 50,
+    "ContactDamageLevel1": 100,
     "ContactDamageLevel99": 450,
     "ContactDamageType": "0x0022",
-    "DefenseLevel1": 2,
-    "DefenseLevel99": 200,
+    "DefenseLevel1": 1,
+    "DefenseLevel99": 20,
     "Surface": "0x0023",
     "Resistances": {
       "HIT": 2,
@@ -5042,7 +5042,7 @@
       "STO": 1,
       "WAT": 1,
       "DAR": 2,
-      "HOL": 0,
+      "HOL": 1,
       "ICE": 1,
       "LIG": 1,
       "FLA": 1
@@ -5059,11 +5059,11 @@
   "Orlox 2 Part 2": {
     "HealthLevel1": 32767,
     "HealthLevel99": 32767,
-    "ContactDamageLevel1": 50,
+    "ContactDamageLevel1": 100,
     "ContactDamageLevel99": 450,
     "ContactDamageType": "0x0022",
-    "DefenseLevel1": 2,
-    "DefenseLevel99": 200,
+    "DefenseLevel1": 1,
+    "DefenseLevel99": 20,
     "Surface": "0x0023",
     "Resistances": {
       "HIT": 2,
@@ -5073,7 +5073,7 @@
       "STO": 1,
       "WAT": 1,
       "DAR": 2,
-      "HOL": 0,
+      "HOL": 1,
       "ICE": 1,
       "LIG": 1,
       "FLA": 1
@@ -5090,11 +5090,11 @@
   "Orlox 2 Part 3": {
     "HealthLevel1": 32767,
     "HealthLevel99": 32767,
-    "ContactDamageLevel1": 50,
+    "ContactDamageLevel1": 100,
     "ContactDamageLevel99": 450,
     "ContactDamageType": "0x0022",
-    "DefenseLevel1": 2,
-    "DefenseLevel99": 200,
+    "DefenseLevel1": 1,
+    "DefenseLevel99": 20,
     "Surface": "0x0023",
     "Resistances": {
       "HIT": 2,
@@ -5104,7 +5104,7 @@
       "STO": 1,
       "WAT": 1,
       "DAR": 2,
-      "HOL": 0,
+      "HOL": 1,
       "ICE": 1,
       "LIG": 1,
       "FLA": 1
@@ -5119,32 +5119,32 @@
     "IsBoss": true
   },
   "Cerberus": {
-    "HealthLevel1": 5000,
+    "HealthLevel1": 15000,
     "HealthLevel99": 30000,
-    "ContactDamageLevel1": 50,
+    "ContactDamageLevel1": 100,
     "ContactDamageLevel99": 450,
     "ContactDamageType": "0x0022",
-    "DefenseLevel1": 2,
-    "DefenseLevel99": 200,
+    "DefenseLevel1": 1,
+    "DefenseLevel99": 20,
     "Surface": "0x0023",
     "Resistances": {
-      "HIT": 1,
+      "HIT": 2,
       "CUT": 1,
-      "POI": 1,
-      "CUR": 1,
-      "STO": 1,
-      "WAT": 0,
-      "DAR": 1,
+      "POI": 2,
+      "CUR": 2,
+      "STO": 2,
+      "WAT": 1,
+      "DAR": 2,
       "HOL": 1,
-      "ICE": 0,
-      "LIG": 1,
+      "ICE": 1,
+      "LIG": 2,
       "FLA": 4
     },
-    "Level": 22,
+    "Level": 24,
     "ExperienceLevel1": 159,
     "ExperienceLevel99": 1777,
     "AttackDamageMultiplier": [
-      1.25,
+      1.35,
       1.5
     ],
     "AttackDamageType": [
@@ -5157,27 +5157,27 @@
   },
   "Granfaloon": {
     "HealthLevel1": 15000,
-    "HealthLevel99": 30000,
-    "ContactDamageLevel1": 50,
+    "HealthLevel99": 50000,
+    "ContactDamageLevel1": 100,
     "ContactDamageLevel99": 450,
     "ContactDamageType": "0x0022",
-    "DefenseLevel1": 2,
-    "DefenseLevel99": 200,
+    "DefenseLevel1": 1,
+    "DefenseLevel99": 20,
     "Surface": "0x0023",
     "Resistances": {
       "HIT": 2,
       "CUT": 0,
-      "POI": 1,
-      "CUR": 1,
-      "STO": 1,
+      "POI": 2,
+      "CUR": 2,
+      "STO": 2,
       "WAT": 1,
       "DAR": 1,
       "HOL": 1,
       "ICE": 1,
       "LIG": 1,
-      "FLA": 1
+      "FLA": 2
     },
-    "Level": 25,
+    "Level": 26,
     "ExperienceLevel1": 198,
     "ExperienceLevel99": 2222,
     "AttackDamageMultiplier": [
@@ -5193,11 +5193,11 @@
   "Granfaloon Part": {
     "HealthLevel1": 10,
     "HealthLevel99": 10,
-    "ContactDamageLevel1": 50,
+    "ContactDamageLevel1": 100,
     "ContactDamageLevel99": 450,
     "ContactDamageType": "0x0022",
     "DefenseLevel1": 10,
-    "DefenseLevel99": 200,
+    "DefenseLevel99": 20,
     "Surface": "0x0023",
     "Resistances": {
       "HIT": 2,
@@ -5226,26 +5226,26 @@
     "IsBoss": true
   },
   "Succubus": {
-    "HealthLevel1": 5000,
+    "HealthLevel1": 15000,
     "HealthLevel99": 30000,
-    "ContactDamageLevel1": 50,
+    "ContactDamageLevel1": 100,
     "ContactDamageLevel99": 450,
     "ContactDamageType": "0x0022",
     "DefenseLevel1": 10,
-    "DefenseLevel99": 200,
+    "DefenseLevel99": 20,
     "Surface": "0x0023",
     "Resistances": {
       "HIT": 2,
       "CUT": 1,
       "POI": 0,
-      "CUR": 1,
-      "STO": 1,
+      "CUR": 2,
+      "STO": 2,
       "WAT": 1,
       "DAR": 2,
-      "HOL": 0,
-      "ICE": 1,
-      "LIG": 1,
-      "FLA": 1
+      "HOL": 1,
+      "ICE": 2,
+      "LIG": 2,
+      "FLA": 2
     },
     "Level": 28,
     "ExperienceLevel1": 159,
@@ -5272,23 +5272,23 @@
     "HealthLevel1": 15000,
     "HealthLevel99": 30000,
     "ContactDamageLevel1": 255,
-    "ContactDamageLevel99": 255,
+    "ContactDamageLevel99": 300,
     "ContactDamageType": "0x0022",
     "DefenseLevel1": 10,
-    "DefenseLevel99": 200,
+    "DefenseLevel99": 20,
     "Surface": "0x0033",
     "Resistances": {
-      "HIT": 1,
+      "HIT": 2,
       "CUT": 1,
-      "POI": 1,
-      "CUR": 1,
-      "STO": 1,
-      "WAT": 1,
-      "DAR": 0,
+      "POI": 2,
+      "CUR": 2,
+      "STO": 2,
+      "WAT": 2,
+      "DAR": 1,
       "HOL": 2,
-      "ICE": 1,
-      "LIG": 1,
-      "FLA": 1
+      "ICE": 2,
+      "LIG": 2,
+      "FLA": 2
     },
     "Level": 50,
     "ExperienceLevel1": 0,
@@ -5336,11 +5336,11 @@
   "Shaft Orb": {
     "HealthLevel1": 5000,
     "HealthLevel99": 30000,
-    "ContactDamageLevel1": 50,
-    "ContactDamageLevel99": 450,
+    "ContactDamageLevel1": 100,
+    "ContactDamageLevel99": 355,
     "ContactDamageType": "0x0022",
     "DefenseLevel1": 3,
-    "DefenseLevel99": 200,
+    "DefenseLevel99": 20,
     "Surface": "0x0002",
     "Resistances": {
       "HIT": 1,
@@ -5366,12 +5366,12 @@
   },
   "Darkwing Bat": {
     "HealthLevel1": 10000,
-    "HealthLevel99": 40000,
-    "ContactDamageLevel1": 50,
-    "ContactDamageLevel99": 450,
+    "HealthLevel99": 30000,
+    "ContactDamageLevel1": 100,
+    "ContactDamageLevel99": 355,
     "ContactDamageType": "0x0022",
     "DefenseLevel1": 10,
-    "DefenseLevel99": 200,
+    "DefenseLevel99": 20,
     "Surface": "0x0023",
     "Resistances": {
       "HIT": 1,
@@ -5384,9 +5384,9 @@
       "HOL": 1,
       "ICE": 1,
       "LIG": 1,
-      "FLA": 0
+      "FLA": 1
     },
-    "Level": 32,
+    "Level": 42,
     "ExperienceLevel1": 159,
     "ExperienceLevel99": 1777,
     "AttackDamageMultiplier": [
@@ -5406,31 +5406,31 @@
   "Medusa": {
     "HealthLevel1": 10000,
     "HealthLevel99": 40000,
-    "ContactDamageLevel1": 50,
-    "ContactDamageLevel99": 450,
+    "ContactDamageLevel1": 100,
+    "ContactDamageLevel99": 355,
     "ContactDamageType": "0x0022",
-    "DefenseLevel1": 2,
-    "DefenseLevel99": 200,
+    "DefenseLevel1": 1,
+    "DefenseLevel99": 20,
     "Surface": "0x0023",
     "Resistances": {
       "HIT": 2,
       "CUT": 1,
-      "POI": 1,
-      "CUR": 1,
+      "POI": 2,
+      "CUR": 2,
       "STO": 4,
-      "WAT": 0,
-      "DAR": 1,
+      "WAT": 1,
+      "DAR": 2,
       "HOL": 1,
       "ICE": 1,
-      "LIG": 1,
-      "FLA": 1
+      "LIG": 2,
+      "FLA": 2
     },
-    "Level": 35,
+    "Level": 45,
     "ExperienceLevel1": 159,
     "ExperienceLevel99": 1777,
     "AttackDamageMultiplier": [
-      1.25,
-      1.25,
+      1.45,
+      1.45,
       1.5
     ],
     "AttackDamageType": [
@@ -5445,26 +5445,26 @@
   "The Creature": {
    "HealthLevel1": 10000,
     "HealthLevel99": 40000,
-    "ContactDamageLevel1": 50,
-    "ContactDamageLevel99": 450,
+    "ContactDamageLevel1": 100,
+    "ContactDamageLevel99": 355,
     "ContactDamageType": "0x0022",
     "DefenseLevel1": 10,
-    "DefenseLevel99": 200,
+    "DefenseLevel99": 20,
     "Surface": "0x0023",
     "Resistances": {
       "HIT": 1,
       "CUT": 1,
       "POI": 1,
-      "CUR": 1,
-      "STO": 1,
-      "WAT": 1,
-      "DAR": 1,
-      "HOL": 1,
-      "ICE": 0,
+      "CUR": 2,
+      "STO": 2,
+      "WAT": 2,
+      "DAR": 2,
+      "HOL": 2,
+      "ICE": 1,
       "LIG": 3,
       "FLA": 2
     },
-    "Level": 35,
+    "Level": 46,
     "ExperienceLevel1": 159,
     "ExperienceLevel99": 1777,
     "AttackDamageMultiplier": [
@@ -5480,26 +5480,26 @@
   "Akmodan": {
     "HealthLevel1": 30000,
     "HealthLevel99": 50000,
-    "ContactDamageLevel1": 50,
-    "ContactDamageLevel99": 450,
+    "ContactDamageLevel1": 100,
+    "ContactDamageLevel99": 355,
     "ContactDamageType": "0x0022",
     "DefenseLevel1": 10,
-    "DefenseLevel99": 200,
+    "DefenseLevel99": 20,
     "Surface": "0x0023",
     "Resistances": {
       "HIT": 2,
       "CUT": 1,
       "POI": 4,
       "CUR": 1,
-      "STO": 1,
+      "STO": 2,
       "WAT": 1,
       "DAR": 2,
       "HOL": 1,
-      "ICE": 1,
-      "LIG": 1,
-      "FLA": 0
+      "ICE": 2,
+      "LIG": 2,
+      "FLA": 1
     },
-    "Level": 37,
+    "Level": 57,
     "ExperienceLevel1": 159,
     "ExperienceLevel99": 1777,
     "AttackDamageMultiplier": [
@@ -5519,26 +5519,26 @@
   "Fake Trevor": {
     "HealthLevel1": 10000,
     "HealthLevel99": 40000,
-    "ContactDamageLevel1": 50,
-    "ContactDamageLevel99": 450,
+    "ContactDamageLevel1": 100,
+    "ContactDamageLevel99": 355,
     "ContactDamageType": "0x0022",
     "DefenseLevel1": 3,
-    "DefenseLevel99": 200,
+    "DefenseLevel99": 20,
     "Surface": "0x0023",
     "Resistances": {
       "HIT": 1,
       "CUT": 1,
-      "POI": 1,
-      "CUR": 1,
+      "POI": 0,
+      "CUR": 0,
       "STO": 1,
       "WAT": 1,
       "DAR": 2,
-      "HOL": 0,
+      "HOL": 1,
       "ICE": 1,
       "LIG": 1,
       "FLA": 1
     },
-    "Level": 38,
+    "Level": 58,
     "ExperienceLevel1": 99,
     "ExperienceLevel99": 1111,
     "AttackDamageMultiplier": [
@@ -5562,11 +5562,11 @@
   "Zombie Trevor": {
     "HealthLevel1": 1200,
     "HealthLevel99": 1200,
-    "ContactDamageLevel1": 50,
-    "ContactDamageLevel99": 450,
+    "ContactDamageLevel1": 100,
+    "ContactDamageLevel99": 355,
     "ContactDamageType": "0x0802",
-    "DefenseLevel1": 2,
-    "DefenseLevel99": 200,
+    "DefenseLevel1": 1,
+    "DefenseLevel99": 20,
     "Surface": "0x0023",
     "Resistances": {
       "HIT": 1,
@@ -5581,7 +5581,7 @@
       "LIG": 1,
       "FLA": 1
     },
-    "Level": 38,
+    "Level": 58,
     "ExperienceLevel1": 0,
     "ExperienceLevel99": 0,
     "AttackDamageMultiplier": [],
@@ -5593,26 +5593,26 @@
   "Fake Grant": {
     "HealthLevel1": 10000,
     "HealthLevel99": 40000,
-    "ContactDamageLevel1": 50,
-    "ContactDamageLevel99": 450,
+    "ContactDamageLevel1": 100,
+    "ContactDamageLevel99": 355,
     "ContactDamageType": "0x0022",
     "DefenseLevel1": 10,
-    "DefenseLevel99": 200,
+    "DefenseLevel99": 20,
     "Surface": "0x0023",
     "Resistances": {
       "HIT": 2,
       "CUT": 1,
-      "POI": 1,
-      "CUR": 1,
+      "POI": 0,
+      "CUR": 0,
       "STO": 1,
       "WAT": 1,
       "DAR": 1,
       "HOL": 1,
-      "ICE": 0,
+      "ICE": 1,
       "LIG": 1,
-      "FLA": 0
+      "FLA": 1
     },
-    "Level": 38,
+    "Level": 58,
     "ExperienceLevel1": 99,
     "ExperienceLevel99": 1111,
     "AttackDamageMultiplier": [
@@ -5630,11 +5630,11 @@
   "Fake Sypha": {
     "HealthLevel1": 10000,
     "HealthLevel99": 40000,
-    "ContactDamageLevel1": 50,
-    "ContactDamageLevel99": 450,
+    "ContactDamageLevel1": 100,
+    "ContactDamageLevel99": 355,
     "ContactDamageType": "0x0022",
-    "DefenseLevel1": 2,
-    "DefenseLevel99": 200,
+    "DefenseLevel1": 1,
+    "DefenseLevel99": 20,
     "Surface": "0x0023",
     "Resistances": {
       "HIT": 1,
@@ -5649,7 +5649,7 @@
       "LIG": 2,
       "FLA": 2
     },
-    "Level": 38,
+    "Level": 58,
     "ExperienceLevel1": 99,
     "ExperienceLevel99": 1111,
     "AttackDamageMultiplier": [
@@ -5669,11 +5669,11 @@
   "Beezelbub": {
     "HealthLevel1": 40000,
     "HealthLevel99": 40000,
-    "ContactDamageLevel1": 50,
-    "ContactDamageLevel99": 450,
+    "ContactDamageLevel1": 100,
+    "ContactDamageLevel99": 355,
     "ContactDamageType": "0x0802",
-    "DefenseLevel1": 2,
-    "DefenseLevel99": 200,
+    "DefenseLevel1": 1,
+    "DefenseLevel99": 20,
     "Surface": "0x0023",
     "Resistances": {
       "HIT": 1,
@@ -5683,12 +5683,12 @@
       "STO": 1,
       "WAT": 1,
       "DAR": 4,
-      "HOL": 0,
+      "HOL": 1,
       "ICE": 1,
       "LIG": 1,
       "FLA": 1
     },
-    "Level": 42,
+    "Level": 62,
     "ExperienceLevel1": 198,
     "ExperienceLevel99": 2222,
     "AttackDamageMultiplier": [
@@ -5704,11 +5704,11 @@
   "Beezelbub Flies": {
     "HealthLevel1": 500,
     "HealthLevel99": 500,
-    "ContactDamageLevel1": 50,
-    "ContactDamageLevel99": 450,
+    "ContactDamageLevel1": 100,
+    "ContactDamageLevel99": 355,
     "ContactDamageType": "0x0022",
-    "DefenseLevel1": 2,
-    "DefenseLevel99": 200,
+    "DefenseLevel1": 1,
+    "DefenseLevel99": 20,
     "Surface": "0x0023",
     "Resistances": {
       "HIT": 2,
@@ -5723,7 +5723,7 @@
       "LIG": 1,
       "FLA": 0
     },
-    "Level": 42,
+    "Level": 62,
     "ExperienceLevel1": 0,
     "ExperienceLevel99": 0,
     "AttackDamageMultiplier": [],
@@ -5735,11 +5735,11 @@
   "Doppleganger 2": {
     "HealthLevel1": 10000,
     "HealthLevel99": 40000,
-    "ContactDamageLevel1": 50,
-    "ContactDamageLevel99": 450,
+    "ContactDamageLevel1": 100,
+    "ContactDamageLevel99": 355,
     "ContactDamageType": "0x0022",
     "DefenseLevel1": 10,
-    "DefenseLevel99": 200,
+    "DefenseLevel99": 20,
     "Surface": "0x0033",
     "Resistances": {
       "HIT": 1,
@@ -5754,7 +5754,7 @@
       "LIG": 1,
       "FLA": 1
     },
-    "Level": 40,
+    "Level": 70,
     "ExperienceLevel1": 39,
     "ExperienceLevel99": 444,
     "AttackDamageMultiplier": [
@@ -5778,13 +5778,13 @@
     "IsBoss": true
   },
   "Death 1": {
-    "HealthLevel1": 40000,
-    "HealthLevel99": 40000,
-    "ContactDamageLevel1": 50,
-    "ContactDamageLevel99": 450,
+    "HealthLevel1": 44444,
+    "HealthLevel99": 44444,
+    "ContactDamageLevel1": 100,
+    "ContactDamageLevel99": 355,
     "ContactDamageType": "0x0022",
     "DefenseLevel1": 3,
-    "DefenseLevel99": 200,
+    "DefenseLevel99": 20,
     "Surface": "0x0023",
     "Resistances": {
       "HIT": 2,
@@ -5794,12 +5794,12 @@
       "STO": 1,
       "WAT": 1,
       "DAR": 4,
-      "HOL": 0,
+      "HOL": 1,
       "ICE": 1,
       "LIG": 1,
       "FLA": 1
     },
-    "Level": 44,
+    "Level": 80,
     "ExperienceLevel1": 0,
     "ExperienceLevel99": 0,
     "AttackDamageMultiplier": [
@@ -5819,28 +5819,28 @@
     "IsBoss": true
   },
   "Death 2": {
-    "HealthLevel1": 10000,
-    "HealthLevel99": 40000,
-    "ContactDamageLevel1": 50,
-    "ContactDamageLevel99": 450,
+    "HealthLevel1": 33333,
+    "HealthLevel99": 33333,
+    "ContactDamageLevel1": 100,
+    "ContactDamageLevel99": 355,
     "ContactDamageType": "0x0022",
     "DefenseLevel1": 3,
-    "DefenseLevel99": 200,
+    "DefenseLevel99": 20,
     "Surface": "0x0023",
     "Resistances": {
-      "HIT": 2,
-      "CUT": 2,
+      "HIT": 1,
+      "CUT": 1,
       "POI": 3,
       "CUR": 2,
       "STO": 2,
-      "WAT": 1,
+      "WAT": 2,
       "DAR": 4,
-      "HOL": 1,
-      "ICE": 1,
-      "LIG": 1,
-      "FLA": 1
+      "HOL": 2,
+      "ICE": 2,
+      "LIG": 2,
+      "FLA": 2
     },
-    "Level": 44,
+    "Level": 80,
     "ExperienceLevel1": 297,
     "ExperienceLevel99": 3333,
     "AttackDamageMultiplier": [
@@ -5854,10 +5854,10 @@
     "IsBoss": true
   },
   "Galamoth": {
-    "HealthLevel1": 66666,
-    "HealthLevel99": 66666,
-    "ContactDamageLevel1": 50,
-    "ContactDamageLevel99": 450,
+    "HealthLevel1": 65535,
+    "HealthLevel99": 65535,
+    "ContactDamageLevel1": 100,
+    "ContactDamageLevel99": 355,
     "ContactDamageType": "0x0022",
     "DefenseLevel1": 100,
     "DefenseLevel99": 100,
@@ -5875,7 +5875,7 @@
       "LIG": 4,
       "FLA": 1
     },
-    "Level": 50,
+    "Level": 99,
     "ExperienceLevel1": 300,
     "ExperienceLevel99": 3333,
     "AttackDamageMultiplier": [
@@ -5893,13 +5893,13 @@
     "IsBoss": true
   },
   "Galamoth Head": {
-    "HealthLevel1": 66666,
-    "HealthLevel99": 66666,
-    "ContactDamageLevel1": 50,
-    "ContactDamageLevel99": 450,
+    "HealthLevel1": 65535,
+    "HealthLevel99": 65535,
+    "ContactDamageLevel1": 100,
+    "ContactDamageLevel99": 355,
     "ContactDamageType": "0x0022",
-    "DefenseLevel1": 2,
-    "DefenseLevel99": 200,
+    "DefenseLevel1": 1,
+    "DefenseLevel99": 20,
     "Surface": "0x0023",
     "Resistances": {
       "HIT": 1,
@@ -5914,7 +5914,7 @@
       "LIG": 4,
       "FLA": 1
     },
-    "Level": 50,
+    "Level": 99,
     "ExperienceLevel1": 0,
     "ExperienceLevel99": 0,
     "AttackDamageMultiplier": [],
@@ -5926,8 +5926,8 @@
   "Shaft": {
     "HealthLevel1": 30000,
     "HealthLevel99": 40000,
-    "ContactDamageLevel1": 50,
-    "ContactDamageLevel99": 450,
+    "ContactDamageLevel1": 100,
+    "ContactDamageLevel99": 355,
     "ContactDamageType": "0x0022",
     "DefenseLevel1": 7,
     "DefenseLevel99": 80,
@@ -5942,10 +5942,10 @@
       "DAR": 1,
       "HOL": 1,
       "ICE": 1,
-      "LIG": 1,
-      "FLA": 1
+      "LIG": 2,
+      "FLA": 2
     },
-    "Level": 34,
+    "Level": 85,
     "ExperienceLevel1": 0,
     "ExperienceLevel99": 0,
     "AttackDamageMultiplier": [
@@ -5967,11 +5967,11 @@
   "Dracula": {
     "HealthLevel1": 66666,
     "HealthLevel99": 66666,
-    "ContactDamageLevel1": 50,
-    "ContactDamageLevel99": 450,
+    "ContactDamageLevel1": 100,
+    "ContactDamageLevel99": 355,
     "ContactDamageType": "0x0022",
     "DefenseLevel1": 10,
-    "DefenseLevel99": 200,
+    "DefenseLevel99": 20,
     "Surface": "0x0003",
     "Resistances": {
       "HIT": 1,
@@ -5982,11 +5982,11 @@
       "WAT": 1,
       "DAR": 4,
       "HOL": 1,
-      "ICE": 0,
+      "ICE": 1,
       "LIG": 2,
       "FLA": 2
     },
-    "Level": 66,
+    "Level": 95,
     "ExperienceLevel1": 0,
     "ExperienceLevel99": 0,
     "AttackDamageMultiplier": [
@@ -6006,11 +6006,11 @@
   "Dracula Hands": {
     "HealthLevel1": 32767,
     "HealthLevel99": 32767,
-    "ContactDamageLevel1": 50,
-    "ContactDamageLevel99": 450,
+    "ContactDamageLevel1": 100,
+    "ContactDamageLevel99": 355,
     "ContactDamageType": "0x0025",
     "DefenseLevel1": 10,
-    "DefenseLevel99": 200,
+    "DefenseLevel99": 20,
     "Surface": "0x0003",
     "Resistances": {
       "HIT": 1,
@@ -6021,7 +6021,7 @@
       "WAT": 1,
       "DAR": 4,
       "HOL": 1,
-      "ICE": 0,
+      "ICE": 1,
       "LIG": 2,
       "FLA": 2
     },
