@@ -3297,7 +3297,7 @@
       "LIG": 0,
       "FLA": 2
     },
-    "Level": 37,
+    "Level": 35,
     "ExperienceLevel1": 6,
     "ExperienceLevel99": 88,
     "AttackDamageMultiplier": [
@@ -3447,7 +3447,7 @@
     "IsBoss": false
   },
   "Sniper of Goth": {
-    "HealthLevel1": 2300,
+    "HealthLevel1": 1500,
     "HealthLevel99": 3000,
     "ContactDamageLevel1": 100,
     "ContactDamageLevel99": 300,
@@ -5365,8 +5365,8 @@
     "IsBoss": true
   },
   "Darkwing Bat": {
-    "HealthLevel1": 10000,
-    "HealthLevel99": 30000,
+    "HealthLevel1": 16000,
+    "HealthLevel99":16000,
     "ContactDamageLevel1": 100,
     "ContactDamageLevel99": 355,
     "ContactDamageType": "0x0022",
@@ -5404,8 +5404,8 @@
     "IsBoss": true
   },
   "Medusa": {
-    "HealthLevel1": 10000,
-    "HealthLevel99": 40000,
+    "HealthLevel1": 20000,
+    "HealthLevel99": 20000,
     "ContactDamageLevel1": 100,
     "ContactDamageLevel99": 355,
     "ContactDamageType": "0x0022",
@@ -5443,8 +5443,8 @@
     "IsBoss": true
   },
   "The Creature": {
-   "HealthLevel1": 10000,
-    "HealthLevel99": 40000,
+   "HealthLevel1": 16000,
+    "HealthLevel99": 16000,
     "ContactDamageLevel1": 100,
     "ContactDamageLevel99": 355,
     "ContactDamageType": "0x0022",
@@ -5478,8 +5478,8 @@
     "IsBoss": true
   },
   "Akmodan": {
-    "HealthLevel1": 30000,
-    "HealthLevel99": 50000,
+    "HealthLevel1": 16000,
+    "HealthLevel99": 16000,
     "ContactDamageLevel1": 100,
     "ContactDamageLevel99": 355,
     "ContactDamageType": "0x0022",
@@ -5517,8 +5517,8 @@
     "IsBoss": true
   },
   "Fake Trevor": {
-    "HealthLevel1": 10000,
-    "HealthLevel99": 40000,
+    "HealthLevel1": 12000,
+    "HealthLevel99": 12000,
     "ContactDamageLevel1": 100,
     "ContactDamageLevel99": 355,
     "ContactDamageType": "0x0022",
@@ -5591,8 +5591,8 @@
     "IsBoss": true
   },
   "Fake Grant": {
-    "HealthLevel1": 10000,
-    "HealthLevel99": 40000,
+    "HealthLevel1": 12000,
+    "HealthLevel99": 12000,
     "ContactDamageLevel1": 100,
     "ContactDamageLevel99": 355,
     "ContactDamageType": "0x0022",
@@ -5628,8 +5628,8 @@
     "IsBoss": true
   },
   "Fake Sypha": {
-    "HealthLevel1": 10000,
-    "HealthLevel99": 40000,
+    "HealthLevel1": 12000,
+    "HealthLevel99": 12000,
     "ContactDamageLevel1": 100,
     "ContactDamageLevel99": 355,
     "ContactDamageType": "0x0022",
@@ -5667,13 +5667,13 @@
     "IsBoss": true
   },
   "Beezelbub": {
-    "HealthLevel1": 40000,
-    "HealthLevel99": 40000,
+    "HealthLevel1": 32000,
+    "HealthLevel99": 32000,
     "ContactDamageLevel1": 100,
     "ContactDamageLevel99": 355,
     "ContactDamageType": "0x0802",
-    "DefenseLevel1": 1,
-    "DefenseLevel99": 20,
+    "DefenseLevel1": 0,
+    "DefenseLevel99": 0,
     "Surface": "0x0023",
     "Resistances": {
       "HIT": 1,
@@ -5734,7 +5734,7 @@
   },
   "Doppleganger 2": {
     "HealthLevel1": 10000,
-    "HealthLevel99": 40000,
+    "HealthLevel99": 10000,
     "ContactDamageLevel1": 100,
     "ContactDamageLevel99": 355,
     "ContactDamageType": "0x0022",
@@ -5778,8 +5778,8 @@
     "IsBoss": true
   },
   "Death 1": {
-    "HealthLevel1": 44444,
-    "HealthLevel99": 44444,
+    "HealthLevel1": 32000,
+    "HealthLevel99": 32000,
     "ContactDamageLevel1": 100,
     "ContactDamageLevel99": 355,
     "ContactDamageType": "0x0022",
@@ -5819,8 +5819,8 @@
     "IsBoss": true
   },
   "Death 2": {
-    "HealthLevel1": 33333,
-    "HealthLevel99": 33333,
+    "HealthLevel1": 20000,
+    "HealthLevel99": 20000,
     "ContactDamageLevel1": 100,
     "ContactDamageLevel99": 355,
     "ContactDamageType": "0x0022",
@@ -5854,8 +5854,8 @@
     "IsBoss": true
   },
   "Galamoth": {
-    "HealthLevel1": 65535,
-    "HealthLevel99": 65535,
+    "HealthLevel1": 32000,
+    "HealthLevel99": 32000,
     "ContactDamageLevel1": 100,
     "ContactDamageLevel99": 355,
     "ContactDamageType": "0x0022",
@@ -5893,8 +5893,8 @@
     "IsBoss": true
   },
   "Galamoth Head": {
-    "HealthLevel1": 65535,
-    "HealthLevel99": 65535,
+    "HealthLevel1": 32000,
+    "HealthLevel99": 32000,
     "ContactDamageLevel1": 100,
     "ContactDamageLevel99": 355,
     "ContactDamageType": "0x0022",
@@ -5924,8 +5924,8 @@
     "IsBoss": true
   },
   "Shaft": {
-    "HealthLevel1": 30000,
-    "HealthLevel99": 40000,
+    "HealthLevel1": 15000,
+    "HealthLevel99": 15000,
     "ContactDamageLevel1": 100,
     "ContactDamageLevel99": 355,
     "ContactDamageType": "0x0022",
@@ -5965,13 +5965,13 @@
     "IsBoss": true
   },
   "Dracula": {
-    "HealthLevel1": 66666,
-    "HealthLevel99": 66666,
+    "HealthLevel1": 32000,
+    "HealthLevel99": 32000,
     "ContactDamageLevel1": 100,
     "ContactDamageLevel99": 355,
     "ContactDamageType": "0x0022",
-    "DefenseLevel1": 10,
-    "DefenseLevel99": 20,
+    "DefenseLevel1": 30,
+    "DefenseLevel99": 30,
     "Surface": "0x0003",
     "Resistances": {
       "HIT": 1,
@@ -6025,7 +6025,7 @@
       "LIG": 2,
       "FLA": 2
     },
-    "Level": 66,
+    "Level": 95,
     "ExperienceLevel1": 0,
     "ExperienceLevel99": 0,
     "AttackDamageMultiplier": [],
