@@ -569,10 +569,10 @@
   "Walk Armor": {
     "Attack": 0,
     "Defense": 30,
-    "Strength": -25,
-    "Constitution": -25,
-    "Intelligence": -25,
-    "Luck": -25,
+    "Strength": 0,
+    "Constitution": 0,
+    "Intelligence": 0,
+    "Luck": 0,
     "Resistances": {
       "HIT": 1,
       "CUT": 1,
@@ -823,7 +823,7 @@
     "Defense": 35,
     "Strength": 0,
     "Constitution": 0,
-    "Intelligence": 30,
+    "Intelligence": 50,
     "Luck": 0,
     "Resistances": {
       "HIT": 1,
@@ -1428,8 +1428,8 @@
     }
   },
   "Ring of Ares": {
-    "Attack": 240,
-    "Defense": -240,
+    "Attack": 124,
+    "Defense": -124,
     "Strength": 0,
     "Constitution": 0,
     "Intelligence": 0,

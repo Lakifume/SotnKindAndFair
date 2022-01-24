@@ -219,9 +219,9 @@
       "LIG": 1,
       "FLA": 0
     },
-    "Level": 24,
-    "ExperienceLevel1": 24,
-    "ExperienceLevel99": 288,
+    "Level": 4,
+    "ExperienceLevel1": 1,
+    "ExperienceLevel99": 22,
     "AttackDamageMultiplier": [
       1.25,
       1.0
@@ -338,7 +338,7 @@
   "Bone Scimitar": {
     "HealthLevel1": 170,
     "HealthLevel99": 3000,
-    "ContactDamageLevel1": 100,
+    "ContactDamageLevel1": 50,
     "ContactDamageLevel99": 300,
     "ContactDamageType": "0x0022",
     "DefenseLevel1": 1,
@@ -369,7 +369,7 @@
   "Skeleton": {
     "HealthLevel1": 200,
     "HealthLevel99": 3000,
-    "ContactDamageLevel1": 100,
+    "ContactDamageLevel1": 60,
     "ContactDamageLevel99": 300,
     "ContactDamageType": "0x0022",
     "DefenseLevel1": 1,
@@ -404,7 +404,7 @@
   "Blood Skeleton": {
     "HealthLevel1": 100,
     "HealthLevel99": 3000,
-    "ContactDamageLevel1": 100,
+    "ContactDamageLevel1": 60,
     "ContactDamageLevel99": 300,
     "ContactDamageType": "0x0022",
     "DefenseLevel1": 1,
@@ -435,7 +435,7 @@
   "Spittle Bone": {
     "HealthLevel1": 130,
     "HealthLevel99": 3000,
-    "ContactDamageLevel1": 100,
+    "ContactDamageLevel1": 60,
     "ContactDamageLevel99": 300,
     "ContactDamageType": "0x0022",
     "DefenseLevel1": 1,
@@ -524,7 +524,7 @@
       "LIG": 1,
       "FLA": 1
     },
-    "Level": 8,
+    "Level": 7,
     "ExperienceLevel1": 78,
     "ExperienceLevel99": 888,
     "AttackDamageMultiplier": [
@@ -561,7 +561,7 @@
       "LIG": 1,
       "FLA": 2
     },
-    "Level": 8,
+    "Level": 6,
     "ExperienceLevel1": 78,
     "ExperienceLevel99": 888,
     "AttackDamageMultiplier": [
@@ -610,7 +610,7 @@
   "Ouija Table": {
     "HealthLevel1": 100,
     "HealthLevel99": 3000,
-    "ContactDamageLevel1": 100,
+    "ContactDamageLevel1": 60,
     "ContactDamageLevel99": 300,
     "ContactDamageType": "0x0022",
     "DefenseLevel1": 1,
@@ -645,7 +645,7 @@
   "Slinger": {
     "HealthLevel1": 200,
     "HealthLevel99": 3000,
-    "ContactDamageLevel1": 100,
+    "ContactDamageLevel1": 80,
     "ContactDamageLevel99": 300,
     "ContactDamageType": "0x0022",
     "DefenseLevel1": 1,
@@ -680,7 +680,7 @@
   "Marionette": {
     "HealthLevel1": 200,
     "HealthLevel99": 3000,
-    "ContactDamageLevel1": 100,
+    "ContactDamageLevel1": 80,
     "ContactDamageLevel99": 300,
     "ContactDamageType": "0x0022",
     "DefenseLevel1": 1,
@@ -711,7 +711,7 @@
   "Ghost": {
     "HealthLevel1": 40,
     "HealthLevel99": 3000,
-    "ContactDamageLevel1": 100,
+    "ContactDamageLevel1": 80,
     "ContactDamageLevel99": 300,
     "ContactDamageType": "0x0802",
     "DefenseLevel1": 1,
@@ -742,7 +742,7 @@
   "Flea Man": {
     "HealthLevel1": 40,
     "HealthLevel99": 3000,
-    "ContactDamageLevel1": 100,
+    "ContactDamageLevel1": 80,
     "ContactDamageLevel99": 300,
     "ContactDamageType": "0x0022",
     "DefenseLevel1": 1,
@@ -3311,7 +3311,7 @@
     "IsBoss": false
   },
   "Jack O'Bones": {
-    "HealthLevel1": 1000,
+    "HealthLevel1": 100,
     "HealthLevel99": 3000,
     "ContactDamageLevel1": 100,
     "ContactDamageLevel99": 300,
@@ -3752,7 +3752,7 @@
     "IsBoss": false
   },
   "Scarecrow": {
-    "HealthLevel1": 1190,
+    "HealthLevel1": 300,
     "HealthLevel99": 3000,
     "ContactDamageLevel1": 100,
     "ContactDamageLevel99": 300,
@@ -3783,7 +3783,7 @@
     "IsBoss": false
   },
   "Lion": {
-    "HealthLevel1": 2500,
+    "HealthLevel1": 1500,
     "HealthLevel99": 3000,
     "ContactDamageLevel1": 100,
     "ContactDamageLevel99": 300,
@@ -3818,7 +3818,7 @@
     "IsBoss": false
   },
   "Tin Man": {
-    "HealthLevel1": 1800,
+    "HealthLevel1": 1000,
     "HealthLevel99": 3000,
     "ContactDamageLevel1": 100,
     "ContactDamageLevel99": 300,
@@ -4057,7 +4057,7 @@
     "IsBoss": false
   },
   "Archer": {
-    "HealthLevel1": 1300,
+    "HealthLevel1": 1000,
     "HealthLevel99": 3000,
     "ContactDamageLevel1": 100,
     "ContactDamageLevel99": 300,
@@ -4092,8 +4092,8 @@
     "IsBoss": false
   },
   "Bitterfly": {
-    "HealthLevel1": 200,
-    "HealthLevel99": 3000,
+    "HealthLevel1": 666,
+    "HealthLevel99": 666,
     "ContactDamageLevel1": 100,
     "ContactDamageLevel99": 300,
     "ContactDamageType": "0x0802",
@@ -5803,7 +5803,7 @@
     "ExperienceLevel1": 0,
     "ExperienceLevel99": 0,
     "AttackDamageMultiplier": [
-      0.8,
+      1.1,
       1.4,
       1.0,
       1.2
@@ -5822,7 +5822,7 @@
     "HealthLevel1": 20000,
     "HealthLevel99": 20000,
     "ContactDamageLevel1": 100,
-    "ContactDamageLevel99": 355,
+    "ContactDamageLevel99": 666,
     "ContactDamageType": "0x0022",
     "DefenseLevel1": 3,
     "DefenseLevel99": 20,
@@ -5844,7 +5844,7 @@
     "ExperienceLevel1": 297,
     "ExperienceLevel99": 3333,
     "AttackDamageMultiplier": [
-      1.5
+      1.75
     ],
     "AttackDamageType": [
       "0x0043"

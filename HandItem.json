@@ -2575,7 +2575,7 @@
     "Extra": "0x81"
   },
   "Gram": {
-    "Attack": 218,
+    "Attack": 240,
     "Defense": -12,
     "Element": {
       "HIT": true,
@@ -3500,7 +3500,7 @@
     "Extra": "0x81"
   },
   "Crissaegrim": {
-    "Attack": -300,
+    "Attack": -400,
     "Defense": -30,
     "Element": {
       "HIT": false,
@@ -4050,7 +4050,7 @@
     "Extra": "0x81"
   },
   "Yasutsuna": {
-    "Attack": 10,
+    "Attack": -200,
     "Defense": -150,
     "Element": {
       "HIT": false,
