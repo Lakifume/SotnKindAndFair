@@ -5244,7 +5244,7 @@
     "Special": "0x00",
     "Cooldown": 10,
     "Spell": "0x1000",
-    "ManaCost": 200,
+    "ManaCost": 300,
     "StunFrames": 4,
     "Range": 2,
     "Extra": "0x01"

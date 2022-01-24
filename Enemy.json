@@ -5859,8 +5859,8 @@
     "ContactDamageLevel1": 100,
     "ContactDamageLevel99": 355,
     "ContactDamageType": "0x0022",
-    "DefenseLevel1": 100,
-    "DefenseLevel99": 100,
+    "DefenseLevel1": 256,
+    "DefenseLevel99": 256,
     "Surface": "0x0023",
     "Resistances": {
       "HIT": 1,
@@ -5970,8 +5970,8 @@
     "ContactDamageLevel1": 100,
     "ContactDamageLevel99": 355,
     "ContactDamageType": "0x0022",
-    "DefenseLevel1": 30,
-    "DefenseLevel99": 30,
+    "DefenseLevel1": 10,
+    "DefenseLevel99": 20,
     "Surface": "0x0003",
     "Resistances": {
       "HIT": 1,
@@ -6009,8 +6009,8 @@
     "ContactDamageLevel1": 100,
     "ContactDamageLevel99": 355,
     "ContactDamageType": "0x0025",
-    "DefenseLevel1": 10,
-    "DefenseLevel99": 20,
+    "DefenseLevel1": 256,
+    "DefenseLevel99": 256,
     "Surface": "0x0003",
     "Resistances": {
       "HIT": 1,
