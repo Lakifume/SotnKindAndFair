@@ -169,7 +169,7 @@
   "Zombie": {
     "HealthLevel1": 10,
     "HealthLevel99": 1000,
-    "ContactDamageLevel1": 100,
+    "ContactDamageLevel1": 80,
     "ContactDamageLevel99": 300,
     "ContactDamageType": "0x0022",
     "DefenseLevel1": 1,
@@ -237,7 +237,7 @@
   "Bat": {
     "HealthLevel1": 1,
     "HealthLevel99": 3000,
-    "ContactDamageLevel1": 100,
+    "ContactDamageLevel1": 80,
     "ContactDamageLevel99": 300,
     "ContactDamageType": "0x0022",
     "DefenseLevel1": 1,
@@ -268,7 +268,7 @@
   "Merman 1": {
     "HealthLevel1": 100,
     "HealthLevel99": 3000,
-    "ContactDamageLevel1": 100,
+    "ContactDamageLevel1": 80,
     "ContactDamageLevel99": 300,
     "ContactDamageType": "0x0022",
     "DefenseLevel1": 1,
@@ -303,7 +303,7 @@
   "Merman 2": {
     "HealthLevel1": 50,
     "HealthLevel99": 3000,
-    "ContactDamageLevel1": 100,
+    "ContactDamageLevel1": 80,
     "ContactDamageLevel99": 300,
     "ContactDamageType": "0x0022",
     "DefenseLevel1": 1,
@@ -470,7 +470,7 @@
   "Green Axe Knight": {
     "HealthLevel1": 300,
     "HealthLevel99": 3000,
-    "ContactDamageLevel1": 100,
+    "ContactDamageLevel1": 80,
     "ContactDamageLevel99": 300,
     "ContactDamageType": "0x0022",
     "DefenseLevel1": 20,
@@ -505,7 +505,7 @@
   "Slogra": {
     "HealthLevel1": 2000,
     "HealthLevel99": 4000,
-    "ContactDamageLevel1": 100,
+    "ContactDamageLevel1": 80,
     "ContactDamageLevel99": 450,
     "ContactDamageType": "0x0022",
     "DefenseLevel1": 1,
@@ -542,7 +542,7 @@
   "Gaibon": {
     "HealthLevel1": 1800,
     "HealthLevel99": 4000,
-    "ContactDamageLevel1": 100,
+    "ContactDamageLevel1": 80,
     "ContactDamageLevel99": 450,
     "ContactDamageType": "0x0022",
     "DefenseLevel1": 1,
@@ -579,7 +579,7 @@
   "Bloody Zombie": {
     "HealthLevel1": 200,
     "HealthLevel99": 3000,
-    "ContactDamageLevel1": 100,
+    "ContactDamageLevel1": 80,
     "ContactDamageLevel99": 300,
     "ContactDamageType": "0x0043",
     "DefenseLevel1": 1,
@@ -773,7 +773,7 @@
   "Diplocephalus": {
     "HealthLevel1": 800,
     "HealthLevel99": 3000,
-    "ContactDamageLevel1": 100,
+    "ContactDamageLevel1": 80,
     "ContactDamageLevel99": 300,
     "ContactDamageType": "0x0022",
     "DefenseLevel1": 1,
@@ -812,7 +812,7 @@
   "Stone Rose": {
     "HealthLevel1": 300,
     "HealthLevel99": 3000,
-    "ContactDamageLevel1": 100,
+    "ContactDamageLevel1": 80,
     "ContactDamageLevel99": 300,
     "ContactDamageType": "0x0022",
     "DefenseLevel1": 1,
@@ -849,7 +849,7 @@
   "Medusa head": {
     "HealthLevel1": 30,
     "HealthLevel99": 1000,
-    "ContactDamageLevel1": 100,
+    "ContactDamageLevel1": 80,
     "ContactDamageLevel99": 300,
     "ContactDamageType": "0x0022",
     "DefenseLevel1": 0,
@@ -880,7 +880,7 @@
   "Blue Axe Knight": {
     "HealthLevel1": 250,
     "HealthLevel99": 3000,
-    "ContactDamageLevel1": 100,
+    "ContactDamageLevel1": 80,
     "ContactDamageLevel99": 300,
     "ContactDamageType": "0x0022",
     "DefenseLevel1": 30,
@@ -917,7 +917,7 @@
   "Dhuron": {
     "HealthLevel1": 200,
     "HealthLevel99": 3000,
-    "ContactDamageLevel1": 100,
+    "ContactDamageLevel1": 80,
     "ContactDamageLevel99": 300,
     "ContactDamageType": "0x0022",
     "DefenseLevel1": 1,
@@ -952,7 +952,7 @@
   "Ectoplasm": {
     "HealthLevel1": 100,
     "HealthLevel99": 3000,
-    "ContactDamageLevel1": 100,
+    "ContactDamageLevel1": 80,
     "ContactDamageLevel99": 300,
     "ContactDamageType": "0x0102",
     "DefenseLevel1": 0,
@@ -993,7 +993,7 @@
   "Spellbook": {
     "HealthLevel1": 200,
     "HealthLevel99": 3000,
-    "ContactDamageLevel1": 100,
+    "ContactDamageLevel1": 80,
     "ContactDamageLevel99": 300,
     "ContactDamageType": "0x0022",
     "DefenseLevel1": 1,
@@ -1032,7 +1032,7 @@
   "Magic Tome": {
     "HealthLevel1": 200,
     "HealthLevel99": 3000,
-    "ContactDamageLevel1": 100,
+    "ContactDamageLevel1": 80,
     "ContactDamageLevel99": 300,
     "ContactDamageType": "0x0022",
     "DefenseLevel1": 1,
@@ -1067,7 +1067,7 @@
   "Thornweed": {
     "HealthLevel1": 70,
     "HealthLevel99": 3000,
-    "ContactDamageLevel1": 100,
+    "ContactDamageLevel1": 80,
     "ContactDamageLevel99": 300,
     "ContactDamageType": "0x0022",
     "DefenseLevel1": 0,
@@ -1098,7 +1098,7 @@
   "Spear Guard": {
     "HealthLevel1": 200,
     "HealthLevel99": 3000,
-    "ContactDamageLevel1": 100,
+    "ContactDamageLevel1": 80,
     "ContactDamageLevel99": 300,
     "ContactDamageType": "0x0022",
     "DefenseLevel1": 15,
@@ -1137,7 +1137,7 @@
   "Bone Archer": {
     "HealthLevel1": 200,
     "HealthLevel99": 3000,
-    "ContactDamageLevel1": 100,
+    "ContactDamageLevel1": 80,
     "ContactDamageLevel99": 300,
     "ContactDamageType": "0x0022",
     "DefenseLevel1": 1,
@@ -1172,7 +1172,7 @@
   "Toad": {
     "HealthLevel1": 100,
     "HealthLevel99": 3000,
-    "ContactDamageLevel1": 100,
+    "ContactDamageLevel1": 80,
     "ContactDamageLevel99": 300,
     "ContactDamageType": "0x0022",
     "DefenseLevel1": 0,
@@ -1203,7 +1203,7 @@
   "Frog": {
     "HealthLevel1": 100,
     "HealthLevel99": 3000,
-    "ContactDamageLevel1": 100,
+    "ContactDamageLevel1": 80,
     "ContactDamageLevel99": 300,
     "ContactDamageType": "0x0022",
     "DefenseLevel1": 0,
@@ -1234,7 +1234,7 @@
   "Fishhead": {
     "HealthLevel1": 150,
     "HealthLevel99": 3000,
-    "ContactDamageLevel1": 100,
+    "ContactDamageLevel1": 80,
     "ContactDamageLevel99": 300,
     "ContactDamageType": "0x0022",
     "DefenseLevel1": 1,
@@ -1271,7 +1271,7 @@
   "Frozen Shade": {
     "HealthLevel1": 500,
     "HealthLevel99": 3000,
-    "ContactDamageLevel1": 100,
+    "ContactDamageLevel1": 80,
     "ContactDamageLevel99": 300,
     "ContactDamageType": "0x2002",
     "DefenseLevel1": 1,
@@ -1308,7 +1308,7 @@
   "Killer Fish": {
     "HealthLevel1": 300,
     "HealthLevel99": 3000,
-    "ContactDamageLevel1": 100,
+    "ContactDamageLevel1": 80,
     "ContactDamageLevel99": 300,
     "ContactDamageType": "0x0022",
     "DefenseLevel1": 1,
@@ -1339,7 +1339,7 @@
   "Bone Pillar": {
     "HealthLevel1": 150,
     "HealthLevel99": 3000,
-    "ContactDamageLevel1": 100,
+    "ContactDamageLevel1": 80,
     "ContactDamageLevel99": 300,
     "ContactDamageType": "0x0022",
     "DefenseLevel1": 1,
@@ -1374,7 +1374,7 @@
   "Corner Guard": {
     "HealthLevel1": 200,
     "HealthLevel99": 3000,
-    "ContactDamageLevel1": 100,
+    "ContactDamageLevel1": 80,
     "ContactDamageLevel99": 300,
     "ContactDamageType": "0x0022",
     "DefenseLevel1": 5,
@@ -1409,7 +1409,7 @@
   "Spectral Sword 2": {
     "HealthLevel1": 1200,
     "HealthLevel99": 5000,
-    "ContactDamageLevel1": 100,
+    "ContactDamageLevel1": 80,
     "ContactDamageLevel99": 300,
     "ContactDamageType": "0x1002",
     "DefenseLevel1": 1,
@@ -1440,7 +1440,7 @@
   "Spectral Sword 2 Swords": {
     "HealthLevel1": 30,
     "HealthLevel99": 3000,
-    "ContactDamageLevel1": 100,
+    "ContactDamageLevel1": 80,
     "ContactDamageLevel99": 300,
     "ContactDamageType": "0x0043",
     "DefenseLevel1": 1,
@@ -1471,7 +1471,7 @@
   "Skelrang": {
     "HealthLevel1": 200,
     "HealthLevel99": 3000,
-    "ContactDamageLevel1": 100,
+    "ContactDamageLevel1": 80,
     "ContactDamageLevel99": 300,
     "ContactDamageType": "0x0022",
     "DefenseLevel1": 1,
@@ -1506,7 +1506,7 @@
   "Black Crow": {
     "HealthLevel1": 200,
     "HealthLevel99": 200,
-    "ContactDamageLevel1": 100,
+    "ContactDamageLevel1": 80,
     "ContactDamageLevel99": 300,
     "ContactDamageType": "0x0022",
     "DefenseLevel1": 1,
@@ -1537,7 +1537,7 @@
   "Blue Raven": {
     "HealthLevel1": 200,
     "HealthLevel99": 200,
-    "ContactDamageLevel1": 100,
+    "ContactDamageLevel1": 80,
     "ContactDamageLevel99": 300,
     "ContactDamageType": "0x0022",
     "DefenseLevel1": 1,
@@ -1568,7 +1568,7 @@
   "Winged Guard": {
     "HealthLevel1": 350,
     "HealthLevel99": 350,
-    "ContactDamageLevel1": 100,
+    "ContactDamageLevel1": 80,
     "ContactDamageLevel99": 300,
     "ContactDamageType": "0x0022",
     "DefenseLevel1": 10,
@@ -1599,7 +1599,7 @@
   "Hunting Girl": {
     "HealthLevel1": 300,
     "HealthLevel99": 3000,
-    "ContactDamageLevel1": 100,
+    "ContactDamageLevel1": 80,
     "ContactDamageLevel99": 300,
     "ContactDamageType": "0x0022",
     "DefenseLevel1": 20,
@@ -1634,7 +1634,7 @@
   "Bone Halberd": {
     "HealthLevel1": 180,
     "HealthLevel99": 3000,
-    "ContactDamageLevel1": 100,
+    "ContactDamageLevel1": 80,
     "ContactDamageLevel99": 300,
     "ContactDamageType": "0x0022",
     "DefenseLevel1": 1,
@@ -1669,7 +1669,7 @@
   "Flea Rider": {
     "HealthLevel1": 300,
     "HealthLevel99": 300,
-    "ContactDamageLevel1": 100,
+    "ContactDamageLevel1": 80,
     "ContactDamageLevel99": 333,
     "ContactDamageType": "0x0022",
     "DefenseLevel1": 1,
@@ -1700,7 +1700,7 @@
   "Spectral Sword 1": {
     "HealthLevel1": 1500,
     "HealthLevel99": 5000,
-    "ContactDamageLevel1": 100,
+    "ContactDamageLevel1": 80,
     "ContactDamageLevel99": 300,
     "ContactDamageType": "0x1002",
     "DefenseLevel1": 1,
@@ -1731,7 +1731,7 @@
   "Spectral Sword 1 Weapons": {
     "HealthLevel1": 30,
     "HealthLevel99": 3000,
-    "ContactDamageLevel1": 100,
+    "ContactDamageLevel1": 80,
     "ContactDamageLevel99": 300,
     "ContactDamageType": "0x0022",
     "DefenseLevel1": 1,
@@ -1762,7 +1762,7 @@
   "Blade soldier": {
     "HealthLevel1": 200,
     "HealthLevel99": 3000,
-    "ContactDamageLevel1": 100,
+    "ContactDamageLevel1": 80,
     "ContactDamageLevel99": 300,
     "ContactDamageType": "0x0022",
     "DefenseLevel1": 1,
@@ -1797,7 +1797,7 @@
   "Blade Master": {
     "HealthLevel1": 300,
     "HealthLevel99": 3000,
-    "ContactDamageLevel1": 100,
+    "ContactDamageLevel1": 80,
     "ContactDamageLevel99": 300,
     "ContactDamageType": "0x0022",
     "DefenseLevel1": 15,
@@ -1832,7 +1832,7 @@
   "Paranthropus": {
     "HealthLevel1": 500,
     "HealthLevel99": 3000,
-    "ContactDamageLevel1": 100,
+    "ContactDamageLevel1": 80,
     "ContactDamageLevel99": 300,
     "ContactDamageType": "0x0022",
     "DefenseLevel1": 50,
@@ -1869,7 +1869,7 @@
   "Plate Lord": {
     "HealthLevel1": 300,
     "HealthLevel99": 3000,
-    "ContactDamageLevel1": 100,
+    "ContactDamageLevel1": 80,
     "ContactDamageLevel99": 300,
     "ContactDamageType": "0x0022",
     "DefenseLevel1": 20,
@@ -1904,7 +1904,7 @@
   "Owl": {
     "HealthLevel1": 200,
     "HealthLevel99": 3000,
-    "ContactDamageLevel1": 100,
+    "ContactDamageLevel1": 80,
     "ContactDamageLevel99": 300,
     "ContactDamageType": "0x0022",
     "DefenseLevel1": 1,
@@ -1935,7 +1935,7 @@
   "Owl Knight": {
     "HealthLevel1": 300,
     "HealthLevel99": 3000,
-    "ContactDamageLevel1": 100,
+    "ContactDamageLevel1": 80,
     "ContactDamageLevel99": 300,
     "ContactDamageType": "0x0022",
     "DefenseLevel1": 20,
@@ -1970,7 +1970,7 @@
   "Armor Lord": {
     "HealthLevel1": 400,
     "HealthLevel99": 3000,
-    "ContactDamageLevel1": 100,
+    "ContactDamageLevel1": 80,
     "ContactDamageLevel99": 300,
     "ContactDamageType": "0x0022",
     "DefenseLevel1": 55,
@@ -2007,7 +2007,7 @@
   "Bone Musket": {
     "HealthLevel1": 80,
     "HealthLevel99": 3000,
-    "ContactDamageLevel1": 100,
+    "ContactDamageLevel1": 80,
     "ContactDamageLevel99": 300,
     "ContactDamageType": "0x0022",
     "DefenseLevel1": 1,
@@ -2041,8 +2041,8 @@
   },
   "Werewolf 1": {
     "HealthLevel1": 800,
-    "HealthLevel99": 3000,
-    "ContactDamageLevel1": 100,
+    "HealthLevel99": 30000,
+    "ContactDamageLevel1": 80,
     "ContactDamageLevel99": 300,
     "ContactDamageType": "0x0022",
     "DefenseLevel1": 1,
@@ -2080,8 +2080,8 @@
   },
   "Minotaur 1": {
     "HealthLevel1": 800,
-    "HealthLevel99": 3000,
-    "ContactDamageLevel1": 100,
+    "HealthLevel99": 30000,
+    "ContactDamageLevel1": 80,
     "ContactDamageLevel99": 300,
     "ContactDamageType": "0x0022",
     "DefenseLevel1": 1,
@@ -2118,7 +2118,7 @@
   "Corpseweed Root": {
     "HealthLevel1": 60,
     "HealthLevel99": 3000,
-    "ContactDamageLevel1": 100,
+    "ContactDamageLevel1": 80,
     "ContactDamageLevel99": 300,
     "ContactDamageType": "0x0022",
     "DefenseLevel1": 1,
@@ -2149,7 +2149,7 @@
   "Corpseweed Face": {
     "HealthLevel1": 100,
     "HealthLevel99": 3000,
-    "ContactDamageLevel1": 100,
+    "ContactDamageLevel1": 80,
     "ContactDamageLevel99": 300,
     "ContactDamageType": "0x0022",
     "DefenseLevel1": 1,
@@ -2184,7 +2184,7 @@
   "Flea Armor": {
     "HealthLevel1": 200,
     "HealthLevel99": 3000,
-    "ContactDamageLevel1": 100,
+    "ContactDamageLevel1": 80,
     "ContactDamageLevel99": 300,
     "ContactDamageType": "0x0022",
     "DefenseLevel1": 1,
@@ -2219,7 +2219,7 @@
   "Mudman": {
     "HealthLevel1": 160,
     "HealthLevel99": 3000,
-    "ContactDamageLevel1": 100,
+    "ContactDamageLevel1": 80,
     "ContactDamageLevel99": 300,
     "ContactDamageType": "0x0022",
     "DefenseLevel1": 1,
@@ -2254,7 +2254,7 @@
   "Hammer": {
     "HealthLevel1": 2000,
     "HealthLevel99": 3000,
-    "ContactDamageLevel1": 100,
+    "ContactDamageLevel1": 80,
     "ContactDamageLevel99": 300,
     "ContactDamageType": "0x0022",
     "DefenseLevel1": 55,
@@ -2289,7 +2289,7 @@
   "Gurkha": {
     "HealthLevel1": 2500,
     "HealthLevel99": 3000,
-    "ContactDamageLevel1": 100,
+    "ContactDamageLevel1": 80,
     "ContactDamageLevel99": 300,
     "ContactDamageType": "0x0022",
     "DefenseLevel1": 40,
@@ -2324,7 +2324,7 @@
   "Blade": {
     "HealthLevel1": 2300,
     "HealthLevel99": 3000,
-    "ContactDamageLevel1": 100,
+    "ContactDamageLevel1": 80,
     "ContactDamageLevel99": 300,
     "ContactDamageType": "0x0022",
     "DefenseLevel1": 5,
@@ -2361,7 +2361,7 @@
   "Valhalla Knight": {
     "HealthLevel1": 200,
     "HealthLevel99": 3000,
-    "ContactDamageLevel1": 100,
+    "ContactDamageLevel1": 80,
     "ContactDamageLevel99": 300,
     "ContactDamageType": "0x0022",
     "DefenseLevel1": 1,
@@ -2396,7 +2396,7 @@
   "Valhalla Horse": {
     "HealthLevel1": 200,
     "HealthLevel99": 3000,
-    "ContactDamageLevel1": 100,
+    "ContactDamageLevel1": 80,
     "ContactDamageLevel99": 300,
     "ContactDamageType": "0x0022",
     "DefenseLevel1": 1,
@@ -2427,7 +2427,7 @@
   "Skeleton Ape": {
     "HealthLevel1": 200,
     "HealthLevel99": 3000,
-    "ContactDamageLevel1": 100,
+    "ContactDamageLevel1": 80,
     "ContactDamageLevel99": 300,
     "ContactDamageType": "0x0022",
     "DefenseLevel1": 1,
@@ -2464,7 +2464,7 @@
   "Venus Weed Unflowered": {
     "HealthLevel1": 3000,
     "HealthLevel99": 3000,
-    "ContactDamageLevel1": 100,
+    "ContactDamageLevel1": 80,
     "ContactDamageLevel99": 300,
     "ContactDamageType": "0x0022",
     "DefenseLevel1": 1,
@@ -2495,7 +2495,7 @@
   "Venus Weed Flowered": {
     "HealthLevel1": 3000,
     "HealthLevel99": 3000,
-    "ContactDamageLevel1": 100,
+    "ContactDamageLevel1": 80,
     "ContactDamageLevel99": 300,
     "ContactDamageType": "0x0022",
     "DefenseLevel1": 1,
@@ -2532,7 +2532,7 @@
   "Salem Witch": {
     "HealthLevel1": 2200,
     "HealthLevel99": 3000,
-    "ContactDamageLevel1": 100,
+    "ContactDamageLevel1": 80,
     "ContactDamageLevel99": 300,
     "ContactDamageType": "0x0022",
     "DefenseLevel1": 1,
@@ -2569,7 +2569,7 @@
   "Gremlin": {
     "HealthLevel1": 270,
     "HealthLevel99": 3000,
-    "ContactDamageLevel1": 100,
+    "ContactDamageLevel1": 80,
     "ContactDamageLevel99": 300,
     "ContactDamageType": "0x0022",
     "DefenseLevel1": 1,
@@ -2604,7 +2604,7 @@
   "Wereskeleton": {
     "HealthLevel1": 2050,
     "HealthLevel99": 3000,
-    "ContactDamageLevel1": 100,
+    "ContactDamageLevel1": 80,
     "ContactDamageLevel99": 300,
     "ContactDamageType": "0x0022",
     "DefenseLevel1": 1,
@@ -2641,7 +2641,7 @@
   "Bone Ark": {
     "HealthLevel1": 3000,
     "HealthLevel99": 5000,
-    "ContactDamageLevel1": 100,
+    "ContactDamageLevel1": 80,
     "ContactDamageLevel99": 300,
     "ContactDamageType": "0x0022",
     "DefenseLevel1": 20,
@@ -2676,7 +2676,7 @@
   "Bone Ark Skeleton": {
     "HealthLevel1": 1800,
     "HealthLevel99": 3000,
-    "ContactDamageLevel1": 100,
+    "ContactDamageLevel1": 80,
     "ContactDamageLevel99": 300,
     "ContactDamageType": "0x0022",
     "DefenseLevel1": 1,
@@ -2707,7 +2707,7 @@
   "Slime": {
     "HealthLevel1": 200,
     "HealthLevel99": 3000,
-    "ContactDamageLevel1": 100,
+    "ContactDamageLevel1": 80,
     "ContactDamageLevel99": 300,
     "ContactDamageType": "0x0082",
     "DefenseLevel1": 1,
@@ -2738,7 +2738,7 @@
   "Large Slime": {
     "HealthLevel1": 2500,
     "HealthLevel99": 3000,
-    "ContactDamageLevel1": 100,
+    "ContactDamageLevel1": 80,
     "ContactDamageLevel99": 300,
     "ContactDamageType": "0x0022",
     "DefenseLevel1": 1,
@@ -2769,7 +2769,7 @@
   "Grave Keeper": {
     "HealthLevel1": 150,
     "HealthLevel99": 3000,
-    "ContactDamageLevel1": 100,
+    "ContactDamageLevel1": 80,
     "ContactDamageLevel99": 300,
     "ContactDamageType": "0x0022",
     "DefenseLevel1": 1,
@@ -2804,7 +2804,7 @@
   "Hellfire Beast": {
     "HealthLevel1": 2400,
     "HealthLevel99": 3000,
-    "ContactDamageLevel1": 100,
+    "ContactDamageLevel1": 80,
     "ContactDamageLevel99": 300,
     "ContactDamageType": "0x0022",
     "DefenseLevel1": 20,
@@ -2843,7 +2843,7 @@
   "Discus Lord": {
     "HealthLevel1": 3000,
     "HealthLevel99": 3000,
-    "ContactDamageLevel1": 100,
+    "ContactDamageLevel1": 80,
     "ContactDamageLevel99": 300,
     "ContactDamageType": "0x0022",
     "DefenseLevel1": 33,
@@ -2878,7 +2878,7 @@
   "Lossoth": {
     "HealthLevel1": 550,
     "HealthLevel99": 3000,
-    "ContactDamageLevel1": 100,
+    "ContactDamageLevel1": 80,
     "ContactDamageLevel99": 300,
     "ContactDamageType": "0x0022",
     "DefenseLevel1": 1,
@@ -2913,7 +2913,7 @@
   "Phantom Skull": {
     "HealthLevel1": 120,
     "HealthLevel99": 3000,
-    "ContactDamageLevel1": 100,
+    "ContactDamageLevel1": 80,
     "ContactDamageLevel99": 300,
     "ContactDamageType": "0x1002",
     "DefenseLevel1": 10,
@@ -2944,7 +2944,7 @@
   "Skull Lord": {
     "HealthLevel1": 900,
     "HealthLevel99": 3000,
-    "ContactDamageLevel1": 100,
+    "ContactDamageLevel1": 80,
     "ContactDamageLevel99": 300,
     "ContactDamageType": "0x1002",
     "DefenseLevel1": 10,
@@ -2975,7 +2975,7 @@
   "Flail Guard": {
     "HealthLevel1": 1070,
     "HealthLevel99": 3000,
-    "ContactDamageLevel1": 100,
+    "ContactDamageLevel1": 80,
     "ContactDamageLevel99": 300,
     "ContactDamageType": "0x0022",
     "DefenseLevel1": 20,
@@ -3010,7 +3010,7 @@
   "Golden Medusa Head": {
     "HealthLevel1": 20,
     "HealthLevel99": 1000,
-    "ContactDamageLevel1": 100,
+    "ContactDamageLevel1": 80,
     "ContactDamageLevel99": 300,
     "ContactDamageType": "0x0202",
     "DefenseLevel1": 1,
@@ -3041,7 +3041,7 @@
   "Harpy": {
     "HealthLevel1": 600,
     "HealthLevel99": 3000,
-    "ContactDamageLevel1": 100,
+    "ContactDamageLevel1": 80,
     "ContactDamageLevel99": 300,
     "ContactDamageType": "0x0022",
     "DefenseLevel1": 1,
@@ -3080,7 +3080,7 @@
   "Sword Lord": {
     "HealthLevel1": 2400,
     "HealthLevel99": 3000,
-    "ContactDamageLevel1": 100,
+    "ContactDamageLevel1": 80,
     "ContactDamageLevel99": 300,
     "ContactDamageType": "0x0022",
     "DefenseLevel1": 20,
@@ -3115,7 +3115,7 @@
   "Vandal Sword": {
     "HealthLevel1": 900,
     "HealthLevel99": 3000,
-    "ContactDamageLevel1": 100,
+    "ContactDamageLevel1": 80,
     "ContactDamageLevel99": 300,
     "ContactDamageType": "0x0022",
     "DefenseLevel1": 10,
@@ -3150,7 +3150,7 @@
   "Yorick": {
     "HealthLevel1": 200,
     "HealthLevel99": 2000,
-    "ContactDamageLevel1": 100,
+    "ContactDamageLevel1": 80,
     "ContactDamageLevel99": 300,
     "ContactDamageType": "0x0022",
     "DefenseLevel1": 1,
@@ -3181,7 +3181,7 @@
   "Yorick Head": {
     "HealthLevel1": 200,
     "HealthLevel99": 3000,
-    "ContactDamageLevel1": 100,
+    "ContactDamageLevel1": 80,
     "ContactDamageLevel99": 300,
     "ContactDamageType": "0x0022",
     "DefenseLevel1": 1,
@@ -3212,7 +3212,7 @@
   "Tombstone": {
     "HealthLevel1": 1100,
     "HealthLevel99": 1100,
-    "ContactDamageLevel1": 100,
+    "ContactDamageLevel1": 80,
     "ContactDamageLevel99": 300,
     "ContactDamageType": "0x0102",
     "DefenseLevel1": 150,
@@ -3243,7 +3243,7 @@
   "Bomb Knight": {
     "HealthLevel1": 2300,
     "HealthLevel99": 3000,
-    "ContactDamageLevel1": 100,
+    "ContactDamageLevel1": 80,
     "ContactDamageLevel99": 300,
     "ContactDamageType": "0x0022",
     "DefenseLevel1": 30,
@@ -3278,7 +3278,7 @@
   "Cloaked Knight": {
     "HealthLevel1": 100,
     "HealthLevel99": 3000,
-    "ContactDamageLevel1": 100,
+    "ContactDamageLevel1": 80,
     "ContactDamageLevel99": 300,
     "ContactDamageType": "0x0022",
     "DefenseLevel1": 1,
@@ -3313,7 +3313,7 @@
   "Jack O'Bones": {
     "HealthLevel1": 100,
     "HealthLevel99": 3000,
-    "ContactDamageLevel1": 100,
+    "ContactDamageLevel1": 80,
     "ContactDamageLevel99": 300,
     "ContactDamageType": "0x0022",
     "DefenseLevel1": 1,
@@ -3348,7 +3348,7 @@
   "Nova Skeleton": {
     "HealthLevel1": 1200,
     "HealthLevel99": 3000,
-    "ContactDamageLevel1": 100,
+    "ContactDamageLevel1": 80,
     "ContactDamageLevel99": 300,
     "ContactDamageType": "0x0022",
     "DefenseLevel1": 1,
@@ -3383,7 +3383,7 @@
   "Balloon Pod": {
     "HealthLevel1": 200,
     "HealthLevel99": 3000,
-    "ContactDamageLevel1": 100,
+    "ContactDamageLevel1": 80,
     "ContactDamageLevel99": 300,
     "ContactDamageType": "0x0022",
     "DefenseLevel1": 1,
@@ -3418,7 +3418,7 @@
   "Black Panther": {
     "HealthLevel1": 300,
     "HealthLevel99": 300,
-    "ContactDamageLevel1": 100,
+    "ContactDamageLevel1": 80,
     "ContactDamageLevel99": 300,
     "ContactDamageType": "0x0402",
     "DefenseLevel1": 1,
@@ -3449,7 +3449,7 @@
   "Sniper of Goth": {
     "HealthLevel1": 1500,
     "HealthLevel99": 3000,
-    "ContactDamageLevel1": 100,
+    "ContactDamageLevel1": 80,
     "ContactDamageLevel99": 300,
     "ContactDamageType": "0x0022",
     "DefenseLevel1": 1,
@@ -3486,7 +3486,7 @@
   "Imp": {
     "HealthLevel1": 300,
     "HealthLevel99": 300,
-    "ContactDamageLevel1": 100,
+    "ContactDamageLevel1": 80,
     "ContactDamageLevel99": 300,
     "ContactDamageType": "0x0022",
     "DefenseLevel1": 1,
@@ -3517,7 +3517,7 @@
   "Flying Zombie Upper": {
     "HealthLevel1": 2200,
     "HealthLevel99": 3000,
-    "ContactDamageLevel1": 100,
+    "ContactDamageLevel1": 80,
     "ContactDamageLevel99": 300,
     "ContactDamageType": "0x0022",
     "DefenseLevel1": 1,
@@ -3548,7 +3548,7 @@
   "Flying Zombie Lower": {
     "HealthLevel1": 2200,
     "HealthLevel99": 3000,
-    "ContactDamageLevel1": 100,
+    "ContactDamageLevel1": 80,
     "ContactDamageLevel99": 300,
     "ContactDamageType": "0x0022",
     "DefenseLevel1": 1,
@@ -3579,7 +3579,7 @@
   "Ctulhu": {
     "HealthLevel1": 400,
     "HealthLevel99": 3000,
-    "ContactDamageLevel1": 100,
+    "ContactDamageLevel1": 80,
     "ContactDamageLevel99": 300,
     "ContactDamageType": "0x0022",
     "DefenseLevel1": 1,
@@ -3616,7 +3616,7 @@
   "Karasuman": {
     "HealthLevel1": 5000,
     "HealthLevel99": 30000,
-    "ContactDamageLevel1": 100,
+    "ContactDamageLevel1": 80,
     "ContactDamageLevel99": 300,
     "ContactDamageType": "0x0022",
     "DefenseLevel1": 1,
@@ -3655,7 +3655,7 @@
   "Ghost Dancer": {
     "HealthLevel1": 200,
     "HealthLevel99": 3000,
-    "ContactDamageLevel1": 100,
+    "ContactDamageLevel1": 80,
     "ContactDamageLevel99": 300,
     "ContactDamageType": "0x0022",
     "DefenseLevel1": 1,
@@ -3686,7 +3686,7 @@
   "Malachi": {
     "HealthLevel1": 4600,
     "HealthLevel99": 4600,
-    "ContactDamageLevel1": 100,
+    "ContactDamageLevel1": 80,
     "ContactDamageLevel99": 300,
     "ContactDamageType": "0x0022",
     "DefenseLevel1": 1,
@@ -3723,7 +3723,7 @@
   "Shmoo": {
     "HealthLevel1": 666,
     "HealthLevel99": 666,
-    "ContactDamageLevel1": 100,
+    "ContactDamageLevel1": 80,
     "ContactDamageLevel99": 300,
     "ContactDamageType": "0x0802",
     "DefenseLevel1": 1,
@@ -3754,7 +3754,7 @@
   "Scarecrow": {
     "HealthLevel1": 300,
     "HealthLevel99": 3000,
-    "ContactDamageLevel1": 100,
+    "ContactDamageLevel1": 80,
     "ContactDamageLevel99": 300,
     "ContactDamageType": "0x0022",
     "DefenseLevel1": 1,
@@ -3785,7 +3785,7 @@
   "Lion": {
     "HealthLevel1": 1500,
     "HealthLevel99": 3000,
-    "ContactDamageLevel1": 100,
+    "ContactDamageLevel1": 80,
     "ContactDamageLevel99": 300,
     "ContactDamageType": "0x0022",
     "DefenseLevel1": 50,
@@ -3820,7 +3820,7 @@
   "Tin Man": {
     "HealthLevel1": 1000,
     "HealthLevel99": 3000,
-    "ContactDamageLevel1": 100,
+    "ContactDamageLevel1": 80,
     "ContactDamageLevel99": 300,
     "ContactDamageType": "0x0022",
     "DefenseLevel1": 66,
@@ -3857,7 +3857,7 @@
   "Werewolf 2": {
     "HealthLevel1": 200,
     "HealthLevel99": 3000,
-    "ContactDamageLevel1": 100,
+    "ContactDamageLevel1": 80,
     "ContactDamageLevel99": 300,
     "ContactDamageType": "0x0022",
     "DefenseLevel1": 1,
@@ -3894,7 +3894,7 @@
   "Minotaur 2": {
     "HealthLevel1": 200,
     "HealthLevel99": 3000,
-    "ContactDamageLevel1": 100,
+    "ContactDamageLevel1": 80,
     "ContactDamageLevel99": 300,
     "ContactDamageType": "0x0022",
     "DefenseLevel1": 10,
@@ -3931,7 +3931,7 @@
   "White Dragon": {
     "HealthLevel1": 300,
     "HealthLevel99": 3000,
-    "ContactDamageLevel1": 100,
+    "ContactDamageLevel1": 80,
     "ContactDamageLevel99": 300,
     "ContactDamageType": "0x0022",
     "DefenseLevel1": 1,
@@ -3966,7 +3966,7 @@
   "Spectral Sword 3": {
     "HealthLevel1": 3500,
     "HealthLevel99": 3500,
-    "ContactDamageLevel1": 100,
+    "ContactDamageLevel1": 80,
     "ContactDamageLevel99": 300,
     "ContactDamageType": "0x1002",
     "DefenseLevel1": 10,
@@ -3997,7 +3997,7 @@
   "Spectral Sword 3 Spears": {
     "HealthLevel1": 30,
     "HealthLevel99": 3000,
-    "ContactDamageLevel1": 100,
+    "ContactDamageLevel1": 80,
     "ContactDamageLevel99": 300,
     "ContactDamageType": "0x0043",
     "DefenseLevel1": 1,
@@ -4028,7 +4028,7 @@
   "Spectral Sword 3 Shields": {
     "HealthLevel1": 32767,
     "HealthLevel99": 32767,
-    "ContactDamageLevel1": 100,
+    "ContactDamageLevel1": 80,
     "ContactDamageLevel99": 300,
     "ContactDamageType": "0x0022",
     "DefenseLevel1": 1,
@@ -4059,7 +4059,7 @@
   "Archer": {
     "HealthLevel1": 1000,
     "HealthLevel99": 3000,
-    "ContactDamageLevel1": 100,
+    "ContactDamageLevel1": 80,
     "ContactDamageLevel99": 300,
     "ContactDamageType": "0x0022",
     "DefenseLevel1": 1,
@@ -4094,7 +4094,7 @@
   "Bitterfly": {
     "HealthLevel1": 666,
     "HealthLevel99": 666,
-    "ContactDamageLevel1": 100,
+    "ContactDamageLevel1": 80,
     "ContactDamageLevel99": 300,
     "ContactDamageType": "0x0802",
     "DefenseLevel1": 1,
@@ -4125,7 +4125,7 @@
   "Lesser Demon": {
     "HealthLevel1": 150,
     "HealthLevel99": 3000,
-    "ContactDamageLevel1": 100,
+    "ContactDamageLevel1": 80,
     "ContactDamageLevel99": 300,
     "ContactDamageType": "0x0022",
     "DefenseLevel1": 10,
@@ -4164,7 +4164,7 @@
   "Fire Demon": {
     "HealthLevel1": 4500,
     "HealthLevel99": 4500,
-    "ContactDamageLevel1": 100,
+    "ContactDamageLevel1": 80,
     "ContactDamageLevel99": 300,
     "ContactDamageType": "0x0022",
     "DefenseLevel1": 1,
@@ -4199,7 +4199,7 @@
   "Azaghal": {
     "HealthLevel1": 300,
     "HealthLevel99": 3000,
-    "ContactDamageLevel1": 100,
+    "ContactDamageLevel1": 80,
     "ContactDamageLevel99": 300,
     "ContactDamageType": "0x0022",
     "DefenseLevel1": 10,
@@ -4234,7 +4234,7 @@
   "Gorgon": {
     "HealthLevel1": 2500,
     "HealthLevel99": 3000,
-    "ContactDamageLevel1": 100,
+    "ContactDamageLevel1": 80,
     "ContactDamageLevel99": 300,
     "ContactDamageType": "0x0022",
     "DefenseLevel1": 50,
@@ -4265,7 +4265,7 @@
   "Gorgon Head": {
     "HealthLevel1": 500,
     "HealthLevel99": 3000,
-    "ContactDamageLevel1": 100,
+    "ContactDamageLevel1": 80,
     "ContactDamageLevel99": 300,
     "ContactDamageType": "0x0022",
     "DefenseLevel1": 10,
@@ -4300,7 +4300,7 @@
   "Guardian": {
     "HealthLevel1": 9999,
     "HealthLevel99": 9999,
-    "ContactDamageLevel1": 100,
+    "ContactDamageLevel1": 80,
     "ContactDamageLevel99": 300,
     "ContactDamageType": "0x0022",
     "DefenseLevel1": 0,
@@ -4337,7 +4337,7 @@
   "Orobourous": {
     "HealthLevel1": 200,
     "HealthLevel99": 3000,
-    "ContactDamageLevel1": 100,
+    "ContactDamageLevel1": 80,
     "ContactDamageLevel99": 300,
     "ContactDamageType": "0x0022",
     "DefenseLevel1": 1,
@@ -4374,7 +4374,7 @@
   "Dragon Rider": {
     "HealthLevel1": 200,
     "HealthLevel99": 3000,
-    "ContactDamageLevel1": 100,
+    "ContactDamageLevel1": 80,
     "ContactDamageLevel99": 300,
     "ContactDamageType": "0x0022",
     "DefenseLevel1": 1,
@@ -4409,7 +4409,7 @@
   "Warg Rider": {
     "HealthLevel1": 3000,
     "HealthLevel99": 3000,
-    "ContactDamageLevel1": 100,
+    "ContactDamageLevel1": 80,
     "ContactDamageLevel99": 300,
     "ContactDamageType": "0x0022",
     "DefenseLevel1": 1,
@@ -4444,7 +4444,7 @@
   "Fire Warg": {
     "HealthLevel1": 4500,
     "HealthLevel99": 4500,
-    "ContactDamageLevel1": 100,
+    "ContactDamageLevel1": 80,
     "ContactDamageLevel99": 300,
     "ContactDamageType": "0x0022",
     "DefenseLevel1": 1,
@@ -4481,7 +4481,7 @@
   "Dodo Bird": {
     "HealthLevel1": 10,
     "HealthLevel99": 10,
-    "ContactDamageLevel1": 100,
+    "ContactDamageLevel1": 80,
     "ContactDamageLevel99": 300,
     "ContactDamageType": "0x0022",
     "DefenseLevel1": 5000,
@@ -4512,7 +4512,7 @@
   "Cave Troll": {
     "HealthLevel1": 1500,
     "HealthLevel99": 3000,
-    "ContactDamageLevel1": 100,
+    "ContactDamageLevel1": 80,
     "ContactDamageLevel99": 300,
     "ContactDamageType": "0x0022",
     "DefenseLevel1": 1,
@@ -4549,7 +4549,7 @@
   "Dark Octopus": {
     "HealthLevel1": 200,
     "HealthLevel99": 3000,
-    "ContactDamageLevel1": 100,
+    "ContactDamageLevel1": 80,
     "ContactDamageLevel99": 300,
     "ContactDamageType": "0x0022",
     "DefenseLevel1": 1,
@@ -4584,7 +4584,7 @@
   "Rock Knight": {
     "HealthLevel1": 1300,
     "HealthLevel99": 8000,
-    "ContactDamageLevel1": 100,
+    "ContactDamageLevel1": 80,
     "ContactDamageLevel99": 300,
     "ContactDamageType": "0x0022",
     "DefenseLevel1": 99,
@@ -4619,7 +4619,7 @@
   "Blue Venus Weed Unflowered": {
     "HealthLevel1": 4000,
     "HealthLevel99": 4000,
-    "ContactDamageLevel1": 100,
+    "ContactDamageLevel1": 80,
     "ContactDamageLevel99": 300,
     "ContactDamageType": "0x0022",
     "DefenseLevel1": 10,
@@ -4650,7 +4650,7 @@
   "Blue Venus Weed Flowered": {
     "HealthLevel1": 4000,
     "HealthLevel99": 4000,
-    "ContactDamageLevel1": 100,
+    "ContactDamageLevel1": 80,
     "ContactDamageLevel99": 300,
     "ContactDamageType": "0x0022",
     "DefenseLevel1": 10,
@@ -4687,7 +4687,7 @@
   "Salome": {
     "HealthLevel1": 300,
     "HealthLevel99": 4000,
-    "ContactDamageLevel1": 100,
+    "ContactDamageLevel1": 80,
     "ContactDamageLevel99": 300,
     "ContactDamageType": "0x0022",
     "DefenseLevel1": 1,
@@ -4726,7 +4726,7 @@
   "Frozen Half": {
     "HealthLevel1": 1800,
     "HealthLevel99": 4000,
-    "ContactDamageLevel1": 100,
+    "ContactDamageLevel1": 80,
     "ContactDamageLevel99": 300,
     "ContactDamageType": "0x2002",
     "DefenseLevel1": 1,
@@ -4765,7 +4765,7 @@
   "Doppleganger 1": {
     "HealthLevel1": 1000,
     "HealthLevel99": 9999,
-    "ContactDamageLevel1": 100,
+    "ContactDamageLevel1": 80,
     "ContactDamageLevel99": 450,
     "ContactDamageType": "0x0022",
     "DefenseLevel1": 10,
@@ -4808,7 +4808,7 @@
   "Scylla": {
     "HealthLevel1": 5000,
     "HealthLevel99": 30000,
-    "ContactDamageLevel1": 100,
+    "ContactDamageLevel1": 80,
     "ContactDamageLevel99": 450,
     "ContactDamageType": "0x0022",
     "DefenseLevel1": 1,
@@ -4851,9 +4851,9 @@
     "IsBoss": true
   },
   "Scylla Wyrm": {
-    "HealthLevel1": 2500,
+    "HealthLevel1": 1000,
     "HealthLevel99": 30000,
-    "ContactDamageLevel1": 100,
+    "ContactDamageLevel1": 80,
     "ContactDamageLevel99": 450,
     "ContactDamageType": "0x0022",
     "DefenseLevel1": 1,
@@ -4884,7 +4884,7 @@
   "Hippogryph": {
     "HealthLevel1": 5000,
     "HealthLevel99": 30000,
-    "ContactDamageLevel1": 100,
+    "ContactDamageLevel1": 80,
     "ContactDamageLevel99": 450,
     "ContactDamageType": "0x0022",
     "DefenseLevel1": 1,
@@ -4919,7 +4919,7 @@
   "Hippogryph Babies": {
     "HealthLevel1": 400,
     "HealthLevel99": 400,
-    "ContactDamageLevel1": 100,
+    "ContactDamageLevel1": 80,
     "ContactDamageLevel99": 450,
     "ContactDamageType": "0x0022",
     "DefenseLevel1": 1,
@@ -4950,7 +4950,7 @@
   "Orlox 1": {
     "HealthLevel1": 2000,
     "HealthLevel99": 30000,
-    "ContactDamageLevel1": 100,
+    "ContactDamageLevel1": 80,
     "ContactDamageLevel99": 450,
     "ContactDamageType": "0x0022",
     "DefenseLevel1": 10,
@@ -4991,7 +4991,7 @@
   "Orlox 2": {
     "HealthLevel1": 5000,
     "HealthLevel99": 30000,
-    "ContactDamageLevel1": 100,
+    "ContactDamageLevel1": 80,
     "ContactDamageLevel99": 450,
     "ContactDamageType": "0x0022",
     "DefenseLevel1": 1,
@@ -5028,7 +5028,7 @@
   "Orlox 2 Part 1": {
     "HealthLevel1": 32767,
     "HealthLevel99": 32767,
-    "ContactDamageLevel1": 100,
+    "ContactDamageLevel1": 80,
     "ContactDamageLevel99": 450,
     "ContactDamageType": "0x0022",
     "DefenseLevel1": 1,
@@ -5059,7 +5059,7 @@
   "Orlox 2 Part 2": {
     "HealthLevel1": 32767,
     "HealthLevel99": 32767,
-    "ContactDamageLevel1": 100,
+    "ContactDamageLevel1": 80,
     "ContactDamageLevel99": 450,
     "ContactDamageType": "0x0022",
     "DefenseLevel1": 1,
@@ -5090,7 +5090,7 @@
   "Orlox 2 Part 3": {
     "HealthLevel1": 32767,
     "HealthLevel99": 32767,
-    "ContactDamageLevel1": 100,
+    "ContactDamageLevel1": 80,
     "ContactDamageLevel99": 450,
     "ContactDamageType": "0x0022",
     "DefenseLevel1": 1,
@@ -5121,7 +5121,7 @@
   "Cerberus": {
     "HealthLevel1": 15000,
     "HealthLevel99": 30000,
-    "ContactDamageLevel1": 100,
+    "ContactDamageLevel1": 80,
     "ContactDamageLevel99": 450,
     "ContactDamageType": "0x0022",
     "DefenseLevel1": 1,
@@ -5158,7 +5158,7 @@
   "Granfaloon": {
     "HealthLevel1": 15000,
     "HealthLevel99": 50000,
-    "ContactDamageLevel1": 100,
+    "ContactDamageLevel1": 80,
     "ContactDamageLevel99": 450,
     "ContactDamageType": "0x0022",
     "DefenseLevel1": 1,
@@ -5193,7 +5193,7 @@
   "Granfaloon Part": {
     "HealthLevel1": 10,
     "HealthLevel99": 10,
-    "ContactDamageLevel1": 100,
+    "ContactDamageLevel1": 80,
     "ContactDamageLevel99": 450,
     "ContactDamageType": "0x0022",
     "DefenseLevel1": 10,
@@ -5228,7 +5228,7 @@
   "Succubus": {
     "HealthLevel1": 15000,
     "HealthLevel99": 30000,
-    "ContactDamageLevel1": 100,
+    "ContactDamageLevel1": 80,
     "ContactDamageLevel99": 450,
     "ContactDamageType": "0x0022",
     "DefenseLevel1": 10,
@@ -5336,7 +5336,7 @@
   "Shaft Orb": {
     "HealthLevel1": 5000,
     "HealthLevel99": 30000,
-    "ContactDamageLevel1": 100,
+    "ContactDamageLevel1": 80,
     "ContactDamageLevel99": 355,
     "ContactDamageType": "0x0022",
     "DefenseLevel1": 3,
@@ -5367,7 +5367,7 @@
   "Darkwing Bat": {
     "HealthLevel1": 16000,
     "HealthLevel99":16000,
-    "ContactDamageLevel1": 100,
+    "ContactDamageLevel1": 80,
     "ContactDamageLevel99": 355,
     "ContactDamageType": "0x0022",
     "DefenseLevel1": 10,
@@ -5406,7 +5406,7 @@
   "Medusa": {
     "HealthLevel1": 20000,
     "HealthLevel99": 20000,
-    "ContactDamageLevel1": 100,
+    "ContactDamageLevel1": 80,
     "ContactDamageLevel99": 355,
     "ContactDamageType": "0x0022",
     "DefenseLevel1": 1,
@@ -5445,7 +5445,7 @@
   "The Creature": {
    "HealthLevel1": 16000,
     "HealthLevel99": 16000,
-    "ContactDamageLevel1": 100,
+    "ContactDamageLevel1": 80,
     "ContactDamageLevel99": 355,
     "ContactDamageType": "0x0022",
     "DefenseLevel1": 10,
@@ -5480,7 +5480,7 @@
   "Akmodan": {
     "HealthLevel1": 16000,
     "HealthLevel99": 16000,
-    "ContactDamageLevel1": 100,
+    "ContactDamageLevel1": 80,
     "ContactDamageLevel99": 355,
     "ContactDamageType": "0x0022",
     "DefenseLevel1": 10,
@@ -5519,7 +5519,7 @@
   "Fake Trevor": {
     "HealthLevel1": 12000,
     "HealthLevel99": 12000,
-    "ContactDamageLevel1": 100,
+    "ContactDamageLevel1": 80,
     "ContactDamageLevel99": 355,
     "ContactDamageType": "0x0022",
     "DefenseLevel1": 3,
@@ -5562,7 +5562,7 @@
   "Zombie Trevor": {
     "HealthLevel1": 1200,
     "HealthLevel99": 1200,
-    "ContactDamageLevel1": 100,
+    "ContactDamageLevel1": 80,
     "ContactDamageLevel99": 355,
     "ContactDamageType": "0x0802",
     "DefenseLevel1": 1,
@@ -5593,7 +5593,7 @@
   "Fake Grant": {
     "HealthLevel1": 12000,
     "HealthLevel99": 12000,
-    "ContactDamageLevel1": 100,
+    "ContactDamageLevel1": 80,
     "ContactDamageLevel99": 355,
     "ContactDamageType": "0x0022",
     "DefenseLevel1": 10,
@@ -5630,7 +5630,7 @@
   "Fake Sypha": {
     "HealthLevel1": 12000,
     "HealthLevel99": 12000,
-    "ContactDamageLevel1": 100,
+    "ContactDamageLevel1": 80,
     "ContactDamageLevel99": 355,
     "ContactDamageType": "0x0022",
     "DefenseLevel1": 1,
@@ -5669,7 +5669,7 @@
   "Beezelbub": {
     "HealthLevel1": 32000,
     "HealthLevel99": 32000,
-    "ContactDamageLevel1": 100,
+    "ContactDamageLevel1": 80,
     "ContactDamageLevel99": 355,
     "ContactDamageType": "0x0802",
     "DefenseLevel1": 0,
@@ -5704,7 +5704,7 @@
   "Beezelbub Flies": {
     "HealthLevel1": 500,
     "HealthLevel99": 500,
-    "ContactDamageLevel1": 100,
+    "ContactDamageLevel1": 80,
     "ContactDamageLevel99": 355,
     "ContactDamageType": "0x0022",
     "DefenseLevel1": 1,
@@ -5735,7 +5735,7 @@
   "Doppleganger 2": {
     "HealthLevel1": 10000,
     "HealthLevel99": 10000,
-    "ContactDamageLevel1": 100,
+    "ContactDamageLevel1": 80,
     "ContactDamageLevel99": 355,
     "ContactDamageType": "0x0022",
     "DefenseLevel1": 10,
@@ -5780,7 +5780,7 @@
   "Death 1": {
     "HealthLevel1": 32000,
     "HealthLevel99": 32000,
-    "ContactDamageLevel1": 100,
+    "ContactDamageLevel1": 80,
     "ContactDamageLevel99": 355,
     "ContactDamageType": "0x0022",
     "DefenseLevel1": 3,
@@ -5821,7 +5821,7 @@
   "Death 2": {
     "HealthLevel1": 20000,
     "HealthLevel99": 20000,
-    "ContactDamageLevel1": 100,
+    "ContactDamageLevel1": 80,
     "ContactDamageLevel99": 666,
     "ContactDamageType": "0x0022",
     "DefenseLevel1": 3,
@@ -5856,7 +5856,7 @@
   "Galamoth": {
     "HealthLevel1": 32000,
     "HealthLevel99": 32000,
-    "ContactDamageLevel1": 100,
+    "ContactDamageLevel1": 80,
     "ContactDamageLevel99": 355,
     "ContactDamageType": "0x0022",
     "DefenseLevel1": 256,
@@ -5895,7 +5895,7 @@
   "Galamoth Head": {
     "HealthLevel1": 32000,
     "HealthLevel99": 32000,
-    "ContactDamageLevel1": 100,
+    "ContactDamageLevel1": 80,
     "ContactDamageLevel99": 355,
     "ContactDamageType": "0x0022",
     "DefenseLevel1": 1,
@@ -5926,7 +5926,7 @@
   "Shaft": {
     "HealthLevel1": 15000,
     "HealthLevel99": 15000,
-    "ContactDamageLevel1": 100,
+    "ContactDamageLevel1": 80,
     "ContactDamageLevel99": 355,
     "ContactDamageType": "0x0022",
     "DefenseLevel1": 7,
@@ -5967,7 +5967,7 @@
   "Dracula": {
     "HealthLevel1": 32000,
     "HealthLevel99": 32000,
-    "ContactDamageLevel1": 100,
+    "ContactDamageLevel1": 80,
     "ContactDamageLevel99": 355,
     "ContactDamageType": "0x0022",
     "DefenseLevel1": 10,
@@ -6006,7 +6006,7 @@
   "Dracula Hands": {
     "HealthLevel1": 32767,
     "HealthLevel99": 32767,
-    "ContactDamageLevel1": 100,
+    "ContactDamageLevel1": 80,
     "ContactDamageLevel99": 355,
     "ContactDamageType": "0x0025",
     "DefenseLevel1": 256,

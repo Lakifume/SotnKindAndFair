@@ -2400,7 +2400,7 @@
     "Extra": "0x81"
   },
   "Bastard Sword": {
-    "Attack": 215,
+    "Attack": 185,
     "Defense": 0,
     "Element": {
       "HIT": false,
