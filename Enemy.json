@@ -2183,7 +2183,7 @@
   },
   "Flea Armor": {
     "HealthLevel1": 200,
-    "HealthLevel99": 3000,
+    "HealthLevel99": 1000,
     "ContactDamageLevel1": 80,
     "ContactDamageLevel99": 300,
     "ContactDamageType": "0x0022",
