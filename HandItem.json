@@ -2300,7 +2300,7 @@
     "Extra": "0x81"
   },
   "Broadsword": {
-    "Attack": 175,
+    "Attack": 170,
     "Defense": 0,
     "Element": {
       "HIT": false,
@@ -2350,7 +2350,7 @@
     "Extra": "0x81"
   },
   "Damascus Sword": {
-    "Attack": 170,
+    "Attack": 175,
     "Defense": 0,
     "Element": {
       "HIT": false,
@@ -2400,7 +2400,7 @@
     "Extra": "0x81"
   },
   "Bastard Sword": {
-    "Attack": 185,
+    "Attack": 215,
     "Defense": 0,
     "Element": {
       "HIT": false,
