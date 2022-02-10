@@ -225,10 +225,10 @@ class Patch(QThread):
         
         if config.get("Misc", "sOutputFolder") and os.path.isdir(config.get("Misc", "sOutputFolder")):
             shutil.move("ErrorRecalc\\rom.bin", config.get("Misc", "sOutputFolder") + "\\" + config.get("Misc", "sInputFile").split("\\")[-1])
-            shutil.copyfile("BizhawkCheats\\Cheats.cht", config.get("Misc", "sOutputFolder") + "\\" + config.get("Misc", "sInputFile").split("\\")[-1][:-4].replace(" (Track 1)", "") + ".cht")
+            shutil.copyfile("Data\\cheats.cht", config.get("Misc", "sOutputFolder") + "\\" + config.get("Misc", "sInputFile").split("\\")[-1][:-4].replace(" (Track 1)", "") + ".cht")
         else:
             shutil.move("ErrorRecalc\\rom.bin", config.get("Misc", "sInputFile"))
-            shutil.copyfile("BizhawkCheats\\Cheats.cht", config.get("Misc", "sInputFile")[:-4].replace(" (Track 1)", "") + ".cht")
+            shutil.copyfile("Data\\cheats.cht", config.get("Misc", "sInputFile")[:-4].replace(" (Track 1)", "") + ".cht")
         
         self.signaller.finished.emit()
 
@@ -256,7 +256,6 @@ class Update(QThread):
         
         #PurgeFolders
         
-        shutil.rmtree("BizhawkCheats")
         shutil.rmtree("Data")
         shutil.rmtree("ErrorRecalc")
         
@@ -861,7 +860,7 @@ class Main(QWidget):
         self.file.write((0x08).to_bytes(1, "little"))
         #DiscusLordSawHitbox
         self.file.seek(0xB65DA)
-        self.file.write((0x1717).to_bytes(2, "little"))
+        self.file.write((0x1818).to_bytes(2, "little"))
         #HippogryphFirebreathHitbox
         self.file.seek(0xB8ECA)
         self.file.write((0x0A02).to_bytes(2, "little"))
