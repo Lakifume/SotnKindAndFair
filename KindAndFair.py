@@ -66,11 +66,11 @@ def init():
     global resist_pool
     resist_pool = []
     #FillResistPool
-    for i in range(7):
+    for i in range(6):
         resist_pool.append(0)
-    for i in range(42):
+    for i in range(30):
         resist_pool.append(1)
-    for i in range(4):
+    for i in range(3):
         resist_pool.append(2)
     for i in range(2):
         resist_pool.append(3)
@@ -703,7 +703,7 @@ class Main(QWidget):
 
     def all_bigtoss(self):
         for i in enemy_data:
-            if "Intro" in i:
+            if "Intro" in i or i == "Evil Priest":
                 continue
             enemy_data[i]["ContactDamageType"] = "0x{:04x}".format(int(int(enemy_data[i]["ContactDamageType"], 16)/16)*16 + 5)
             for e in range(len(enemy_data[i]["AttackDamageType"])):
@@ -742,7 +742,7 @@ class Main(QWidget):
             if not enemy_data[i]["HasContact"]:
                 self.file.write((0).to_bytes(2, "little"))
             elif int(enemy_data[i]["ContactDamageType"], 16) % 16 == 5:
-                self.file.write(int(strength*(1 - config.getfloat("EnemyDamage", "fDamageMultiplier")/20)).to_bytes(2, "little"))
+                self.file.write(int(strength*0.9).to_bytes(2, "little"))
             else:
                 self.file.write(strength.to_bytes(2, "little"))
             #ContactDamageType
@@ -816,7 +816,7 @@ class Main(QWidget):
                 damage = damage & 0xFFFF
                 self.file.seek(self.check_offset(int(enemy_content[i]["AttackAddress"][e], 16) + enemy_offset["Damage"]))
                 if int(enemy_data[i]["AttackDamageType"][e], 16) % 16 == 5:
-                    self.file.write(int(damage*(1 - config.getfloat("EnemyDamage", "fDamageMultiplier")/20)).to_bytes(2, "little"))
+                    self.file.write(int(damage*0.9).to_bytes(2, "little"))
                 else:
                     self.file.write(damage.to_bytes(2, "little"))
                 #AttackDamageType
