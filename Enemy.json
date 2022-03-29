@@ -2040,7 +2040,7 @@
     "IsBoss": false
   },
   "Werewolf 1": {
-    "HealthLevel1": 800,
+    "HealthLevel1": 5000,
     "HealthLevel99": 30000,
     "ContactDamageLevel1": 80,
     "ContactDamageLevel99": 300,
@@ -2079,7 +2079,7 @@
     "IsBoss": false
   },
   "Minotaur 1": {
-    "HealthLevel1": 800,
+    "HealthLevel1": 5000,
     "HealthLevel99": 30000,
     "ContactDamageLevel1": 80,
     "ContactDamageLevel99": 300,
