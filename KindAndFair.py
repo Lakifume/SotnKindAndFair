@@ -635,13 +635,13 @@ class Main(QWidget):
             if level and not keys_list[i] in level_skip:
                 if enemy_data[keys_list[i]]["IsMainEntry"]:
                     if keys_list[i] == "Shaft":
-                        enemy_data[keys_list[i]]["Level"] = random.choice(self.create_list(999, 1, 99))
+                        enemy_data[keys_list[i]]["Level"] = random.randint(1, 99)
                     elif keys_list[i] == "Dracula":
                         enemy_data[keys_list[i]]["Level"] = abs(enemy_data["Shaft"]["Level"] - 100)
                     elif keys_list[i] in minor:
-                        enemy_data[keys_list[i]]["Level"] = random.choice(self.create_list(enemy_data[keys_list[i]]["Level"], 1, 50))
+                        enemy_data[keys_list[i]]["Level"] = self.random_weighted(enemy_data[keys_list[i]]["Level"], 1, 50, 1, 4)
                     else:
-                        enemy_data[keys_list[i]]["Level"] = random.choice(self.create_list(enemy_data[keys_list[i]]["Level"], 1, 99))
+                        enemy_data[keys_list[i]]["Level"] = self.random_weighted(enemy_data[keys_list[i]]["Level"], 1, 99, 1, 4)
                 else:
                     enemy_data[keys_list[i]]["Level"] = enemy_data[keys_list[i-1]]["Level"]
             #Resistances
@@ -660,14 +660,31 @@ class Main(QWidget):
         self.file.seek(0x4BAA2B0)
         self.file.write((0x00A6).to_bytes(2, "little"))
 
-    def create_list(self, value, minimum, maximum):
+    def random_weighted(self, value, minimum, maximum, step, deviation):
+        #Create a list in a range with higher odds around a specific value
         list = []
-        list_int = minimum
-        for i in range(maximum-minimum+1):
-            for e in range(2**(abs(math.ceil(abs(list_int-value)*5/max(value-minimum, maximum-value))-5))):
-                list.append(list_int)
-            list_int += 1
-        return list
+        for i in range(minimum, maximum+1):
+            if i % step == 0:
+                min_distance = min(value-minimum, maximum-value)
+                max_distance = max(value-minimum, maximum-value)
+                if i < value:
+                    weight = round((maximum-value)/(value-minimum))
+                    current_distance = value-minimum
+                elif i > value:
+                    weight = round((value-minimum)/(maximum-value))
+                    current_distance = maximum-value
+                else:
+                    if min_distance == 0:
+                        weight = max_distance
+                    else:
+                        weight = round((max_distance/min_distance)/2)
+                    current_distance = 1
+                if weight < 1:
+                    weight = 1
+                difference = abs(i-value)
+                for e in range(weight*2**(abs(math.ceil(difference*deviation/current_distance)-deviation))):
+                    list.append(i)
+        return random.choice(list)
     
     def no_damage(self):
         for i in enemy_data:
