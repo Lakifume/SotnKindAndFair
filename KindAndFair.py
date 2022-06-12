@@ -2,21 +2,24 @@
 from PySide6.QtCore import *
 from PySide6.QtGui import *
 from PySide6.QtWidgets import *
+import Manager
+import Symphony
+import Dissonance
 import json
 import configparser
 import sys
 import random
 import math
-import re
 import os
 import shutil
 import requests
 import zipfile
 import subprocess
 import glob
-from enum import Enum
 
-#Vlads: 10CF2C
+#Get script name
+
+script_name, script_extension = os.path.splitext(os.path.basename(__file__))
 
 #Config
 
@@ -24,182 +27,7 @@ config = configparser.ConfigParser()
 config.optionxform = str
 config.read("Data\\config.ini")
 
-#EnumClass
-
-class Attributes(Enum):
-    HIT = 0x0020
-    CUT = 0x0040
-    POI = 0x0080
-    CUR = 0x0100
-    STO = 0x0200
-    WAT = 0x0400
-    DAR = 0x0800
-    HOL = 0x1000
-    ICE = 0x2000
-    LIG = 0x4000
-    FLA = 0x8000
-
 #Functions
-
-def init():
-    #Enemy Lists
-    global minor
-    minor = [
-        "Doppleganger 1"
-    ]
-    global level_skip
-    level_skip = [
-        "Stone Skull",
-        "Spike ball",
-        "Evil Priest",
-        "Zombie",
-        "Warg"
-    ]
-    global resist_skip
-    resist_skip = [
-        "Intro Dracula 1",
-        "Intro Dracula 2",
-        "Stone Skull",
-        "Spike ball",
-        "Evil Priest"
-    ]
-    global resist_pool
-    resist_pool = []
-    #FillResistPool
-    for i in range(6):
-        resist_pool.append(0)
-    for i in range(30):
-        resist_pool.append(1)
-    for i in range(3):
-        resist_pool.append(2)
-    for i in range(2):
-        resist_pool.append(3)
-    for i in range(1):
-        resist_pool.append(4)
-    #Offsets
-    global enemy_offset
-    enemy_offset = {
-        "Health": 4,
-        "Damage": 6,
-        "DamageType": 8,
-        "Defense": 10,
-        "Surface": 12,
-        "Weak": 14,
-        "Strong": 16,
-        "Immune": 18,
-        "Absorb": 20,
-        "Level": 22,
-        "Experience": 24,
-        "Item1": 26,
-        "Item2": 28
-    }
-    global equip_offset
-    equip_offset = {
-        "Attack": 8,
-        "Defense": 10,
-        "Strength": 12,
-        "Constitution": 13,
-        "Intelligence": 14,
-        "Luck": 15,
-        "Weak": 16,
-        "Strong": 18,
-        "Immune": 20,
-        "Absorb": 22
-    }
-    global item_offset
-    item_offset = {
-        "Attack": 8,
-        "Defense": 10,
-        "Element": 12,
-        "Sprite": 15,
-        "Special": 24,
-        "Cooldown": 26,
-        "Spell": 28,
-        "ManaCost": 36,
-        "StunFrames": 38,
-        "Range": 40,
-        "Extra": 42
-    }
-    global spell_offset
-    spell_offset = {
-        "ManaCost": 12,
-        "Cooldown": 13,
-        "StunFrames": 14,
-        "Extra": 18,
-        "Element": 22,
-        "Attack": 24
-    }
-    global removal_offset
-    removal_offset = [
-        0x1195f8,
-        0x119658,
-        0x1196b8,
-        0x1196f4,
-        0x119730,
-        0x119774,
-        0x119634,
-        0x119648,
-        0x119694,
-        0x1196a8,
-        0x1196d0,
-        0x1196e4,
-        0x11970c,
-        0x119720,
-        0x119750,
-        0x119764,
-        0x1197b0,
-        0x1197c4,
-        0x4b6844c,
-        0x4b6844e,
-        0x4b68452,
-        0x4b68450,
-        0x4b68454,
-        0x4b68456
-    ]
-
-def open_json():
-    #Content
-    global enemy_content
-    with open("Data\\Offsets\\Enemy.json", "r") as file_reader:
-        enemy_content = json.load(file_reader)
-    global equipment_content
-    with open("Data\\Offsets\\Equipment.json", "r") as file_reader:
-        equipment_content = json.load(file_reader)
-    global handitem_content
-    with open("Data\\Offsets\\HandItem.json", "r") as file_reader:
-        handitem_content = json.load(file_reader)
-    global shop_content
-    with open("Data\\Offsets\\Shop.json", "r") as file_reader:
-        shop_content = json.load(file_reader)
-    global spell_content
-    with open("Data\\Offsets\\Spell.json", "r") as file_reader:
-        spell_content = json.load(file_reader)
-    global stat_content
-    with open("Data\\Offsets\\Stat.json", "r") as file_reader:
-        stat_content = json.load(file_reader)
-    #Data
-    global enemy_data
-    with open("Data\\Values\\Enemy.json", "r") as file_reader:
-        enemy_data = json.load(file_reader)
-    global equipment_data
-    with open("Data\\Values\\Equipment.json", "r") as file_reader:
-        equipment_data = json.load(file_reader)
-    global handitem_data
-    with open("Data\\Values\\HandItem.json", "r") as file_reader:
-        handitem_data = json.load(file_reader)
-    global spell_data
-    with open("Data\\Values\\Spell.json", "r") as file_reader:
-        spell_data = json.load(file_reader)
-    global stat_data
-    with open("Data\\Values\\Stat.json", "r") as file_reader:
-        stat_data = json.load(file_reader)
-    #Dict
-    global id_dict
-    with open("Data\\Dicts\\ItemId.json", "r") as file_reader:
-        id_dict = json.load(file_reader)
-    global price_dict
-    with open("Data\\Dicts\\ItemPrice.json", "r") as file_reader:
-        price_dict = json.load(file_reader)
 
 def writing():
     with open("Data\\config.ini", "w") as file_writer:
@@ -220,19 +48,73 @@ class Patch(QThread):
     def run(self):
         self.signaller.progress.emit(0)
         
-        root = os.getcwd()
-        os.chdir("ErrorRecalc")
-        os.system("cmd /c error_recalc.exe \"rom.bin\"")
-        os.chdir(root)
+        if config.getboolean("Game", "bSymphony"):
+            Manager.init(Symphony)
+            folder = "Data\\Symphony\\ErrorRecalc"
+            short_name = "Sotn"
+        else:
+            Manager.init(Dissonance)
+            folder = "Data\\Dissonance"
+            short_name = "Hod"
+        
+        shutil.copyfile(config.get("Misc", "s" + short_name + "InputFile"), folder + "\\rom")
+        
+        Manager.game.init()
+        Manager.game.open_json()
+        
+        Manager.open_rom(folder + "\\rom")
+        
+        seed = Manager.game.get_seed()
+        
+        if Manager.game == Dissonance:
+            Manager.game.gather_data()
+            if config.getboolean("EnemyRandomization", "bEnemyPlacement"):
+                random.seed(seed)
+                Manager.game.randomize_enemies()
+                Manager.game.randomize_bosses()
+                Manager.game.rebalance_enemies()
+                Manager.game.update_gfx_pointers()
+            if config.getboolean("Extra", "bDiscreetOutline"):
+                Manager.game.apply_ips_patch("DiscreetOutline")
+            Manager.game.apply_ips_patch("NoEntityPalettes")
+        else:
+            if config.getboolean("EnemyRandomization", "bEnemyLevels"):
+                random.seed(seed)
+                Manager.randomize_enemy_levels()
+                Manager.game.safe_start()
+            if config.getboolean("Extra", "bBigtossOnly"):
+                Manager.game.all_bigtoss()
+            if config.getboolean("Extra", "bContinuousSmash"):
+                Manager.game.infinite_wing_smash()
+        
+        if config.getboolean("EnemyRandomization", "bEnemyTolerances"):
+            random.seed(seed)
+            Manager.randomize_enemy_resistances()
+        
+        Manager.multiply_damage(config.getfloat("EnemyDamage", "fDamageMultiplier"))
+        
+        if config.getboolean("Extra", "bScavengerMode"):
+            Manager.game.remove_enemy_drops()
+        
+        Manager.game.write_simple_data()
+        Manager.game.write_complex_data()
+        Manager.game.create_enemy_log()
+        
+        Manager.close_rom()
+        
+        if Manager.game == Symphony:
+            root = os.getcwd()
+            os.chdir(folder)
+            program = glob.glob("*.exe")[0]
+            os.system("cmd /c " + program + " rom")
+            os.chdir(root)
         
         self.signaller.progress.emit(1)
         
-        if config.get("Misc", "sOutputFolder") and os.path.isdir(config.get("Misc", "sOutputFolder")):
-            shutil.move("ErrorRecalc\\rom.bin", config.get("Misc", "sOutputFolder") + "\\" + config.get("Misc", "sInputFile").split("\\")[-1])
-            shutil.copyfile("Data\\cheats.cht", config.get("Misc", "sOutputFolder") + "\\" + config.get("Misc", "sInputFile").split("\\")[-1][:-4].replace(" (Track 1)", "") + ".cht")
+        if config.get("Misc", "s" + short_name + "OutputFolder") and os.path.isdir(config.get("Misc", "s" + short_name + "OutputFolder")):
+            shutil.move(folder + "\\rom", config.get("Misc", "s" + short_name + "OutputFolder") + "\\" + config.get("Misc", "s" + short_name + "InputFile").split("\\")[-1])
         else:
-            shutil.move("ErrorRecalc\\rom.bin", config.get("Misc", "sInputFile"))
-            shutil.copyfile("Data\\cheats.cht", config.get("Misc", "sInputFile")[:-4].replace(" (Track 1)", "") + ".cht")
+            shutil.move(folder + "\\rom", config.get("Misc", "s" + short_name + "InputFile"))
         
         self.signaller.finished.emit()
 
@@ -245,11 +127,13 @@ class Update(QThread):
 
     def run(self):
         progress = 0
+        zip_name = "KindAndFair.zip"
+        exe_name = script_name + ".exe"
         self.signaller.progress.emit(progress)
         
         #Download
         
-        with open("SotnKindAndFair.zip", "wb") as file_writer:
+        with open(zip_name, "wb") as file_writer:
             url = requests.get(self.api["assets"][0]["browser_download_url"], stream=True)
             for data in url.iter_content(chunk_size=4096):
                 file_writer.write(data)
@@ -258,17 +142,17 @@ class Update(QThread):
         
         self.progressBar.setLabelText("Extracting...")
         
-        #PurgeFolders
+        #Purge folders
         
         shutil.rmtree("Data")
-        shutil.rmtree("ErrorRecalc")
+        shutil.rmtree("Utilities")
         
-        os.rename("KindAndFair.exe", "OldKindAndFair.exe")
-        with zipfile.ZipFile("SotnKindAndFair.zip", "r") as zip_ref:
+        os.rename(exe_name, "delete.me")
+        with zipfile.ZipFile(zip_name, "r") as zip_ref:
             zip_ref.extractall("")
-        os.remove("SotnKindAndFair.zip")
+        os.remove(zip_name)
         
-        #CarryPreviousConfig
+        #Carry previous config
         
         new_config = configparser.ConfigParser()
         new_config.optionxform = str
@@ -284,9 +168,9 @@ class Update(QThread):
         with open("Data\\config.ini", "w") as file_writer:
             new_config.write(file_writer)
         
-        #OpenNewEXE
+        #Open new EXE
         
-        subprocess.Popen("KindAndFair.exe")
+        subprocess.Popen(exe_name)
         sys.exit()
 
 #Interface
@@ -299,18 +183,8 @@ class Main(QWidget):
         self.check_for_updates()
 
     def initUI(self):
-        self.setStyleSheet("QWidget{background:transparent; color: #ffffff; font-family: Cambria; font-size: 18px}"
-        + "QLabel{border: 1px}"
-        + "QMessageBox{background-color: #1d150f}"
-        + "QDialog{background-color: #1d150f}"
-        + "QProgressDialog{background-color: #1d150f}"
-        + "QPushButton{background-color: #1d150f}"
-        + "QDoubleSpinBox{background-color: #1d150f}"
-        + "QLineEdit{background-color: #1d150f}"
-        + "QMenu{background-color: #1d150f}"
-        + "QToolTip{border: 0px; background-color: #1d150f; color: #ffffff; font-family: Cambria; font-size: 18px}")
         
-        #MainLayout
+        #Main layout
         
         grid = QGridLayout()
         grid.setSpacing(10)
@@ -320,39 +194,44 @@ class Main(QWidget):
         box_1_grid = QGridLayout()
         self.box_1 = QGroupBox("Enemy Randomization")
         self.box_1.setLayout(box_1_grid)
-        grid.addWidget(self.box_1, 0, 0, 1, 1)
+        grid.addWidget(self.box_1, 0, 0, 1, 2)
 
         box_2_grid = QGridLayout()
         self.box_2 = QGroupBox("Enemy Damage")
         self.box_2.setLayout(box_2_grid)
-        grid.addWidget(self.box_2, 0, 1, 1, 1)
+        grid.addWidget(self.box_2, 0, 2, 1, 2)
 
         box_4_grid = QGridLayout()
         self.box_4 = QGroupBox("Extra")
         self.box_4.setLayout(box_4_grid)
-        grid.addWidget(self.box_4, 2, 0, 1, 2)
+        grid.addWidget(self.box_4, 2, 0, 1, 4)
 
-        box_5_grid = QGridLayout()
-        self.box_5 = QGroupBox("Input File")
-        self.box_5.setLayout(box_5_grid)
-        grid.addWidget(self.box_5, 3, 0, 1, 1)
-
-        box_6_grid = QGridLayout()
-        self.box_6 = QGroupBox("Output Folder")
-        self.box_6.setLayout(box_6_grid)
-        grid.addWidget(self.box_6, 3, 1, 1, 1)
+        box_7_grid = QGridLayout()
+        self.box_7 = QGroupBox("Game")
+        self.box_7.setLayout(box_7_grid)
+        grid.addWidget(self.box_7, 3, 0, 1, 4)
         
         #Checkboxes
 
         self.check_box_1 = QCheckBox("Enemy Levels")
-        self.check_box_1.setToolTip("Randomize the level of every enemy. Stats that scale with \nlevel include HP, attack, defense and EXP.\nPicking this option will disable the removal of your\nstarting equipment from Death's cutscene.")
+        self.check_box_1.setToolTip("Randomize the level of every enemy. Stats that scale with\nlevel include HP, attack, defense and EXP.\nPicking this option will disable the removal of your\nstarting equipment from Death's cutscene.")
         self.check_box_1.stateChanged.connect(self.check_box_1_changed)
         box_1_grid.addWidget(self.check_box_1, 0, 0)
-
+        
         self.check_box_2 = QCheckBox("Enemy Tolerances")
-        self.check_box_2.setToolTip("Randomize the resistance/weakness attributes of every enemy.")
+        self.check_box_2.setToolTip("Randomize the resistance/weakness attributes of enemies.")
         self.check_box_2.stateChanged.connect(self.check_box_2_changed)
         box_1_grid.addWidget(self.check_box_2, 1, 0)
+        
+        self.check_box_3 = QCheckBox("Enemy Placement")
+        self.check_box_3.setToolTip("Randomize where enemies are found. Their stats\nwill be rescaled by the order you encounter them.")
+        self.check_box_3.stateChanged.connect(self.check_box_3_changed)
+        box_1_grid.addWidget(self.check_box_3, 0, 0)
+        
+        self.check_box_7 = QCheckBox("Scavenger Mode")
+        self.check_box_7.setToolTip("Enemies no longer drop items, you will have\nto rely on what you find in the overworld.")
+        self.check_box_7.stateChanged.connect(self.check_box_7_changed)
+        box_4_grid.addWidget(self.check_box_7, 0, 0)
         
         self.check_box_6 = QCheckBox("Continuous Wing Smash")
         self.check_box_6.setToolTip("Wing smashes will cost more MP to initially cast\nbut will no longer need to be chained.")
@@ -364,10 +243,20 @@ class Main(QWidget):
         self.check_box_5.stateChanged.connect(self.check_box_5_changed)
         box_4_grid.addWidget(self.check_box_5, 1, 0)
         
-        self.check_box_7 = QCheckBox("Scavenger Mode")
-        self.check_box_7.setToolTip("Enemies no longer drop items, you will have\nto rely on what you find in the overworld.")
-        self.check_box_7.stateChanged.connect(self.check_box_7_changed)
-        box_4_grid.addWidget(self.check_box_7, 0, 0)
+        self.check_box_4 = QCheckBox("Discreet Outline")
+        self.check_box_4.setToolTip("Replace Juste's blue outline and trail with a\ndark shade of grey.")
+        self.check_box_4.stateChanged.connect(self.check_box_4_changed)
+        box_4_grid.addWidget(self.check_box_4, 1, 0)
+        
+        #Radio buttons
+        
+        self.radio_button_1 = QRadioButton("Symphony of the Night")
+        self.radio_button_1.toggled.connect(self.radio_button_group_1_checked)
+        box_7_grid.addWidget(self.radio_button_1, 0, 0)
+        
+        self.radio_button_2 = QRadioButton("Harmony of Dissonance")
+        self.radio_button_2.toggled.connect(self.radio_button_group_1_checked)
+        box_7_grid.addWidget(self.radio_button_2, 1, 0)
         
         #SpinBoxes
         
@@ -377,82 +266,73 @@ class Main(QWidget):
             config.set("EnemyDamage", "fDamageMultiplier", "3.0")
         
         self.damage_box = QDoubleSpinBox()
-        self.damage_box.setToolTip("Multiplier of damage received.\n(1.0 is close to vanilla)")
+        self.damage_box.setToolTip("Multiplier of damage received.\n(1.0 is beginner)")
         self.damage_box.setDecimals(1)
-        self.damage_box.setRange(0.0, 3.0)
+        self.damage_box.setRange(0.1, 3.0)
         self.damage_box.setSingleStep(0.1)
         self.damage_box.setValue(config.getfloat("EnemyDamage", "fDamageMultiplier"))
         self.damage_box.valueChanged.connect(self.new_damage)
         box_2_grid.addWidget(self.damage_box, 0, 0)
         
-        #InitCheckboxes
+        #Init checkboxes
         
         if config.getboolean("EnemyRandomization", "bEnemyLevels"):
             self.check_box_1.setChecked(True)
         if config.getboolean("EnemyRandomization", "bEnemyTolerances"):
             self.check_box_2.setChecked(True)
+        if config.getboolean("EnemyRandomization", "bEnemyPlacement"):
+            self.check_box_3.setChecked(True)
+        if config.getboolean("Extra", "bScavengerMode"):
+            self.check_box_7.setChecked(True)
         if config.getboolean("Extra", "bContinuousSmash"):
             self.check_box_6.setChecked(True)
         if config.getboolean("Extra", "bBigtossOnly"):
             self.check_box_5.setChecked(True)
-        if config.getboolean("Extra", "bScavengerMode"):
-            self.check_box_7.setChecked(True)
+        if config.getboolean("Extra", "bDiscreetOutline"):
+            self.check_box_4.setChecked(True)
         
-        #TextField
+        #Text field
 
-        self.input_field = QLineEdit(config.get("Misc", "sInputFile"))
+        self.input_field = QLineEdit()
         self.input_field.setToolTip("Path to your input rom.")
         self.input_field.textChanged[str].connect(self.new_input)
-        box_5_grid.addWidget(self.input_field, 0, 0)
+        grid.addWidget(self.input_field, 4, 0, 1, 1)
         
-        self.output_field = QLineEdit(config.get("Misc", "sOutputFolder"))
+        self.output_field = QLineEdit()
         self.output_field.setToolTip("Path to your output folder.")
         self.output_field.textChanged[str].connect(self.new_output)
-        box_6_grid.addWidget(self.output_field, 0, 0)
+        grid.addWidget(self.output_field, 4, 2, 1, 1)
 
         #Buttons
         
         button_1 = QPushButton("Patch")
         button_1.setToolTip("Patch rom with current settings.")
         button_1.clicked.connect(self.button_1_clicked)
-        grid.addWidget(button_1, 5, 0, 1, 2)
+        grid.addWidget(button_1, 5, 0, 1, 4)
         
         button_2 = QPushButton()
         button_2.setIcon(QPixmap("Data\\browse.png"))
         button_2.setToolTip("Browse input.")
         button_2.clicked.connect(self.button_2_clicked)
-        box_5_grid.addWidget(button_2, 0, 1)
+        grid.addWidget(button_2, 4, 1, 1, 1)
         
         button_3 = QPushButton()
         button_3.setIcon(QPixmap("Data\\browse.png"))
         button_3.setToolTip("Browse output.")
         button_3.clicked.connect(self.button_3_clicked)
-        box_6_grid.addWidget(button_3, 0, 1)
-        
-        button_4 = QPushButton("About")
-        button_4.setToolTip("What this mod does.")
-        button_4.clicked.connect(self.button_4_clicked)
-        grid.addWidget(button_4, 4, 0, 1, 1)
-        
-        button_5 = QPushButton("Credits")
-        button_5.setToolTip("People involved with this mod.")
-        button_5.clicked.connect(self.button_5_clicked)
-        grid.addWidget(button_5, 4, 1, 1, 1)
+        grid.addWidget(button_3, 4, 3, 1, 1)
         
         #Window
         
         self.setLayout(grid)
         self.setFixedSize(512, 432)
-        self.setWindowTitle("KindAndFair")
-        self.setWindowIcon(QIcon("Data\\icon.png"))
+        self.setWindowTitle(script_name)
+        self.show()
         
-        #Background
-        
-        background = QPixmap("Data\\background.png")
-        palette = QPalette()
-        palette.setBrush(QPalette.Window, background)
-        self.show()        
-        self.setPalette(palette)
+        if config.getboolean("Game", "bSymphony"):
+            self.radio_button_1.setChecked(True)
+        else:
+            self.radio_button_2.setChecked(True)
         
         #Position
         
@@ -475,6 +355,18 @@ class Main(QWidget):
         else:
             config.set("EnemyRandomization", "bEnemyTolerances", "false")
 
+    def check_box_3_changed(self):
+        if self.check_box_3.isChecked():
+            config.set("EnemyRandomization", "bEnemyPlacement", "true")
+        else:
+            config.set("EnemyRandomization", "bEnemyPlacement", "false")
+
+    def check_box_7_changed(self):
+        if self.check_box_7.isChecked():
+            config.set("Extra", "bScavengerMode", "true")
+        else:
+            config.set("Extra", "bScavengerMode", "false")
+
     def check_box_6_changed(self):
         if self.check_box_6.isChecked():
             config.set("Extra", "bContinuousSmash", "true")
@@ -487,20 +379,67 @@ class Main(QWidget):
         else:
             config.set("Extra", "bBigtossOnly", "false")
 
-    def check_box_7_changed(self):
-        if self.check_box_7.isChecked():
-            config.set("Extra", "bScavengerMode", "true")
+    def check_box_4_changed(self):
+        if self.check_box_4.isChecked():
+            config.set("Extra", "bDiscreetOutline", "true")
         else:
-            config.set("Extra", "bScavengerMode", "false")
+            config.set("Extra", "bDiscreetOutline", "false")
+    
+    def radio_button_group_1_checked(self):
+        if self.radio_button_1.isChecked():
+            config.set("Game", "bSymphony", "true")
+            config.set("Game", "bDissonance", "false")
+            self.check_box_1.setVisible(True)
+            self.check_box_3.setVisible(False)
+            self.check_box_6.setVisible(True)
+            self.check_box_5.setVisible(True)
+            self.check_box_4.setVisible(False)
+            self.input_field.setText(config.get("Misc", "sSotnInputFile"))
+            self.output_field.setText(config.get("Misc", "sSotnOutputFolder"))
+            self.reset_visuals("Symphony", "#1d150f")
+        else:
+            config.set("Game", "bSymphony", "false")
+            config.set("Game", "bDissonance", "true")
+            self.check_box_1.setVisible(False)
+            self.check_box_3.setVisible(True)
+            self.check_box_6.setVisible(False)
+            self.check_box_5.setVisible(False)
+            self.check_box_4.setVisible(True)
+            self.input_field.setText(config.get("Misc", "sHodInputFile"))
+            self.output_field.setText(config.get("Misc", "sHodOutputFolder"))
+            self.reset_visuals("Dissonance", "#340d0d")
+    
+    def reset_visuals(self, game, color):
+        self.setStyleSheet("QWidget{background:transparent; color: #ffffff; font-family: Cambria; font-size: 18px}"
+        + "QLabel{border: 1px}"
+        + "QMessageBox{background-color: " + color + "}"
+        + "QDialog{background-color: " + color + "}"
+        + "QProgressDialog{background-color: " + color + "}"
+        + "QPushButton{background-color: " + color + "}"
+        + "QDoubleSpinBox{background-color: " + color + "}"
+        + "QLineEdit{background-color: " + color + "}"
+        + "QMenu{background-color: " + color + "}"
+        + "QToolTip{border: 0px; background-color: " + color + "; color: #ffffff; font-family: Cambria; font-size: 18px}")
+        self.setWindowIcon(QIcon("Data\\" + game + "\\icon.png"))
+        background = QPixmap("Data\\" + game + "\\background.png")
+        palette = QPalette()
+        palette.setBrush(QPalette.Window, background)
+        self.setPalette(palette)
     
     def new_damage(self):
         config.set("EnemyDamage", "fDamageMultiplier", str(round(self.damage_box.value(),1)))
     
     def new_input(self, input):
-        config.set("Misc", "sInputFile", input)
+        if config.getboolean("Game", "bSymphony"):
+            config.set("Misc", "sSotnInputFile", input)
+        else:
+            config.set("Misc", "sHodInputFile", input)
     
     def new_output(self, output):
-        config.set("Misc", "sOutputFolder", output)
+        if config.getboolean("Game", "bSymphony"):
+            config.set("Misc", "sSotnOutputFolder", output)
+        else:
+            config.set("Misc", "sHodOutputFolder", output)
     
     def set_progress(self, progress):
         self.progressBar.setValue(progress)
@@ -516,49 +455,21 @@ class Main(QWidget):
         self.setEnabled(False)
         QApplication.processEvents()
         
-        if not config.get("Misc", "sInputFile") or not os.path.isfile(config.get("Misc", "sInputFile")):
-            self.no_path()
-            self.setEnabled(True)
-            return
+        if config.getboolean("Game", "bSymphony"):
+            name, extension = os.path.splitext(config.get("Misc", "sSotnInputFile"))
+            if not config.get("Misc", "sSotnInputFile") or not os.path.isfile(config.get("Misc", "sSotnInputFile")) or extension != ".bin":
+                self.no_path()
+                self.setEnabled(True)
+                return
+        else:
+            name, extension = os.path.splitext(config.get("Misc", "sHodInputFile"))
+            if not config.get("Misc", "sHodInputFile") or not os.path.isfile(config.get("Misc", "sHodInputFile")) or extension != ".gba":
+                self.no_path()
+                self.setEnabled(True)
+                return
         
         if not os.path.isdir("SpoilerLog"):
             os.makedirs("SpoilerLog")
-        
-        init()
-        open_json()
-        
-        shutil.copyfile(config.get("Misc", "sInputFile"), "ErrorRecalc\\rom.bin")
-        
-        with open("ErrorRecalc\\rom.bin", "r+b") as self.file:
-    
-            if config.getboolean("EnemyRandomization", "bEnemyLevels") or config.getboolean("EnemyRandomization", "bEnemyTolerances"):
-                self.random_enemy(config.getboolean("EnemyRandomization", "bEnemyLevels"), config.getboolean("EnemyRandomization", "bEnemyTolerances"))
-            
-            if config.getfloat("EnemyDamage", "fDamageMultiplier") == 0.0:
-                self.no_damage()
-            self.multiply_damage()
-            
-            if config.getboolean("Extra", "bBigtossOnly"):
-                self.all_bigtoss()
-            if config.getboolean("Extra", "bContinuousSmash"):
-                self.wing_smash()
-            if config.getboolean("Extra", "bScavengerMode"):
-                self.scavenger()
-            
-            self.write_enemy()
-            self.write_equip()
-            self.write_item()
-            self.write_shop()
-            self.write_spell()
-            self.write_stat()
-            self.write_description()
-            self.write_misc()
-            self.read_enemy()
-            #self.read_equip()
-            #self.read_item()
-            #self.read_shop()
-            #self.read_spell()
-            #self.read_stat()
         
         self.progressBar = QProgressDialog("Patching...", None, 0, 1, self)
         self.progressBar.setWindowTitle("Status")
@@ -570,7 +481,11 @@ class Main(QWidget):
         self.worker.start()
     
     def button_2_clicked(self):
-        file = QFileDialog.getOpenFileName(parent=self, caption="File", filter="*.bin")[0]
+        if config.getboolean("Game", "bSymphony"):
+            format = "*.bin"
+        else:
+            format = "*.gba"
+        file = QFileDialog.getOpenFileName(parent=self, caption="File", filter=format)[0]
         if file:
             self.input_field.setText(file.replace("/", "\\"))
     
@@ -579,48 +494,6 @@ class Main(QWidget):
         if path:
             self.output_field.setText(path.replace("/", "\\"))
     
-    def button_4_clicked(self):
-        box = QMessageBox(self)
-        box.setWindowTitle("About")
-        box.setText("Applying this mod to your rom will change several things by default:<br/><br/><span style=\"color: #f6b26b;\">Balance enemy stats</span> by improving difficulty progression and avoiding extremes like what the vanilla game does.<br/><br/><span style=\"color: #f6b26b;\">Tweak equipment</span> by toning down god tier items, adjusting MP costs and improving underpowered techniques and spells.<br/><br/><span style=\"color: #f6b26b;\">Improve starting stats</span> with a minimum of 100 HP and 40 MP.<br/><br/><span style=\"color: #f6b26b;\">Assign elemental attributes</span> by giving player/enemy attacks the proper attributes when needed.<br/><br/><span style=\"color: #f6b26b;\">Rework enemy knockback</span> by making it based on the nature of the attack rather than its damage output.<br/><br/><span style=\"color: #f6b26b;\">And more...</span>")
-        box.exec()
-    
-    def button_5_clicked(self):
-        label1_image = QLabel()
-        label1_image.setPixmap(QPixmap("Data\\profile1.png"))
-        label1_text = QLabel()
-        label1_text.setText("<span style=\"font-weight: bold; color: #67aeff;\">Lakifume</span><br/>Author of Kind And Fair<br/><a href=\"https://github.com/Lakifume\"><font face=Cambria color=#67aeff>Github</font></a>")
-        label1_text.setOpenExternalLinks(True)
-        label2_image = QLabel()
-        label2_image.setPixmap(QPixmap("Data\\profile2.png"))
-        label2_text = QLabel()
-        label2_text.setText("<span style=\"font-weight: bold; color: #3f40ff;\">Z3R0X</span><br/>Creator of enemy stat editor<br/><a href=\"https://www.youtube.com/ClassicGameHacking\"><font face=Cambria color=#3f40ff>YouTube</font></a>")
-        label2_text.setOpenExternalLinks(True)
-        label3_image = QLabel()
-        label3_image.setPixmap(QPixmap("Data\\profile3.png"))
-        label3_text = QLabel()
-        label3_text.setText("<span style=\"font-weight: bold; color: #b96f49;\">Mauk</span><br/>Sotn modder<br/><a href=\"https://castlevaniamodding.boards.net/thread/593/castlevania-sotn-mod-ps1\"><font face=Cambria color=#b96f49>Hack</font></a>")
-        label3_text.setOpenExternalLinks(True)
-        label4_image = QLabel()
-        label4_image.setPixmap(QPixmap("Data\\profile4.png"))
-        label4_text = QLabel()
-        label4_text.setText("<span style=\"font-weight: bold; color: #f513dc;\">TheOkayGuy</span><br/>Testing and cheesing<br/><a href=\"https://www.twitch.tv/theokayguy\"><font face=Cambria color=#f513dc>Twitch</font></a>")
-        label4_text.setOpenExternalLinks(True)
-        layout = QGridLayout()
-        layout.setSpacing(10)
-        layout.addWidget(label1_image, 0, 0, 1, 1)
-        layout.addWidget(label1_text, 0, 1, 1, 1)
-        layout.addWidget(label2_image, 1, 0, 1, 1)
-        layout.addWidget(label2_text, 1, 1, 1, 1)
-        layout.addWidget(label3_image, 2, 0, 1, 1)
-        layout.addWidget(label3_text, 2, 1, 1, 1)
-        layout.addWidget(label4_image, 3, 0, 1, 1)
-        layout.addWidget(label4_text, 3, 1, 1, 1)
-        box = QDialog(self)
-        box.setLayout(layout)
-        box.setWindowTitle("Credits")
-        box.exec()
-    
     def no_path(self):
         box = QMessageBox(self)
         box.setWindowTitle("Path")
@@ -628,776 +501,9 @@ class Main(QWidget):
         box.setText("Input path invalid.")
         box.exec()
     
-    def random_enemy(self, level, resist):
-        keys_list = list(enemy_data)
-        for i in range(len(keys_list)):
-            #Level
-            if level and not keys_list[i] in level_skip:
-                if enemy_data[keys_list[i]]["IsMainEntry"]:
-                    if keys_list[i] == "Shaft":
-                        enemy_data[keys_list[i]]["Level"] = random.randint(1, 99)
-                    elif keys_list[i] == "Dracula":
-                        enemy_data[keys_list[i]]["Level"] = abs(enemy_data["Shaft"]["Level"] - 100)
-                    elif keys_list[i] in minor:
-                        enemy_data[keys_list[i]]["Level"] = self.random_weighted(enemy_data[keys_list[i]]["Level"], 1, 50, 1, 4)
-                    else:
-                        enemy_data[keys_list[i]]["Level"] = self.random_weighted(enemy_data[keys_list[i]]["Level"], 1, 99, 1, 4)
-                else:
-                    enemy_data[keys_list[i]]["Level"] = enemy_data[keys_list[i-1]]["Level"]
-            #Resistances
-            if resist and not keys_list[i] in resist_skip:
-                for e in Attributes:
-                    if enemy_data[keys_list[i]]["IsMainEntry"]:
-                        enemy_data[keys_list[i]]["Resistances"][str(e).split(".")[1]] = random.choice(resist_pool)
-                    else:
-                        enemy_data[keys_list[i]]["Resistances"][str(e).split(".")[1]] = enemy_data[keys_list[i-1]]["Resistances"][str(e).split(".")[1]]
-        #DeathRemoval
-        if level:
-            for i in removal_offset:
-                self.file.seek(i)
-                self.file.write((0).to_bytes(2, "little"))
-        #LibraryCard
-        self.file.seek(0x4BAA2B0)
-        self.file.write((0x00A6).to_bytes(2, "little"))
-
-    def random_weighted(self, value, minimum, maximum, step, deviation):
-        #Create a list in a range with higher odds around a specific value
-        list = []
-        for i in range(minimum, maximum+1):
-            if i % step == 0:
-                min_distance = min(value-minimum, maximum-value)
-                max_distance = max(value-minimum, maximum-value)
-                if i < value:
-                    weight = round((maximum-value)/(value-minimum))
-                    current_distance = value-minimum
-                elif i > value:
-                    weight = round((value-minimum)/(maximum-value))
-                    current_distance = maximum-value
-                else:
-                    if min_distance == 0:
-                        weight = max_distance
-                    else:
-                        weight = round((max_distance/min_distance)/2)
-                    current_distance = 1
-                if weight < 1:
-                    weight = 1
-                difference = abs(i-value)
-                for e in range(weight*2**(abs(math.ceil(difference*deviation/current_distance)-deviation))):
-                    list.append(i)
-        return random.choice(list)
-    
-    def no_damage(self):
-        for i in enemy_data:
-            if enemy_data[i]["HealthLevel1"] == 32767:
-                continue
-            if "Intro" in i:
-                enemy_data[i]["HealthLevel1"]  = 1
-                enemy_data[i]["HealthLevel99"] = 1
-            else:
-                enemy_data[i]["HealthLevel1"]  = 0
-                enemy_data[i]["HealthLevel99"] = 0
-        #Invulnerability
-        self.file.seek(0x126626)
-        self.file.write((0).to_bytes(1, "little"))
-        self.file.seek(0x3A06F52)
-        self.file.write((0).to_bytes(1, "little"))
-        self.file.seek(0x59EB092)
-        self.file.write((0x1000).to_bytes(2, "little"))
-        self.file.seek(0x59EBC7A)
-        self.file.write((0x1000).to_bytes(2, "little"))
-        #NoExperience
-        self.file.seek(0x117cf6)
-        self.file.write((0).to_bytes(1, "little"))
-        self.file.seek(0x117da0)
-        self.file.write((0).to_bytes(4, "little"))
-
-    def multiply_damage(self):
-        for i in enemy_data:
-            if i == "Evil Priest":
-                continue
-            enemy_data[i]["ContactDamageLevel1"] = int(enemy_data[i]["ContactDamageLevel1"]*config.getfloat("EnemyDamage", "fDamageMultiplier"))
-            enemy_data[i]["ContactDamageLevel99"] = int(enemy_data[i]["ContactDamageLevel99"]*config.getfloat("EnemyDamage", "fDamageMultiplier"))
-
-    def all_bigtoss(self):
-        for i in enemy_data:
-            if "Intro" in i or i == "Evil Priest":
-                continue
-            enemy_data[i]["ContactDamageType"] = "0x{:04x}".format(int(int(enemy_data[i]["ContactDamageType"], 16)/16)*16 + 5)
-            for e in range(len(enemy_data[i]["AttackDamageType"])):
-                enemy_data[i]["AttackDamageType"][e] = "0x{:04x}".format(int(int(enemy_data[i]["AttackDamageType"][e], 16)/16)*16 + 5)
-
-    def wing_smash(self):
-        spell_data["Wing Smash"]["ManaCost"] = round(spell_data["Wing Smash"]["ManaCost"]*3.125)
-        self.file.seek(0x134990)
-        self.file.write((0).to_bytes(4, "little"))
-
-    def scavenger(self):
-        for i in enemy_content:
-            self.file.seek(self.check_offset(int(enemy_content[i]["EnemyAddress"], 16) + enemy_offset["Item1"]))
-            self.file.write((0).to_bytes(2, "little"))
-            self.file.seek(self.check_offset(int(enemy_content[i]["EnemyAddress"], 16) + enemy_offset["Item2"]))
-            self.file.write((0).to_bytes(2, "little"))
-    
-    def check_offset(self, offset):
-        start = 0x18
-        position = int((offset - start)/0x930) + 1
-        if offset >= start + 0x930*position - 0x130:
-            offset += 0x130
-        return offset
-    
-    def write_enemy(self):
-        for i in enemy_content:
-            #Health
-            health = math.ceil(((enemy_data[i]["HealthLevel99"] - enemy_data[i]["HealthLevel1"])/98)*(enemy_data[i]["Level"]-1) + enemy_data[i]["HealthLevel1"])
-            health = health & 0xFFFF
-            self.file.seek(self.check_offset(int(enemy_content[i]["EnemyAddress"], 16) + enemy_offset["Health"]))
-            self.file.write(health.to_bytes(2, "little"))
-            #ContactDamage
-            strength = math.ceil(((enemy_data[i]["ContactDamageLevel99"] - enemy_data[i]["ContactDamageLevel1"])/98)*(enemy_data[i]["Level"]-1) + enemy_data[i]["ContactDamageLevel1"])
-            strength = strength & 0xFFFF
-            self.file.seek(self.check_offset(int(enemy_content[i]["EnemyAddress"], 16) + enemy_offset["Damage"]))
-            if not enemy_data[i]["HasContact"]:
-                self.file.write((0).to_bytes(2, "little"))
-            elif int(enemy_data[i]["ContactDamageType"], 16) % 16 == 5:
-                self.file.write(int(strength*0.9).to_bytes(2, "little"))
-            else:
-                self.file.write(strength.to_bytes(2, "little"))
-            #ContactDamageType
-            self.file.seek(self.check_offset(int(enemy_content[i]["EnemyAddress"], 16) + enemy_offset["DamageType"]))
-            self.file.write(int(enemy_data[i]["ContactDamageType"], 16).to_bytes(2, "little"))
-            #Defense
-            defense = math.ceil(((enemy_data[i]["DefenseLevel99"] - enemy_data[i]["DefenseLevel1"])/98)*(enemy_data[i]["Level"]-1) + enemy_data[i]["DefenseLevel1"])
-            defense = defense & 0xFFFF
-            self.file.seek(self.check_offset(int(enemy_content[i]["EnemyAddress"], 16) + enemy_offset["Defense"]))
-            self.file.write(defense.to_bytes(2, "little"))
-            #Surface
-            self.file.seek(self.check_offset(int(enemy_content[i]["EnemyAddress"], 16) + enemy_offset["Surface"]))
-            self.file.write(int(enemy_data[i]["Surface"], 16).to_bytes(2, "little"))
-            #Resistances
-            if i == "Galamoth Head":
-                weak = 0
-                strong = 0
-                immune = 0xFFE0
-                absorb = 0
-            else:
-                weak = 0
-                strong = 0
-                immune = 0
-                absorb = 0
-                for e in Attributes:
-                    if enemy_data[i]["Resistances"][str(e).split(".")[1]] == 0:
-                        weak += e.value
-                    elif enemy_data[i]["Resistances"][str(e).split(".")[1]] == 2:
-                        strong += e.value
-                    elif enemy_data[i]["Resistances"][str(e).split(".")[1]] == 3:
-                        immune += e.value
-                    elif enemy_data[i]["Resistances"][str(e).split(".")[1]] == 4:
-                        absorb += e.value
-            self.file.seek(self.check_offset(int(enemy_content[i]["EnemyAddress"], 16) + enemy_offset["Weak"]))
-            self.file.write(weak.to_bytes(2, "little"))
-            self.file.seek(self.check_offset(int(enemy_content[i]["EnemyAddress"], 16) + enemy_offset["Strong"]))
-            self.file.write(strong.to_bytes(2, "little"))
-            self.file.seek(self.check_offset(int(enemy_content[i]["EnemyAddress"], 16) + enemy_offset["Immune"]))
-            self.file.write(immune.to_bytes(2, "little"))
-            self.file.seek(self.check_offset(int(enemy_content[i]["EnemyAddress"], 16) + enemy_offset["Absorb"]))
-            self.file.write(absorb.to_bytes(2, "little"))
-            #Level
-            enemy_data[i]["Level"] = enemy_data[i]["Level"] & 0xFFFF
-            self.file.seek(self.check_offset(int(enemy_content[i]["EnemyAddress"], 16) + enemy_offset["Level"]))
-            self.file.write(enemy_data[i]["Level"].to_bytes(2, "little"))
-            #Experience
-            experience = math.ceil(((enemy_data[i]["ExperienceLevel99"] - enemy_data[i]["ExperienceLevel1"])/98)*(enemy_data[i]["Level"]-1) + enemy_data[i]["ExperienceLevel1"])
-            experience = experience & 0xFFFF
-            self.file.seek(self.check_offset(int(enemy_content[i]["EnemyAddress"], 16) + enemy_offset["Experience"]))
-            self.file.write(experience.to_bytes(2, "little"))
-            #StopwatchTolerance
-            self.file.seek(self.check_offset(int(enemy_content[i]["EnemyAddress"], 16) + 37))
-            if enemy_data[i]["IsBoss"]:
-                self.file.write((0x30).to_bytes(1, "little"))
-            elif enemy_data[i]["Level"] >= 40:
-                self.file.write((0x34).to_bytes(1, "little"))
-            elif enemy_data[i]["Level"] >= 20:
-                self.file.write((0x16).to_bytes(1, "little"))
-            else:
-                self.file.write((0x14).to_bytes(1, "little"))
-            #NoStun
-            offset = self.check_offset(int(enemy_content[i]["EnemyAddress"], 16) + 38)
-            self.file.seek(offset)
-            if int.from_bytes(self.file.read(1), "little") < 0x40:
-                self.file.seek(offset)
-                self.file.write((0x40).to_bytes(1, "little"))
-            #Attack
-            for e in range(len(enemy_content[i]["AttackAddress"])):
-                #AttackDamage
-                damage = math.ceil(enemy_data[i]["AttackDamageMultiplier"][e]*strength)
-                damage = damage & 0xFFFF
-                self.file.seek(self.check_offset(int(enemy_content[i]["AttackAddress"][e], 16) + enemy_offset["Damage"]))
-                if int(enemy_data[i]["AttackDamageType"][e], 16) % 16 == 5:
-                    self.file.write(int(damage*0.9).to_bytes(2, "little"))
-                else:
-                    self.file.write(damage.to_bytes(2, "little"))
-                #AttackDamageType
-                self.file.seek(self.check_offset(int(enemy_content[i]["AttackAddress"][e], 16) + enemy_offset["DamageType"]))
-                self.file.write(int(enemy_data[i]["AttackDamageType"][e], 16).to_bytes(2, "little"))
-                #AttackStopwatchTolerance
-                self.file.seek(self.check_offset(int(enemy_content[i]["AttackAddress"][e], 16) + 37))
-                if enemy_data[i]["Level"] >= 40 or enemy_data[i]["IsBoss"]:
-                    self.file.write((0x20).to_bytes(1, "little"))
-                elif enemy_data[i]["Level"] >= 20:
-                    self.file.write((0x12).to_bytes(1, "little"))
-                else:
-                    self.file.write((0x00).to_bytes(1, "little"))
-                #AttackNoStun
-                offset = self.check_offset(int(enemy_content[i]["AttackAddress"][e], 16) + 38)
-                self.file.seek(offset)
-                if int.from_bytes(self.file.read(1), "little") < 0x40:
-                    self.file.seek(offset)
-                    self.file.write((0x40).to_bytes(1, "little"))
-        #IntroDracShownDamage
-        self.file.seek(0xB7677)
-        self.file.write((0x08).to_bytes(1, "little"))
-        self.file.seek(0xB76EF)
-        self.file.write((0x08).to_bytes(1, "little"))
-        #ZombieTrevorHitSound
-        self.file.seek(0xB94E4)
-        self.file.write((0x10).to_bytes(1, "little"))
-        #ZombieTrevorShownDamage
-        self.file.seek(0xB94E7)
-        self.file.write((0x08).to_bytes(1, "little"))
-        #BeezFliesShownDamage
-        self.file.seek(0xB9267)
-        self.file.write((0x08).to_bytes(1, "little"))
-        #ShaftOrbShownDamage
-        self.file.seek(0xB92B7)
-        self.file.write((0x08).to_bytes(1, "little"))
-        #DiscusLordSawHitbox
-        self.file.seek(0xB65DA)
-        self.file.write((0x1818).to_bytes(2, "little"))
-        #HippogryphFireBreathHitbox
-        self.file.seek(0xB8ECA)
-        self.file.write((0x0A02).to_bytes(2, "little"))
-        #CerberusFireballHitbox
-        self.file.seek(0xB99AA)
-        self.file.write((0x0C0A).to_bytes(2, "little"))
-        #MedusaLaserHitbox
-        self.file.seek(0xB9A4A)
-        self.file.write((0x0220).to_bytes(2, "little"))
-        #DraculaBodyHitbox
-        self.file.seek(0xB9C02)
-        self.file.write((0x0000).to_bytes(2, "little"))
-
-    def write_equip(self):
-        for i in equipment_content:
-            #Attack
-            equipment_data[i]["Attack"] = equipment_data[i]["Attack"] & 0xFFFF
-            self.file.seek(self.check_offset(int(equipment_content[i], 16) + equip_offset["Attack"]))
-            self.file.write(int(equipment_data[i]["Attack"]).to_bytes(2, "little"))
-            #Defense
-            equipment_data[i]["Defense"] = equipment_data[i]["Defense"] & 0xFFFF
-            self.file.seek(self.check_offset(int(equipment_content[i], 16) + equip_offset["Defense"]))
-            self.file.write(int(equipment_data[i]["Defense"]).to_bytes(2, "little"))
-            #Strength
-            equipment_data[i]["Strength"] = equipment_data[i]["Strength"] & 0xFF
-            self.file.seek(self.check_offset(int(equipment_content[i], 16) + equip_offset["Strength"]))
-            self.file.write(int(equipment_data[i]["Strength"]).to_bytes(1, "little"))
-            #Constitution
-            equipment_data[i]["Constitution"] = equipment_data[i]["Constitution"] & 0xFF
-            self.file.seek(self.check_offset(int(equipment_content[i], 16) + equip_offset["Constitution"]))
-            self.file.write(int(equipment_data[i]["Constitution"]).to_bytes(1, "little"))
-            #Intelligence
-            equipment_data[i]["Intelligence"] = equipment_data[i]["Intelligence"] & 0xFF
-            self.file.seek(self.check_offset(int(equipment_content[i], 16) + equip_offset["Intelligence"]))
-            self.file.write(int(equipment_data[i]["Intelligence"]).to_bytes(1, "little"))
-            #Luck
-            equipment_data[i]["Luck"] = equipment_data[i]["Luck"] & 0xFF
-            self.file.seek(self.check_offset(int(equipment_content[i], 16) + equip_offset["Luck"]))
-            self.file.write(int(equipment_data[i]["Luck"]).to_bytes(1, "little"))
-            #Resistances
-            weak = 0
-            strong = 0
-            immune = 0
-            absorb = 0
-            for e in Attributes:
-                if equipment_data[i]["Resistances"][str(e).split(".")[1]] == 0:
-                    weak += e.value
-                elif equipment_data[i]["Resistances"][str(e).split(".")[1]] == 2:
-                    strong += e.value
-                elif equipment_data[i]["Resistances"][str(e).split(".")[1]] == 3:
-                    immune += e.value
-                elif equipment_data[i]["Resistances"][str(e).split(".")[1]] == 4:
-                    absorb += e.value
-            self.file.seek(self.check_offset(int(equipment_content[i], 16) + equip_offset["Weak"]))
-            self.file.write(weak.to_bytes(2, "little"))
-            self.file.seek(self.check_offset(int(equipment_content[i], 16) + equip_offset["Strong"]))
-            self.file.write(strong.to_bytes(2, "little"))
-            self.file.seek(self.check_offset(int(equipment_content[i], 16) + equip_offset["Immune"]))
-            self.file.write(immune.to_bytes(2, "little"))
-            self.file.seek(self.check_offset(int(equipment_content[i], 16) + equip_offset["Absorb"]))
-            self.file.write(absorb.to_bytes(2, "little"))
-    
-    def write_item(self):
-        for i in handitem_content:
-            #Attack
-            handitem_data[i]["Attack"] = handitem_data[i]["Attack"] & 0xFFFF
-            self.file.seek(self.check_offset(int(handitem_content[i], 16) + item_offset["Attack"]))
-            self.file.write(int(handitem_data[i]["Attack"]).to_bytes(2, "little"))
-            #Defense
-            handitem_data[i]["Defense"] = handitem_data[i]["Defense"] & 0xFFFF
-            self.file.seek(self.check_offset(int(handitem_content[i], 16) + item_offset["Defense"]))
-            self.file.write(int(handitem_data[i]["Defense"]).to_bytes(2, "little"))
-            #Element
-            total = 0
-            for e in Attributes:
-                if handitem_data[i]["Element"][str(e).split(".")[1]]:
-                    total += e.value
-            self.file.seek(self.check_offset(int(handitem_content[i], 16) + item_offset["Element"]))
-            self.file.write(total.to_bytes(2, "little"))
-            #Sprite
-            self.file.seek(self.check_offset(int(handitem_content[i], 16) + item_offset["Sprite"]))
-            self.file.write(int(handitem_data[i]["Sprite"], 16).to_bytes(1, "little"))
-            #Special
-            self.file.seek(self.check_offset(int(handitem_content[i], 16) + item_offset["Special"]))
-            self.file.write(int(handitem_data[i]["Special"], 16).to_bytes(1, "little"))
-            #Cooldown
-            handitem_data[i]["Cooldown"] = handitem_data[i]["Cooldown"] & 0xFFFF
-            self.file.seek(self.check_offset(int(handitem_content[i], 16) + item_offset["Cooldown"]))
-            self.file.write(int(handitem_data[i]["Cooldown"]).to_bytes(2, "little"))
-            #Spell
-            self.file.seek(self.check_offset(int(handitem_content[i], 16) + item_offset["Spell"]))
-            self.file.write(int(handitem_data[i]["Spell"], 16).to_bytes(2, "little"))
-            #ManaCost
-            handitem_data[i]["ManaCost"] = handitem_data[i]["ManaCost"] & 0xFFFF
-            self.file.seek(self.check_offset(int(handitem_content[i], 16) + item_offset["ManaCost"]))
-            self.file.write(int(handitem_data[i]["ManaCost"]).to_bytes(2, "little"))
-            #StunFrames
-            handitem_data[i]["StunFrames"] = handitem_data[i]["StunFrames"] & 0xFFFF
-            self.file.seek(self.check_offset(int(handitem_content[i], 16) + item_offset["StunFrames"]))
-            self.file.write(int(handitem_data[i]["StunFrames"]).to_bytes(2, "little"))
-            #Range
-            handitem_data[i]["Range"] = handitem_data[i]["Range"] & 0xFFFF
-            self.file.seek(self.check_offset(int(handitem_content[i], 16) + item_offset["Range"]))
-            self.file.write(int(handitem_data[i]["Range"]).to_bytes(2, "little"))
-            #Extra
-            self.file.seek(self.check_offset(int(handitem_content[i], 16) + item_offset["Extra"]))
-            self.file.write(int(handitem_data[i]["Extra"], 16).to_bytes(1, "little"))
-
-    def write_shop(self):
-        for i in shop_content:
-            self.file.seek(int(shop_content[i], 16) - 4)
-            if int.from_bytes(self.file.read(1), "little") != 0:
-                shift = 0xA9
-            else:
-                shift = 0x00
-            self.file.seek(int(shop_content[i], 16) - 2)
-            price = price_dict[id_dict["0x{:04x}".format(int.from_bytes(self.file.read(2), "little") + shift)]]
-            price = price & 0xFFFFFFFF
-            self.file.write(int(price).to_bytes(4, "little"))
-        self.file.seek(0x47A31E8)
-        self.file.write((100).to_bytes(4, "little"))
-    
-    def write_spell(self):
-        for i in spell_content:
-            #ManaCost
-            spell_data[i]["ManaCost"] = spell_data[i]["ManaCost"] & 0xFF
-            self.file.seek(self.check_offset(int(spell_content[i], 16) + spell_offset["ManaCost"]))
-            self.file.write(int(spell_data[i]["ManaCost"]).to_bytes(1, "little"))
-            #Cooldown
-            spell_data[i]["Cooldown"] = spell_data[i]["Cooldown"] & 0xFF
-            self.file.seek(self.check_offset(int(spell_content[i], 16) + spell_offset["Cooldown"]))
-            self.file.write(int(spell_data[i]["Cooldown"]).to_bytes(1, "little"))
-            #StunFrames
-            spell_data[i]["StunFrames"] = spell_data[i]["StunFrames"] & 0xFFFF
-            self.file.seek(self.check_offset(int(spell_content[i], 16) + spell_offset["StunFrames"]))
-            self.file.write(int(spell_data[i]["StunFrames"]).to_bytes(2, "little"))
-            #Extra
-            self.file.seek(self.check_offset(int(spell_content[i], 16) + spell_offset["Extra"]))
-            self.file.write(int(spell_data[i]["Extra"], 16).to_bytes(1, "little"))
-            #Element
-            total = 0
-            for e in Attributes:
-                if spell_data[i]["Element"][str(e).split(".")[1]]:
-                    total += e.value
-            self.file.seek(self.check_offset(int(spell_content[i], 16) + spell_offset["Element"]))
-            self.file.write(total.to_bytes(2, "little"))
-            #Attack
-            spell_data[i]["Attack"] = spell_data[i]["Attack"] & 0xFFFF
-            self.file.seek(self.check_offset(int(spell_content[i], 16) + spell_offset["Attack"]))
-            self.file.write(int(spell_data[i]["Attack"]).to_bytes(2, "little"))
-
-    def write_stat(self):
-        #StrConIntLck
-        stat_data["StrConIntLck"] = stat_data["StrConIntLck"] & 0xFFFF
-        self.file.seek(int(stat_content["StrConIntLck"], 16))
-        self.file.write(int(stat_data["StrConIntLck"]).to_bytes(2, "little"))
-        #Health
-        stat_data["Health"] = stat_data["Health"] & 0xFFFF
-        self.file.seek(int(stat_content["Health"], 16))
-        self.file.write(int(stat_data["Health"]).to_bytes(2, "little"))
-        #HealthFix
-        self.file.seek(0x119CC4)
-        self.file.write(int(stat_data["Health"] + 5).to_bytes(2, "little"))
-        #Hearts
-        stat_data["Hearts"] = stat_data["Hearts"] & 0xFFFF
-        self.file.seek(int(stat_content["Hearts"], 16))
-        self.file.write(int(stat_data["Hearts"]).to_bytes(2, "little"))
-        #MaxHearts
-        stat_data["MaxHearts"] = stat_data["MaxHearts"] & 0xFFFF
-        self.file.seek(int(stat_content["MaxHearts"], 16))
-        self.file.write(int(stat_data["MaxHearts"]).to_bytes(2, "little"))
-        #Mana
-        stat_data["Mana"] = stat_data["Mana"] & 0xFFFF
-        self.file.seek(int(stat_content["Mana"], 16))
-        self.file.write(int(stat_data["Mana"]).to_bytes(2, "little"))
-    
-    def write_description(self):
-        self.file.seek(0xF2400)
-        self.file.write(str.encode("Shocking"))
-        self.file.seek(0xF2538)
-        self.file.write(str.encode(" flail         "))
-        self.file.seek(0xF2639)
-        self.file.write(str.encode("               "))
-        self.file.seek(0xF2735)
-        self.file.write(str.encode("EEP"))
-        self.file.seek(0xF2740)
-        self.file.write(str.encode("Blazing sword of flame "))
-        self.file.seek(0xF3BF8)
-        self.file.write(str.encode("Immunity to all status effects"))
-        self.file.seek(0xF3C75)
-        self.file.write(str.encode("O"))
-        self.file.seek(0xF3C9A)
-        self.file.write(str.encode("T  "))
-        self.file.seek(0xF43FC)
-        self.file.write(str.encode("Immune to water "))
-        self.file.seek(0xF4420)
-        self.file.write(str.encode("Affection for cats          "))
-        self.file.seek(0xF4450)
-        self.file.write(str.encode("Immune to lightning         "))
-        self.file.seek(0xF4480)
-        self.file.write(str.encode("Immune to darkness          "))
-        self.file.seek(0xF44B0)
-        self.file.write(str.encode("Immune to ice            "))
-        self.file.seek(0xF44DC)
-        self.file.write(str.encode("Immune to fire            "))
-        self.file.seek(0xF4508)
-        self.file.write(str.encode("Immune to light           "))
-        self.file.seek(0xF4844)
-        self.file.write(str.encode("Strong vs. dark attacks   "))
-        self.file.seek(0xF486C)
-        self.file.write(str.encode("Immunity to all status effects"))
-        self.file.seek(0xF48C4)
-        self.file.write(str.encode("Stro"))
-        self.file.seek(0xF49F8)
-        self.file.write(str.encode("ng vs D water attacks "))
-        self.file.seek(0xF49FD)
-        self.file.write((0x81).to_bytes(1, "little"))
-        self.file.seek(0xF4A10)
-        self.file.write(str.encode("7ATER MAIL    "))
-        self.file.seek(0xF4A15)
-        self.file.write((0).to_bytes(1, "little"))
-        self.file.seek(0xF4A1A)
-        self.file.write((0).to_bytes(4, "little"))
-        self.file.seek(0xF4A2F)
-        self.file.write(str.encode(" attacks       "))
-        self.file.seek(0xF4A8C)
-        self.file.write(str.encode(" attacks       "))
-        self.file.seek(0xF2ABC)
-        self.file.write(str.encode("DEF { P O  "))
-        self.file.seek(0xF2ABF)
-        self.file.write((0x81).to_bytes(1, "little"))
-        self.file.seek(0xF2AC1)
-        self.file.write((0x82).to_bytes(1, "little"))
-        self.file.seek(0xF2AC3)
-        self.file.write((0x82).to_bytes(1, "little"))
-
-    def write_misc(self):
-        self.file.seek(0x4369E87)
-        self.file.write(str.encode("KOJI  IGA"))
-        self.file.seek(0x4369EE1)
-        self.file.write(str.encode("KOJI  IGA"))
-        self.file.seek(0x4369FBC)
-        self.file.write(str.encode("KOJI  IGA"))
-        self.file.seek(0x3A06851)
-        self.file.write((0x40).to_bytes(1, "little"))
-    
-    def read_enemy(self):
-        log = {}
-        for i in enemy_data:
-            log[i] = {}
-            #Health
-            self.file.seek(self.check_offset(int(enemy_content[i]["EnemyAddress"], 16) + enemy_offset["Health"]))
-            log[i]["Health"] = int.from_bytes(self.file.read(2), "little")
-            if log[i]["Health"] > 0x7FFF:
-                log[i]["Health"] -= 0x10000
-            #ContactDamage
-            self.file.seek(self.check_offset(int(enemy_content[i]["EnemyAddress"], 16) + enemy_offset["Damage"]))
-            log[i]["ContactDamage"] = int.from_bytes(self.file.read(2), "little")
-            if log[i]["ContactDamage"] > 0x7FFF:
-                log[i]["ContactDamage"] -= 0x10000
-            #ContactDamageType
-            self.file.seek(self.check_offset(int(enemy_content[i]["EnemyAddress"], 16) + enemy_offset["DamageType"]))
-            log[i]["ContactDamageType"] = "0x{:04x}".format(int.from_bytes(self.file.read(2), "little"))
-            #Defense
-            self.file.seek(self.check_offset(int(enemy_content[i]["EnemyAddress"], 16) + enemy_offset["Defense"]))
-            log[i]["Defense"] = int.from_bytes(self.file.read(2), "little")
-            if log[i]["Defense"] > 0x7FFF:
-                log[i]["Defense"] -= 0x10000
-            #Surface
-            self.file.seek(self.check_offset(int(enemy_content[i]["EnemyAddress"], 16) + enemy_offset["Surface"]))
-            log[i]["Surface"] = "0x{:04x}".format(int.from_bytes(self.file.read(2), "little"))
-            #Resistances
-            log[i]["Resistances"] = {}
-            for e in Attributes:
-                log[i]["Resistances"][str(e).split(".")[1]] = 1
-            self.file.seek(self.check_offset(int(enemy_content[i]["EnemyAddress"], 16) + enemy_offset["Weak"]))
-            total = int.from_bytes(self.file.read(2), "little")
-            for e in Attributes:
-                if (total & e.value) != 0:
-                    log[i]["Resistances"][str(e).split(".")[1]] = 0
-            self.file.seek(self.check_offset(int(enemy_content[i]["EnemyAddress"], 16) + enemy_offset["Strong"]))
-            total = int.from_bytes(self.file.read(2), "little")
-            for e in Attributes:
-                if (total & e.value) != 0:
-                    log[i]["Resistances"][str(e).split(".")[1]] = 2
-            self.file.seek(self.check_offset(int(enemy_content[i]["EnemyAddress"], 16) + enemy_offset["Immune"]))
-            total = int.from_bytes(self.file.read(2), "little")
-            for e in Attributes:
-                if (total & e.value) != 0:
-                    log[i]["Resistances"][str(e).split(".")[1]] = 3
-            self.file.seek(self.check_offset(int(enemy_content[i]["EnemyAddress"], 16) + enemy_offset["Absorb"]))
-            total = int.from_bytes(self.file.read(2), "little")
-            for e in Attributes:
-                if (total & e.value) != 0:
-                    log[i]["Resistances"][str(e).split(".")[1]] = 4
-            #Level
-            self.file.seek(self.check_offset(int(enemy_content[i]["EnemyAddress"], 16) + enemy_offset["Level"]))
-            log[i]["Level"] = int.from_bytes(self.file.read(2), "little")
-            if log[i]["Level"] > 0x7FFF:
-                log[i]["Level"] -= 0x10000
-            #Experience
-            self.file.seek(self.check_offset(int(enemy_content[i]["EnemyAddress"], 16) + enemy_offset["Experience"]))
-            log[i]["Experience"] = int.from_bytes(self.file.read(2), "little")
-            if log[i]["Experience"] > 0x7FFF:
-                log[i]["Experience"] -= 0x10000
-            #AttackDamage
-            log[i]["AttackDamage"] = []
-            for e in enemy_content[i]["AttackAddress"]:
-                self.file.seek(self.check_offset(int(e, 16) + enemy_offset["Damage"]))
-                damage = int.from_bytes(self.file.read(2), "little")
-                if damage > 0x7FFF:
-                    damage -= 0x10000
-                log[i]["AttackDamage"].append(damage)
-            #AttackDamageType
-            log[i]["AttackDamageType"] = []
-            for e in enemy_content[i]["AttackAddress"]:
-                self.file.seek(self.check_offset(int(e, 16) + enemy_offset["DamageType"]))
-                log[i]["AttackDamageType"].append("0x{:04x}".format(int.from_bytes(self.file.read(2), "little")))
-        
-        with open("SpoilerLog\\Enemy.json", "w") as file_writer:
-            file_writer.write(json.dumps(log, indent=2))
-    
-    def read_equip(self):
-        log = {}
-        for i in equipment_data:
-            log[i] = {}
-            #Attack
-            self.file.seek(self.check_offset(int(equipment_content[i], 16) + equip_offset["Attack"]))
-            log[i]["Attack"] = int.from_bytes(self.file.read(2), "little")
-            if log[i]["Attack"] > 0x7FFF:
-                log[i]["Attack"] -= 0x10000
-            #Defense
-            self.file.seek(self.check_offset(int(equipment_content[i], 16) + equip_offset["Defense"]))
-            log[i]["Defense"] = int.from_bytes(self.file.read(2), "little")
-            if log[i]["Defense"] > 0x7FFF:
-                log[i]["Defense"] -= 0x10000
-            #Strength
-            self.file.seek(self.check_offset(int(equipment_content[i], 16) + equip_offset["Strength"]))
-            log[i]["Strength"] = int.from_bytes(self.file.read(1), "little")
-            if log[i]["Strength"] > 0x7F:
-                log[i]["Strength"] -= 0x100
-            #Constitution
-            self.file.seek(self.check_offset(int(equipment_content[i], 16) + equip_offset["Constitution"]))
-            log[i]["Constitution"] = int.from_bytes(self.file.read(1), "little")
-            if log[i]["Constitution"] > 0x7F:
-                log[i]["Constitution"] -= 0x100
-            #Intelligence
-            self.file.seek(self.check_offset(int(equipment_content[i], 16) + equip_offset["Intelligence"]))
-            log[i]["Intelligence"] = int.from_bytes(self.file.read(1), "little")
-            if log[i]["Intelligence"] > 0x7F:
-                log[i]["Intelligence"] -= 0x100
-            #Luck
-            self.file.seek(self.check_offset(int(equipment_content[i], 16) + equip_offset["Luck"]))
-            log[i]["Luck"] = int.from_bytes(self.file.read(1), "little")
-            if log[i]["Luck"] > 0x7F:
-                log[i]["Luck"] -= 0x100
-            #Resistances
-            log[i]["Resistances"] = {}
-            for e in Attributes:
-                log[i]["Resistances"][str(e).split(".")[1]] = 1
-            self.file.seek(self.check_offset(int(equipment_content[i], 16) + equip_offset["Weak"]))
-            total = int.from_bytes(self.file.read(2), "little")
-            for e in Attributes:
-                if (total & e.value) != 0:
-                    log[i]["Resistances"][str(e).split(".")[1]] = 0
-            self.file.seek(self.check_offset(int(equipment_content[i], 16) + equip_offset["Strong"]))
-            total = int.from_bytes(self.file.read(2), "little")
-            for e in Attributes:
-                if (total & e.value) != 0:
-                    log[i]["Resistances"][str(e).split(".")[1]] = 2
-            self.file.seek(self.check_offset(int(equipment_content[i], 16) + equip_offset["Immune"]))
-            total = int.from_bytes(self.file.read(2), "little")
-            for e in Attributes:
-                if (total & e.value) != 0:
-                    log[i]["Resistances"][str(e).split(".")[1]] = 3
-            self.file.seek(self.check_offset(int(equipment_content[i], 16) + equip_offset["Absorb"]))
-            total = int.from_bytes(self.file.read(2), "little")
-            for e in Attributes:
-                if (total & e.value) != 0:
-                    log[i]["Resistances"][str(e).split(".")[1]] = 4
-        
-        with open("SpoilerLog\\Equipment.json", "w") as file_writer:
-            file_writer.write(json.dumps(log, indent=2))
-    
-    def read_item(self):
-        log = {}
-        for i in handitem_data:
-            log[i] = {}
-            #Attack
-            self.file.seek(self.check_offset(int(handitem_content[i], 16) + item_offset["Attack"]))
-            log[i]["Attack"] = int.from_bytes(self.file.read(2), "little")
-            if log[i]["Attack"] > 0x7FFF:
-                log[i]["Attack"] -= 0x10000
-            #Defense
-            self.file.seek(self.check_offset(int(handitem_content[i], 16) + item_offset["Defense"]))
-            log[i]["Defense"] = int.from_bytes(self.file.read(2), "little")
-            if log[i]["Defense"] > 0x7FFF:
-                log[i]["Defense"] -= 0x10000
-            #Element
-            log[i]["Element"] = {}
-            for e in Attributes:
-                log[i]["Element"][str(e).split(".")[1]] = False
-            self.file.seek(self.check_offset(int(handitem_content[i], 16) + item_offset["Element"]))
-            total = int.from_bytes(self.file.read(2), "little")
-            for e in Attributes:
-                if (total & e.value) != 0:
-                    log[i]["Element"][str(e).split(".")[1]] = True
-            #Sprite
-            self.file.seek(self.check_offset(int(handitem_content[i], 16) + item_offset["Sprite"]))
-            log[i]["Sprite"] = "0x{:02x}".format(int.from_bytes(self.file.read(1), "little"))
-            #Special
-            self.file.seek(self.check_offset(int(handitem_content[i], 16) + item_offset["Special"]))
-            log[i]["Special"] = "0x{:02x}".format(int.from_bytes(self.file.read(1), "little"))
-            #Spell
-            self.file.seek(self.check_offset(int(handitem_content[i], 16) + item_offset["Spell"]))
-            log[i]["Spell"] = "0x{:04x}".format(int.from_bytes(self.file.read(2), "little"))
-            #ManaCost
-            self.file.seek(self.check_offset(int(handitem_content[i], 16) + item_offset["ManaCost"]))
-            log[i]["ManaCost"] = int.from_bytes(self.file.read(2), "little")
-            if log[i]["ManaCost"] > 0x7FFF:
-                log[i]["ManaCost"] -= 0x10000
-            #StunFrames
-            self.file.seek(self.check_offset(int(handitem_content[i], 16) + item_offset["StunFrames"]))
-            log[i]["StunFrames"] = int.from_bytes(self.file.read(2), "little")
-            if log[i]["StunFrames"] > 0x7FFF:
-                log[i]["StunFrames"] -= 0x10000
-            #Range
-            self.file.seek(self.check_offset(int(handitem_content[i], 16) + item_offset["Range"]))
-            log[i]["Range"] = int.from_bytes(self.file.read(2), "little")
-            if log[i]["Range"] > 0x7FFF:
-                log[i]["Range"] -= 0x10000
-            #Extra
-            self.file.seek(self.check_offset(int(handitem_content[i], 16) + item_offset["Extra"]))
-            log[i]["Extra"] = "0x{:02x}".format(int.from_bytes(self.file.read(1), "little"))
-        
-        with open("SpoilerLog\\HandItem.json", "w") as file_writer:
-            file_writer.write(json.dumps(log, indent=2))
-    
-    def read_shop(self):
-        log = {}
-        for i in shop_content:
-            log[i] = {}
-            #Price
-            self.file.seek(int(shop_content[i], 16))
-            log[i] = int.from_bytes(self.file.read(4), "little")
-            if log[i] > 0x7FFFFFFF:
-                log[i] -= 0x100000000
-        
-        with open("SpoilerLog\\Shop.json", "w") as file_writer:
-            file_writer.write(json.dumps(log, indent=2))
-    
-    def read_spell(self):
-        log = {}
-        for i in spell_data:
-            log[i] = {}
-            #ManaCost
-            self.file.seek(self.check_offset(int(spell_content[i], 16) + spell_offset["ManaCost"]))
-            log[i]["ManaCost"] = int.from_bytes(self.file.read(1), "little")
-            if log[i]["ManaCost"] > 0x7F:
-                log[i]["ManaCost"] -= 0x100
-            #Cooldown
-            self.file.seek(self.check_offset(int(spell_content[i], 16) + spell_offset["Cooldown"]))
-            log[i]["Cooldown"] = int.from_bytes(self.file.read(1), "little")
-            if log[i]["Cooldown"] > 0x7F:
-                log[i]["Cooldown"] -= 0x100
-            #StunFrames
-            self.file.seek(self.check_offset(int(spell_content[i], 16) + spell_offset["StunFrames"]))
-            log[i]["StunFrames"] = int.from_bytes(self.file.read(2), "little")
-            if log[i]["StunFrames"] > 0x7FFF:
-                log[i]["StunFrames"] -= 0x10000
-            #Extra
-            self.file.seek(self.check_offset(int(spell_content[i], 16) + spell_offset["Extra"]))
-            log[i]["Extra"] = "0x{:02x}".format(int.from_bytes(self.file.read(1), "little"))
-            #Element
-            log[i]["Element"] = {}
-            for e in Attributes:
-                log[i]["Element"][str(e).split(".")[1]] = False
-            self.file.seek(self.check_offset(int(spell_content[i], 16) + spell_offset["Element"]))
-            total = int.from_bytes(self.file.read(2), "little")
-            for e in Attributes:
-                if (total & e.value) != 0:
-                    log[i]["Element"][str(e).split(".")[1]] = True
-            #Attack
-            self.file.seek(self.check_offset(int(spell_content[i], 16) + spell_offset["Attack"]))
-            log[i]["Attack"] = int.from_bytes(self.file.read(2), "little")
-            if log[i]["Attack"] > 0x7FFF:
-                log[i]["Attack"] -= 0x10000
-        
-        with open("SpoilerLog\\Spell.json", "w") as file_writer:
-            file_writer.write(json.dumps(log, indent=2))
-    
-    def read_stat(self):
-        log = {}
-        #Health
-        self.file.seek(int(stat_content["Health"], 16))
-        log["Health"] = int.from_bytes(self.file.read(2), "little")
-        if log["Health"] > 0x7FFF:
-            log["Health"] -= 0x10000
-        #Mana
-        self.file.seek(int(stat_content["Mana"], 16))
-        log["Mana"] = int.from_bytes(self.file.read(2), "little")
-        if log["Mana"] > 0x7FFF:
-            log["Mana"] -= 0x10000
-        #Hearts
-        self.file.seek(int(stat_content["Hearts"], 16))
-        log["Hearts"] = int.from_bytes(self.file.read(2), "little")
-        if log["Hearts"] > 0x7FFF:
-            log["Hearts"] -= 0x10000
-        #MaxHearts
-        self.file.seek(int(stat_content["MaxHearts"], 16))
-        log["MaxHearts"] = int.from_bytes(self.file.read(2), "little")
-        if log["MaxHearts"] > 0x7FFF:
-            log["MaxHearts"] -= 0x10000
-        #StrConIntLck
-        self.file.seek(int(stat_content["StrConIntLck"], 16))
-        log["StrConIntLck"] = int.from_bytes(self.file.read(2), "little")
-        if log["StrConIntLck"] > 0x7FFF:
-            log["StrConIntLck"] -= 0x10000
-        
-        with open("SpoilerLog\\Stat.json", "w") as file_writer:
-            file_writer.write(json.dumps(log, indent=2))
-    
     def check_for_updates(self):
-        if os.path.isfile("OldKindAndFair.exe"):
-            os.remove("OldKindAndFair.exe")
+        if os.path.isfile("delete.me"):
+            os.remove("delete.me")
         try:
             api = requests.get("https://api.github.com/repos/Lakifume/SotnKindAndFair/releases/latest").json()
         except requests.ConnectionError:
