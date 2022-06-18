@@ -1,6 +1,7 @@
 import json
 import random
 import math
+import copy
 
 def init(module):
     global game
@@ -23,8 +24,6 @@ def randomize_enemy_levels():
                     game.values["Enemy"][i]["Level"] = random.randint(1, 99)
                 elif i == game.final_bosses[1]:
                     game.values["Enemy"][i]["Level"] = abs(game.values["Enemy"][game.final_bosses[0]]["Level"] - 100)
-                elif i in game.minor:
-                    game.values["Enemy"][i]["Level"] = random_weighted(game.values["Enemy"][i]["Level"], 1, 50, 1, 4)
                 else:
                     game.values["Enemy"][i]["Level"] = random_weighted(game.values["Enemy"][i]["Level"], 1, 99, 1, 4)
             else:

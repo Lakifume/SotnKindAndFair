@@ -3,6 +3,7 @@ import json
 import random
 import math
 import os
+import copy
 
 def init():
     global damage_rate
@@ -22,10 +23,6 @@ def init():
         "FLA": 0x8000
     }
     #Enemy Lists
-    global minor
-    minor = [
-        "Doppleganger 1"
-    ]
     global level_skip
     level_skip = [
         "Zombie",
@@ -121,6 +118,32 @@ def get_seed():
         start_with_spirit_orb()
         return seed
 
+def apply_ppf_patch(patch):
+    #Replicate PPF Studio's process of applying patches to not have to include it in the download
+    with open("Data\\Symphony\\Patches\\" + patch + ".ppf", "r+b") as mod:
+        progress = 0x3C
+        while progress < os.path.getsize("Data\\Symphony\\Patches\\" + patch + ".ppf"):
+            mod.seek(progress)
+            offset = int.from_bytes(mod.read(8), "little")
+            length = int.from_bytes(mod.read(1), "little")
+            change = int.from_bytes(mod.read(length), "little")
+            Manager.rom.seek(offset)
+            Manager.rom.write(change.to_bytes(length, "little"))
+            progress += 9 + length
+
+def get_item_address():
+    #candle
+    zone_pos = 0x055724b8
+    entity = 0x2494
+    address = entity + 8
+    print("0x{:04x}".format(zone_pos + address + address // 0x800 * 0x130))
+    #item
+    zone_pos = 0x04675f08
+    zone_items = 0x0ec0
+    index = 4
+    address = zone_items + 0x02 * index
+    print("0x{:04x}".format(zone_pos + address + address // 0x800 * 0x130))
+
 def start_with_spirit_orb():
     #Start the player with spirit orb
     Manager.rom.seek(0xFA97C)
@@ -132,14 +155,16 @@ def start_with_spirit_orb():
     Manager.rom.write((0x0803924F).to_bytes(4, "little"))
     Manager.rom.write((0x00000000).to_bytes(4, "little"))
     
-def safe_start():
+def keep_equipment():
     #Prevent Death's cutscene from taking Alucard's equipment
     for i in removal_offset:
         Manager.rom.seek(i)
         Manager.rom.write((0).to_bytes(2, "little"))
+
+def free_library():
     #Place a library card before Slogra and Gaibon in case they are near unbeatable
-    Manager.rom.seek(0x4BAA2B0)
-    Manager.rom.write((0x00A6).to_bytes(2, "little"))
+    Manager.rom.seek(random.choice([0x4BC9324, 0x4BC9328]))
+    Manager.rom.write((0xA6).to_bytes(2, "little"))
     
 def unused():
     #Invulnerability
@@ -168,7 +193,7 @@ def all_bigtoss():
 
 def infinite_wing_smash():
     #Give wing smash the same properties as in the saturn version but at a higher cost
-    values["Spell"]["Wing Smash"]["ManaCost"] = round(values["Spell"]["Wing Smash"]["ManaCost"]*3.125)
+    values["Spell"]["Wing Smash"]["ManaCost"] = round(values["Spell"]["Wing Smash"]["ManaCost"]*3.75)
     Manager.rom.seek(0x134990)
     Manager.rom.write((0).to_bytes(4, "little"))
 

@@ -16,6 +16,7 @@ import requests
 import zipfile
 import subprocess
 import glob
+import copy
 
 #Get script name
 
@@ -74,14 +75,17 @@ class Patch(QThread):
                 Manager.game.randomize_bosses()
                 Manager.game.rebalance_enemies()
                 Manager.game.update_gfx_pointers()
-            if config.getboolean("Extra", "bDiscreetOutline"):
-                Manager.game.apply_ips_patch("DiscreetOutline")
+            if config.getboolean("Extra", "bNoPlayerOutline"):
+                Manager.game.apply_ips_patch("NoPlayerOutline")
             Manager.game.apply_ips_patch("NoEntityPalettes")
         else:
             if config.getboolean("EnemyRandomization", "bEnemyLevels"):
                 random.seed(seed)
                 Manager.randomize_enemy_levels()
-                Manager.game.safe_start()
+                Manager.game.keep_equipment()
+            if config.getboolean("EnemyRandomization", "bEnemyLevels") or config.getboolean("EnemyRandomization", "bEnemyTolerances"):
+                random.seed(seed)
+                Manager.game.free_library()
             if config.getboolean("Extra", "bBigtossOnly"):
                 Manager.game.all_bigtoss()
             if config.getboolean("Extra", "bContinuousSmash"):
@@ -145,7 +149,7 @@ class Update(QThread):
         #Purge folders
         
         shutil.rmtree("Data")
-        shutil.rmtree("Utilities")
+        shutil.rmtree("Shaders")
         
         os.rename(exe_name, "delete.me")
         with zipfile.ZipFile(zip_name, "r") as zip_ref:
@@ -224,7 +228,7 @@ class Main(QWidget):
         box_1_grid.addWidget(self.check_box_2, 1, 0)
         
         self.check_box_3 = QCheckBox("Enemy Placement")
-        self.check_box_3.setToolTip("Randomize where enemies are found. Their stats\nwill be rescaled by the order you encounter them.")
+        self.check_box_3.setToolTip("Randomize where enemies are found. Their stats\nwill be rescaled to the order you encounter them.")
         self.check_box_3.stateChanged.connect(self.check_box_3_changed)
         box_1_grid.addWidget(self.check_box_3, 0, 0)
         
@@ -243,8 +247,8 @@ class Main(QWidget):
         self.check_box_5.stateChanged.connect(self.check_box_5_changed)
         box_4_grid.addWidget(self.check_box_5, 1, 0)
         
-        self.check_box_4 = QCheckBox("Discreet Outline")
-        self.check_box_4.setToolTip("Replace Juste's blue outline and trail with a\ndark shade of grey.")
+        self.check_box_4 = QCheckBox("No Player Outline")
+        self.check_box_4.setToolTip("Remove all colored outlines from player characters\nand replace their trail by a dark shade of grey.")
         self.check_box_4.stateChanged.connect(self.check_box_4_changed)
         box_4_grid.addWidget(self.check_box_4, 1, 0)
         
@@ -288,7 +292,7 @@ class Main(QWidget):
             self.check_box_6.setChecked(True)
         if config.getboolean("Extra", "bBigtossOnly"):
             self.check_box_5.setChecked(True)
-        if config.getboolean("Extra", "bDiscreetOutline"):
+        if config.getboolean("Extra", "bNoPlayerOutline"):
             self.check_box_4.setChecked(True)
         
         #Text field
@@ -381,9 +385,9 @@ class Main(QWidget):
 
     def check_box_4_changed(self):
         if self.check_box_4.isChecked():
-            config.set("Extra", "bDiscreetOutline", "true")
+            config.set("Extra", "bNoPlayerOutline", "true")
         else:
-            config.set("Extra", "bDiscreetOutline", "false")
+            config.set("Extra", "bNoPlayerOutline", "false")
     
     def radio_button_group_1_checked(self):
         if self.radio_button_1.isChecked():
