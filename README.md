@@ -1,4 +1,4 @@
-# SotnKindAndFair
+# KindAndFair
 
 Balance mod for retro Castlevania games including new randomization options
 Currently supports Symphony of the Night and Harmony of Dissonance
