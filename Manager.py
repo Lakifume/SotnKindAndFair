@@ -53,31 +53,23 @@ def check_meaningful_value(value):
             return value + 1
     return value
 
-def random_weighted(value, minimum, maximum, step, deviation):
+def create_weighted_list(value, minimum, maximum, step, deviation):
     #Create a list in a range with higher odds around a specific value
     list = []
-    for i in range(minimum, maximum+1):
-        if i % step == 0:
-            min_distance = min(value-minimum, maximum-value)
-            max_distance = max(value-minimum, maximum-value)
-            if i < value:
-                weight = round((maximum-value)/(value-minimum))
-                current_distance = value-minimum
-            elif i > value:
-                weight = round((value-minimum)/(maximum-value))
-                current_distance = maximum-value
-            else:
-                if min_distance == 0:
-                    weight = max_distance
-                else:
-                    weight = round((max_distance/min_distance)/2)
-                current_distance = 1
-            if weight < 1:
-                weight = 1
-            difference = abs(i-value)
-            for e in range(weight*2**(abs(math.ceil(difference*deviation/current_distance)-deviation))):
-                list.append(i)
-    return random.choice(list)
+    for i in [(minimum, value + 1), (value, maximum + 1)]:
+        sublist = []
+        distance = abs(i[0]-i[1])
+        new_deviation = round(deviation*(distance/(maximum-minimum)))*2
+        for e in range(i[0], i[1]):
+            if e % step == 0:
+                difference = abs(e-value)
+                for o in range(2**(abs(math.ceil(difference*new_deviation/distance)-new_deviation))):
+                    sublist.append(e)
+        list.append(sublist)
+    return list
+
+def random_weighted(value, minimum, maximum, step, deviation):
+    return random.choice(random.choice(create_weighted_list(value, minimum, maximum, step, deviation)))
 
 def get_enemy_id(name):
     try:

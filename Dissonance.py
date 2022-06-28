@@ -5,6 +5,24 @@ import math
 import os
 import copy
 
+class Room:
+    def __init__(self, entities, gfx_list):
+        self.entities = entities
+        self.gfx_list = gfx_list
+        self.gfx_list_size = len(gfx_list)
+
+class Entity:
+    def __init__(self, x_pos, y_pos, unique_id, type, subtype, offset_up, byte_8, var_a, var_b):
+        self.x_pos = x_pos
+        self.y_pos = y_pos
+        self.unique_id = unique_id
+        self.type = type
+        self.subtype = subtype
+        self.offset_up = offset_up
+        self.byte_8 = byte_8
+        self.var_a = var_a
+        self.var_b = var_b
+
 def init():
     global damage_rate
     damage_rate = 1/1.5
@@ -34,7 +52,9 @@ def init():
     enemy_to_level = {}
     global special_id_to_enemy
     special_id_to_enemy = {
+        0x6D: "Pazuzu",
         0x6E: "Skeleton Mirror",
+        0x6F: "Talos",
         0x70: "Slime",
         0x71: "Skeleton Glass"
     }
@@ -63,14 +83,12 @@ def init():
         "Disc Armor Lv2":   "Disc Armor"
     }
     #Boss info
-    global boss_to_entity_profile
-    boss_to_entity_profile = {
-        "Peeping Big": 0xCC0078000016000002000000,
-        "Pazuzu":      0x40016000006D000000000000,
-        "Talos":       0x80009000026F000000000000
-    }
-    global boss_to_entity_profile_invert
-    boss_to_entity_profile_invert = {}
+    global boss_to_pointer
+    boss_to_pointer = {}
+    global boss_to_pointer_invert
+    boss_to_pointer_invert = {}
+    global boss_to_entity
+    boss_to_entity = {}
     global boss_to_door_id
     boss_to_door_id = {
         "Giant Bat":       0x01,
@@ -132,10 +150,8 @@ def init():
     }
     global room_pointer_range
     room_pointer_range = range(0x494668, 0x494D44, 0x4)
-    global room_to_entity
-    room_to_entity = {}
-    global all_entity_pointers
-    all_entity_pointers = []
+    global game_rooms
+    game_rooms = {}
     global room_skip
     room_skip = [
         0x4A138C
@@ -154,11 +170,11 @@ def init():
     global all_replacement_invert
     all_replacement_invert = {}
     #FillResistPool
-    for i in range(6):
+    for i in range(1):
         resist_pool.append(0)
-    for i in range(30):
+    for i in range(3):
         resist_pool.append(1)
-    for i in range(6):
+    for i in range(1):
         resist_pool.append(2)
     #Invert dictionary
     for i in boss_to_door_id:
@@ -185,71 +201,126 @@ def get_seed():
     if seed == 0xFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF:
         return random.random()
     else:
-        start_with_spirit_orb()
         return seed
 
-def start_with_spirit_orb():
-    #Start the player with spirit orb
-    Manager.rom.seek(0x499818 + 4)
-    Manager.rom.write((0xC307000007000300).to_bytes(8, "big"))
-    #Replace the original one by a potion or something
-    for i in room_to_entity:
-        for e in room_to_entity[i]:
-            if is_spirit_orb(e):
-                Manager.rom.seek(e + 5)
-                Manager.rom.write((3).to_bytes(1, "little"))
-                Manager.rom.seek(e + 10)
-                Manager.rom.write((0).to_bytes(2, "little"))
-
-def gather_data():
-    #Store original enemy levels
-    for i in values["Enemy"]:
-        enemy_to_level[i] = values["Enemy"][i]["Level"]
-    #Collect entities per room
+def read_room_data():
     for i in room_pointer_range:
         #Get room pointer
         Manager.rom.seek(i)
         room_pointer = int.from_bytes(Manager.rom.read(3), "little")
         if room_pointer == 0:
             continue
-        create_entity_list(room_pointer)
+        game_rooms[room_pointer] = Room(create_entity_dict(room_pointer), create_gfx_list(room_pointer))
         #Get event pointer
         Manager.rom.seek(room_pointer + 0x4)
         event_pointer = int.from_bytes(Manager.rom.read(3), "little")
         if event_pointer == 0:
             continue
-        create_entity_list(event_pointer)
-    #Complete boss entity profile dictionary
-    for i in room_to_entity:
-        for e in room_to_entity[i]:
-            Manager.rom.seek(e + 4)
-            type = (int.from_bytes(Manager.rom.read(1), "little") & 0xC0) >> 6
-            Manager.rom.seek(e + 5)
-            subtype = int.from_bytes(Manager.rom.read(1), "little")
-            if type == 0 and Manager.get_enemy_name(subtype) in boss_to_door_id:
-                Manager.rom.seek(e)
-                boss_to_entity_profile[Manager.get_enemy_name(subtype)] = int.from_bytes(Manager.rom.read(12), "big")
-    #Invert dictionary
-    for i in boss_to_entity_profile:
-        boss_to_entity_profile_invert[boss_to_entity_profile[i]] = i
+        game_rooms[event_pointer] = Room(create_entity_dict(event_pointer), create_gfx_list(event_pointer))
 
-def create_entity_list(room_pointer):
-    if room_pointer in room_to_entity:
-        return
-    room_to_entity[room_pointer] = []
+def create_entity_dict(room_pointer):
     Manager.rom.seek(room_pointer + 0x18)
-    entity_pointer = int.from_bytes(Manager.rom.read(3), "little")
-    if entity_pointer == 0 or entity_pointer in all_entity_pointers:
-        return
-    all_entity_pointers.append(entity_pointer)
+    entity_list_pointer = int.from_bytes(Manager.rom.read(3), "little")
+    if entity_list_pointer == 0:
+        return {}
+    entity_dict = {}
     count = 0
     while True:
-        offset = entity_pointer + count*0xC
-        Manager.rom.seek(offset)
+        entity_pointer = entity_list_pointer + count*0xC
+        Manager.rom.seek(entity_pointer)
         if int.from_bytes(Manager.rom.read(4), "little") == 0x7FFF7FFF:
             break
-        room_to_entity[room_pointer].append(offset)
+        Manager.rom.seek(entity_pointer)
+        x_pos     = int.from_bytes(Manager.rom.read(2), "little")
+        y_pos     = int.from_bytes(Manager.rom.read(2), "little")
+        byte_5    = int.from_bytes(Manager.rom.read(1), "little")
+        unique_id = (byte_5 & 0x3F)
+        type      = (byte_5 & 0xC0) >> 6
+        subtype   = int.from_bytes(Manager.rom.read(1), "little")
+        offset_up = int.from_bytes(Manager.rom.read(1), "little")
+        byte_8    = int.from_bytes(Manager.rom.read(1), "little")
+        var_a     = int.from_bytes(Manager.rom.read(2), "little")
+        var_b     = int.from_bytes(Manager.rom.read(2), "little")
+        entity_dict[entity_pointer] = Entity(x_pos, y_pos, unique_id, type, subtype, offset_up, byte_8, var_a, var_b)
         count += 1
+    return entity_dict
+
+def create_gfx_list(room_pointer):
+    Manager.rom.seek(room_pointer + 0x10)
+    gfx_list_pointer = int.from_bytes(Manager.rom.read(3), "little")
+    if gfx_list_pointer == 0:
+        return []
+    gfx_list = []
+    count = 0
+    while True:
+        gfx_pointer = gfx_list_pointer + count*0x4
+        Manager.rom.seek(gfx_pointer)
+        gfx_list.append(int.from_bytes(Manager.rom.read(4), "little"))
+        Manager.rom.seek(gfx_pointer)
+        if int.from_bytes(Manager.rom.read(4), "little") == 0:
+            break
+        count += 1
+    return gfx_list
+
+def write_room_data():
+    freespace_offset = 0x69D400
+    for i in game_rooms:
+        #Write entity data
+        for e in game_rooms[i].entities:
+            Manager.rom.seek(e)
+            Manager.rom.write(game_rooms[i].entities[e].x_pos.to_bytes(2, "little"))
+            Manager.rom.write(game_rooms[i].entities[e].y_pos.to_bytes(2, "little"))
+            byte_5 = (game_rooms[i].entities[e].unique_id & 0x3F) | ((game_rooms[i].entities[e].type & 0x3) << 6)
+            Manager.rom.write(byte_5.to_bytes(1, "little"))
+            Manager.rom.write(game_rooms[i].entities[e].subtype.to_bytes(1, "little"))
+            Manager.rom.write(game_rooms[i].entities[e].offset_up.to_bytes(1, "little"))
+            Manager.rom.write(game_rooms[i].entities[e].byte_8.to_bytes(1, "little"))
+            Manager.rom.write(game_rooms[i].entities[e].var_a.to_bytes(2, "little"))
+            Manager.rom.write(game_rooms[i].entities[e].var_b.to_bytes(2, "little"))
+        #Write gfx list
+        Manager.rom.seek(i + 0x10)
+        gfx_list_pointer = int.from_bytes(Manager.rom.read(3), "little")
+        if len(game_rooms[i].gfx_list) <= game_rooms[i].gfx_list_size:
+            for e in range(game_rooms[i].gfx_list_size):
+                Manager.rom.seek(gfx_list_pointer + e*0x4)
+                if e < len(game_rooms[i].gfx_list):
+                    Manager.rom.write(game_rooms[i].gfx_list[e].to_bytes(4, "little"))
+                else:
+                    Manager.rom.write((0).to_bytes(4, "little"))
+        else:
+            for e in range(game_rooms[i].gfx_list_size):
+                Manager.rom.seek(gfx_list_pointer + e*0x4)
+                Manager.rom.write((0).to_bytes(4, "little"))
+            Manager.rom.seek(i + 0x10)
+            Manager.rom.write((freespace_offset + 0x08000000).to_bytes(4, "little"))
+            for e in range(len(game_rooms[i].gfx_list)):
+                Manager.rom.seek(freespace_offset + e*0x4)
+                Manager.rom.write(game_rooms[i].gfx_list[e].to_bytes(4, "little"))
+            freespace_offset += len(game_rooms[i].gfx_list)*4
+
+def gather_data():
+    #Store original enemy levels
+    for i in values["Enemy"]:
+        enemy_to_level[i] = values["Enemy"][i]["Level"]
+    #Gather bosses
+    for i in game_rooms:
+        is_boss_room = False
+        for e in game_rooms[i].entities:
+            if game_rooms[i].entities[e].type == 1 and game_rooms[i].entities[e].subtype == 6 and game_rooms[i].entities[e].var_a == 1 and game_rooms[i].entities[e].var_b in boss_to_door_id_invert:
+                is_boss_room = True
+                break
+        if is_boss_room:
+            for e in game_rooms[i].entities:
+                if game_rooms[i].entities[e].type == 0:
+                    if game_rooms[i].entities[e].subtype == 0x16 and game_rooms[i].entities[e].var_a == 2:
+                        enemy_name = "Peeping Big"
+                    else:
+                        enemy_name = Manager.get_enemy_name(game_rooms[i].entities[e].subtype)
+                    boss_to_pointer[enemy_name] = e
+                    boss_to_entity[enemy_name]  = copy.deepcopy(game_rooms[i].entities[e])
+    #Invert dictionary
+    for i in boss_to_pointer:
+        boss_to_pointer_invert[boss_to_pointer[i]] = i
 
 def apply_ips_patch(patch):
     #Replicate Lunar IPS' process of applying patches to not have to include it in the download
@@ -316,8 +387,9 @@ def write_simple_data():
         0x08084C35: 80,  #wind bible
         0x08084CB5: 30,  #wind fist
         0x08084CFD: 100, #wind cross
-        0x08084D21: 80,  #wind knife
+        0x08084D21: 50,  #wind knife
         0x08088ACD: 200, #bolt bible, this one is Alucard Shield spell level of OP
+        0x08088BB1: 80,  #bolt cross
         0x08088C69: 50,  #bolt axe
         0x0808D7A1: 80,  #summon bible
         0x0808D8DD: 80,  #summon knife
@@ -333,10 +405,10 @@ def write_simple_data():
     #Adjust consumables
     modifications = {
         0x0000: 20,
-        0x0001: 100,
+        0x0001: 200,
         0x0002: 9999,
-        0x0003: 16,
-        0x0004: 60
+        0x0003: 10,
+        0x0004: 100
     }
     for i in table_range["Consumable"]:
         Manager.rom.seek(i)
@@ -349,11 +421,11 @@ def write_simple_data():
     modifications = {
         0x0003: 200,
         0x0103: 2000,
-        0x0203: 20000,
+        0x0203: 8000,
         0x0303: 100,
         0x0403: 1000,
         0x0503: 2000,
-        0x0603: 10000,
+        0x0603: 4000,
         0x0703: 300,
         0x0803: 300,
         0x0903: 5000
@@ -394,32 +466,23 @@ def randomize_enemies():
             random.shuffle(new_list)
             new_dict = dict(zip(enemy_category[i], new_list))
             enemy_replacement.update(new_dict)
-        #Invert dictionary
-        for i in enemy_replacement:
-            enemy_replacement_invert[enemy_replacement[i]] = i
         #Check for conflict
         conflict = False
-        for i in room_to_entity:
+        for i in game_rooms:
             entity_types = []
-            for e in room_to_entity[i]:
-                if is_enemy(e):
-                    Manager.rom.seek(e + 5)
-                    enemy_id = int.from_bytes(Manager.rom.read(1), "little")
-                    enemy_name = Manager.get_enemy_name(enemy_id)
+            for e in game_rooms[i].entities:
+                if game_rooms[i].entities[e].type == 0:
+                    enemy_name = Manager.get_enemy_name(game_rooms[i].entities[e].subtype)
                     if debug:
-                        if enemy_id == 0x6A:
-                            Manager.rom.seek(e + 10)
-                            var_b = int.from_bytes(Manager.rom.read(2), "little")
-                            new_enemy_name = Manager.get_enemy_name(var_b)
+                        if game_rooms[i].entities[e].subtype == 0x6A:
+                            new_enemy_name = Manager.get_enemy_name(game_rooms[i].entities[e].var_b)
                         else:
                             new_enemy_name = enemy_name
                     else:
                         if enemy_name in enemy_replacement:
                             new_enemy_name = enemy_replacement[enemy_name]
-                        elif enemy_id == 0x6A:
-                            Manager.rom.seek(e + 10)
-                            var_b = int.from_bytes(Manager.rom.read(2), "little")
-                            new_enemy_name = enemy_replacement[Manager.get_enemy_name(var_b)]
+                        elif game_rooms[i].entities[e].subtype == 0x6A:
+                            new_enemy_name = enemy_replacement[Manager.get_enemy_name(game_rooms[i].entities[e].var_b)]
                         else:
                             new_enemy_name = enemy_name
                     #Check if enemy shares a sheet with a global enemy
@@ -428,20 +491,13 @@ def randomize_enemies():
                     if new_enemy_name != "Unknown":
                         entity_types.append(new_enemy_name)
                 else:
-                    #Also take in account the other entities in the room, by type
-                    Manager.rom.seek(e + 4)
-                    type = (int.from_bytes(Manager.rom.read(1), "little") & 0xC0) >> 6
-                    Manager.rom.seek(e + 5)
-                    subtype = int.from_bytes(Manager.rom.read(1), "little")
-                    Manager.rom.seek(e + 8)
-                    var_a = int.from_bytes(Manager.rom.read(2), "little")
                     #Small candles, boss doors and pickups don't matter in ram usage
-                    if type == 2 and var_a == 0 or type == 1 and subtype == 6 or type == 3:
+                    if game_rooms[i].entities[e].type == 2 and game_rooms[i].entities[e].var_a == 0 or game_rooms[i].entities[e].type == 1 and game_rooms[i].entities[e].subtype == 6 or game_rooms[i].entities[e].type == 3:
                         continue
-                    if type == 1:
-                        entity_types.append((type, subtype))
+                    if game_rooms[i].entities[e].type == 1:
+                        entity_types.append((game_rooms[i].entities[e].type, game_rooms[i].entities[e].subtype))
                     else:
-                        entity_types.append((type, var_a))
+                        entity_types.append((game_rooms[i].entities[e].type, game_rooms[i].entities[e].var_a))
             #Reroll
             #If a room has more than 1 Gorgon the game will crash
             if entity_types.count("Gorgon") > 1:
@@ -475,77 +531,62 @@ def randomize_enemies():
                     print("0x{:04x}".format(i))
                 conflict = True
                 break
+    #Invert dictionary
+    for i in enemy_replacement:
+        enemy_replacement_invert[enemy_replacement[i]] = i
     #Patch via enemy ids
-    for i in room_to_entity:
+    for i in game_rooms:
         if i in room_skip:
             continue
-        for e in room_to_entity[i]:
-            if is_enemy(e):
-                Manager.rom.seek(e + 5)
-                enemy_id = int.from_bytes(Manager.rom.read(1), "little")
+        slime_color = random.randint(0, 3)
+        for e in game_rooms[i].entities:
+            if game_rooms[i].entities[e].type == 0:
+                enemy_id = game_rooms[i].entities[e].subtype
                 enemy_name = Manager.get_enemy_name(enemy_id)
                 #Change enemy
                 if enemy_name in enemy_replacement and enemy_name != enemy_replacement[enemy_name]:
-                    Manager.rom.seek(e + 5)
-                    Manager.rom.write(Manager.get_enemy_id(enemy_replacement[enemy_name]).to_bytes(1, "little"))
+                    game_rooms[i].entities[e].subtype = Manager.get_enemy_id(enemy_replacement[enemy_name])
                     #Adjust position
-                    Manager.rom.seek(e)
-                    x_pos = int.from_bytes(Manager.rom.read(2), "little")
-                    Manager.rom.seek(e + 2)
-                    y_pos = int.from_bytes(Manager.rom.read(2), "little")
                     #X
                     #Shift horizontal position for the few enemies that are inside a wall
                     if i in [0x49CEFC, 0x4A5E90]:
-                        x_pos += 0x40
-                    Manager.rom.seek(e)
-                    Manager.rom.write(x_pos.to_bytes(2, "little"))
+                        game_rooms[i].entities[e].x_pos += 0x40
                     #Y
                     #If bat was replaced lower the position
                     if enemy_name == "Bat":
-                        y_pos += random.choice([0x10, 0x20, 0x30])
+                        game_rooms[i].entities[e].y_pos += random.choice([0x10, 0x20, 0x30])
                     #Raise the enemies in that room with the mermans below the edge
                     if i == 0x4A6CEC:
-                        y_pos = 0x78
-                    #Raise/lower the enemy if the category is different except for the ball race rooms
-                    if not i in [0x4A4880, 0x4AA2E4, 0x4ABC94]:
+                        game_rooms[i].entities[e].y_pos = 0x78
+                    #Raise/lower the enemy if the category is different except for a few exceptions
+                    if not i in [0x4AA2E4, 0x4ABC94] and not e in [0x4A55D4, 0x4A55EC, 0x4A70D4]:
                         if "Ground" in values["Enemy"][enemy_name]["Category"] and "Air" in values["Enemy"][enemy_replacement[enemy_name]]["Category"]:
-                            y_pos -= 0x20
+                            game_rooms[i].entities[e].y_pos -= 0x20
                         if "Air" in values["Enemy"][enemy_name]["Category"] and "Ground" in values["Enemy"][enemy_replacement[enemy_name]]["Category"]:
-                            y_pos += 0x20
-                    Manager.rom.seek(e + 2)
-                    Manager.rom.write(y_pos.to_bytes(2, "little"))
+                            game_rooms[i].entities[e].y_pos += 0x20
                     #Set up extra variables
                     if enemy_replacement[enemy_name] == "Bat":
-                        var_a = 1
-                        var_b = 0
+                        game_rooms[i].entities[e].var_a = 1
+                        game_rooms[i].entities[e].var_b = 0
                     elif enemy_replacement[enemy_name] == "Bone Pillar":
-                        var_a = 2
-                        var_b = 0
+                        game_rooms[i].entities[e].var_a = 2
+                        game_rooms[i].entities[e].var_b = 0
                     elif "Slime" in enemy_replacement[enemy_name]:
-                        var_a = random.randint(0, 3)
-                        var_b = 0
+                        game_rooms[i].entities[e].var_a = slime_color
+                        game_rooms[i].entities[e].var_b = 0
                     elif values["Enemy"][enemy_replacement[enemy_name]]["Category"] != "Spider":
-                        var_a = 0
-                        var_b = 0
-                    Manager.rom.seek(e + 8)
-                    Manager.rom.write(var_a.to_bytes(2, "little"))
-                    Manager.rom.seek(e + 10)
-                    Manager.rom.write(var_b.to_bytes(2, "little"))
+                        game_rooms[i].entities[e].var_a = 0
+                        game_rooms[i].entities[e].var_b = 0
                 #Change spawner enemy pointer
                 elif enemy_id == 0x6A:
-                    Manager.rom.seek(e + 10)
-                    var_b = int.from_bytes(Manager.rom.read(2), "little")
-                    Manager.rom.seek(e + 10)
-                    Manager.rom.write(Manager.get_enemy_id(enemy_replacement[Manager.get_enemy_name(var_b)]).to_bytes(2, "little"))
+                    game_rooms[i].entities[e].var_b = Manager.get_enemy_id(enemy_replacement[Manager.get_enemy_name(game_rooms[i].entities[e].var_b)])
                     #Set up var a
-                    if enemy_replacement[Manager.get_enemy_name(var_b)] == "Bat":
-                        var_a = 1
-                    elif "Slime" in enemy_replacement[Manager.get_enemy_name(var_b)]:
-                        var_a = random.randint(0, 3)
+                    if enemy_replacement[Manager.get_enemy_name(game_rooms[i].entities[e].var_b)] == "Bat":
+                        game_rooms[i].entities[e].var_a = 1
+                    elif "Slime" in enemy_replacement[Manager.get_enemy_name(game_rooms[i].entities[e].var_b)]:
+                        game_rooms[i].entities[e].var_a = slime_color
                     else:
-                        var_a = 0
-                    Manager.rom.seek(e + 8)
-                    Manager.rom.write(var_a.to_bytes(2, "little"))
+                        game_rooms[i].entities[e].var_a = 0
     all_replacement.update(enemy_replacement)
     all_replacement_invert.update(enemy_replacement_invert)
 
@@ -559,48 +600,27 @@ def randomize_bosses():
     for i in boss_replacement:
         boss_replacement_invert[boss_replacement[i]] = i
     #Patch via entity profiles directly
-    for i in room_to_entity:
-        for e in room_to_entity[i]:
-            if is_boss(e):
-                Manager.rom.seek(e)
-                entity_profile = int.from_bytes(Manager.rom.read(12), "big")
-                enemy_name     = boss_to_entity_profile_invert[entity_profile]
+    for i in game_rooms:
+        for e in game_rooms[i].entities:
+            if e in boss_to_pointer_invert:
+                enemy_name = boss_to_pointer_invert[e]
                 #Change boss
                 if enemy_name in boss_replacement and enemy_name != boss_replacement[enemy_name]:
-                    Manager.rom.seek(e)
-                    original_x_pos = int.from_bytes(Manager.rom.read(2), "little")
-                    Manager.rom.seek(e + 4)
-                    original_unique_id = int.from_bytes(Manager.rom.read(1), "little")
-                    Manager.rom.seek(e)
-                    Manager.rom.write(boss_to_entity_profile[boss_replacement[enemy_name]].to_bytes(12, "big"))
+                    original_x_pos = game_rooms[i].entities[e].x_pos
+                    original_unique_id = game_rooms[i].entities[e].unique_id
+                    game_rooms[i].entities[e] = boss_to_entity[boss_replacement[enemy_name]]
                     #If it's Max Slimer randomize its color
                     if "Slime" in boss_replacement[enemy_name]:
-                        var_a = random.randint(0, 3)
-                        Manager.rom.seek(e + 8)
-                        Manager.rom.write(var_a.to_bytes(2, "little"))
+                        game_rooms[i].entities[e].var_a = random.randint(0, 3)
                     #Make bosses inherit the x position of the old entity with a shift for Talos' spot
+                    game_rooms[i].entities[e].x_pos = original_x_pos
                     if enemy_name == "Talos":
-                        original_x_pos += 0x40
-                    Manager.rom.seek(e)
-                    Manager.rom.write(original_x_pos.to_bytes(2, "little"))
+                        game_rooms[i].entities[e].x_pos += 0x40
                     #As well as the unique id
-                    Manager.rom.seek(e + 4)
-                    Manager.rom.write(original_unique_id.to_bytes(1, "little"))
-                    #Lasty update the entity profile dict
-                    Manager.rom.seek(e)
-                    new_entity_profile = int.from_bytes(Manager.rom.read(12), "big")
-                    boss_to_entity_profile[boss_replacement[enemy_name]] = new_entity_profile
+                    game_rooms[i].entities[e].unique_id = original_unique_id
             #Update boss door pointers
-            elif is_boss_door(e):
-                Manager.rom.seek(e + 10)
-                var_b = int.from_bytes(Manager.rom.read(2), "little")
-                if var_b in boss_to_door_id_invert:
-                    Manager.rom.seek(e + 10)
-                    Manager.rom.write(boss_to_door_id[boss_replacement[boss_to_door_id_invert[var_b]]].to_bytes(2, "little"))
-    #Recreate the inverted dict
-    boss_to_entity_profile_invert.clear()
-    for i in boss_to_entity_profile:
-        boss_to_entity_profile_invert[boss_to_entity_profile[i]] = i
+            elif game_rooms[i].entities[e].type == 1 and game_rooms[i].entities[e].subtype == 6 and game_rooms[i].entities[e].var_b in boss_to_door_id_invert:
+                game_rooms[i].entities[e].var_b = boss_to_door_id[boss_replacement[boss_to_door_id_invert[game_rooms[i].entities[e].var_b]]]
     #If Pazuzu was moved make his wall invisible
     if boss_replacement["Pazuzu"] != "Pazuzu":
         apply_ips_patch("InvisiblePazuzuWall")
@@ -631,116 +651,34 @@ def rebalance_enemies():
 
 def update_gfx_pointers():
     #Entities require to have their GFX pointers referenced in the room that they're in
-    freespace_offset = 0x69D400
-    for i in room_to_entity:
+    for i in game_rooms:
         if i in room_skip:
             continue
-        #Get info pointers
-        Manager.rom.seek(i + 0x10)
-        gfx_list_offset = int.from_bytes(Manager.rom.read(3), "little")
-        count = 0
-        while True:
-            offset = gfx_list_offset + count*0x4
-            Manager.rom.seek(offset)
-            if int.from_bytes(Manager.rom.read(4), "little") == 0:
-                next_list_offset = offset + 0x4
-                break
-            count += 1
         #Get room's enemy types
         enemy_types = []
-        for e in room_to_entity[i]:
-            if is_enemy(e):
-                Manager.rom.seek(e + 5)
-                enemy_id   = int.from_bytes(Manager.rom.read(1), "little")
+        for e in game_rooms[i].entities:
+            if e in boss_to_pointer_invert:
+                enemy_name = boss_to_pointer_invert[e]
+                if enemy_name in all_replacement:
+                    enemy_types.append(enemy_name)
+            elif game_rooms[i].entities[e].type == 0:
+                enemy_id = game_rooms[i].entities[e].subtype
                 enemy_name = Manager.get_enemy_name(enemy_id)
                 if enemy_name in all_replacement:
                     enemy_types.append(all_replacement_invert[enemy_name])
                 elif enemy_id == 0x6A:
-                    Manager.rom.seek(e + 10)
-                    var_b = int.from_bytes(Manager.rom.read(2), "little")
-                    enemy_types.append(all_replacement_invert[Manager.get_enemy_name(var_b)])
-            if is_boss(e):
-                Manager.rom.seek(e)
-                entity_profile = int.from_bytes(Manager.rom.read(12), "big")
-                enemy_name     = boss_to_entity_profile_invert[entity_profile]
-                if enemy_name in all_replacement:
-                    enemy_types.append(all_replacement_invert[enemy_name])
+                    enemy_types.append(all_replacement_invert[Manager.get_enemy_name(game_rooms[i].entities[e].var_b)])
         enemy_types = list(dict.fromkeys(enemy_types))
-        #Get gfx list
-        gfx_list = []
-        for e in range(gfx_list_offset, next_list_offset, 0x4):
-            Manager.rom.seek(e)
-            gfx_pointer = int.from_bytes(Manager.rom.read(4), "little")
-            gfx_list.append(gfx_pointer)
-        original_size = len(gfx_list)
         #Update enemy gfx list
         for e in range(len(enemy_types)-1, -1, -1):
             for o in values["Enemy"][enemy_types[e]]["GfxPointer"]:
                 gfx_pointer = int(o, 16)
-                if gfx_pointer in gfx_list:
-                    gfx_list.remove(gfx_pointer)
+                if gfx_pointer in game_rooms[i].gfx_list:
+                    game_rooms[i].gfx_list.remove(gfx_pointer)
             for o in range(len(values["Enemy"][all_replacement[enemy_types[e]]]["GfxPointer"])-1, -1, -1):
                 gfx_pointer = int(values["Enemy"][all_replacement[enemy_types[e]]]["GfxPointer"][o], 16)
-                if not gfx_pointer in gfx_list:
-                    gfx_list.insert(0, gfx_pointer)
-        #Patch rom
-        if len(gfx_list) <= original_size:
-            count = 0
-            for e in range(gfx_list_offset, next_list_offset, 0x4):
-                Manager.rom.seek(e)
-                if count < len(gfx_list):
-                    Manager.rom.write(gfx_list[count].to_bytes(4, "little"))
-                else:
-                    Manager.rom.write((0).to_bytes(4, "little"))
-                count += 1
-        else:
-            for e in range(gfx_list_offset, next_list_offset, 0x4):
-                Manager.rom.seek(e)
-                Manager.rom.write((0).to_bytes(4, "little"))
-            Manager.rom.seek(i + 0x10)
-            Manager.rom.write((freespace_offset + 0x08000000).to_bytes(4, "little"))
-            for e in range(len(gfx_list)):
-                Manager.rom.seek(freespace_offset + e*0x4)
-                Manager.rom.write(gfx_list[e].to_bytes(4, "little"))
-            freespace_offset += len(gfx_list)*4
-
-def is_enemy(offset):
-    Manager.rom.seek(offset + 4)
-    type = (int.from_bytes(Manager.rom.read(1), "little") & 0xC0) >> 6
-    if type == 0 and not is_boss(offset):
-        return True
-    else:
-        return False
-
-def is_boss(offset):
-    Manager.rom.seek(offset)
-    entity_profile = int.from_bytes(Manager.rom.read(12), "big")
-    if entity_profile in boss_to_entity_profile_invert:
-        return True
-    else:
-        return False
-
-def is_boss_door(offset):
-    Manager.rom.seek(offset + 4)
-    type = (int.from_bytes(Manager.rom.read(1), "little") & 0xC0) >> 6
-    Manager.rom.seek(offset + 5)
-    subtype = int.from_bytes(Manager.rom.read(1), "little")
-    if type == 1 and subtype == 6:
-        return True
-    else:
-        return False
-
-def is_spirit_orb(offset):
-    Manager.rom.seek(e + 4)
-    type = (int.from_bytes(Manager.rom.read(1), "little") & 0xC0) >> 6
-    Manager.rom.seek(e + 5)
-    subtype = int.from_bytes(Manager.rom.read(1), "little")
-    Manager.rom.seek(e + 10)
-    var_b = int.from_bytes(Manager.rom.read(2), "little")
-    if type == 3 and subtype == 7 and var_b == 3:
-        return True
-    else:
-        return False
+                if not gfx_pointer in game_rooms[i].gfx_list:
+                    game_rooms[i].gfx_list.insert(0, gfx_pointer)
 
 def write_complex_data():
     #ENEMY
@@ -752,7 +690,7 @@ def write_complex_data():
             level = values["Enemy"][e]["Level"]
             #For Maxim mode tighten the overall level range
             if i == maxim_enemy_offset:
-                average_level = 50
+                average_level = 40
                 start_level = average_level/2
                 level = round(start_level + (level/average_level)*(average_level - start_level))
             Manager.rom.seek(offset + int(dictionary["Properties"]["Enemy"]["Level"]["Offset"], 16))

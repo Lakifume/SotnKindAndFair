@@ -48,11 +48,11 @@ def init():
     global special_id_to_enemy
     special_id_to_enemy = {}
     #FillResistPool
-    for i in range(6):
+    for i in range(7):
         resist_pool.append(0)
-    for i in range(30):
+    for i in range(35):
         resist_pool.append(1)
-    for i in range(3):
+    for i in range(4):
         resist_pool.append(2)
     for i in range(2):
         resist_pool.append(3)
@@ -145,13 +145,14 @@ def get_item_address():
     print("0x{:04x}".format(zone_pos + address + address // 0x800 * 0x130))
 
 def start_with_spirit_orb():
-    #Start the player with spirit orb
+    #Start the player with spirit orb and fairy scroll
     Manager.rom.seek(0xFA97C)
     Manager.rom.write((0x0C04DB00).to_bytes(4, "little"))
     Manager.rom.seek(0x158C98)
     Manager.rom.write((0x34020003).to_bytes(4, "little"))
     Manager.rom.write((0x3C038009).to_bytes(4, "little"))
     Manager.rom.write((0xA062796F).to_bytes(4, "little"))
+    Manager.rom.write((0xA0627973).to_bytes(4, "little"))
     Manager.rom.write((0x0803924F).to_bytes(4, "little"))
     Manager.rom.write((0x00000000).to_bytes(4, "little"))
     

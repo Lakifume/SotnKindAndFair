@@ -68,16 +68,23 @@ class Patch(QThread):
         seed = Manager.game.get_seed()
         
         if Manager.game == Dissonance:
+            Manager.game.read_room_data()
             Manager.game.gather_data()
             if config.getboolean("EnemyRandomization", "bEnemyPlacement"):
                 random.seed(seed)
                 Manager.game.randomize_enemies()
+                random.seed(seed)
                 Manager.game.randomize_bosses()
                 Manager.game.rebalance_enemies()
                 Manager.game.update_gfx_pointers()
+            exceptions = ["InvisiblePazuzuWall", "NoPlayerOutline"]
+            for i in os.listdir("Data\\Dissonance\\Patches"):
+                name, extension = os.path.splitext(i)
+                if name in exceptions:
+                    continue
+                Manager.game.apply_ips_patch(name)
             if config.getboolean("Extra", "bNoPlayerOutline"):
                 Manager.game.apply_ips_patch("NoPlayerOutline")
-            Manager.game.apply_ips_patch("NoEntityPalettes")
         else:
             if config.getboolean("EnemyRandomization", "bEnemyLevels"):
                 random.seed(seed)
@@ -90,6 +97,9 @@ class Patch(QThread):
                 Manager.game.all_bigtoss()
             if config.getboolean("Extra", "bContinuousSmash"):
                 Manager.game.infinite_wing_smash()
+            for i in os.listdir("Data\\Symphony\\Patches"):
+                name, extension = os.path.splitext(i)
+                Manager.game.apply_ppf_patch(name)
         
         if config.getboolean("EnemyRandomization", "bEnemyTolerances"):
             random.seed(seed)
@@ -100,6 +110,8 @@ class Patch(QThread):
         if config.getboolean("Extra", "bScavengerMode"):
             Manager.game.remove_enemy_drops()
         
+        if Manager.game == Dissonance:
+            Manager.game.write_room_data()
         Manager.game.write_simple_data()
         Manager.game.write_complex_data()
         Manager.game.create_enemy_log()
