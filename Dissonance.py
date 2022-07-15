@@ -4,6 +4,7 @@ import random
 import math
 import os
 import copy
+from collections import OrderedDict
 
 class Room:
     def __init__(self, entities, gfx_list):
@@ -581,9 +582,9 @@ def randomize_enemies():
                 elif enemy_id == 0x6A:
                     game_rooms[i].entities[e].var_b = Manager.get_enemy_id(enemy_replacement[Manager.get_enemy_name(game_rooms[i].entities[e].var_b)])
                     #Set up var a
-                    if enemy_replacement[Manager.get_enemy_name(game_rooms[i].entities[e].var_b)] == "Bat":
+                    if Manager.get_enemy_name(game_rooms[i].entities[e].var_b) == "Bat":
                         game_rooms[i].entities[e].var_a = 1
-                    elif "Slime" in enemy_replacement[Manager.get_enemy_name(game_rooms[i].entities[e].var_b)]:
+                    elif "Slime" in Manager.get_enemy_name(game_rooms[i].entities[e].var_b):
                         game_rooms[i].entities[e].var_a = slime_color
                     else:
                         game_rooms[i].entities[e].var_a = 0
@@ -654,6 +655,12 @@ def update_gfx_pointers():
     for i in game_rooms:
         if i in room_skip:
             continue
+        ram_to_enemy = {
+            0x500:  [],
+            0x1000: [],
+            0x1500: [],
+            0x2000: []
+        }
         #Get room's enemy types
         enemy_types = []
         for e in game_rooms[i].entities:
@@ -669,16 +676,22 @@ def update_gfx_pointers():
                 elif enemy_id == 0x6A:
                     enemy_types.append(all_replacement_invert[Manager.get_enemy_name(game_rooms[i].entities[e].var_b)])
         enemy_types = list(dict.fromkeys(enemy_types))
-        #Update enemy gfx list
-        for e in range(len(enemy_types)-1, -1, -1):
-            for o in values["Enemy"][enemy_types[e]]["GfxPointer"]:
+        #Remove original enemy gfx
+        for e in enemy_types:
+            for o in values["Enemy"][e]["GfxPointer"]:
                 gfx_pointer = int(o, 16)
                 if gfx_pointer in game_rooms[i].gfx_list:
                     game_rooms[i].gfx_list.remove(gfx_pointer)
-            for o in range(len(values["Enemy"][all_replacement[enemy_types[e]]]["GfxPointer"])-1, -1, -1):
-                gfx_pointer = int(values["Enemy"][all_replacement[enemy_types[e]]]["GfxPointer"][o], 16)
-                if not gfx_pointer in game_rooms[i].gfx_list:
-                    game_rooms[i].gfx_list.insert(0, gfx_pointer)
+        #Order enemy list by ram
+        for e in enemy_types:
+            ram_to_enemy[int(values["Enemy"][all_replacement[e]]["RamUsage"], 16)].append(all_replacement[e])
+        #Add new enemy gfx
+        for e in ram_to_enemy:
+            for o in range(len(ram_to_enemy[e])-1, -1, -1):
+                for u in range(len(values["Enemy"][ram_to_enemy[e][o]]["GfxPointer"])-1, -1, -1):
+                    gfx_pointer = int(values["Enemy"][ram_to_enemy[e][o]]["GfxPointer"][u], 16)
+                    if not gfx_pointer in game_rooms[i].gfx_list:
+                        game_rooms[i].gfx_list.insert(0, gfx_pointer)
 
 def write_complex_data():
     #ENEMY

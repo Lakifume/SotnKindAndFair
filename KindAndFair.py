@@ -191,6 +191,38 @@ class Update(QThread):
 
 #Interface
 
+class DropFile(QObject):    
+    def eventFilter(self, watched, event):
+        if config.getboolean("Game", "bSymphony"):
+            format = ".bin"
+        else:
+            format = ".gba"
+        if event.type() == QEvent.DragEnter:
+            md = event.mimeData()
+            if md.hasUrls():
+                if len(md.urls()) == 1:
+                    if format in md.urls()[0].toLocalFile():
+                        event.accept()
+        if event.type() == QEvent.Drop:
+            md = event.mimeData()
+            watched.setText(md.urls()[0].toLocalFile().replace("/", "\\"))
+            return True
+        return super().eventFilter(watched, event)
+
+class DropFolder(QObject):    
+    def eventFilter(self, watched, event):
+        if event.type() == QEvent.DragEnter:
+            md = event.mimeData()
+            if md.hasUrls():
+                if len(md.urls()) == 1:
+                    if not "." in md.urls()[0].toLocalFile():
+                        event.accept()
+        if event.type() == QEvent.Drop:
+            md = event.mimeData()
+            watched.setText(md.urls()[0].toLocalFile().replace("/", "\\"))
+            return True
+        return super().eventFilter(watched, event)
+
 class Main(QWidget):
     def __init__(self):
         super().__init__()
@@ -312,11 +344,13 @@ class Main(QWidget):
         self.input_field = QLineEdit()
         self.input_field.setToolTip("Path to your input rom.")
         self.input_field.textChanged[str].connect(self.new_input)
+        self.input_field.installEventFilter(DropFile(self))
         grid.addWidget(self.input_field, 4, 0, 1, 1)
         
         self.output_field = QLineEdit()
         self.output_field.setToolTip("Path to your output folder.")
         self.output_field.textChanged[str].connect(self.new_output)
+        self.output_field.installEventFilter(DropFolder(self))
         grid.addWidget(self.output_field, 4, 2, 1, 1)
 
         #Buttons
