@@ -26,7 +26,7 @@ class Entity:
 
 def init():
     global damage_rate
-    damage_rate = 1/1.5
+    damage_rate = math.log(2.25, 3)
     global attributes
     attributes = {
         "FLA": 0x01,
@@ -438,11 +438,6 @@ def write_simple_data():
             value = modifications[item]
             Manager.rom.seek(i + 2)
             Manager.rom.write(value.to_bytes(2, "little"))
-    #Music
-    #Manager.rom.seek(0x4950EA)
-    #Manager.rom.write((0x1A).to_bytes(2, "little"))
-    #Manager.rom.seek(0x495102)
-    #Manager.rom.write((0x1A).to_bytes(2, "little"))
 
 def randomize_enemies():
     #Randomize in a dictionary

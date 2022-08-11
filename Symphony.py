@@ -86,6 +86,11 @@ def init():
         0x4b68454,
         0x4b68456
     ]
+    global forced_drops
+    forced_drops = [
+        0x4BC9324,
+        0x4BC9328
+    ]
 
 def open_json():
     global offsets
@@ -164,7 +169,9 @@ def keep_equipment():
 
 def free_library():
     #Place a library card before Slogra and Gaibon in case they are near unbeatable
-    Manager.rom.seek(random.choice([0x4BC9324, 0x4BC9328]))
+    drop = forced_drops[0]
+    forced_drops.pop(0)
+    Manager.rom.seek(drop)
     Manager.rom.write((0xA6).to_bytes(2, "little"))
     
 def unused():
@@ -204,6 +211,16 @@ def remove_enemy_drops():
         Manager.rom.write((0).to_bytes(dictionary["Properties"]["Enemy"]["Drop1"]["Length"], "little"))
         Manager.rom.seek(check_offset(int(offsets["Enemy"][i]["EnemyAddress"], 16) + int(dictionary["Properties"]["Enemy"]["Drop2"]["Offset"], 16)))
         Manager.rom.write((0).to_bytes(dictionary["Properties"]["Enemy"]["Drop2"]["Length"], "little"))
+    #Give a weapon at the start to compensate
+    positive_weapons = []
+    for i in dictionary["ItemId"]:
+        if dictionary["ItemId"][i] in values["HandItem"]:
+            if values["HandItem"][dictionary["ItemId"][i]]["Attack"] > 0 and not values["HandItem"][dictionary["ItemId"][i]]["Sprite"] in ["0x0f", "0x15"]:
+                positive_weapons.append(i)
+    drop = forced_drops[0]
+    forced_drops.pop(0)
+    Manager.rom.seek(drop)
+    Manager.rom.write(int(random.choice(positive_weapons), 16).to_bytes(2, "little"))
 
 def check_offset(offset):
     #Shift the input offset if it falls within one of the weird chunks of bytes
