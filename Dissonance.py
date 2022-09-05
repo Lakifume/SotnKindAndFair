@@ -264,7 +264,15 @@ def create_gfx_list(room_pointer):
     return gfx_list
 
 def write_room_data():
-    freespace_offset = 0x69D400
+    #Get a freespace offset that won't conflict with any other hack
+    freespace_offset = None
+    for i in range(0x69D400, 0x800000, 0x100):
+        Manager.rom.seek(i)
+        if int.from_bytes(Manager.rom.read(0x200), "big") == 0x100**0x200 - 1:
+            freespace_offset = i
+            break
+    if not freespace_offset:
+        raise Exception("Could not find free space in the rom")
     for i in game_rooms:
         #Write entity data
         for e in game_rooms[i].entities:

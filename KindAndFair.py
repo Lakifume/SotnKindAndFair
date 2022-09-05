@@ -49,6 +49,7 @@ class Patch(QThread):
     def run(self):
         self.signaller.progress.emit(0)
         
+        #Determine game
         if config.getboolean("Game", "bSymphony"):
             Manager.init(Symphony)
             folder = "Data\\Symphony\\ErrorRecalc"
@@ -68,6 +69,15 @@ class Patch(QThread):
         seed = Manager.game.get_seed()
         
         if Manager.game == Dissonance:
+            #Apply patches first
+            for i in os.listdir("Data\\Dissonance\\Patches"):
+                name, extension = os.path.splitext(i)
+                if name in ["InvisiblePazuzuWall", "NoPlayerOutline"]:
+                    continue
+                Manager.game.apply_ips_patch(name)
+            if config.getboolean("Extra", "bNoPlayerOutline"):
+                Manager.game.apply_ips_patch("NoPlayerOutline")
+            #Randomize after
             Manager.game.read_room_data()
             Manager.game.gather_data()
             if config.getboolean("EnemyRandomization", "bEnemyPlacement"):
@@ -77,15 +87,12 @@ class Patch(QThread):
                 Manager.game.randomize_bosses()
                 Manager.game.rebalance_enemies()
                 Manager.game.update_gfx_pointers()
-            exceptions = ["InvisiblePazuzuWall", "NoPlayerOutline"]
-            for i in os.listdir("Data\\Dissonance\\Patches"):
-                name, extension = os.path.splitext(i)
-                if name in exceptions:
-                    continue
-                Manager.game.apply_ips_patch(name)
-            if config.getboolean("Extra", "bNoPlayerOutline"):
-                Manager.game.apply_ips_patch("NoPlayerOutline")
         else:
+            #Apply patches first
+            for i in os.listdir("Data\\Symphony\\Patches"):
+                name, extension = os.path.splitext(i)
+                Manager.game.apply_ppf_patch(name)
+            #Randomize after
             if config.getboolean("EnemyRandomization", "bEnemyLevels"):
                 random.seed(seed)
                 Manager.randomize_enemy_levels()
@@ -97,9 +104,6 @@ class Patch(QThread):
                 Manager.game.all_bigtoss()
             if config.getboolean("Extra", "bContinuousSmash"):
                 Manager.game.infinite_wing_smash()
-            for i in os.listdir("Data\\Symphony\\Patches"):
-                name, extension = os.path.splitext(i)
-                Manager.game.apply_ppf_patch(name)
         
         if config.getboolean("EnemyRandomization", "bEnemyTolerances"):
             random.seed(seed)
