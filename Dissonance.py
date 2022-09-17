@@ -390,7 +390,7 @@ def write_simple_data():
     #Adjust spells
     modifications = {
         0x0807F255: 80,  #fire axe
-        0x0807F31D: 30,  #fire knife
+        0x0807F31D: 50,  #fire knife
         0x0807F3AD: 30,  #fire holy water
         0x080826A5: 50,  #ice bible
         0x08084C35: 80,  #wind bible
@@ -414,10 +414,12 @@ def write_simple_data():
     #Adjust consumables
     modifications = {
         0x0000: 20,
-        0x0001: 200,
+        0x0001: 100,
         0x0002: 9999,
-        0x0003: 10,
-        0x0004: 100
+        0x0003: 12,
+        0x0004: 60,
+        0x0005: 200,
+        0x0006: 400
     }
     for i in table_range["Consumable"]:
         Manager.rom.seek(i)
@@ -429,15 +431,15 @@ def write_simple_data():
     #Adjust prices
     modifications = {
         0x0003: 200,
-        0x0103: 2000,
-        0x0203: 8000,
+        0x0103: 1000,
+        0x0203: 5000,
         0x0303: 100,
-        0x0403: 1000,
+        0x0403: 500,
         0x0503: 2000,
         0x0603: 4000,
         0x0703: 300,
         0x0803: 300,
-        0x0903: 5000
+        0x0903: 1000
     }
     for i in table_range["Shop"]:
         Manager.rom.seek(i)
@@ -716,16 +718,12 @@ def write_complex_data():
             min_health = int(max_health/100)
             health = round(((max_health - min_health)/98)*(level-1) + min_health)
             health = Manager.check_meaningful_value(health)
-            if health < 1:
-                health = 1
             Manager.rom.seek(offset + int(dictionary["Properties"]["Enemy"]["Health"]["Offset"], 16))
             Manager.rom.write(health.to_bytes(dictionary["Properties"]["Enemy"]["Health"]["Length"], "little"))
             #Damage
             max_damage = values["Enemy"][e]["MaxDamage"]
             min_damage = int(max_damage/30)
             damage = round(((max_damage - min_damage)/98)*(level-1) + min_damage)
-            if damage < 1:
-                damage = 1
             Manager.rom.seek(offset + int(dictionary["Properties"]["Enemy"]["Damage"]["Offset"], 16))
             Manager.rom.write(damage.to_bytes(dictionary["Properties"]["Enemy"]["Damage"]["Length"], "little"))
             #Defense
@@ -741,8 +739,6 @@ def write_complex_data():
             min_experience = int(max_experience/100)
             experience = round(((max_experience - min_experience)/98)*(level-1) + min_experience)
             experience = Manager.check_meaningful_value(experience)
-            if experience < 1:
-                experience = 1
             Manager.rom.seek(offset + int(dictionary["Properties"]["Enemy"]["Experience"]["Offset"], 16))
             Manager.rom.write(experience.to_bytes(dictionary["Properties"]["Enemy"]["Experience"]["Length"], "little"))
             #Damage type
@@ -765,8 +761,6 @@ def write_complex_data():
                 attack_id = "Attack" + str(o + 1)
                 #Attack correction
                 attack = round(damage*values["Enemy"][e]["AttackCorrection"][o]**damage_rate)
-                if attack < 1:
-                    attack = 1
                 Manager.rom.seek(offset + int(dictionary["Properties"]["Enemy"][attack_id]["Offset"], 16))
                 Manager.rom.write(attack.to_bytes(dictionary["Properties"]["Enemy"][attack_id]["Length"], "little"))
                 #Attack type
@@ -776,7 +770,7 @@ def write_complex_data():
             for o in range(3 - len(values["Enemy"][e]["AttackCorrection"])):
                 attack_id = "Attack" + str(len(values["Enemy"][e]["AttackCorrection"]) + o + 1)
                 Manager.rom.seek(offset + int(dictionary["Properties"]["Enemy"][attack_id]["Offset"], 16))
-                Manager.rom.write((damage).to_bytes(dictionary["Properties"]["Enemy"][attack_id]["Length"], "little"))
+                Manager.rom.write((damage + 1).to_bytes(dictionary["Properties"]["Enemy"][attack_id]["Length"], "little"))
         #Match chase Talos' damage with regular Talos
         Manager.rom.seek(enemy_offset + 0x24*(Manager.get_enemy_id("Talos") + i) + int(dictionary["Properties"]["Enemy"]["Damage"]["Offset"], 16))
         damage = int.from_bytes(Manager.rom.read(dictionary["Properties"]["Enemy"]["Damage"]["Length"]), "little")

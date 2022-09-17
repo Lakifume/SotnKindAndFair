@@ -188,9 +188,8 @@ class Update(QThread):
         with open("Data\\config.ini", "w") as file_writer:
             new_config.write(file_writer)
         
-        #Open new EXE
+        #Exit
         
-        subprocess.Popen(exe_name)
         sys.exit()
 
 #Interface

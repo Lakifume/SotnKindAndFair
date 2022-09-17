@@ -294,9 +294,9 @@ def write_complex_data():
         #Experience
         max_experience = values["Enemy"][i]["MaxExperience"]
         min_experience = int(max_experience/100)
-        #Make up for the multipliers used internally by the game
-        max_experience = int(max_experience/3)
-        min_experience = int(min_experience*3)
+        #Try to make up for the multipliers used internally by the game
+        max_experience = int(max_experience/2)
+        min_experience = int(min_experience/2)
         experience = round(((max_experience - min_experience)/98)*(level-1) + min_experience)
         experience = Manager.check_meaningful_value(experience)
         experience = experience & (0x100**dictionary["Properties"]["Enemy"]["Experience"]["Length"]-1)
