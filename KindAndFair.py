@@ -100,8 +100,6 @@ class Patch(QThread):
             if config.getboolean("EnemyRandomization", "bEnemyLevels") or config.getboolean("EnemyRandomization", "bEnemyTolerances"):
                 random.seed(seed)
                 Manager.game.free_library()
-            if config.getboolean("Extra", "bBigtossOnly"):
-                Manager.game.all_bigtoss()
             if config.getboolean("Extra", "bContinuousSmash"):
                 Manager.game.infinite_wing_smash()
         
@@ -113,6 +111,8 @@ class Patch(QThread):
         
         if config.getboolean("Extra", "bScavengerMode"):
             Manager.game.remove_enemy_drops()
+        if config.getboolean("Extra", "bBigtossOnly"):
+            Manager.game.all_bigtoss()
         
         if Manager.game == Dissonance:
             Manager.game.write_room_data()
@@ -190,7 +190,8 @@ class Update(QThread):
         
         #Exit
         
-        sys.exit()
+        subprocess.Popen(exe_name)
+        self.signaller.finished.emit()
 
 #Interface
 
@@ -290,14 +291,14 @@ class Main(QWidget):
         box_4_grid.addWidget(self.check_box_6, 0, 1)
         
         self.check_box_5 = QCheckBox("Bigtoss Only")
-        self.check_box_5.setToolTip("Alucard will always go flying across the room when\ntaking damage. Base enemy damage will be slightly\nreduced to compensate for the extra collision damage.")
+        self.check_box_5.setToolTip("Getting hit will always cause extreme knockback.")
         self.check_box_5.stateChanged.connect(self.check_box_5_changed)
         box_4_grid.addWidget(self.check_box_5, 1, 0)
         
         self.check_box_4 = QCheckBox("No Player Outline")
         self.check_box_4.setToolTip("Remove all colored outlines from player characters\nand replace their trail by a dark shade of grey.")
         self.check_box_4.stateChanged.connect(self.check_box_4_changed)
-        box_4_grid.addWidget(self.check_box_4, 1, 0)
+        box_4_grid.addWidget(self.check_box_4, 0, 1)
         
         #Radio buttons
         
@@ -445,7 +446,6 @@ class Main(QWidget):
             self.check_box_1.setVisible(True)
             self.check_box_3.setVisible(False)
             self.check_box_6.setVisible(True)
-            self.check_box_5.setVisible(True)
             self.check_box_4.setVisible(False)
             self.input_field.setText(config.get("Misc", "sSotnInputFile"))
             self.output_field.setText(config.get("Misc", "sSotnOutputFolder"))
@@ -456,7 +456,6 @@ class Main(QWidget):
             self.check_box_1.setVisible(False)
             self.check_box_3.setVisible(True)
             self.check_box_6.setVisible(False)
-            self.check_box_5.setVisible(False)
             self.check_box_4.setVisible(True)
             self.input_field.setText(config.get("Misc", "sHodInputFile"))
             self.output_field.setText(config.get("Misc", "sHodOutputFolder"))
@@ -503,6 +502,9 @@ class Main(QWidget):
         box.setText("Rom patched !")
         box.exec()
         self.setEnabled(True)
+    
+    def update_finished(self):
+        sys.exit()
 
     def button_1_clicked(self):
         self.setEnabled(False)
@@ -578,6 +580,7 @@ class Main(QWidget):
                 
                 self.worker = Update(self.progressBar, api)
                 self.worker.signaller.progress.connect(self.set_progress)
+                self.worker.signaller.finished.connect(self.update_finished)
                 self.worker.start()
             else:
                 self.setEnabled(True)

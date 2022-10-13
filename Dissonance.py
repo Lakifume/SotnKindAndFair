@@ -352,6 +352,42 @@ def apply_ips_patch(patch):
                 Manager.rom.write(change.to_bytes(length, "big"))
                 progress += 5 + length
 
+def all_bigtoss():
+    #Multiply every character's damage velocities
+    ground_x_vel = 5
+    ground_x_dec = 0.5
+    air_x_vel = 5
+    air_Y_vel = 2
+    for i in [0xE1C34, 0xE1CE0, 0xE1D8C]:
+        Manager.rom.seek(i)
+        value = int.from_bytes(Manager.rom.read(4), "little")
+        if value > 0x7FFFFFFF:
+            value -= 0x100000000
+        value = int(value*ground_x_vel) & 0xFFFFFFFF
+        Manager.rom.seek(i)
+        Manager.rom.write(value.to_bytes(4, "little"))
+        Manager.rom.seek(i + 4)
+        value = int.from_bytes(Manager.rom.read(4), "little")
+        if value > 0x7FFFFFFF:
+            value -= 0x100000000
+        value = int(value*ground_x_dec) & 0xFFFFFFFF
+        Manager.rom.seek(i + 4)
+        Manager.rom.write(value.to_bytes(4, "little"))
+        Manager.rom.seek(i + 16)
+        value = int.from_bytes(Manager.rom.read(4), "little")
+        if value > 0x7FFFFFFF:
+            value -= 0x100000000
+        value = int(value*air_x_vel) & 0xFFFFFFFF
+        Manager.rom.seek(i + 16)
+        Manager.rom.write(value.to_bytes(4, "little"))
+        Manager.rom.seek(i + 20)
+        value = int.from_bytes(Manager.rom.read(4), "little")
+        if value > 0x7FFFFFFF:
+            value -= 0x100000000
+        value = int(value*air_Y_vel) & 0xFFFFFFFF
+        Manager.rom.seek(i + 20)
+        Manager.rom.write(value.to_bytes(4, "little"))
+
 def remove_enemy_drops():
     for i in values["Enemy"]:
         offset = enemy_offset + 0x24*Manager.get_enemy_id(i)
@@ -396,7 +432,7 @@ def write_simple_data():
         0x08084C35: 80,  #wind bible
         0x08084CB5: 30,  #wind fist
         0x08084CFD: 100, #wind cross
-        0x08084D21: 50,  #wind knife
+        0x08084D21: 30,  #wind knife
         0x08088ACD: 200, #bolt bible, this one is Alucard Shield spell level of OP
         0x08088BB1: 80,  #bolt cross
         0x08088C69: 50,  #bolt axe
@@ -544,6 +580,7 @@ def randomize_enemies():
     for i in game_rooms:
         if i in room_skip:
             continue
+        #Randomize slime colors per room
         slime_color = random.randint(0, 3)
         for e in game_rooms[i].entities:
             if game_rooms[i].entities[e].type == 0:
@@ -554,18 +591,18 @@ def randomize_enemies():
                     game_rooms[i].entities[e].subtype = Manager.get_enemy_id(enemy_replacement[enemy_name])
                     #Adjust position
                     #X
-                    #Shift horizontal position for the few enemies that are inside a wall
-                    if i in [0x49CEFC, 0x4A5E90]:
+                    #Shift horizontal position for the large ghost inside a wall
+                    if e == 0x49D8D0:
                         game_rooms[i].entities[e].x_pos += 0x40
                     #Y
                     #If bat was replaced lower the position
                     if enemy_name == "Bat":
                         game_rooms[i].entities[e].y_pos += random.choice([0x10, 0x20, 0x30])
-                    #Raise the enemies in that room with the mermans below the edge
-                    if i == 0x4A6CEC:
+                    #Adjust height of the slimes that are too high in cavern b/the mermans that are below the edge in aqueduct b
+                    if i in [0x4A4B94, 0x4A5E90, 0x4A6CEC]:
                         game_rooms[i].entities[e].y_pos = 0x78
                     #Raise/lower the enemy if the category is different except for a few exceptions
-                    if not i in [0x4AA2E4, 0x4ABC94] and not e in [0x4A55D4, 0x4A55EC, 0x4A70D4]:
+                    if not i in [0x4AA2E4, 0x4ABC94] and not e in [0x4A55D4, 0x4A55EC, 0x4A59F4, 0x4A5A0C, 0x4A5A24, 0x4A70D4]:
                         if "Ground" in values["Enemy"][enemy_name]["Category"] and "Air" in values["Enemy"][enemy_replacement[enemy_name]]["Category"]:
                             game_rooms[i].entities[e].y_pos -= 0x20
                         if "Air" in values["Enemy"][enemy_name]["Category"] and "Ground" in values["Enemy"][enemy_replacement[enemy_name]]["Category"]:
@@ -575,7 +612,7 @@ def randomize_enemies():
                         game_rooms[i].entities[e].var_a = 1
                         game_rooms[i].entities[e].var_b = 0
                     elif enemy_replacement[enemy_name] == "Bone Pillar":
-                        game_rooms[i].entities[e].var_a = 2
+                        game_rooms[i].entities[e].var_a = random.randint(1, 3)
                         game_rooms[i].entities[e].var_b = 0
                     elif "Slime" in enemy_replacement[enemy_name]:
                         game_rooms[i].entities[e].var_a = slime_color
