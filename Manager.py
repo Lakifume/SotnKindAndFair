@@ -14,6 +14,9 @@ def open_rom(path):
 def close_rom():
     rom.close()
 
+def lerp(min, max, alpha):
+    return min + (max - min)*alpha
+
 def randomize_enemy_levels():
     for i in game.values["Enemy"]:
         if not i in game.level_skip:
@@ -75,7 +78,7 @@ def get_enemy_id(name):
     try:
         return list(game.values["Enemy"]).index(name)
     except ValueError:
-        return -1
+        return None
 
 def get_enemy_name(id):
     if id in game.special_id_to_enemy:
@@ -84,4 +87,4 @@ def get_enemy_name(id):
         try:
             return list(game.values["Enemy"])[id]
         except IndexError:
-            return "Unknown"
+            return None

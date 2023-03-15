@@ -356,37 +356,21 @@ def all_bigtoss():
     #Multiply every character's damage velocities
     ground_x_vel = 5
     ground_x_dec = 0.5
-    air_x_vel = 5
-    air_Y_vel = 2
+    crouch_x_vel = 5
+    crouch_x_dec = 0.5
+    air_x_vel    = 5
+    air_Y_vel    = 2
     for i in [0xE1C34, 0xE1CE0, 0xE1D8C]:
-        Manager.rom.seek(i)
-        value = int.from_bytes(Manager.rom.read(4), "little")
-        if value > 0x7FFFFFFF:
-            value -= 0x100000000
-        value = int(value*ground_x_vel) & 0xFFFFFFFF
-        Manager.rom.seek(i)
-        Manager.rom.write(value.to_bytes(4, "little"))
-        Manager.rom.seek(i + 4)
-        value = int.from_bytes(Manager.rom.read(4), "little")
-        if value > 0x7FFFFFFF:
-            value -= 0x100000000
-        value = int(value*ground_x_dec) & 0xFFFFFFFF
-        Manager.rom.seek(i + 4)
-        Manager.rom.write(value.to_bytes(4, "little"))
-        Manager.rom.seek(i + 16)
-        value = int.from_bytes(Manager.rom.read(4), "little")
-        if value > 0x7FFFFFFF:
-            value -= 0x100000000
-        value = int(value*air_x_vel) & 0xFFFFFFFF
-        Manager.rom.seek(i + 16)
-        Manager.rom.write(value.to_bytes(4, "little"))
-        Manager.rom.seek(i + 20)
-        value = int.from_bytes(Manager.rom.read(4), "little")
-        if value > 0x7FFFFFFF:
-            value -= 0x100000000
-        value = int(value*air_Y_vel) & 0xFFFFFFFF
-        Manager.rom.seek(i + 20)
-        Manager.rom.write(value.to_bytes(4, "little"))
+        offset = 0
+        for e in [ground_x_vel, ground_x_dec, crouch_x_vel, crouch_x_dec, air_x_vel, air_Y_vel]:
+            Manager.rom.seek(i + offset)
+            value = int.from_bytes(Manager.rom.read(4), "little")
+            if value > 0x7FFFFFFF:
+                value -= 0x100000000
+            value = int(value*e) & 0xFFFFFFFF
+            Manager.rom.seek(i + offset)
+            Manager.rom.write(value.to_bytes(4, "little"))
+            offset += 4
 
 def remove_enemy_drops():
     for i in values["Enemy"]:
@@ -427,16 +411,19 @@ def write_simple_data():
     modifications = {
         0x0807F255: 80,  #fire axe
         0x0807F31D: 50,  #fire knife
-        0x0807F3AD: 30,  #fire holy water
+        0x0807F389: 60,  #fire fist
+        0x0807F3AD: 40,  #fire holy water
         0x080826A5: 50,  #ice bible
         0x08084C35: 80,  #wind bible
-        0x08084CB5: 30,  #wind fist
+        0x08084CB5: 40,  #wind fist
         0x08084CFD: 100, #wind cross
         0x08084D21: 30,  #wind knife
         0x08088ACD: 200, #bolt bible, this one is Alucard Shield spell level of OP
         0x08088BB1: 80,  #bolt cross
         0x08088C69: 50,  #bolt axe
+        0x08088C99: 40,  #bolt fist
         0x0808D7A1: 80,  #summon bible
+        0x0808D859: 120, #summon holy water
         0x0808D8DD: 80,  #summon knife
         0x0808D9D9: 80   #summon axe
     }
@@ -508,8 +495,16 @@ def randomize_enemies():
             random.shuffle(new_list)
             new_dict = dict(zip(enemy_category[i], new_list))
             enemy_replacement.update(new_dict)
+        #Invert dictionary
+        for i in enemy_replacement:
+            enemy_replacement_invert[enemy_replacement[i]] = i
         #Check for conflict
         conflict = False
+        #If the regular fleaman is too much stronger than the armor then reroll
+        if values["Enemy"][enemy_replacement_invert["Fleaman"]]["Level"] > values["Enemy"][enemy_replacement_invert["Fleaman Armor"]]["Level"] + 10:
+            conflict = True
+            continue
+        #Loop through rooms
         for i in game_rooms:
             entity_types = []
             for e in game_rooms[i].entities:
@@ -530,7 +525,7 @@ def randomize_enemies():
                     #Check if enemy shares a sheet with a global enemy
                     if new_enemy_name in enemy_to_global_sheet:
                         new_enemy_name = enemy_to_global_sheet[new_enemy_name]
-                    if new_enemy_name != "Unknown":
+                    if new_enemy_name:
                         entity_types.append(new_enemy_name)
                 else:
                     #Small candles, boss doors and pickups don't matter in ram usage
@@ -573,9 +568,6 @@ def randomize_enemies():
                     print("0x{:04x}".format(i))
                 conflict = True
                 break
-    #Invert dictionary
-    for i in enemy_replacement:
-        enemy_replacement_invert[enemy_replacement[i]] = i
     #Patch via enemy ids
     for i in game_rooms:
         if i in room_skip:
@@ -703,6 +695,7 @@ def update_gfx_pointers():
             0x1500: [],
             0x2000: []
         }
+        changed = False
         #Get room's enemy types
         enemy_types = []
         for e in game_rooms[i].entities:
@@ -710,13 +703,20 @@ def update_gfx_pointers():
                 enemy_name = boss_to_pointer_invert[e]
                 if enemy_name in all_replacement:
                     enemy_types.append(enemy_name)
+                    changed = True
             elif game_rooms[i].entities[e].type == 0:
                 enemy_id = game_rooms[i].entities[e].subtype
                 enemy_name = Manager.get_enemy_name(enemy_id)
                 if enemy_name in all_replacement:
                     enemy_types.append(all_replacement_invert[enemy_name])
+                    changed = True
                 elif enemy_id == 0x6A:
                     enemy_types.append(all_replacement_invert[Manager.get_enemy_name(game_rooms[i].entities[e].var_b)])
+                    changed = True
+                elif enemy_name:
+                    enemy_types.append(enemy_name)
+        if not changed:
+            continue
         enemy_types = list(dict.fromkeys(enemy_types))
         #Remove original enemy gfx
         for e in enemy_types:
@@ -726,7 +726,11 @@ def update_gfx_pointers():
                     game_rooms[i].gfx_list.remove(gfx_pointer)
         #Order enemy list by ram
         for e in enemy_types:
-            ram_to_enemy[int(values["Enemy"][all_replacement[e]]["RamUsage"], 16)].append(all_replacement[e])
+            if e in all_replacement:
+                new_enemy = all_replacement[e]
+            else:
+                new_enemy = e
+            ram_to_enemy[int(values["Enemy"][new_enemy]["RamUsage"], 16)].append(new_enemy)
         #Add new enemy gfx
         for e in ram_to_enemy:
             for o in range(len(ram_to_enemy[e])-1, -1, -1):

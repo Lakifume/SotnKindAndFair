@@ -199,6 +199,10 @@ def all_bigtoss():
         for e in range(len(values["Enemy"][i]["AttackType"])):
             values["Enemy"][i]["AttackType"][e] = "0x{:04x}".format((int(values["Enemy"][i]["AttackType"][e], 16)//16)*16 + 5)
 
+def reduce_bigtoss_damage(damage):
+    #Reduce damage in such a way that the total bigtoss damage will on average be equal to regular damage
+    return round(damage*Manager.lerp(1/1.5, 1, 240/(240 + damage)))
+
 def infinite_wing_smash():
     #Give wing smash the same properties as in the saturn version but at a higher cost
     values["Spell"]["Wing Smash"]["ManaCost"] = round(values["Spell"]["Wing Smash"]["ManaCost"]*3.75)
@@ -281,7 +285,7 @@ def write_complex_data():
         if not values["Enemy"][i]["HasContact"]:
             Manager.rom.write((0).to_bytes(dictionary["Properties"]["Enemy"]["Damage"]["Length"], "little"))
         elif int(values["Enemy"][i]["DamageType"], 16) % 16 == 5:
-            Manager.rom.write(int(damage*0.9).to_bytes(dictionary["Properties"]["Enemy"]["Damage"]["Length"], "little"))
+            Manager.rom.write(reduce_bigtoss_damage(damage).to_bytes(dictionary["Properties"]["Enemy"]["Damage"]["Length"], "little"))
         else:
             Manager.rom.write(damage.to_bytes(dictionary["Properties"]["Enemy"]["Damage"]["Length"], "little"))
         #Defense
@@ -294,9 +298,6 @@ def write_complex_data():
         #Experience
         max_experience = values["Enemy"][i]["MaxExperience"]
         min_experience = int(max_experience/100)
-        #Try to make up for the multipliers used internally by the game
-        max_experience = int(max_experience/2)
-        min_experience = int(min_experience/2)
         experience = round(((max_experience - min_experience)/98)*(level-1) + min_experience)
         experience = Manager.check_meaningful_value(experience)
         experience = experience & (0x100**dictionary["Properties"]["Enemy"]["Experience"]["Length"]-1)
@@ -331,7 +332,7 @@ def write_complex_data():
             attack = attack & (0x100**dictionary["Properties"]["Enemy"]["Damage"]["Length"]-1)
             Manager.rom.seek(check_offset(int(offsets["Enemy"][i]["AttackAddress"][e], 16) + int(dictionary["Properties"]["Enemy"]["Damage"]["Offset"], 16)))
             if int(values["Enemy"][i]["AttackType"][e], 16) % 16 == 5:
-                Manager.rom.write(int(attack*0.9).to_bytes(dictionary["Properties"]["Enemy"]["Damage"]["Length"], "little"))
+                Manager.rom.write(reduce_bigtoss_damage(attack).to_bytes(dictionary["Properties"]["Enemy"]["Damage"]["Length"], "little"))
             else:
                 Manager.rom.write(attack.to_bytes(dictionary["Properties"]["Enemy"]["Damage"]["Length"], "little"))
             #Attack type
@@ -530,6 +531,9 @@ def write_complex_data():
     Manager.rom.write(str.encode("KOJI  IGA"))
     Manager.rom.seek(0x3A06851)
     Manager.rom.write((0x40).to_bytes(1, "little"))
+    #
+    #Manager.rom.seek(0x4678F00)
+    #Manager.rom.write((0x0022).to_bytes(2, "little"))
 
 def create_enemy_log():
     log = {}
