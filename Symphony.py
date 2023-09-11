@@ -1,9 +1,7 @@
 import Manager
 import json
 import random
-import math
 import os
-import copy
 
 def init():
     global damage_rate
@@ -43,21 +41,10 @@ def init():
     resist_skip.extend(static_enemy)
     global final_bosses
     final_bosses = ("Shaft", "Dracula")
-    global resist_pool
-    resist_pool = []
+    global resist_range
+    resist_range = (-2, 4)
     global special_id_to_enemy
     special_id_to_enemy = {}
-    #FillResistPool
-    for i in range(7):
-        resist_pool.append(0)
-    for i in range(35):
-        resist_pool.append(1)
-    for i in range(4):
-        resist_pool.append(2)
-    for i in range(2):
-        resist_pool.append(3)
-    for i in range(1):
-        resist_pool.append(4)
     #Offsets
     global removal_offset
     removal_offset = [
@@ -264,22 +251,20 @@ def write_complex_data():
         Manager.rom.write(level.to_bytes(dictionary["Properties"]["Enemy"]["Level"]["Length"], "little"))
         #Health
         max_health = values["Enemy"][i]["MaxHealth"]
+        min_health = int(max_health/100)
         if max_health == 0x7FFF:
             min_health = max_health
-        else:
-            min_health = int(max_health/100)
-        health = round(((max_health - min_health)/98)*(level-1) + min_health)
+        health = Manager.calculate_stat_with_level(min_health, max_health, level)
         health = Manager.check_meaningful_value(health)
         health = health & (0x100**dictionary["Properties"]["Enemy"]["Health"]["Length"]-1)
         Manager.rom.seek(check_offset(int(offsets["Enemy"][i]["EnemyAddress"], 16) + int(dictionary["Properties"]["Enemy"]["Health"]["Offset"], 16)))
         Manager.rom.write(health.to_bytes(dictionary["Properties"]["Enemy"]["Health"]["Length"], "little"))
         #Damage
         max_damage = values["Enemy"][i]["MaxDamage"]
+        min_damage = int(max_damage/30)
         if i in static_enemy:
             min_damage = max_damage
-        else:
-            min_damage = int(max_damage/30)
-        damage = round(((max_damage - min_damage)/98)*(level-1) + min_damage)
+        damage = Manager.calculate_stat_with_level(min_damage, max_damage, level)
         damage = damage & (0x100**dictionary["Properties"]["Enemy"]["Damage"]["Length"]-1)
         Manager.rom.seek(check_offset(int(offsets["Enemy"][i]["EnemyAddress"], 16) + int(dictionary["Properties"]["Enemy"]["Damage"]["Offset"], 16)))
         if not values["Enemy"][i]["HasContact"]:
@@ -291,14 +276,15 @@ def write_complex_data():
         #Defense
         max_defense = values["Enemy"][i]["MaxDefense"]
         min_defense = int(max_defense/10)
-        defense = round(((max_defense - min_defense)/98)*(level-1) + min_defense)
+        defense = Manager.calculate_stat_with_level(min_defense, max_defense, level)
         defense = defense & (0x100**dictionary["Properties"]["Enemy"]["Defense"]["Length"]-1)
         Manager.rom.seek(check_offset(int(offsets["Enemy"][i]["EnemyAddress"], 16) + int(dictionary["Properties"]["Enemy"]["Defense"]["Offset"], 16)))
         Manager.rom.write(defense.to_bytes(dictionary["Properties"]["Enemy"]["Defense"]["Length"], "little"))
         #Experience
         max_experience = values["Enemy"][i]["MaxExperience"]
         min_experience = int(max_experience/100)
-        experience = round(((max_experience - min_experience)/98)*(level-1) + min_experience)
+        experience = Manager.calculate_stat_with_level(min_experience, max_experience, level)
+        experience = experience*Manager.lerp(1, 1/3, min(level/40, 1))
         experience = Manager.check_meaningful_value(experience)
         experience = experience & (0x100**dictionary["Properties"]["Enemy"]["Experience"]["Length"]-1)
         Manager.rom.seek(check_offset(int(offsets["Enemy"][i]["EnemyAddress"], 16) + int(dictionary["Properties"]["Enemy"]["Experience"]["Offset"], 16)))

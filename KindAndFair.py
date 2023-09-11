@@ -1,22 +1,21 @@
-#Imports
-from PySide6.QtCore import *
-from PySide6.QtGui import *
-from PySide6.QtWidgets import *
 import Manager
 import Symphony
 import Dissonance
+
+from PySide6.QtCore import *
+from PySide6.QtGui import *
+from PySide6.QtWidgets import *
+
 import json
 import configparser
 import sys
 import random
-import math
 import os
 import shutil
 import requests
 import zipfile
 import subprocess
 import glob
-import copy
 
 #Get script name
 
@@ -63,6 +62,9 @@ class Patch(QThread):
         
         Manager.game.init()
         Manager.game.open_json()
+        
+        Manager.set_enemy_level_wheight(config.getint("EnemyRandomization", "iEnemyLevelsWheight"))
+        Manager.set_enemy_tolerance_wheight(config.getint("EnemyRandomization", "iEnemyTolerancesWheight"))
         
         Manager.open_rom(folder + "\\rom")
         
@@ -300,6 +302,24 @@ class Main(QWidget):
         self.check_box_4.stateChanged.connect(self.check_box_4_changed)
         box_4_grid.addWidget(self.check_box_4, 0, 1)
         
+        #SpinButtons
+        
+        self.spin_button_1 = QPushButton()
+        self.spin_button_1.setToolTip("Level wheight. The higher the value the more extreme\nthe level differences.")
+        self.spin_button_1.setStyleSheet("QPushButton{color: #ffffff; font-family: Impact}" + "QToolTip{color: #ffffff; font-family: Cambria}")
+        self.spin_button_1.setFixedSize(28, 24)
+        self.spin_button_1.clicked.connect(self.spin_button_1_clicked)
+        self.spin_button_1.setVisible(False)
+        box_1_grid.addWidget(self.spin_button_1, 0, 1)
+        
+        self.spin_button_2 = QPushButton()
+        self.spin_button_2.setToolTip("Tolerance wheight. The higher the value the more extreme\nthe tolerance differences.")
+        self.spin_button_2.setStyleSheet("QPushButton{color: #ffffff; font-family: Impact}" + "QToolTip{color: #ffffff; font-family: Cambria}")
+        self.spin_button_2.setFixedSize(28, 24)
+        self.spin_button_2.clicked.connect(self.spin_button_2_clicked)
+        self.spin_button_2.setVisible(False)
+        box_1_grid.addWidget(self.spin_button_2, 1, 1)
+        
         #Radio buttons
         
         self.radio_button_1 = QRadioButton("Symphony of the Night")
@@ -402,12 +422,14 @@ class Main(QWidget):
             config.set("EnemyRandomization", "bEnemyLevels", "true")
         else:
             config.set("EnemyRandomization", "bEnemyLevels", "false")
+        self.spin_button_1.setVisible(self.check_box_1.isChecked())
 
     def check_box_2_changed(self):
         if self.check_box_2.isChecked():
             config.set("EnemyRandomization", "bEnemyTolerances", "true")
         else:
             config.set("EnemyRandomization", "bEnemyTolerances", "false")
+        self.spin_button_2.setVisible(self.check_box_2.isChecked())
 
     def check_box_3_changed(self):
         if self.check_box_3.isChecked():
@@ -438,6 +460,20 @@ class Main(QWidget):
             config.set("Extra", "bNoPlayerOutline", "true")
         else:
             config.set("Extra", "bNoPlayerOutline", "false")
+
+    def spin_button_1_clicked(self):
+        index = int(self.spin_button_1.text())
+        index = index % 3 + 1
+        index = str(index)
+        self.spin_button_1.setText(index)
+        config.set("EnemyRandomization", "iEnemyLevelsWheight", index)
+
+    def spin_button_2_clicked(self):
+        index = int(self.spin_button_2.text())
+        index = index % 3 + 1
+        index = str(index)
+        self.spin_button_2.setText(index)
+        config.set("EnemyRandomization", "iEnemyTolerancesWheight", index)
     
     def radio_button_group_1_checked(self):
         if self.radio_button_1.isChecked():
@@ -447,6 +483,7 @@ class Main(QWidget):
             self.check_box_3.setVisible(False)
             self.check_box_6.setVisible(True)
             self.check_box_4.setVisible(False)
+            self.spin_button_1.setVisible(self.check_box_1.isChecked())
             self.input_field.setText(config.get("Misc", "sSotnInputFile"))
             self.output_field.setText(config.get("Misc", "sSotnOutputFolder"))
             self.reset_visuals("Symphony", "#1d150f")
@@ -457,6 +494,7 @@ class Main(QWidget):
             self.check_box_3.setVisible(True)
             self.check_box_6.setVisible(False)
             self.check_box_4.setVisible(True)
+            self.spin_button_1.setVisible(False)
             self.input_field.setText(config.get("Misc", "sHodInputFile"))
             self.output_field.setText(config.get("Misc", "sHodOutputFolder"))
             self.reset_visuals("Dissonance", "#340d0d")
@@ -512,13 +550,13 @@ class Main(QWidget):
         
         if config.getboolean("Game", "bSymphony"):
             name, extension = os.path.splitext(config.get("Misc", "sSotnInputFile"))
-            if not config.get("Misc", "sSotnInputFile") or not os.path.isfile(config.get("Misc", "sSotnInputFile")) or extension != ".bin":
+            if not os.path.isfile(config.get("Misc", "sSotnInputFile")) or extension != ".bin":
                 self.no_path()
                 self.setEnabled(True)
                 return
         else:
             name, extension = os.path.splitext(config.get("Misc", "sHodInputFile"))
-            if not config.get("Misc", "sHodInputFile") or not os.path.isfile(config.get("Misc", "sHodInputFile")) or extension != ".gba":
+            if not os.path.isfile(config.get("Misc", "sHodInputFile")) or extension != ".gba":
                 self.no_path()
                 self.setEnabled(True)
                 return
