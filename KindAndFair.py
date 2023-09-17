@@ -63,8 +63,8 @@ class Patch(QThread):
         Manager.game.init()
         Manager.game.open_json()
         
-        Manager.set_enemy_level_wheight(config.getint("EnemyRandomization", "iEnemyLevelsWheight"))
-        Manager.set_enemy_tolerance_wheight(config.getint("EnemyRandomization", "iEnemyTolerancesWheight"))
+        Manager.set_enemy_level_wheight(config.getint("EnemyRandomization", "iEnemyLevelsWeight"))
+        Manager.set_enemy_tolerance_wheight(config.getint("EnemyRandomization", "iEnemyTolerancesWeight"))
         
         Manager.open_rom(folder + "\\rom")
         
@@ -82,7 +82,7 @@ class Patch(QThread):
             #Randomize after
             Manager.game.read_room_data()
             Manager.game.gather_data()
-            if config.getboolean("EnemyRandomization", "bEnemyPlacement"):
+            if config.getboolean("EnemyRandomization", "bEnemyLocations"):
                 random.seed(seed)
                 Manager.game.randomize_enemies()
                 random.seed(seed)
@@ -113,7 +113,7 @@ class Patch(QThread):
         
         if config.getboolean("Extra", "bScavengerMode"):
             Manager.game.remove_enemy_drops()
-        if config.getboolean("Extra", "bBigtossOnly"):
+        if config.getboolean("Extra", "bBigtossMode"):
             Manager.game.all_bigtoss()
         
         if Manager.game == Dissonance:
@@ -277,8 +277,8 @@ class Main(QWidget):
         self.check_box_2.stateChanged.connect(self.check_box_2_changed)
         box_1_grid.addWidget(self.check_box_2, 1, 0)
         
-        self.check_box_3 = QCheckBox("Enemy Placement")
-        self.check_box_3.setToolTip("Randomize where enemies are found. Their stats\nwill be rescaled to the order you encounter them.")
+        self.check_box_3 = QCheckBox("Enemy Locations")
+        self.check_box_3.setToolTip("Randomize which enemies appear where. Their stats\nwill be rescaled to the order you encounter them.")
         self.check_box_3.stateChanged.connect(self.check_box_3_changed)
         box_1_grid.addWidget(self.check_box_3, 0, 0)
         
@@ -292,7 +292,7 @@ class Main(QWidget):
         self.check_box_6.stateChanged.connect(self.check_box_6_changed)
         box_4_grid.addWidget(self.check_box_6, 0, 1)
         
-        self.check_box_5 = QCheckBox("Bigtoss Only")
+        self.check_box_5 = QCheckBox("Bigtoss Mode")
         self.check_box_5.setToolTip("Getting hit will always cause extreme knockback.")
         self.check_box_5.stateChanged.connect(self.check_box_5_changed)
         box_4_grid.addWidget(self.check_box_5, 1, 0)
@@ -348,20 +348,16 @@ class Main(QWidget):
         
         #Init checkboxes
         
-        if config.getboolean("EnemyRandomization", "bEnemyLevels"):
-            self.check_box_1.setChecked(True)
-        if config.getboolean("EnemyRandomization", "bEnemyTolerances"):
-            self.check_box_2.setChecked(True)
-        if config.getboolean("EnemyRandomization", "bEnemyPlacement"):
-            self.check_box_3.setChecked(True)
-        if config.getboolean("Extra", "bScavengerMode"):
-            self.check_box_7.setChecked(True)
-        if config.getboolean("Extra", "bContinuousSmash"):
-            self.check_box_6.setChecked(True)
-        if config.getboolean("Extra", "bBigtossOnly"):
-            self.check_box_5.setChecked(True)
-        if config.getboolean("Extra", "bNoPlayerOutline"):
-            self.check_box_4.setChecked(True)
+        self.check_box_1.setChecked(config.getboolean("EnemyRandomization", "bEnemyLevels"))
+        self.check_box_2.setChecked(config.getboolean("EnemyRandomization", "bEnemyTolerances"))
+        self.check_box_3.setChecked(config.getboolean("EnemyRandomization", "bEnemyLocations"))
+        self.check_box_7.setChecked(config.getboolean("Extra", "bScavengerMode"))
+        self.check_box_6.setChecked(config.getboolean("Extra", "bContinuousSmash"))
+        self.check_box_5.setChecked(config.getboolean("Extra", "bBigtossMode"))
+        self.check_box_4.setChecked(config.getboolean("Extra", "bNoPlayerOutline"))
+        
+        self.spin_button_1_set_index(config.getint("EnemyRandomization", "iEnemyLevelsWeight"))
+        self.spin_button_2_set_index(config.getint("EnemyRandomization", "iEnemyTolerancesWeight"))
         
         #Text field
 
@@ -403,10 +399,8 @@ class Main(QWidget):
         self.setWindowTitle(script_name)
         self.show()
         
-        if config.getboolean("Game", "bSymphony"):
-            self.radio_button_1.setChecked(True)
-        else:
-            self.radio_button_2.setChecked(True)
+        self.radio_button_1.setChecked(config.getboolean("Game", "bSymphony"))
+        self.radio_button_2.setChecked(config.getboolean("Game", "bDissonance"))
         
         #Position
         
@@ -433,9 +427,9 @@ class Main(QWidget):
 
     def check_box_3_changed(self):
         if self.check_box_3.isChecked():
-            config.set("EnemyRandomization", "bEnemyPlacement", "true")
+            config.set("EnemyRandomization", "bEnemyLocations", "true")
         else:
-            config.set("EnemyRandomization", "bEnemyPlacement", "false")
+            config.set("EnemyRandomization", "bEnemyLocations", "false")
 
     def check_box_7_changed(self):
         if self.check_box_7.isChecked():
@@ -451,9 +445,9 @@ class Main(QWidget):
 
     def check_box_5_changed(self):
         if self.check_box_5.isChecked():
-            config.set("Extra", "bBigtossOnly", "true")
+            config.set("Extra", "bBigtossMode", "true")
         else:
-            config.set("Extra", "bBigtossOnly", "false")
+            config.set("Extra", "bBigtossMode", "false")
 
     def check_box_4_changed(self):
         if self.check_box_4.isChecked():
@@ -465,15 +459,20 @@ class Main(QWidget):
         index = int(self.spin_button_1.text())
         index = index % 3 + 1
         index = str(index)
-        self.spin_button_1.setText(index)
-        config.set("EnemyRandomization", "iEnemyLevelsWheight", index)
+        self.spin_button_1_set_index(index)
+    
+    def spin_button_1_set_index(self, index):
+        self.spin_button_1.setText(str(index))
+        config.set("EnemyRandomization", "iEnemyLevelsWeight", str(index))
 
     def spin_button_2_clicked(self):
         index = int(self.spin_button_2.text())
         index = index % 3 + 1
-        index = str(index)
-        self.spin_button_2.setText(index)
-        config.set("EnemyRandomization", "iEnemyTolerancesWheight", index)
+        self.spin_button_2_set_index(index)
+    
+    def spin_button_2_set_index(self, index):
+        self.spin_button_2.setText(str(index))
+        config.set("EnemyRandomization", "iEnemyTolerancesWeight", str(index))
     
     def radio_button_group_1_checked(self):
         if self.radio_button_1.isChecked():
@@ -486,7 +485,7 @@ class Main(QWidget):
             self.spin_button_1.setVisible(self.check_box_1.isChecked())
             self.input_field.setText(config.get("Misc", "sSotnInputFile"))
             self.output_field.setText(config.get("Misc", "sSotnOutputFolder"))
-            self.reset_visuals("Symphony", "#1d150f")
+            self.reset_visuals("Symphony", "#1d150f", "#32ff8000")
         else:
             config.set("Game", "bSymphony", "false")
             config.set("Game", "bDissonance", "true")
@@ -497,19 +496,19 @@ class Main(QWidget):
             self.spin_button_1.setVisible(False)
             self.input_field.setText(config.get("Misc", "sHodInputFile"))
             self.output_field.setText(config.get("Misc", "sHodOutputFolder"))
-            self.reset_visuals("Dissonance", "#340d0d")
+            self.reset_visuals("Dissonance", "#340d0d", "#32ff0000")
     
-    def reset_visuals(self, game, color):
+    def reset_visuals(self, game, main_color, sub_color):
         self.setStyleSheet("QWidget{background:transparent; color: #ffffff; font-family: Cambria; font-size: 18px}"
         + "QLabel{border: 1px}"
-        + "QMessageBox{background-color: " + color + "}"
-        + "QDialog{background-color: " + color + "}"
-        + "QProgressDialog{background-color: " + color + "}"
-        + "QPushButton{background-color: " + color + "}"
-        + "QDoubleSpinBox{background-color: " + color + "}"
-        + "QLineEdit{background-color: " + color + "}"
-        + "QMenu{background-color: " + color + "}"
-        + "QToolTip{border: 0px; background-color: " + color + "; color: #ffffff; font-family: Cambria; font-size: 18px}")
+        + "QMessageBox{background-color: " + main_color + "}"
+        + "QDialog{background-color: " + main_color + "}"
+        + "QProgressDialog{background-color: " + main_color + "}"
+        + "QPushButton{background-color: " + main_color + "}"
+        + "QDoubleSpinBox{background-color: " + main_color + "; selection-background-color: " + sub_color + "}"
+        + "QLineEdit{background-color: " + main_color + "; selection-background-color: " + sub_color + "}"
+        + "QProgressBar{border: 2px solid white; text-align: center; font: bold}"
+        + "QToolTip{border: 0px; background-color: " + main_color + "; color: #ffffff; font-family: Cambria; font-size: 18px}")
         self.setWindowIcon(QIcon("Data\\" + game + "\\icon.png"))
         background = QPixmap("Data\\" + game + "\\background.png")
         palette = QPalette()

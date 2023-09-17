@@ -46,7 +46,7 @@ def randomize_enemy_resistances():
                 #Determine average
                 average = 0
                 for e in game.attributes:
-                    average += game.values["Enemy"][i]["Resistances"][e]
+                    average += min(max(game.values["Enemy"][i]["Resistances"][e], 0), 2)
                 average /= len(game.attributes)
                 #Randomize around average
                 for e in game.attributes:

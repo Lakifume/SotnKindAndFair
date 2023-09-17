@@ -192,7 +192,7 @@ def reduce_bigtoss_damage(damage):
 
 def infinite_wing_smash():
     #Give wing smash the same properties as in the saturn version but at a higher cost
-    values["Spell"]["Wing Smash"]["ManaCost"] = round(values["Spell"]["Wing Smash"]["ManaCost"]*3.75)
+    values["Spell"]["Wing Smash"]["ManaCost"] = round(values["Spell"]["Wing Smash"]["ManaCost"]*3.125)
     Manager.rom.seek(0x134990)
     Manager.rom.write((0).to_bytes(4, "little"))
 
@@ -284,7 +284,7 @@ def write_complex_data():
         max_experience = values["Enemy"][i]["MaxExperience"]
         min_experience = int(max_experience/100)
         experience = Manager.calculate_stat_with_level(min_experience, max_experience, level)
-        experience = experience*Manager.lerp(1, 1/3, min(level/40, 1))
+        experience = int(experience*Manager.lerp(1, 1/3, min(level/50, 1)))
         experience = Manager.check_meaningful_value(experience)
         experience = experience & (0x100**dictionary["Properties"]["Enemy"]["Experience"]["Length"]-1)
         Manager.rom.seek(check_offset(int(offsets["Enemy"][i]["EnemyAddress"], 16) + int(dictionary["Properties"]["Enemy"]["Experience"]["Offset"], 16)))
