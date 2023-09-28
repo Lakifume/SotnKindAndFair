@@ -9,4 +9,4 @@ To use simply randomize your rom with the regular rando first and then run it th
 
 ![Screenshot (364)](https://user-images.githubusercontent.com/56451477/175451367-3b76bd10-633f-450e-a8a6-211b7f9f608c.png)
 
-If you intend to use any other hacks make sure to apply them either beforehand or using this program (by dropping the ips files in the Data\{GAME}\Patches folder), avoid applying extra patches after running KindAndFair. Note that patches used via this program get applied in alphabetical order.
+If you intend to use any other hacks make sure to apply them either beforehand or using this program (by dropping the ips files in the Data\\{GAME}\Patches folder), avoid applying extra patches after running KindAndFair. Note that patches used via this program get applied in alphabetical order.
