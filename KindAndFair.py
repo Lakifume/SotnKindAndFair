@@ -305,7 +305,7 @@ class Main(QWidget):
         #SpinButtons
         
         self.spin_button_1 = QPushButton()
-        self.spin_button_1.setToolTip("Level wheight. The higher the value the more extreme\nthe level differences.")
+        self.spin_button_1.setToolTip("Level weight. The higher the value the more extreme\nthe level differences.")
         self.spin_button_1.setStyleSheet("QPushButton{color: #ffffff; font-family: Impact}" + "QToolTip{color: #ffffff; font-family: Cambria}")
         self.spin_button_1.setFixedSize(28, 24)
         self.spin_button_1.clicked.connect(self.spin_button_1_clicked)
@@ -313,7 +313,7 @@ class Main(QWidget):
         box_1_grid.addWidget(self.spin_button_1, 0, 1)
         
         self.spin_button_2 = QPushButton()
-        self.spin_button_2.setToolTip("Tolerance wheight. The higher the value the more extreme\nthe tolerance differences.")
+        self.spin_button_2.setToolTip("Tolerance weight. The higher the value the more extreme\nthe tolerance differences.")
         self.spin_button_2.setStyleSheet("QPushButton{color: #ffffff; font-family: Impact}" + "QToolTip{color: #ffffff; font-family: Cambria}")
         self.spin_button_2.setFixedSize(28, 24)
         self.spin_button_2.clicked.connect(self.spin_button_2_clicked)
@@ -458,7 +458,6 @@ class Main(QWidget):
     def spin_button_1_clicked(self):
         index = int(self.spin_button_1.text())
         index = index % 3 + 1
-        index = str(index)
         self.spin_button_1_set_index(index)
     
     def spin_button_1_set_index(self, index):

@@ -567,6 +567,8 @@ def randomize_enemies():
         #Randomize slime colors per room
         slime_color = random.randint(0, 3)
         for e in game_rooms[i].entities:
+            if e in boss_to_pointer_invert:
+                continue
             if game_rooms[i].entities[e].type == 0:
                 enemy_id = game_rooms[i].entities[e].subtype
                 enemy_name = Manager.get_enemy_name(enemy_id)
