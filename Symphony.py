@@ -84,21 +84,21 @@ def open_json():
     offsets = {}
     global values
     values = {}
-    for i in os.listdir("Data\\Symphony\\Offsets"):
-        name, extension = os.path.splitext(i)
-        offsets[name] = {}
-        with open("Data\\Symphony\\Offsets\\" + i, "r") as file_reader:
-            offsets[name] = json.load(file_reader)
-    for i in os.listdir("Data\\Symphony\\Values"):
-        name, extension = os.path.splitext(i)
-        with open("Data\\Symphony\\Values\\" + i, "r") as file_reader:
-            values[name] = json.load(file_reader)
+    for file in os.listdir("Data\\Symphony\\Offsets"):
+        file_name = os.path.splitext(file)[0]
+        offsets[file_name] = {}
+        with open(f"Data\\Symphony\\Offsets\\{file}", "r") as file_reader:
+            offsets[file_name] = json.load(file_reader)
+    for file in os.listdir("Data\\Symphony\\Values"):
+        file_name = os.path.splitext(file)[0]
+        with open(f"Data\\Symphony\\Values\\{file}", "r") as file_reader:
+            values[file_name] = json.load(file_reader)
     global dictionary
     dictionary = {}
-    for i in os.listdir("Data\\Symphony\\Dicts"):
-        name, extension = os.path.splitext(i)
-        with open("Data\\Symphony\\Dicts\\" + i, "r") as file_reader:
-            dictionary[name] = json.load(file_reader)
+    for file in os.listdir("Data\\Symphony\\Dicts"):
+        file_name = os.path.splitext(file)[0]
+        with open(f"Data\\Symphony\\Dicts\\{file}", "r") as file_reader:
+            dictionary[file_name] = json.load(file_reader)
 
 def get_seed():
     #If the rom is randomized reuse its seed
@@ -106,15 +106,14 @@ def get_seed():
     seed = int.from_bytes(Manager.rom.read(30), "big")
     if seed == 0x496E7075742081688168524943485445528168816820746F20706C617900:
         return random.random()
-    else:
-        start_with_spirit_orb()
-        return seed
+    start_with_spirit_orb()
+    return seed
 
 def apply_ppf_patch(patch):
     #Replicate PPF Studio's process of applying patches to not have to include it in the download
-    with open("Data\\Symphony\\Patches\\" + patch + ".ppf", "r+b") as mod:
+    with open(f"Data\\Symphony\\Patches\\{patch}.ppf", "r+b") as mod:
         progress = 0x3C
-        while progress < os.path.getsize("Data\\Symphony\\Patches\\" + patch + ".ppf"):
+        while progress < os.path.getsize(f"Data\\Symphony\\Patches\\{patch}.ppf"):
             mod.seek(progress)
             offset = int.from_bytes(mod.read(8), "little")
             length = int.from_bytes(mod.read(1), "little")
@@ -150,8 +149,8 @@ def start_with_spirit_orb():
     
 def keep_equipment():
     #Prevent Death's cutscene from taking Alucard's equipment
-    for i in removal_offset:
-        Manager.rom.seek(i)
+    for offset in removal_offset:
+        Manager.rom.seek(offset)
         Manager.rom.write((0).to_bytes(2, "little"))
 
 def free_library():
@@ -179,12 +178,12 @@ def unused():
 
 def all_bigtoss():
     #Give every enemy attack the guaranteed bigtoss property
-    for i in values["Enemy"]:
-        if "Intro" in i or i == "Evil Priest":
+    for enemy in values["Enemy"]:
+        if "Intro" in enemy or enemy == "Evil Priest":
             continue
-        values["Enemy"][i]["DamageType"] = "0x{:04x}".format((int(values["Enemy"][i]["DamageType"], 16)//16)*16 + 5)
-        for e in range(len(values["Enemy"][i]["AttackType"])):
-            values["Enemy"][i]["AttackType"][e] = "0x{:04x}".format((int(values["Enemy"][i]["AttackType"][e], 16)//16)*16 + 5)
+        values["Enemy"][enemy]["DamageType"] = "0x{:04x}".format((int(values["Enemy"][enemy]["DamageType"], 16)//16)*16 + 5)
+        for index in range(len(values["Enemy"][enemy]["AttackType"])):
+            values["Enemy"][enemy]["AttackType"][index] = "0x{:04x}".format((int(values["Enemy"][enemy]["AttackType"][index], 16)//16)*16 + 5)
 
 def reduce_bigtoss_damage(damage):
     #Reduce damage in such a way that the total bigtoss damage will on average be equal to regular damage
@@ -197,17 +196,17 @@ def infinite_wing_smash():
     Manager.rom.write((0).to_bytes(4, "little"))
 
 def remove_enemy_drops():
-    for i in offsets["Enemy"]:
-        Manager.rom.seek(check_offset(int(offsets["Enemy"][i]["EnemyAddress"], 16) + int(dictionary["Properties"]["Enemy"]["Drop1"]["Offset"], 16)))
+    for enemy in offsets["Enemy"]:
+        Manager.rom.seek(check_offset(int(offsets["Enemy"][enemy]["EnemyAddress"], 16) + int(dictionary["Properties"]["Enemy"]["Drop1"]["Offset"], 16)))
         Manager.rom.write((0).to_bytes(dictionary["Properties"]["Enemy"]["Drop1"]["Length"], "little"))
-        Manager.rom.seek(check_offset(int(offsets["Enemy"][i]["EnemyAddress"], 16) + int(dictionary["Properties"]["Enemy"]["Drop2"]["Offset"], 16)))
+        Manager.rom.seek(check_offset(int(offsets["Enemy"][enemy]["EnemyAddress"], 16) + int(dictionary["Properties"]["Enemy"]["Drop2"]["Offset"], 16)))
         Manager.rom.write((0).to_bytes(dictionary["Properties"]["Enemy"]["Drop2"]["Length"], "little"))
     #Give a weapon at the start to compensate
     positive_weapons = []
-    for i in dictionary["ItemId"]:
-        if dictionary["ItemId"][i] in values["HandItem"]:
-            if values["HandItem"][dictionary["ItemId"][i]]["Attack"] > 0 and not values["HandItem"][dictionary["ItemId"][i]]["Sprite"] in ["0x0f", "0x15"]:
-                positive_weapons.append(i)
+    for item_id in dictionary["ItemId"]:
+        if dictionary["ItemId"][item_id] in values["HandItem"]:
+            if values["HandItem"][dictionary["ItemId"][item_id]]["Attack"] > 0 and not values["HandItem"][dictionary["ItemId"][item_id]]["Sprite"] in ["0x0f", "0x15"]:
+                positive_weapons.append(item_id)
     drop = forced_drops[0]
     forced_drops.pop(0)
     Manager.rom.seek(drop)
@@ -223,19 +222,19 @@ def check_offset(offset):
 
 def write_simple_data():
     #Write data that doesn't need any specific process
-    for i in offsets:
-        if i == "Enemy":
+    for file in offsets:
+        if file == "Enemy":
             continue
-        for e in offsets[i]:
+        for entry in offsets[file]:
             try:
-                for o in values[i][e]:
+                for data in values[file][entry]:
                     try:
-                        if dictionary["Properties"][i][o]["RawHex"]:
-                            values[i][e][o] = int(values[i][e][o], 16)
+                        if dictionary["Properties"][file][data]["RawHex"]:
+                            values[file][entry][data] = int(values[file][entry][data], 16)
                         else:
-                            values[i][e][o] = values[i][e][o] & (0x100**dictionary["Properties"][i][o]["Length"]-1)
-                        Manager.rom.seek(check_offset(int(offsets[i][e], 16) + int(dictionary["Properties"][i][o]["Offset"], 16)))
-                        Manager.rom.write(int(values[i][e][o]).to_bytes(dictionary["Properties"][i][o]["Length"], "little"))
+                            values[file][entry][data] = values[file][entry][data] & (0x100**dictionary["Properties"][file][data]["Length"]-1)
+                        Manager.rom.seek(check_offset(int(offsets[file][entry], 16) + int(dictionary["Properties"][file][data]["Offset"], 16)))
+                        Manager.rom.write(int(values[file][entry][data]).to_bytes(dictionary["Properties"][file][data]["Length"], "little"))
                     except (KeyError, TypeError):
                         continue
             except (KeyError, TypeError):
@@ -243,97 +242,97 @@ def write_simple_data():
 
 def write_complex_data():
     #ENEMY
-    for i in offsets["Enemy"]:
+    for enemy in offsets["Enemy"]:
         #Level
-        level = values["Enemy"][i]["Level"]
+        level = values["Enemy"][enemy]["Level"]
         level = level & (0x100**dictionary["Properties"]["Enemy"]["Level"]["Length"]-1)
-        Manager.rom.seek(check_offset(int(offsets["Enemy"][i]["EnemyAddress"], 16) + int(dictionary["Properties"]["Enemy"]["Level"]["Offset"], 16)))
+        Manager.rom.seek(check_offset(int(offsets["Enemy"][enemy]["EnemyAddress"], 16) + int(dictionary["Properties"]["Enemy"]["Level"]["Offset"], 16)))
         Manager.rom.write(level.to_bytes(dictionary["Properties"]["Enemy"]["Level"]["Length"], "little"))
         #Health
-        max_health = values["Enemy"][i]["MaxHealth"]
+        max_health = values["Enemy"][enemy]["MaxHealth"]
         min_health = int(max_health/100)
         if max_health == 0x7FFF:
             min_health = max_health
         health = Manager.calculate_stat_with_level(min_health, max_health, level)
         health = Manager.check_meaningful_value(health)
         health = health & (0x100**dictionary["Properties"]["Enemy"]["Health"]["Length"]-1)
-        Manager.rom.seek(check_offset(int(offsets["Enemy"][i]["EnemyAddress"], 16) + int(dictionary["Properties"]["Enemy"]["Health"]["Offset"], 16)))
+        Manager.rom.seek(check_offset(int(offsets["Enemy"][enemy]["EnemyAddress"], 16) + int(dictionary["Properties"]["Enemy"]["Health"]["Offset"], 16)))
         Manager.rom.write(health.to_bytes(dictionary["Properties"]["Enemy"]["Health"]["Length"], "little"))
         #Damage
-        max_damage = values["Enemy"][i]["MaxDamage"]
+        max_damage = values["Enemy"][enemy]["MaxDamage"]
         min_damage = int(max_damage/30)
-        if i in static_enemy:
+        if enemy in static_enemy:
             min_damage = max_damage
         damage = Manager.calculate_stat_with_level(min_damage, max_damage, level)
         damage = damage & (0x100**dictionary["Properties"]["Enemy"]["Damage"]["Length"]-1)
-        Manager.rom.seek(check_offset(int(offsets["Enemy"][i]["EnemyAddress"], 16) + int(dictionary["Properties"]["Enemy"]["Damage"]["Offset"], 16)))
-        if not values["Enemy"][i]["HasContact"]:
+        Manager.rom.seek(check_offset(int(offsets["Enemy"][enemy]["EnemyAddress"], 16) + int(dictionary["Properties"]["Enemy"]["Damage"]["Offset"], 16)))
+        if not values["Enemy"][enemy]["HasContact"]:
             Manager.rom.write((0).to_bytes(dictionary["Properties"]["Enemy"]["Damage"]["Length"], "little"))
-        elif int(values["Enemy"][i]["DamageType"], 16) % 16 == 5:
+        elif int(values["Enemy"][enemy]["DamageType"], 16) % 16 == 5:
             Manager.rom.write(reduce_bigtoss_damage(damage).to_bytes(dictionary["Properties"]["Enemy"]["Damage"]["Length"], "little"))
         else:
             Manager.rom.write(damage.to_bytes(dictionary["Properties"]["Enemy"]["Damage"]["Length"], "little"))
         #Defense
-        max_defense = values["Enemy"][i]["MaxDefense"]
+        max_defense = values["Enemy"][enemy]["MaxDefense"]
         min_defense = int(max_defense/10)
         defense = Manager.calculate_stat_with_level(min_defense, max_defense, level)
         defense = defense & (0x100**dictionary["Properties"]["Enemy"]["Defense"]["Length"]-1)
-        Manager.rom.seek(check_offset(int(offsets["Enemy"][i]["EnemyAddress"], 16) + int(dictionary["Properties"]["Enemy"]["Defense"]["Offset"], 16)))
+        Manager.rom.seek(check_offset(int(offsets["Enemy"][enemy]["EnemyAddress"], 16) + int(dictionary["Properties"]["Enemy"]["Defense"]["Offset"], 16)))
         Manager.rom.write(defense.to_bytes(dictionary["Properties"]["Enemy"]["Defense"]["Length"], "little"))
         #Experience
-        max_experience = values["Enemy"][i]["MaxExperience"]
+        max_experience = values["Enemy"][enemy]["MaxExperience"]
         min_experience = int(max_experience/100)
         experience = Manager.calculate_stat_with_level(min_experience, max_experience, level)
         experience = int(experience*Manager.lerp(1, 1/3, min(level/50, 1)))
         experience = Manager.check_meaningful_value(experience)
         experience = experience & (0x100**dictionary["Properties"]["Enemy"]["Experience"]["Length"]-1)
-        Manager.rom.seek(check_offset(int(offsets["Enemy"][i]["EnemyAddress"], 16) + int(dictionary["Properties"]["Enemy"]["Experience"]["Offset"], 16)))
+        Manager.rom.seek(check_offset(int(offsets["Enemy"][enemy]["EnemyAddress"], 16) + int(dictionary["Properties"]["Enemy"]["Experience"]["Offset"], 16)))
         Manager.rom.write(experience.to_bytes(dictionary["Properties"]["Enemy"]["Experience"]["Length"], "little"))
         #Surface
-        Manager.rom.seek(check_offset(int(offsets["Enemy"][i]["EnemyAddress"], 16) + int(dictionary["Properties"]["Enemy"]["Surface"]["Offset"], 16)))
-        Manager.rom.write(int(values["Enemy"][i]["Surface"], 16).to_bytes(dictionary["Properties"]["Enemy"]["Surface"]["Length"], "little"))
+        Manager.rom.seek(check_offset(int(offsets["Enemy"][enemy]["EnemyAddress"], 16) + int(dictionary["Properties"]["Enemy"]["Surface"]["Offset"], 16)))
+        Manager.rom.write(int(values["Enemy"][enemy]["Surface"], 16).to_bytes(dictionary["Properties"]["Enemy"]["Surface"]["Length"], "little"))
         #Damage type
-        Manager.rom.seek(check_offset(int(offsets["Enemy"][i]["EnemyAddress"], 16) + int(dictionary["Properties"]["Enemy"]["DamageType"]["Offset"], 16)))
-        Manager.rom.write(int(values["Enemy"][i]["DamageType"], 16).to_bytes(dictionary["Properties"]["Enemy"]["DamageType"]["Length"], "little"))
+        Manager.rom.seek(check_offset(int(offsets["Enemy"][enemy]["EnemyAddress"], 16) + int(dictionary["Properties"]["Enemy"]["DamageType"]["Offset"], 16)))
+        Manager.rom.write(int(values["Enemy"][enemy]["DamageType"], 16).to_bytes(dictionary["Properties"]["Enemy"]["DamageType"]["Length"], "little"))
         #Make stopwatch tolerance scale with level
-        Manager.rom.seek(check_offset(int(offsets["Enemy"][i]["EnemyAddress"], 16) + 37))
-        if values["Enemy"][i]["IsBoss"]:
+        Manager.rom.seek(check_offset(int(offsets["Enemy"][enemy]["EnemyAddress"], 16) + 37))
+        if values["Enemy"][enemy]["IsBoss"]:
             Manager.rom.write((0x30).to_bytes(1, "little"))
-        elif values["Enemy"][i]["Level"] >= 40:
+        elif values["Enemy"][enemy]["Level"] >= 40:
             Manager.rom.write((0x34).to_bytes(1, "little"))
-        elif values["Enemy"][i]["Level"] >= 20:
+        elif values["Enemy"][enemy]["Level"] >= 20:
             Manager.rom.write((0x16).to_bytes(1, "little"))
         else:
             Manager.rom.write((0x14).to_bytes(1, "little"))
         #Remove all stunframes from enemies
-        offset = check_offset(int(offsets["Enemy"][i]["EnemyAddress"], 16) + 38)
+        offset = check_offset(int(offsets["Enemy"][enemy]["EnemyAddress"], 16) + 38)
         Manager.rom.seek(offset)
         if int.from_bytes(Manager.rom.read(1), "little") < 0x40:
             Manager.rom.seek(offset)
             Manager.rom.write((0x40).to_bytes(1, "little"))
         #Attack
-        for e in range(len(offsets["Enemy"][i]["AttackAddress"])):
+        for index in range(len(offsets["Enemy"][enemy]["AttackAddress"])):
             #Attack correction
-            attack = round(damage*values["Enemy"][i]["AttackCorrection"][e]**damage_rate)
+            attack = round(damage*values["Enemy"][enemy]["AttackCorrection"][index]**damage_rate)
             attack = attack & (0x100**dictionary["Properties"]["Enemy"]["Damage"]["Length"]-1)
-            Manager.rom.seek(check_offset(int(offsets["Enemy"][i]["AttackAddress"][e], 16) + int(dictionary["Properties"]["Enemy"]["Damage"]["Offset"], 16)))
-            if int(values["Enemy"][i]["AttackType"][e], 16) % 16 == 5:
+            Manager.rom.seek(check_offset(int(offsets["Enemy"][enemy]["AttackAddress"][index], 16) + int(dictionary["Properties"]["Enemy"]["Damage"]["Offset"], 16)))
+            if int(values["Enemy"][enemy]["AttackType"][index], 16) % 16 == 5:
                 Manager.rom.write(reduce_bigtoss_damage(attack).to_bytes(dictionary["Properties"]["Enemy"]["Damage"]["Length"], "little"))
             else:
                 Manager.rom.write(attack.to_bytes(dictionary["Properties"]["Enemy"]["Damage"]["Length"], "little"))
             #Attack type
-            Manager.rom.seek(check_offset(int(offsets["Enemy"][i]["AttackAddress"][e], 16) + int(dictionary["Properties"]["Enemy"]["DamageType"]["Offset"], 16)))
-            Manager.rom.write(int(values["Enemy"][i]["AttackType"][e], 16).to_bytes(dictionary["Properties"]["Enemy"]["DamageType"]["Length"], "little"))
+            Manager.rom.seek(check_offset(int(offsets["Enemy"][enemy]["AttackAddress"][index], 16) + int(dictionary["Properties"]["Enemy"]["DamageType"]["Offset"], 16)))
+            Manager.rom.write(int(values["Enemy"][enemy]["AttackType"][index], 16).to_bytes(dictionary["Properties"]["Enemy"]["DamageType"]["Length"], "little"))
             #Attack stopwatch tolerance
-            Manager.rom.seek(check_offset(int(offsets["Enemy"][i]["AttackAddress"][e], 16) + 37))
-            if values["Enemy"][i]["Level"] >= 40 or values["Enemy"][i]["IsBoss"]:
+            Manager.rom.seek(check_offset(int(offsets["Enemy"][enemy]["AttackAddress"][index], 16) + 37))
+            if values["Enemy"][enemy]["Level"] >= 40 or values["Enemy"][enemy]["IsBoss"]:
                 Manager.rom.write((0x20).to_bytes(1, "little"))
-            elif values["Enemy"][i]["Level"] >= 20:
+            elif values["Enemy"][enemy]["Level"] >= 20:
                 Manager.rom.write((0x12).to_bytes(1, "little"))
             else:
                 Manager.rom.write((0x00).to_bytes(1, "little"))
             #Attack no stun
-            offset = check_offset(int(offsets["Enemy"][i]["AttackAddress"][e], 16) + 38)
+            offset = check_offset(int(offsets["Enemy"][enemy]["AttackAddress"][index], 16) + 38)
             Manager.rom.seek(offset)
             if int.from_bytes(Manager.rom.read(1), "little") < 0x40:
                 Manager.rom.seek(offset)
@@ -374,14 +373,14 @@ def write_complex_data():
     Manager.rom.write((0x0000).to_bytes(2, "little"))
     
     #EQUIPMENT
-    for i in ["Enemy", "Equipment"]:
-        for e in offsets[i]:
-            if i == "Enemy":
-                offset = int(offsets[i][e]["EnemyAddress"], 16)
+    for file in ["Enemy", "Equipment"]:
+        for entry in offsets[file]:
+            if file == "Enemy":
+                offset = int(offsets[file][entry]["EnemyAddress"], 16)
             else:
-                offset = int(offsets[i][e], 16)
+                offset = int(offsets[file][entry], 16)
             #Resistances
-            if e == "Galamoth Head":
+            if entry == "Galamoth Head":
                 weak = 0
                 strong = 0
                 immune = 0xFFE0
@@ -391,45 +390,42 @@ def write_complex_data():
                 strong = 0
                 immune = 0
                 absorb = 0
-                for o in attributes:
-                    if values[i][e]["Resistances"][o] == 0:
-                        weak += attributes[o]
-                    elif values[i][e]["Resistances"][o] == 2:
-                        strong += attributes[o]
-                    elif values[i][e]["Resistances"][o] == 3:
-                        immune += attributes[o]
-                    elif values[i][e]["Resistances"][o] == 4:
-                        absorb += attributes[o]
-            Manager.rom.seek(check_offset(offset + int(dictionary["Properties"][i]["Weak"]["Offset"], 16)))
-            Manager.rom.write(weak.to_bytes(dictionary["Properties"][i]["Weak"]["Length"], "little"))
-            Manager.rom.seek(check_offset(offset + int(dictionary["Properties"][i]["Strong"]["Offset"], 16)))
-            Manager.rom.write(strong.to_bytes(dictionary["Properties"][i]["Strong"]["Length"], "little"))
-            Manager.rom.seek(check_offset(offset + int(dictionary["Properties"][i]["Immune"]["Offset"], 16)))
-            Manager.rom.write(immune.to_bytes(dictionary["Properties"][i]["Immune"]["Length"], "little"))
-            Manager.rom.seek(check_offset(offset + int(dictionary["Properties"][i]["Absorb"]["Offset"], 16)))
-            Manager.rom.write(absorb.to_bytes(dictionary["Properties"][i]["Absorb"]["Length"], "little"))
+                for attr in attributes:
+                    if values[file][entry]["Resistances"][attr] == 0:
+                        weak += attributes[attr]
+                    elif values[file][entry]["Resistances"][attr] == 2:
+                        strong += attributes[attr]
+                    elif values[file][entry]["Resistances"][attr] == 3:
+                        immune += attributes[attr]
+                    elif values[file][entry]["Resistances"][attr] == 4:
+                        absorb += attributes[attr]
+            Manager.rom.seek(check_offset(offset + int(dictionary["Properties"][file]["Weak"]["Offset"], 16)))
+            Manager.rom.write(weak.to_bytes(dictionary["Properties"][file]["Weak"]["Length"], "little"))
+            Manager.rom.seek(check_offset(offset + int(dictionary["Properties"][file]["Strong"]["Offset"], 16)))
+            Manager.rom.write(strong.to_bytes(dictionary["Properties"][file]["Strong"]["Length"], "little"))
+            Manager.rom.seek(check_offset(offset + int(dictionary["Properties"][file]["Immune"]["Offset"], 16)))
+            Manager.rom.write(immune.to_bytes(dictionary["Properties"][file]["Immune"]["Length"], "little"))
+            Manager.rom.seek(check_offset(offset + int(dictionary["Properties"][file]["Absorb"]["Offset"], 16)))
+            Manager.rom.write(absorb.to_bytes(dictionary["Properties"][file]["Absorb"]["Length"], "little"))
 
     #HANDITEM SPELL
-    for i in ["HandItem", "Spell"]:
-        for e in offsets[i]:
+    for file in ["HandItem", "Spell"]:
+        for entry in offsets[file]:
             #Element
             total = 0
-            for o in attributes:
-                if values[i][e]["Element"][o]:
-                    total += attributes[o]
-            Manager.rom.seek(check_offset(int(offsets[i][e], 16) + int(dictionary["Properties"][i]["Element"]["Offset"], 16)))
-            Manager.rom.write(total.to_bytes(dictionary["Properties"][i]["Element"]["Length"], "little"))
+            for attr in attributes:
+                if values[file][entry]["Element"][attr]:
+                    total += attributes[attr]
+            Manager.rom.seek(check_offset(int(offsets[file][entry], 16) + int(dictionary["Properties"][file]["Element"]["Offset"], 16)))
+            Manager.rom.write(total.to_bytes(dictionary["Properties"][file]["Element"]["Length"], "little"))
 
     #SHOP
     #Make shop prices dynamic with the items that are found on each slot
     #This prevents being able to easily purchase an unreasonable amount of broken items
-    for i in offsets["Shop"]:
-        Manager.rom.seek(int(offsets["Shop"][i], 16) - 4)
-        if int.from_bytes(Manager.rom.read(1), "little") != 0:
-            shift = 0xA9
-        else:
-            shift = 0x00
-        Manager.rom.seek(int(offsets["Shop"][i], 16) - 2)
+    for item in offsets["Shop"]:
+        Manager.rom.seek(int(offsets["Shop"][item], 16) - 4)
+        shift = 0xA9 if int.from_bytes(Manager.rom.read(1), "little") != 0 else 0
+        Manager.rom.seek(int(offsets["Shop"][item], 16) - 2)
         price = dictionary["ItemPrice"][dictionary["ItemId"]["0x{:04x}".format(int.from_bytes(Manager.rom.read(2), "little") + shift)]]
         price = price & 0xFFFFFFFF
         Manager.rom.write(int(price).to_bytes(4, "little"))
@@ -438,10 +434,10 @@ def write_complex_data():
 
     #STAT
     #Change the starting stats
-    for i in offsets["Stat"]:
-        values["Stat"][i] = values["Stat"][i] & 0xFFFF
-        Manager.rom.seek(int(offsets["Stat"][i], 16))
-        Manager.rom.write(int(values["Stat"][i]).to_bytes(2, "little"))
+    for stat in offsets["Stat"]:
+        values["Stat"][stat] = values["Stat"][stat] & 0xFFFF
+        Manager.rom.seek(int(offsets["Stat"][stat], 16))
+        Manager.rom.write(int(values["Stat"][stat]).to_bytes(2, "little"))
     #One of the health bonus stats does not update automatically
     Manager.rom.seek(0x119CC4)
     Manager.rom.write(int(values["Stat"]["Health"] + 5).to_bytes(2, "little"))
@@ -523,46 +519,46 @@ def write_complex_data():
 
 def create_enemy_log():
     log = {}
-    for i in values["Enemy"]:
-        log[i] = {}
+    for enemy in values["Enemy"]:
+        log[enemy] = {}
         #Stats
-        for e in ["Level", "Health", "Damage", "Defense", "Experience"]:
-            Manager.rom.seek(check_offset(int(offsets["Enemy"][i]["EnemyAddress"], 16) + int(dictionary["Properties"]["Enemy"][e]["Offset"], 16)))
-            log[i][e] = int.from_bytes(Manager.rom.read(dictionary["Properties"]["Enemy"][e]["Length"]), "little")
-            if log[i][e] > (0x100**dictionary["Properties"]["Enemy"][e]["Length"]/2) - 1:
-                log[i][e] -= 0x100**dictionary["Properties"]["Enemy"][e]["Length"]
+        for stat in ["Level", "Health", "Damage", "Defense", "Experience"]:
+            Manager.rom.seek(check_offset(int(offsets["Enemy"][enemy]["EnemyAddress"], 16) + int(dictionary["Properties"]["Enemy"][stat]["Offset"], 16)))
+            log[enemy][stat] = int.from_bytes(Manager.rom.read(dictionary["Properties"]["Enemy"][stat]["Length"]), "little")
+            if log[enemy][stat] > (0x100**dictionary["Properties"]["Enemy"][stat]["Length"]/2) - 1:
+                log[enemy][stat] -= 0x100**dictionary["Properties"]["Enemy"][stat]["Length"]
         #Resistances
-        log[i]["Resistances"] = {}
-        for e in attributes:
-            log[i]["Resistances"][e] = 1
-        Manager.rom.seek(check_offset(int(offsets["Enemy"][i]["EnemyAddress"], 16) + int(dictionary["Properties"]["Enemy"]["Weak"]["Offset"], 16)))
+        log[enemy]["Resistances"] = {}
+        for attr in attributes:
+            log[enemy]["Resistances"][attr] = 1
+        Manager.rom.seek(check_offset(int(offsets["Enemy"][enemy]["EnemyAddress"], 16) + int(dictionary["Properties"]["Enemy"]["Weak"]["Offset"], 16)))
         total = int.from_bytes(Manager.rom.read(dictionary["Properties"]["Enemy"]["Weak"]["Length"]), "little")
-        for e in attributes:
-            if (total & attributes[e]) != 0:
-                log[i]["Resistances"][e] = 0
-        Manager.rom.seek(check_offset(int(offsets["Enemy"][i]["EnemyAddress"], 16) + int(dictionary["Properties"]["Enemy"]["Strong"]["Offset"], 16)))
+        for attr in attributes:
+            if (total & attributes[attr]) != 0:
+                log[enemy]["Resistances"][attr] = 0
+        Manager.rom.seek(check_offset(int(offsets["Enemy"][enemy]["EnemyAddress"], 16) + int(dictionary["Properties"]["Enemy"]["Strong"]["Offset"], 16)))
         total = int.from_bytes(Manager.rom.read(dictionary["Properties"]["Enemy"]["Strong"]["Length"]), "little")
-        for e in attributes:
-            if (total & attributes[e]) != 0:
-                log[i]["Resistances"][e] = 2
-        Manager.rom.seek(check_offset(int(offsets["Enemy"][i]["EnemyAddress"], 16) + int(dictionary["Properties"]["Enemy"]["Immune"]["Offset"], 16)))
+        for attr in attributes:
+            if (total & attributes[attr]) != 0:
+                log[enemy]["Resistances"][attr] = 2
+        Manager.rom.seek(check_offset(int(offsets["Enemy"][enemy]["EnemyAddress"], 16) + int(dictionary["Properties"]["Enemy"]["Immune"]["Offset"], 16)))
         total = int.from_bytes(Manager.rom.read(dictionary["Properties"]["Enemy"]["Immune"]["Length"]), "little")
-        for e in attributes:
-            if (total & attributes[e]) != 0:
-                log[i]["Resistances"][e] = 3
-        Manager.rom.seek(check_offset(int(offsets["Enemy"][i]["EnemyAddress"], 16) + int(dictionary["Properties"]["Enemy"]["Absorb"]["Offset"], 16)))
+        for attr in attributes:
+            if (total & attributes[attr]) != 0:
+                log[enemy]["Resistances"][attr] = 3
+        Manager.rom.seek(check_offset(int(offsets["Enemy"][enemy]["EnemyAddress"], 16) + int(dictionary["Properties"]["Enemy"]["Absorb"]["Offset"], 16)))
         total = int.from_bytes(Manager.rom.read(dictionary["Properties"]["Enemy"]["Absorb"]["Length"]), "little")
-        for e in attributes:
-            if (total & attributes[e]) != 0:
-                log[i]["Resistances"][e] = 4
+        for attr in attributes:
+            if (total & attributes[attr]) != 0:
+                log[enemy]["Resistances"][attr] = 4
         #Attack damage
-        log[i]["AttackDamage"] = []
-        for e in offsets["Enemy"][i]["AttackAddress"]:
-            Manager.rom.seek(check_offset(int(e, 16) + int(dictionary["Properties"]["Enemy"]["Damage"]["Offset"], 16)))
+        log[enemy]["AttackDamage"] = []
+        for offset in offsets["Enemy"][enemy]["AttackAddress"]:
+            Manager.rom.seek(check_offset(int(offset, 16) + int(dictionary["Properties"]["Enemy"]["Damage"]["Offset"], 16)))
             damage = int.from_bytes(Manager.rom.read(2), "little")
             if damage > (0x100**dictionary["Properties"]["Enemy"]["Damage"]["Length"]/2) - 1:
                 damage -= 0x100**dictionary["Properties"]["Enemy"]["Damage"]["Length"]
-            log[i]["AttackDamage"].append(damage)
+            log[enemy]["AttackDamage"].append(damage)
     
     with open("SpoilerLog\\Enemy.json", "w") as file_writer:
         file_writer.write(json.dumps(log, indent=2))

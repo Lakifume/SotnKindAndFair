@@ -17,9 +17,14 @@ import zipfile
 import subprocess
 import glob
 
-#Get script name
+script_name = os.path.splitext(os.path.basename(__file__))[0]
 
-script_name, script_extension = os.path.splitext(os.path.basename(__file__))
+def resource_path(relative_path):
+    try:
+        base_path = sys._MEIPASS
+    except Exception:
+        base_path = os.path.abspath(".")
+    return os.path.join(base_path, relative_path)
 
 #Config
 
@@ -58,7 +63,7 @@ class Patch(QThread):
             folder = "Data\\Dissonance"
             short_name = "Hod"
         
-        shutil.copyfile(config.get("Misc", "s" + short_name + "InputFile"), folder + "\\rom")
+        shutil.copyfile(config.get("Misc", f"s{short_name}InputFile"), f"{folder}\\rom")
         
         Manager.game.init()
         Manager.game.open_json()
@@ -66,7 +71,7 @@ class Patch(QThread):
         Manager.set_enemy_level_wheight(config.getint("EnemyRandomization", "iEnemyLevelsWeight"))
         Manager.set_enemy_tolerance_wheight(config.getint("EnemyRandomization", "iEnemyTolerancesWeight"))
         
-        Manager.open_rom(folder + "\\rom")
+        Manager.open_rom(f"{folder}\\rom")
         
         seed = Manager.game.get_seed()
         
@@ -128,15 +133,15 @@ class Patch(QThread):
             root = os.getcwd()
             os.chdir(folder)
             program = glob.glob("*.exe")[0]
-            os.system("cmd /c " + program + " rom")
+            os.system(f"cmd /c {program} rom")
             os.chdir(root)
         
         self.signaller.progress.emit(1)
         
-        if config.get("Misc", "s" + short_name + "OutputFolder") and os.path.isdir(config.get("Misc", "s" + short_name + "OutputFolder")):
-            shutil.move(folder + "\\rom", config.get("Misc", "s" + short_name + "OutputFolder") + "\\" + config.get("Misc", "s" + short_name + "InputFile").split("\\")[-1])
+        if config.get("Misc", f"s{short_name}OutputFolder") and os.path.isdir(config.get("Misc", f"s{short_name}OutputFolder")):
+            shutil.move(f"{folder}\\rom", config.get("Misc", f"s{short_name}OutputFolder") + "\\" + os.path.split(config.get("Misc", f"s{short_name}InputFile"))[-1])
         else:
-            shutil.move(folder + "\\rom", config.get("Misc", "s" + short_name + "InputFile"))
+            shutil.move(f"{folder}\\rom", config.get("Misc", f"s{short_name}InputFile"))
         
         self.signaller.finished.emit()
 
@@ -150,7 +155,7 @@ class Update(QThread):
     def run(self):
         progress = 0
         zip_name = "KindAndFair.zip"
-        exe_name = script_name + ".exe"
+        exe_name = f"{script_name}.exe"
         self.signaller.progress.emit(progress)
         
         #Download
@@ -199,10 +204,7 @@ class Update(QThread):
 
 class DropFile(QObject):    
     def eventFilter(self, watched, event):
-        if config.getboolean("Game", "bSymphony"):
-            format = ".bin"
-        else:
-            format = ".gba"
+        format = ".bin" if config.getboolean("Game", "bSymphony") else ".gba"
         if event.type() == QEvent.DragEnter:
             md = event.mimeData()
             if md.hasUrls():
@@ -229,12 +231,13 @@ class DropFolder(QObject):
             return True
         return super().eventFilter(watched, event)
 
-class Main(QWidget):
+class MainWindow(QGraphicsView):
     def __init__(self):
         super().__init__()
         self.setEnabled(False)
         self.initUI()
-        self.check_for_updates()
+        if not self.check_for_updates():
+            self.setEnabled(True)
 
     def initUI(self):
         
@@ -332,32 +335,14 @@ class Main(QWidget):
         
         #SpinBoxes
         
-        if config.getfloat("EnemyDamage", "fDamageMultiplier") < 0.0:
-            config.set("EnemyDamage", "fDamageMultiplier", "0.0")
-        if config.getfloat("EnemyDamage", "fDamageMultiplier") > 3.0:
-            config.set("EnemyDamage", "fDamageMultiplier", "3.0")
-        
         self.damage_box = QDoubleSpinBox()
         self.damage_box.setToolTip("Multiplier of damage received.\n(1.0 is beginner)")
         self.damage_box.setDecimals(1)
-        self.damage_box.setRange(0.1, 3.0)
         self.damage_box.setSingleStep(0.1)
-        self.damage_box.setValue(config.getfloat("EnemyDamage", "fDamageMultiplier"))
         self.damage_box.valueChanged.connect(self.new_damage)
+        self.damage_box.setValue(config.getfloat("EnemyDamage", "fDamageMultiplier"))
+        self.damage_box.setRange(0.1, 3.0)
         box_2_grid.addWidget(self.damage_box, 0, 0)
-        
-        #Init checkboxes
-        
-        self.check_box_1.setChecked(config.getboolean("EnemyRandomization", "bEnemyLevels"))
-        self.check_box_2.setChecked(config.getboolean("EnemyRandomization", "bEnemyTolerances"))
-        self.check_box_3.setChecked(config.getboolean("EnemyRandomization", "bEnemyLocations"))
-        self.check_box_7.setChecked(config.getboolean("Extra", "bScavengerMode"))
-        self.check_box_6.setChecked(config.getboolean("Extra", "bContinuousSmash"))
-        self.check_box_5.setChecked(config.getboolean("Extra", "bBigtossMode"))
-        self.check_box_4.setChecked(config.getboolean("Extra", "bNoPlayerOutline"))
-        
-        self.spin_button_1_set_index(config.getint("EnemyRandomization", "iEnemyLevelsWeight"))
-        self.spin_button_2_set_index(config.getint("EnemyRandomization", "iEnemyTolerancesWeight"))
         
         #Text field
 
@@ -392,15 +377,28 @@ class Main(QWidget):
         button_3.clicked.connect(self.button_3_clicked)
         grid.addWidget(button_3, 4, 3, 1, 1)
         
+        #Init checkboxes
+        
+        self.check_box_1.setChecked(config.getboolean("EnemyRandomization", "bEnemyLevels"))
+        self.check_box_2.setChecked(config.getboolean("EnemyRandomization", "bEnemyTolerances"))
+        self.check_box_3.setChecked(config.getboolean("EnemyRandomization", "bEnemyLocations"))
+        self.check_box_7.setChecked(config.getboolean("Extra", "bScavengerMode"))
+        self.check_box_6.setChecked(config.getboolean("Extra", "bContinuousSmash"))
+        self.check_box_5.setChecked(config.getboolean("Extra", "bBigtossMode"))
+        self.check_box_4.setChecked(config.getboolean("Extra", "bNoPlayerOutline"))
+        
+        self.spin_button_1_set_index(config.getint("EnemyRandomization", "iEnemyLevelsWeight"))
+        self.spin_button_2_set_index(config.getint("EnemyRandomization", "iEnemyTolerancesWeight"))
+        
+        self.radio_button_1.setChecked(config.getboolean("Game", "bSymphony"))
+        self.radio_button_2.setChecked(config.getboolean("Game", "bDissonance"))
+        
         #Window
         
         self.setLayout(grid)
         self.setFixedSize(512, 432)
         self.setWindowTitle(script_name)
         self.show()
-        
-        self.radio_button_1.setChecked(config.getboolean("Game", "bSymphony"))
-        self.radio_button_2.setChecked(config.getboolean("Game", "bDissonance"))
         
         #Position
         
@@ -412,48 +410,34 @@ class Main(QWidget):
         QApplication.processEvents()
 
     def check_box_1_changed(self):
-        if self.check_box_1.isChecked():
-            config.set("EnemyRandomization", "bEnemyLevels", "true")
-        else:
-            config.set("EnemyRandomization", "bEnemyLevels", "false")
-        self.spin_button_1.setVisible(self.check_box_1.isChecked())
+        checked = self.check_box_1.isChecked()
+        config.set("EnemyRandomization", "bEnemyLevels", str(checked).lower())
+        self.spin_button_1.setVisible(checked)
 
     def check_box_2_changed(self):
-        if self.check_box_2.isChecked():
-            config.set("EnemyRandomization", "bEnemyTolerances", "true")
-        else:
-            config.set("EnemyRandomization", "bEnemyTolerances", "false")
-        self.spin_button_2.setVisible(self.check_box_2.isChecked())
+        checked = self.check_box_2.isChecked()
+        config.set("EnemyRandomization", "bEnemyTolerances", str(checked).lower())
+        self.spin_button_2.setVisible(checked)
 
     def check_box_3_changed(self):
-        if self.check_box_3.isChecked():
-            config.set("EnemyRandomization", "bEnemyLocations", "true")
-        else:
-            config.set("EnemyRandomization", "bEnemyLocations", "false")
+        checked = self.check_box_3.isChecked()
+        config.set("EnemyRandomization", "bEnemyLocations", str(checked).lower())
 
     def check_box_7_changed(self):
-        if self.check_box_7.isChecked():
-            config.set("Extra", "bScavengerMode", "true")
-        else:
-            config.set("Extra", "bScavengerMode", "false")
+        checked = self.check_box_7.isChecked()
+        config.set("Extra", "bScavengerMode", str(checked).lower())
 
     def check_box_6_changed(self):
-        if self.check_box_6.isChecked():
-            config.set("Extra", "bContinuousSmash", "true")
-        else:
-            config.set("Extra", "bContinuousSmash", "false")
+        checked = self.check_box_6.isChecked()
+        config.set("Extra", "bContinuousSmash", str(checked).lower())
 
     def check_box_5_changed(self):
-        if self.check_box_5.isChecked():
-            config.set("Extra", "bBigtossMode", "true")
-        else:
-            config.set("Extra", "bBigtossMode", "false")
+        checked = self.check_box_5.isChecked()
+        config.set("Extra", "bBigtossMode", str(checked).lower())
 
     def check_box_4_changed(self):
-        if self.check_box_4.isChecked():
-            config.set("Extra", "bNoPlayerOutline", "true")
-        else:
-            config.set("Extra", "bNoPlayerOutline", "false")
+        checked = self.check_box_4.isChecked()
+        config.set("Extra", "bNoPlayerOutline", str(checked).lower())
 
     def spin_button_1_clicked(self):
         index = int(self.spin_button_1.text())
@@ -474,32 +458,25 @@ class Main(QWidget):
         config.set("EnemyRandomization", "iEnemyTolerancesWeight", str(index))
     
     def radio_button_group_1_checked(self):
-        if self.radio_button_1.isChecked():
-            config.set("Game", "bSymphony", "true")
-            config.set("Game", "bDissonance", "false")
-            self.check_box_1.setVisible(True)
-            self.check_box_3.setVisible(False)
-            self.check_box_6.setVisible(True)
-            self.check_box_4.setVisible(False)
-            self.spin_button_1.setVisible(self.check_box_1.isChecked())
-            self.input_field.setText(config.get("Misc", "sSotnInputFile"))
-            self.output_field.setText(config.get("Misc", "sSotnOutputFolder"))
+        checked_1 = self.radio_button_1.isChecked()
+        checked_2 = self.radio_button_2.isChecked()
+        config.set("Game", "bSymphony",   str(checked_1).lower())
+        config.set("Game", "bDissonance", str(checked_2).lower())
+        self.check_box_1.setVisible(checked_1)
+        self.check_box_3.setVisible(checked_2)
+        self.check_box_6.setVisible(checked_1)
+        self.check_box_4.setVisible(checked_2)
+        self.spin_button_1.setVisible(checked_1 and self.check_box_1.isChecked())
+        self.input_field.setText(config.get("Misc", "sSotnInputFile" if checked_1 else "sHodInputFile"))
+        self.output_field.setText(config.get("Misc", "sSotnOutputFolder" if checked_1 else "sHodOutputFolder"))
+        if checked_1:
             self.reset_visuals("Symphony", "#1d150f", "#32ff8000")
         else:
-            config.set("Game", "bSymphony", "false")
-            config.set("Game", "bDissonance", "true")
-            self.check_box_1.setVisible(False)
-            self.check_box_3.setVisible(True)
-            self.check_box_6.setVisible(False)
-            self.check_box_4.setVisible(True)
-            self.spin_button_1.setVisible(False)
-            self.input_field.setText(config.get("Misc", "sHodInputFile"))
-            self.output_field.setText(config.get("Misc", "sHodOutputFolder"))
             self.reset_visuals("Dissonance", "#340d0d", "#32ff0000")
     
     def reset_visuals(self, game, main_color, sub_color):
         self.setStyleSheet("QWidget{background:transparent; color: #ffffff; font-family: Cambria; font-size: 18px}"
-        + "QLabel{border: 1px}"
+        + "QGraphicsView{border-image: url(Data/" + game + "/background.png)}"
         + "QMessageBox{background-color: " + main_color + "}"
         + "QDialog{background-color: " + main_color + "}"
         + "QProgressDialog{background-color: " + main_color + "}"
@@ -507,27 +484,17 @@ class Main(QWidget):
         + "QDoubleSpinBox{background-color: " + main_color + "; selection-background-color: " + sub_color + "}"
         + "QLineEdit{background-color: " + main_color + "; selection-background-color: " + sub_color + "}"
         + "QProgressBar{border: 2px solid white; text-align: center; font: bold}"
-        + "QToolTip{border: 0px; background-color: " + main_color + "; color: #ffffff; font-family: Cambria; font-size: 18px}")
-        self.setWindowIcon(QIcon("Data\\" + game + "\\icon.png"))
-        background = QPixmap("Data\\" + game + "\\background.png")
-        palette = QPalette()
-        palette.setBrush(QPalette.Window, background)
-        self.setPalette(palette)
+        + "QToolTip{border: 1px solid white; background-color: " + main_color + "; color: #ffffff; font-family: Cambria; font-size: 18px}")
+        self.setWindowIcon(QIcon(f"{game}.ico"))
     
     def new_damage(self):
         config.set("EnemyDamage", "fDamageMultiplier", str(round(self.damage_box.value(),1)))
     
     def new_input(self, input):
-        if config.getboolean("Game", "bSymphony"):
-            config.set("Misc", "sSotnInputFile", input)
-        else:
-            config.set("Misc", "sHodInputFile", input)
+        config.set("Misc", "sSotnInputFile" if config.getboolean("Game", "bSymphony") else "sHodInputFile", input)
     
     def new_output(self, output):
-        if config.getboolean("Game", "bSymphony"):
-            config.set("Misc", "sSotnOutputFolder", output)
-        else:
-            config.set("Misc", "sHodOutputFolder", output)
+        config.set("Misc", "sSotnOutputFolder" if config.getboolean("Game", "bSymphony") else "sHodOutputFolder", output)
     
     def set_progress(self, progress):
         self.progressBar.setValue(progress)
@@ -547,13 +514,13 @@ class Main(QWidget):
         QApplication.processEvents()
         
         if config.getboolean("Game", "bSymphony"):
-            name, extension = os.path.splitext(config.get("Misc", "sSotnInputFile"))
+            extension = os.path.splitext(config.get("Misc", "sSotnInputFile"))[1]
             if not os.path.isfile(config.get("Misc", "sSotnInputFile")) or extension != ".bin":
                 self.no_path()
                 self.setEnabled(True)
                 return
         else:
-            name, extension = os.path.splitext(config.get("Misc", "sHodInputFile"))
+            extension = os.path.splitext(config.get("Misc", "sHodInputFile"))[1]
             if not os.path.isfile(config.get("Misc", "sHodInputFile")) or extension != ".gba":
                 self.no_path()
                 self.setEnabled(True)
@@ -572,10 +539,7 @@ class Main(QWidget):
         self.worker.start()
     
     def button_2_clicked(self):
-        if config.getboolean("Game", "bSymphony"):
-            format = "*.bin"
-        else:
-            format = "*.gba"
+        format = "*.bin" if config.getboolean("Game", "bSymphony") else "*.gba"
         file = QFileDialog.getOpenFileName(parent=self, caption="File", filter=format)[0]
         if file:
             self.input_field.setText(file.replace("/", "\\"))
@@ -598,13 +562,11 @@ class Main(QWidget):
         try:
             api = requests.get("https://api.github.com/repos/Lakifume/SotnKindAndFair/releases/latest").json()
         except requests.ConnectionError:
-            self.setEnabled(True)
-            return
+            return False
         try:
             tag = api["tag_name"]
         except KeyError:
-            self.setEnabled(True)
-            return
+            return False
         if tag != config.get("Misc", "sVersion"):
             choice = QMessageBox.question(self, "Auto Updater", "New version found:\n\n" + api["body"] + "\n\nUpdate ?", QMessageBox.Yes | QMessageBox.No)
             if choice == QMessageBox.Yes:
@@ -618,15 +580,13 @@ class Main(QWidget):
                 self.worker.signaller.progress.connect(self.set_progress)
                 self.worker.signaller.finished.connect(self.update_finished)
                 self.worker.start()
-            else:
-                self.setEnabled(True)
-        else:
-            self.setEnabled(True)
+                return True
+        return False
 
 def main():
     app = QApplication(sys.argv)
     app.aboutToQuit.connect(writing)
-    main = Main()
+    main = MainWindow()
     sys.exit(app.exec())
 
 if __name__ == '__main__':
