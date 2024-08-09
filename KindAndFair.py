@@ -526,8 +526,8 @@ class MainWindow(QGraphicsView):
                 self.setEnabled(True)
                 return
         
-        if not os.path.isdir("SpoilerLog"):
-            os.makedirs("SpoilerLog")
+        if not os.path.isdir("Spoiler"):
+            os.makedirs("Spoiler")
         
         self.progressBar = QProgressDialog("Patching...", None, 0, 1, self)
         self.progressBar.setWindowTitle("Status")

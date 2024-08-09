@@ -368,9 +368,46 @@ def write_complex_data():
     #Medusa laser
     Manager.rom.seek(0xB9A4A)
     Manager.rom.write((0x0220).to_bytes(2, "little"))
-    #Remove the hitbox from Dracula's main body to only leave the hands vulnerable
+    #Remove the hurtbox from Dracula's main body to only leave the hands vulnerable
     Manager.rom.seek(0xB9C02)
     Manager.rom.write((0x0000).to_bytes(2, "little"))
+    #Change a few enemy patterns to increase difficulty
+    #Remove the Karasuman stunlocks
+    Manager.rom.seek(0x55A3570)
+    Manager.rom.write((0x0000).to_bytes(2, "little"))
+    #Increase Medusa laser speed
+    Manager.rom.seek(0x6756f68)
+    Manager.rom.write((0x1200).to_bytes(2, "little"))
+    Manager.rom.seek(0x6756f74)
+    Manager.rom.write((0x1200).to_bytes(2, "little"))
+    #Increase Succubus projectile speed
+    Manager.rom.seek(0x5b097e4)
+    Manager.rom.write((0x1900).to_bytes(2, "little"))
+    Manager.rom.seek(0x5b097fc)
+    Manager.rom.write((0x1900).to_bytes(2, "little"))
+    #Increase Hippogryph flight speed
+    Manager.rom.seek(0x632bc98)
+    Manager.rom.write((0xF3).to_bytes(1, "little"))
+    Manager.rom.seek(0x632bda8)
+    Manager.rom.write((0xFC).to_bytes(1, "little"))
+    Manager.rom.seek(0x632bf50)
+    Manager.rom.write((0x05).to_bytes(1, "little"))
+    Manager.rom.seek(0x632bf5c)
+    Manager.rom.write((0xFA).to_bytes(1, "little"))
+    #Increase Death 2 knockback
+    Manager.rom.seek(0x66433CC)
+    Manager.rom.write((0x20).to_bytes(1, "little"))
+    Manager.rom.seek(0x66433D0)
+    Manager.rom.write((0xE0).to_bytes(1, "little"))
+    #Increase Drac's hand swipe speed
+    Manager.rom.seek(0x694E510)
+    Manager.rom.write((0xFA).to_bytes(1, "little"))
+    Manager.rom.seek(0x694E514)
+    Manager.rom.write((0x06).to_bytes(1, "little"))
+    Manager.rom.seek(0x694E56C)
+    Manager.rom.write((0x05).to_bytes(1, "little"))
+    Manager.rom.seek(0x694E57C)
+    Manager.rom.write((0xFA).to_bytes(1, "little"))
     
     #EQUIPMENT
     for file in ["Enemy", "Equipment"]:
@@ -560,5 +597,5 @@ def create_enemy_log():
                 damage -= 0x100**dictionary["Properties"]["Enemy"]["Damage"]["Length"]
             log[enemy]["AttackDamage"].append(damage)
     
-    with open("SpoilerLog\\Enemy.json", "w") as file_writer:
+    with open("Spoiler\\Enemy.json", "w") as file_writer:
         file_writer.write(json.dumps(log, indent=2))

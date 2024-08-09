@@ -184,7 +184,7 @@ def open_json():
 
 def get_seed():
     #If the rom is randomized reuse its seed
-    Manager.rom.seek(0x6A0000)
+    Manager.rom.seek(0x69F1E4)
     seed = int.from_bytes(Manager.rom.read(20), "big")
     if seed == 0xFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF:
         return random.random()
@@ -313,7 +313,7 @@ def gather_data():
                         enemy_name = Manager.get_enemy_name(game_rooms[room_offset].entities[entity_offset].subtype)
                     boss_to_pointer[enemy_name] = entity_offset
                     boss_to_entity[enemy_name]  = copy.deepcopy(game_rooms[room_offset].entities[entity_offset])
-    boss_to_pointer_invert = {value: key for key, value in boss_to_pointer.items()}
+    boss_to_pointer_invert.update({value: key for key, value in boss_to_pointer.items()})
 
 def apply_ips_patch(patch):
     #Replicate Lunar IPS' process of applying patches to not have to include it in the download
@@ -479,7 +479,7 @@ def randomize_enemies():
             random.shuffle(new_list)
             new_dict = dict(zip(enemy_category[category], new_list))
             enemy_replacement.update(new_dict)
-        enemy_replacement_invert = {value: key for key, value in enemy_replacement.items()}
+        enemy_replacement_invert.update({value: key for key, value in enemy_replacement.items()})
         #Check for conflict
         conflict = False
         #If the regular fleaman is too much stronger than the armor then reroll
@@ -615,7 +615,7 @@ def randomize_bosses():
     random.shuffle(new_list)
     new_dict = dict(zip(list(boss_to_door_id), new_list))
     boss_replacement.update(new_dict)
-    boss_replacement_invert = {value: key for key, value in boss_replacement.items()}
+    boss_replacement_invert.update({value: key for key, value in boss_replacement.items()})
     #Patch via entity profiles directly
     for room_offset in game_rooms:
         for entity_offset in game_rooms[room_offset].entities:
@@ -834,5 +834,5 @@ def create_enemy_log():
             log[enemy]["AttackDamage"].append(int.from_bytes(Manager.rom.read(dictionary["Properties"]["Enemy"][attack_id]["Length"]), "little"))
         log[enemy]["Position"] = all_replacement_invert[enemy] if enemy in all_replacement and all_replacement[enemy] != enemy else "Unchanged"
     
-    with open("SpoilerLog\\Enemy.json", "w") as file_writer:
+    with open("Spoiler\\Enemy.json", "w") as file_writer:
         file_writer.write(json.dumps(log, indent=2))
