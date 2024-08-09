@@ -202,6 +202,18 @@ class Update(QThread):
 
 #Interface
 
+class QCheckBox(QCheckBox):
+    def nextCheckState(self):
+        if self.checkState() == Qt.Unchecked:
+            self.setCheckState(Qt.PartiallyChecked)
+        elif self.checkState() == Qt.PartiallyChecked:
+            self.setCheckState(Qt.Unchecked)
+    
+    def checkStateSet(self):
+        super().checkStateSet()
+        if self.checkState() == Qt.Checked:
+            self.setCheckState(Qt.PartiallyChecked)
+
 class DropFile(QObject):    
     def eventFilter(self, watched, event):
         format = ".bin" if config.getboolean("Game", "bSymphony") else ".gba"
@@ -485,7 +497,7 @@ class MainWindow(QGraphicsView):
         + "QLineEdit{background-color: " + main_color + "; selection-background-color: " + sub_color + "}"
         + "QProgressBar{border: 2px solid white; text-align: center; font: bold}"
         + "QToolTip{border: 1px solid white; background-color: " + main_color + "; color: #ffffff; font-family: Cambria; font-size: 18px}")
-        self.setWindowIcon(QIcon(f"{game}.ico"))
+        self.setWindowIcon(QIcon(resource_path(f"{game}.ico")))
     
     def new_damage(self):
         config.set("EnemyDamage", "fDamageMultiplier", str(round(self.damage_box.value(),1)))
