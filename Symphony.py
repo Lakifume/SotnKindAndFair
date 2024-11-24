@@ -391,7 +391,7 @@ def write_complex_data():
     Manager.rom.seek(0x632bda8)
     Manager.rom.write((0xFC).to_bytes(1, "little"))
     Manager.rom.seek(0x632bf50)
-    Manager.rom.write((0x05).to_bytes(1, "little"))
+    Manager.rom.write((0x04).to_bytes(1, "little"))
     Manager.rom.seek(0x632bf5c)
     Manager.rom.write((0xFA).to_bytes(1, "little"))
     #Increase Death 2 knockback
