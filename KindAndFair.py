@@ -138,7 +138,7 @@ class Patch(QThread):
         
         self.signaller.progress.emit(1)
         
-        if config.get("Misc", f"s{short_name}OutputFolder") and os.path.isdir(config.get("Misc", f"s{short_name}OutputFolder")):
+        if config.get("Misc", f"s{short_name}OutputFolder"):
             shutil.move(f"{folder}\\rom", config.get("Misc", f"s{short_name}OutputFolder") + "\\" + os.path.split(config.get("Misc", f"s{short_name}InputFile"))[-1])
         else:
             shutil.move(f"{folder}\\rom", config.get("Misc", f"s{short_name}InputFile"))
@@ -522,21 +522,32 @@ class MainWindow(QGraphicsView):
         sys.exit()
 
     def button_1_clicked(self):
-        self.setEnabled(False)
-        QApplication.processEvents()
         
         if config.getboolean("Game", "bSymphony"):
             extension = os.path.splitext(config.get("Misc", "sSotnInputFile"))[1]
             if not os.path.isfile(config.get("Misc", "sSotnInputFile")) or extension != ".bin":
-                self.no_path()
-                self.setEnabled(True)
+                self.path_invalid(True)
+                return
+            if not config.get("Misc", "sSotnOutputFolder") or config.get("Misc", "sSotnOutputFolder") == os.path.dirname(config.get("Misc", "sSotnInputFile")):
+                if not self.confirm_overwrite():
+                    return
+            elif not os.path.isdir(config.get("Misc", "sSotnOutputFolder")):
+                self.path_invalid(False)
                 return
         else:
             extension = os.path.splitext(config.get("Misc", "sHodInputFile"))[1]
             if not os.path.isfile(config.get("Misc", "sHodInputFile")) or extension != ".gba":
-                self.no_path()
-                self.setEnabled(True)
+                self.path_invalid(True)
                 return
+            if not config.get("Misc", "sHodOutputFolder") or config.get("Misc", "sHodOutputFolder") == os.path.dirname(config.get("Misc", "sHodInputFile")):
+                if not self.confirm_overwrite():
+                    return
+            elif not os.path.isdir(config.get("Misc", "sHodOutputFolder")):
+                self.path_invalid(False)
+                return
+        
+        self.setEnabled(False)
+        QApplication.processEvents()
         
         if not os.path.isdir("Spoiler"):
             os.makedirs("Spoiler")
@@ -561,12 +572,17 @@ class MainWindow(QGraphicsView):
         if path:
             self.output_field.setText(path.replace("/", "\\"))
     
-    def no_path(self):
+    def path_invalid(self, is_input):
         box = QMessageBox(self)
-        box.setWindowTitle("Path")
+        box.setWindowTitle("Error")
         box.setIcon(QMessageBox.Critical)
-        box.setText("Input path invalid.")
+        extra = "Input" if is_input else "Output"
+        box.setText(f"{extra} path invalid.")
         box.exec()
+    
+    def confirm_overwrite(self):
+        choice = QMessageBox.question(self, "Warning", "This will overwrite your input rom, proceed anyways ?", QMessageBox.Yes | QMessageBox.No)
+        return choice == QMessageBox.Yes
     
     def check_for_updates(self):
         if os.path.isfile("delete.me"):

@@ -106,7 +106,7 @@ def get_seed():
     seed = int.from_bytes(Manager.rom.read(30), "big")
     if seed == 0x496E7075742081688168524943485445528168816820746F20706C617900:
         return random.random()
-    start_with_spirit_orb()
+    #start_with_spirit_orb()
     return seed
 
 def apply_ppf_patch(patch):
@@ -296,14 +296,18 @@ def write_complex_data():
         Manager.rom.write(int(values["Enemy"][enemy]["DamageType"], 16).to_bytes(dictionary["Properties"]["Enemy"]["DamageType"]["Length"], "little"))
         #Make stopwatch tolerance scale with level
         Manager.rom.seek(check_offset(int(offsets["Enemy"][enemy]["EnemyAddress"], 16) + 37))
-        if values["Enemy"][enemy]["IsBoss"]:
-            Manager.rom.write((0x30).to_bytes(1, "little"))
-        elif values["Enemy"][enemy]["Level"] >= 40:
-            Manager.rom.write((0x34).to_bytes(1, "little"))
+        tolerance = int.from_bytes(Manager.rom.read(1), "little")
+        if   values["Enemy"][enemy]["Level"] >= 40 or values["Enemy"][enemy]["IsBoss"]:
+            tolerance = Manager.clear_bit(tolerance, 1)
+            tolerance = Manager.set_bit(tolerance, 5)
         elif values["Enemy"][enemy]["Level"] >= 20:
-            Manager.rom.write((0x16).to_bytes(1, "little"))
+            tolerance = Manager.set_bit(tolerance, 1)
+            tolerance = Manager.clear_bit(tolerance, 5)
         else:
-            Manager.rom.write((0x14).to_bytes(1, "little"))
+            tolerance = Manager.clear_bit(tolerance, 1)
+            tolerance = Manager.clear_bit(tolerance, 5)
+        Manager.rom.seek(check_offset(int(offsets["Enemy"][enemy]["EnemyAddress"], 16) + 37))
+        Manager.rom.write(tolerance.to_bytes(1, "little"))
         #Remove all stunframes from enemies
         offset = check_offset(int(offsets["Enemy"][enemy]["EnemyAddress"], 16) + 38)
         Manager.rom.seek(offset)
@@ -325,12 +329,18 @@ def write_complex_data():
             Manager.rom.write(int(values["Enemy"][enemy]["AttackType"][index], 16).to_bytes(dictionary["Properties"]["Enemy"]["DamageType"]["Length"], "little"))
             #Attack stopwatch tolerance
             Manager.rom.seek(check_offset(int(offsets["Enemy"][enemy]["AttackAddress"][index], 16) + 37))
-            if values["Enemy"][enemy]["Level"] >= 40 or values["Enemy"][enemy]["IsBoss"]:
-                Manager.rom.write((0x20).to_bytes(1, "little"))
+            tolerance = int.from_bytes(Manager.rom.read(1), "little")
+            if   values["Enemy"][enemy]["Level"] >= 40 or values["Enemy"][enemy]["IsBoss"]:
+                tolerance = Manager.clear_bit(tolerance, 1)
+                tolerance = Manager.set_bit(tolerance, 5)
             elif values["Enemy"][enemy]["Level"] >= 20:
-                Manager.rom.write((0x12).to_bytes(1, "little"))
+                tolerance = Manager.set_bit(tolerance, 1)
+                tolerance = Manager.clear_bit(tolerance, 5)
             else:
-                Manager.rom.write((0x00).to_bytes(1, "little"))
+                tolerance = Manager.clear_bit(tolerance, 1)
+                tolerance = Manager.clear_bit(tolerance, 5)
+            Manager.rom.seek(check_offset(int(offsets["Enemy"][enemy]["AttackAddress"][index], 16) + 37))
+            Manager.rom.write(tolerance.to_bytes(1, "little"))
             #Attack no stun
             offset = check_offset(int(offsets["Enemy"][enemy]["AttackAddress"][index], 16) + 38)
             Manager.rom.seek(offset)

@@ -16,6 +16,12 @@ def close_rom():
 def lerp(minimum, maximum, alpha):
     return minimum + (maximum - minimum)*alpha
 
+def set_bit(value, bit):
+    return value | (1<<bit)
+
+def clear_bit(value, bit):
+    return value & ~(1<<bit)
+
 def set_enemy_level_wheight(wheight):
     global enemy_level_wheight
     enemy_level_wheight = wheight_exponents[wheight - 1]
